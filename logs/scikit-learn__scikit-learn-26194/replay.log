@@ -13,3 +13,6 @@
 [replay] scikit-learn__scikit-learn-26194 seq=4 class=build orig=153.94s :: 'python setup.py build_ext --inplace -j 4 > /tmp/sk_build.log 2>&1; rc='
     rep1: stat rc=0 162.30s | record rc=0 163.45s
     rep2: stat rc=0 152.05s | record rc=0 160.44s
+    rep3: stat rc=0 157.20s | record rc=0 172.53s
+[replay] scikit-learn__scikit-learn-26194 seq=5 class=package install orig=488.08s :: 'python -m pip install --no-build-isolation --no-deps -e . 2>&1 | tail '
+    rep1: stat rc=0 513.65s | record rc=0 545.91s

@@ -6,22 +6,22 @@
  "profiled_cmd": "python -m pytest -q tests",
  "reps": [
   {
-   "wall_s": 3.0741758346557617,
-   "task_clock_s": 3.0330700000000004,
-   "top_level_import_s": 0.221957,
-   "n_top_level": 28
+   "wall_s": 3.1459929943084717,
+   "task_clock_s": 3.09611,
+   "top_level_import_s": 0.590161,
+   "n_top_level": 158
   },
   {
-   "wall_s": 2.9933719635009766,
-   "task_clock_s": 2.9411,
-   "top_level_import_s": 0.205976,
-   "n_top_level": 28
+   "wall_s": 3.1699743270874023,
+   "task_clock_s": 3.1245100000000003,
+   "top_level_import_s": 0.572044,
+   "n_top_level": 158
   },
   {
-   "wall_s": 3.2774388790130615,
-   "task_clock_s": 3.22806,
-   "top_level_import_s": 0.211976,
-   "n_top_level": 28
+   "wall_s": 3.3462157249450684,
+   "task_clock_s": 3.29248,
+   "top_level_import_s": 0.641996,
+   "n_top_level": 158
   }
  ]
 }

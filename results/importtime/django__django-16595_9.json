@@ -6,21 +6,21 @@
  "profiled_cmd": "cd tests && python runtests.py migrations --parallel 4",
  "reps": [
   {
-   "wall_s": 11.9753098487854,
-   "task_clock_s": 22.36082,
-   "top_level_import_s": 0.42181,
+   "wall_s": 10.96645212173462,
+   "task_clock_s": 19.14662,
+   "top_level_import_s": 0.392609,
    "n_top_level": 154
   },
   {
-   "wall_s": 10.177425146102905,
-   "task_clock_s": 19.25034,
-   "top_level_import_s": 0.417395,
+   "wall_s": 10.59508752822876,
+   "task_clock_s": 19.673099999999998,
+   "top_level_import_s": 0.387426,
    "n_top_level": 154
   },
   {
-   "wall_s": 11.122094869613647,
-   "task_clock_s": 19.626009999999997,
-   "top_level_import_s": 0.4403,
+   "wall_s": 10.272173404693604,
+   "task_clock_s": 18.31282,
+   "top_level_import_s": 0.497331,
    "n_top_level": 154
   }
  ]

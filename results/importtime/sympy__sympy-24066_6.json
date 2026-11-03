@@ -6,21 +6,21 @@
  "profiled_cmd": "python /tmp/repro_24066.py",
  "reps": [
   {
-   "wall_s": 0.8686444759368896,
-   "task_clock_s": 0.84889,
-   "top_level_import_s": 0.692887,
+   "wall_s": 0.7199482917785645,
+   "task_clock_s": 0.7024600000000001,
+   "top_level_import_s": 0.552608,
    "n_top_level": 10
   },
   {
-   "wall_s": 0.8458220958709717,
-   "task_clock_s": 0.7937000000000001,
-   "top_level_import_s": 0.604901,
+   "wall_s": 0.7438135147094727,
+   "task_clock_s": 0.72288,
+   "top_level_import_s": 0.561548,
    "n_top_level": 10
   },
   {
-   "wall_s": 0.8022654056549072,
-   "task_clock_s": 0.7828099999999999,
-   "top_level_import_s": 0.638025,
+   "wall_s": 0.7263412475585938,
+   "task_clock_s": 0.70689,
+   "top_level_import_s": 0.561183,
    "n_top_level": 10
   }
  ]

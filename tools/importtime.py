@@ -25,6 +25,7 @@ def main():
         for rep in range(3):
             cwd, env = E.prepare(c, cls)
             env["PYTHONPROFILEIMPORTTIME"] = "1"
+            env["PYTEST_ADDOPTS"] = "--capture=no"   # pytest fd-capture would swallow the importtime report
             t0 = time.time()
             # the recorded command may pipe stderr into tail/grep, which would swallow the
             # importtime report: run its python part with stderr sent to a file instead

@@ -1,0 +1,7 @@
+django__django-16595,6,test run,0.639,0.614,0.379,59.3
+django__django-16595,9,test run,11.092,20.412,0.427,3.8
+pallets__flask-5014,6,test run,1.202,1.182,0.211,17.5
+pallets__flask-5014,9,test run,3.115,3.067,0.213,6.8
+sympy__sympy-24066,6,other,0.839,0.808,0.645,76.9
+sympy__sympy-24066,9,test run,2.367,2.342,0.201,8.5
+sympy__sympy-24066,10,test run,2.555,2.529,1.418,55.5

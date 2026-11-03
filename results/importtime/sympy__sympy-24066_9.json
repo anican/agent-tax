@@ -6,22 +6,22 @@
  "profiled_cmd": "python -m pytest -q sympy/physics/units",
  "reps": [
   {
-   "wall_s": 2.5629372596740723,
-   "task_clock_s": 2.53877,
-   "top_level_import_s": 0.20853,
-   "n_top_level": 15
+   "wall_s": 2.3458476066589355,
+   "task_clock_s": 2.32239,
+   "top_level_import_s": 0.905327,
+   "n_top_level": 32
   },
   {
-   "wall_s": 2.1920695304870605,
-   "task_clock_s": 2.16537,
-   "top_level_import_s": 0.182491,
-   "n_top_level": 15
+   "wall_s": 2.2408087253570557,
+   "task_clock_s": 2.21809,
+   "top_level_import_s": 0.77672,
+   "n_top_level": 32
   },
   {
-   "wall_s": 2.3473117351531982,
-   "task_clock_s": 2.32161,
-   "top_level_import_s": 0.21168,
-   "n_top_level": 15
+   "wall_s": 2.3083508014678955,
+   "task_clock_s": 2.28926,
+   "top_level_import_s": 0.793422,
+   "n_top_level": 32
   }
  ]
 }

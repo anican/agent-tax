@@ -5,31 +5,31 @@
   "cmd": "grep -n \"def reduce\" -A 40 django/db/migrations/operations/fields.py | sed -n \"1,200p\"",
   "cls": "search/read",
   "callgrind_Ir": 3465455,
-  "perf_user_samples": 26,
+  "perf_user_samples": 480,
   "shares": {
    "process lifecycle": {
     "callgrind_pct": 33.220139923906096,
-    "perf_pct": 80.76923076923077
+    "perf_pct": 73.54166666666667
    },
    "other user-space": {
-    "callgrind_pct": 46.24137378785758,
-    "perf_pct": 7.6923076923076925
+    "callgrind_pct": 43.77526183430459,
+    "perf_pct": 17.291666666666668
    },
    "allocation": {
     "callgrind_pct": 10.209568440507812,
-    "perf_pct": 7.6923076923076925
+    "perf_pct": 3.75
+   },
+   "core logic": {
+    "callgrind_pct": 8.76020609126363,
+    "perf_pct": 3.3333333333333335
    },
    "memory movement": {
     "callgrind_pct": 2.683486006887984,
-    "perf_pct": 3.8461538461538463
-   },
-   "core logic": {
-    "callgrind_pct": 6.2940941377106325,
-    "perf_pct": 0.0
+    "perf_pct": 1.6666666666666667
    },
    "unclassified": {
     "callgrind_pct": 1.307274225173895,
-    "perf_pct": 0.0
+    "perf_pct": 0.4166666666666667
    },
    "scheduling/context switch": {
     "callgrind_pct": 0.04406347795599712,
@@ -43,35 +43,35 @@
   "cmd": "git diff sympy/physics/units/unitsystem.py; git status --short",
   "cls": "git",
   "callgrind_Ir": 13021922,
-  "perf_user_samples": 41,
+  "perf_user_samples": 981,
   "shares": {
    "core logic": {
-    "callgrind_pct": 67.9137918350302,
-    "perf_pct": 26.829268292682926
+    "callgrind_pct": 75.16656143386514,
+    "perf_pct": 27.828746177370032
    },
    "process lifecycle": {
     "callgrind_pct": 5.986466513929357,
-    "perf_pct": 43.90243902439025
+    "perf_pct": 36.289500509684
    },
    "other user-space": {
-    "callgrind_pct": 12.957511187672603,
-    "perf_pct": 26.829268292682926
+    "callgrind_pct": 5.704741588837654,
+    "perf_pct": 26.50356778797146
    },
    "allocation": {
     "callgrind_pct": 7.971542142550078,
-    "perf_pct": 2.4390243902439024
+    "perf_pct": 6.829765545361876
    },
    "memory movement": {
     "callgrind_pct": 2.2529085952135177,
-    "perf_pct": 0.0
+    "perf_pct": 1.529051987767584
    },
    "compression": {
     "callgrind_pct": 1.8978688399454398,
-    "perf_pct": 0.0
+    "perf_pct": 0.8154943934760448
    },
    "unclassified": {
     "callgrind_pct": 0.9804236271727016,
-    "perf_pct": 0.0
+    "perf_pct": 0.2038735983690112
    },
    "scheduling/context switch": {
     "callgrind_pct": 0.039487258486112876,
@@ -87,12 +87,8 @@
   "callgrind_Ir": 2576635958,
   "perf_user_samples": 2861,
   "shares": {
-   "other user-space": {
-    "callgrind_pct": 72.41286287288551,
-    "perf_pct": 1.048584411045089
-   },
    "core logic": {
-    "callgrind_pct": 0.00706747103464897,
+    "callgrind_pct": 70.31984911855368,
     "perf_pct": 59.07025515554002
    },
    "allocation": {
@@ -100,7 +96,7 @@
     "perf_pct": 30.6186648025166
    },
    "serialization/parsing": {
-    "callgrind_pct": 8.087000585124956,
+    "callgrind_pct": 10.048034111926338,
     "perf_pct": 6.011883956658511
    },
    "memory movement": {
@@ -110,6 +106,10 @@
    "hashing/crypto": {
     "callgrind_pct": 1.4078348509952758,
     "perf_pct": 0.6291506466270534
+   },
+   "other user-space": {
+    "callgrind_pct": 0.13904769856510713,
+    "perf_pct": 1.048584411045089
    },
    "process lifecycle": {
     "callgrind_pct": 0.059528898338847135,
@@ -137,12 +137,8 @@
   "callgrind_Ir": 1981295823,
   "perf_user_samples": 2609,
   "shares": {
-   "other user-space": {
-    "callgrind_pct": 76.53108780616452,
-    "perf_pct": 0.6899195093905711
-   },
    "core logic": {
-    "callgrind_pct": 0.0,
+    "callgrind_pct": 76.30316040897442,
     "perf_pct": 61.47949405902645
    },
    "allocation": {
@@ -150,7 +146,7 @@
     "perf_pct": 31.429666538903795
    },
    "serialization/parsing": {
-    "callgrind_pct": 4.853034356798318,
+    "callgrind_pct": 5.0132276486407354,
     "perf_pct": 2.721349175929475
    },
    "memory movement": {
@@ -164,6 +160,10 @@
    "process lifecycle": {
     "callgrind_pct": 0.042235792872814225,
     "perf_pct": 0.8049060942889996
+   },
+   "other user-space": {
+    "callgrind_pct": 0.06773410534767982,
+    "perf_pct": 0.6899195093905711
    },
    "scheduling/context switch": {
     "callgrind_pct": 0.17017241750880127,
@@ -187,12 +187,8 @@
   "callgrind_Ir": 4263004126,
   "perf_user_samples": 5176,
   "shares": {
-   "other user-space": {
-    "callgrind_pct": 77.90860467959115,
-    "perf_pct": 0.7148377125193199
-   },
    "core logic": {
-    "callgrind_pct": 7.417304573352411e-05,
+    "callgrind_pct": 77.44022211626637,
     "perf_pct": 60.239567233384854
    },
    "allocation": {
@@ -200,7 +196,7 @@
     "perf_pct": 33.82921174652241
    },
    "serialization/parsing": {
-    "callgrind_pct": 3.939346105150826,
+    "callgrind_pct": 4.318778625549939,
     "perf_pct": 2.6854714064914993
    },
    "memory movement": {
@@ -210,6 +206,10 @@
    "hashing/crypto": {
     "callgrind_pct": 1.2765012744911428,
     "perf_pct": 0.6568778979907264
+   },
+   "other user-space": {
+    "callgrind_pct": 0.08902421597140157,
+    "perf_pct": 0.7148377125193199
    },
    "scheduling/context switch": {
     "callgrind_pct": 0.19867454381159563,
@@ -237,20 +237,16 @@
   "callgrind_Ir": 1023347371,
   "perf_user_samples": 1704,
   "shares": {
-   "other user-space": {
-    "callgrind_pct": 66.09727617114287,
-    "perf_pct": 0.8802816901408451
+   "core logic": {
+    "callgrind_pct": 64.57845075169494,
+    "perf_pct": 52.582159624413144
    },
    "allocation": {
     "callgrind_pct": 19.787538204365994,
     "perf_pct": 38.20422535211268
    },
-   "core logic": {
-    "callgrind_pct": 0.02589746233881711,
-    "perf_pct": 52.582159624413144
-   },
    "serialization/parsing": {
-    "callgrind_pct": 9.132339872889554,
+    "callgrind_pct": 10.340653623470343,
     "perf_pct": 3.9906103286384975
    },
    "memory movement": {
@@ -264,6 +260,10 @@
    "process lifecycle": {
     "callgrind_pct": 0.21616599237835926,
     "perf_pct": 1.8192488262910798
+   },
+   "other user-space": {
+    "callgrind_pct": 0.33640913120594707,
+    "perf_pct": 0.8802816901408451
    },
    "scheduling/context switch": {
     "callgrind_pct": 0.4232467022187718,

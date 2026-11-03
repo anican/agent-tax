@@ -227,3 +227,23 @@ corrections (marked **[correction]**).
   shell glue, git/grep/sed → CLI tool core). Unresolved leaves in
   multi-purpose DSOs (libc, interpreters) stay UNCLASSIFIED.
 
+## D11. Cross-check fixes
+
+- `-X importtime` sampling (`tools/importtime.py`): the first pass under-
+  reported imports for pytest commands because pytest's fd-level capture
+  swallows the importtime report written to stderr during collection. The
+  sampling runs now set `PYTEST_ADDOPTS=--capture=no`; the first-pass numbers
+  are kept in `results/importtime/_capture_bug/` for transparency and are not
+  used.
+- callgrind comparison: the first summary mis-parsed `callgrind_annotate`
+  headers ("Profiled target:", not "Cmd:") and recursion suffixes (`'2`),
+  putting all python code under "other user-space". Fixed before reporting;
+  raw callgrind outputs were reused.
+
+## D12. Cleanup policy
+
+- After a task's Phase B (replays, loops, cross-checks), its venv, the
+  replay start-venv and ignored build artifacts are deleted to save disk;
+  the clone (with its `refs/snaps/*` checkpoints) and compressed perf.data
+  files are kept.
+

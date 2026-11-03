@@ -1,3 +1,18 @@
 [replay] mini__psf__requests-5414 seq=1 class=search/read orig=0.01s :: 'ls -la'
     rep1: stat rc=0 0.04807901382446289 | record rc=0 1.262047290802002
     rep2: stat rc=0 0.05800437927246094 | record rc=0 1.246427059173584
+    rep3: stat rc=0 0.04356646537780762 | record rc=0 1.3024985790252686
+[replay] mini__psf__requests-5414 seq=2 class=search/read orig=0.01s :: 'ls -la requests/'
+    rep1: stat rc=0 0.03382372856140137 | record rc=0 1.2807743549346924
+    rep2: stat rc=0 0.05282258987426758 | record rc=0 1.351456880569458
+    rep3: stat rc=0 0.03988146781921387 | record rc=0 1.2951526641845703
+[replay] mini__psf__requests-5414 seq=3 class=search/read orig=0.01s :: "nl -ba requests/models.py | sed -n '390,410p'"
+    rep1: stat rc=0 0.04728507995605469 | record rc=0 1.280425786972046
+    rep2: stat rc=0 0.03817009925842285 | record rc=0 1.3202288150787354
+    rep3: stat rc=0 0.04353761672973633 | record rc=0 1.2521846294403076
+[replay] mini__psf__requests-5414 seq=4 class=other orig=0.01s :: 'cat <<\'EOF\' > reproduce_issue.py\nimport requests\n\nprint("Testing the i'
+    rep1: stat rc=0 0.04742789268493652 | record rc=0 1.2525849342346191
+    rep2: stat rc=0 0.034903526306152344 | record rc=0 1.2510302066802979
+    rep3: stat rc=0 0.03586459159851074 | record rc=0 1.2641983032226562
+[replay] mini__psf__requests-5414 seq=5 class=other orig=0.24s :: 'python reproduce_issue.py'
+    rep1: stat rc=0 0.20697593688964844 | record rc=0 1.2545382976531982

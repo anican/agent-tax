@@ -1,0 +1,32 @@
+{
+ "task": "pallets__flask-5014",
+ "seq": 7,
+ "phase": "solve",
+ "cls": "test run",
+ "cmd": "python -m pytest -q -x tests/test_blueprints.py 2>&1 | grep -m3 -B2 -A8 \"AttributeError\"",
+ "orig_rc": 0,
+ "orig_dur_s": 0.685477888,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 0.6340086460113525,
+   "rec_rc": 0,
+   "rec_wall_s": 1.3115055561065674
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 0.8207247257232666,
+   "rec_rc": 0,
+   "rec_wall_s": 1.2490589618682861
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 0.6423361301422119,
+   "rec_rc": 0,
+   "rec_wall_s": 1.3851869106292725
+  }
+ ]
+}

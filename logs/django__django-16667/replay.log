@@ -1,0 +1,2 @@
+[replay] django__django-16667 seq=1 class=git orig=2.82s :: 'git init -q repo && cd repo && git remote add origin https://github.co'
+    rep1: stat rc=0 2.98s | record rc=0 3.36s

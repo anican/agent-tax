@@ -1,0 +1,14 @@
+72:        skipped = _is_skipped(cls)
+102:            "tearDownClass",
+149:        if _is_skipped(self):
+199:        self._explicit_tearDown: Optional[Callable[[], None]] = None
+207:        if self._explicit_tearDown is not None:
+208:            self._explicit_tearDown()
+209:            self._explicit_tearDown = None
+313:            # When --pdb is given, we want to postpone calling tearDown() otherwise
+314:            # when entering the pdb prompt, tearDown() would have probably cleaned up
+316:            # Arguably we could always postpone tearDown(), but this changes the moment where the
+319:            if self.config.getoption("usepdb") and not _is_skipped(self.obj):
+320:                self._explicit_tearDown = self._testcase.tearDown
+321:                setattr(self._testcase, "tearDown", lambda *args: None)
+412:def _is_skipped(obj) -> bool:

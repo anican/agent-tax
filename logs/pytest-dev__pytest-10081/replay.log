@@ -3,3 +3,50 @@
     rep2: stat rc=0 1.24s | record rc=0 2.30s
     rep3: stat rc=0 1.13s | record rc=0 2.26s
 [replay] pytest-dev__pytest-10081 seq=2 class=package install orig=5.36s :: '/usr/bin/python3.11 -m venv venv'
+    rep1: stat rc=0 5.41s | record rc=0 6.31s
+    rep2: stat rc=0 5.08s | record rc=0 7.27s
+    rep3: stat rc=0 5.18s | record rc=0 6.25s
+[replay] pytest-dev__pytest-10081 seq=3 class=package install orig=28.86s :: 'SETUPTOOLS_SCM_PRETEND_VERSION=7.2.0.dev0 python -m pip install -e ".['
+    rep1: stat rc=0 12.89s | record rc=0 15.31s
+    rep2: stat rc=0 11.52s | record rc=0 14.27s
+    rep3: stat rc=0 13.48s | record rc=0 14.28s
+[replay] pytest-dev__pytest-10081 seq=4 class=search/read orig=0.01s :: 'grep -n "_is_skipped\\|usepdb\\|tearDown" src/_pytest/unittest.py'
+    rep1: stat rc=0 0.05s | record rc=0 1.27s
+    rep2: stat rc=0 0.04s | record rc=0 1.26s
+    rep3: stat rc=0 0.04s | record rc=0 1.27s
+[replay] pytest-dev__pytest-10081 seq=5 class=search/read orig=0.01s :: 'sed -n 300,330p src/_pytest/unittest.py; sed -n 410,416p src/_pytest/u'
+    rep1: stat rc=0 0.05s | record rc=0 1.25s
+    rep2: stat rc=0 0.06s | record rc=0 1.26s
+    rep3: stat rc=0 0.04s | record rc=0 1.28s
+[replay] pytest-dev__pytest-10081 seq=6 class=search/read orig=0.01s :: 'grep -n "def test_pdb_teardown_skipped" -A 30 testing/test_unittest.py'
+    rep1: stat rc=0 0.03s | record rc=0 1.34s
+    rep2: stat rc=0 0.04s | record rc=0 1.34s
+    rep3: stat rc=0 0.05s | record rc=0 1.35s
+[replay] pytest-dev__pytest-10081 seq=7 class=search/read orig=0.01s :: 'sed -n 1236,1244p testing/test_unittest.py; sed -n 1275,1280p testing/'
+    rep1: stat rc=0 0.05s | record rc=0 1.37s
+    rep2: stat rc=0 0.04s | record rc=0 1.26s
+    rep3: stat rc=0 0.05s | record rc=0 1.28s
+[replay] pytest-dev__pytest-10081 seq=8 class=test run orig=2.11s :: 'python -m pytest -q testing/test_unittest.py -k pdb 2>&1 | tail -3'
+    rep1: stat rc=0 1.05s | record rc=0 2.26s
+    rep2: stat rc=0 1.05s | record rc=0 2.31s
+    rep3: stat rc=0 1.06s | record rc=0 2.26s
+[replay] pytest-dev__pytest-10081 seq=9 class=test run orig=6.01s :: 'git stash push -q src/_pytest/unittest.py && python -m pytest -q testi'
+    rep1: stat rc=0 6.89s | record rc=0 8.27s
+    rep2: stat rc=0 6.44s | record rc=0 8.32s
+    rep3: stat rc=0 6.98s | record rc=0 8.26s
+[loop] pytest-dev__pytest-10081 seq=4 :: 'grep -n "_is_skipped\\|usepdb\\|tearDown" src/_pytest/unittest.py'
+    loop1: rc=0 1.27s
+    loop2: rc=0 1.29s
+    loop3: rc=0 1.26s
+[loop] pytest-dev__pytest-10081 seq=5 :: 'sed -n 300,330p src/_pytest/unittest.py; sed -n 410,416p src/_pytest/u'
+    loop1: rc=0 1.30s
+    loop2: rc=0 1.25s
+    loop3: rc=0 1.34s
+[loop] pytest-dev__pytest-10081 seq=6 :: 'grep -n "def test_pdb_teardown_skipped" -A 30 testing/test_unittest.py'
+    loop1: rc=0 1.31s
+    loop2: rc=0 1.25s
+    loop3: rc=0 1.25s
+[loop] pytest-dev__pytest-10081 seq=7 :: 'sed -n 1236,1244p testing/test_unittest.py; sed -n 1275,1280p testing/'
+    loop1: rc=0 1.25s
+    loop2: rc=0 1.25s
+    loop3: rc=0 1.26s

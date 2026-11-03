@@ -84,3 +84,76 @@ corrections (marked **[correction]**).
   session container is reclaimed before access is fixed, unpushed results
   are lost.
 
+## D3 [correction]. Interpreters for recording vs. replay
+
+- Phase A (live episodes) uses the task venvs as created, i.e. the deadsnakes
+  `/usr/bin/python3.11` (3.11.18). That binary has frame pointers but is
+  **stripped**: in a test profile, 58% of interpreter samples resolved to
+  `[unknown]` (all static functions: pymalloc, GC, parser, ...). No debug
+  symbols are published for it (Ubuntu debuginfod and the PPA return 404).
+- Building CPython from the python.org tarball was refused by the session's
+  permission classifier ("code from external"), so it was not done.
+- Instead, Phase B swaps each task venv's interpreter (the `bin/python*`
+  symlinks and `pyvenv.cfg`) to the uv-managed **python-build-standalone
+  CPython 3.11.15**, which is **not stripped**, is built with
+  `-fno-omit-frame-pointer -mno-omit-leaf-frame-pointer`, and is PGO+LTO
+  (clang). Same minor version → same extension ABI, so the installed
+  packages keep working. (The earlier statement in D3 that the uv-managed
+  interpreters lack frame pointers was wrong.)
+- Consequences: the CPU view profiles a different 3.11 build (clang PGO+LTO
+  instead of gcc PGO+LTO, 3.11.15 instead of 3.11.18) than the one used
+  live. Category shares, not absolute times, are reported. The replay
+  interpreter's stdlib was byte-compiled once (`compileall`) before replays
+  so the first replay does not pay stdlib compilation the live run never paid.
+
+## D5. Task selection
+
+- 8 tasks from SWE-bench Verified across 6 repos (django, sympy, flask,
+  requests, pytest, scikit-learn), picked from repo versions that run on
+  Python 3.11, mixing `<15 min fix` and `15 min - 1 hour`. See TASKS.md.
+  Selection used only titles/difficulty, not the gold patches.
+- Environment setup follows each repo's usual dev install (`pip install -e .`
+  + test requirements), with minimal pins where the base commit predates
+  current dependency releases (e.g. `werkzeug==2.3.7` for flask 2.3, which
+  is what SWE-bench pins too). Any further pins discovered during an episode
+  are made by the agent inside the episode (e.g. flask: `pip install "pytest<8"`).
+
+## D6. Replay protocol (Phase B)
+
+- Every recorded command (setup and solve phases) is replayed: 1 unprofiled
+  warm-up, then 3 repetitions, each consisting of a `perf stat` +
+  `/usr/bin/time -v` run and a separate `perf record -a -g` run (so the
+  two tools never perturb each other). Before every run the working tree
+  is restored to the command's pre-command checkpoint. 10-minute cap per run.
+- Restores rewrite **only files that differ** from the checkpoint, so
+  unchanged files keep their mtimes and `__pycache__` stays valid (rewriting
+  every file would force a full bytecode recompile on every replay, which the
+  live run never did). Ignored files (`__pycache__`, `.pytest_cache`, build
+  outputs) are not restored. As a result replays run with *warm* page cache
+  and bytecode caches; the live run's first test command paid bytecode
+  compilation that replays don't.
+- Setup commands that create things in the task directory (clone, venv
+  creation) are replayed in an empty scratch directory. Package-install
+  commands run against a **fresh scratch venv** each time: empty for setup
+  installs, and re-populated with the episode-start package set (unprofiled)
+  for installs made during an episode, so `pip install` does real work
+  instead of reporting "already satisfied". The pip download cache is warm
+  during replays, unlike the first live install, so network/download time is
+  under-represented.
+- System-wide sampling (`-a`) is used. Samples are attributed to the
+  replayed command's process tree (descendants of the launcher pid, tracked
+  through fork events); kernel threads (kworker, ksoftirqd, jbd2, ...) are
+  kept as a separate group, and samples from idle and from unrelated
+  processes (the agent harness, perf itself) are discarded.
+- perf.data files are kept zstd-compressed (`perf record -z`) so profiles can
+  be re-parsed if the taxonomy or parser changes.
+
+## D7. Parser bug found and fixed before any reported data
+
+- The first replay attempt mis-parsed `perf script` output (perf pads short
+  `comm` names with leading spaces; the parser took those header lines for
+  stack lines), so almost no samples were attributed to the replayed
+  command. It was caught on a sanity check (17 samples for a ~1 s test run),
+  all results were deleted, and the replays were restarted with the fixed
+  parser. From then on perf.data is kept so this cannot silently recur.
+

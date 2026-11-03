@@ -7,6 +7,7 @@ case $act in
   start)
     setsid nohup "$AT_ROOT/tools/sample.sh" "$logdir/sampler.csv" >/dev/null 2>&1 < /dev/null &
     echo $! > "$logdir/.sampler.pid"
+    [ -x "$WORK/$task/venv/bin/python" ] && "$WORK/$task/venv/bin/python" -m pip freeze --all > "$logdir/freeze_start.txt" 2>/dev/null
     "$AT_ROOT/tools/snap.sh" "$task" episode_start
     jq -nc --arg task "$task" --argjson t $(date +%s%N) '{kind:"episode_start",task:$task,ts_ns:$t}' >> "$logdir/calls.jsonl";;
   end)

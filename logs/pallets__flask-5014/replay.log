@@ -1,0 +1,5 @@
+[replay] pallets__flask-5014 seq=1 class=git orig=1.17s :: 'git init -q repo && cd repo && git remote add origin https://github.co'
+    rep1: stat rc=0 0.79s | record rc=0 1.28s
+    rep2: stat rc=0 0.87s | record rc=0 1.40s
+    rep3: stat rc=0 0.82s | record rc=0 1.41s
+[replay] pallets__flask-5014 seq=2 class=package install orig=4.91s :: '/usr/bin/python3.11 -m venv venv'

@@ -34,3 +34,11 @@
     rep2: stat rc=0 3.4876668453216553 | record rc=0 4.251427173614502
     rep3: stat rc=0 4.656160116195679 | record rc=0 6.364484786987305
 [replay] scikit-learn__scikit-learn-26194 seq=9 class=test run orig=3.32s :: 'python -m pytest -q -p no:cacheprovider --color=no sklearn/metrics/tes'
+    rep1: stat rc=0 3.690345287322998 | record rc=0 5.256211519241333
+    rep2: stat rc=0 3.7836103439331055 | record rc=0 5.267308473587036
+    rep3: stat rc=0 3.890941619873047 | record rc=0 5.26812744140625
+[replay] scikit-learn__scikit-learn-26194 seq=10 class=search/read orig=0.01s :: 'sed -n 405,440p sklearn/metrics/tests/test_ranking.py'
+    rep1: stat rc=0 0.039946556091308594 | record rc=0 1.2493462562561035
+    rep2: stat rc=0 0.04147934913635254 | record rc=0 1.2770013809204102
+    rep3: stat rc=0 0.044332265853881836 | record rc=0 1.2427103519439697
+[replay] scikit-learn__scikit-learn-26194 seq=11 class=test run orig=3.67s :: 'python -m pytest -q -p no:cacheprovider --color=no sklearn/metrics/tes'

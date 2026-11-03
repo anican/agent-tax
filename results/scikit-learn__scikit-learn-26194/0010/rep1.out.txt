@@ -1,0 +1,36 @@
+    assert_almost_equal(roc_auc_score(y_true, y_score, average="samples"), 0)
+    assert_almost_equal(roc_auc_score(y_true, y_score, average="micro"), 0)
+
+    y_true = np.array([[1, 0], [0, 1]])
+    y_score = np.array([[0.5, 0.5], [0.5, 0.5]])
+    assert_almost_equal(roc_auc_score(y_true, y_score, average="macro"), 0.5)
+    assert_almost_equal(roc_auc_score(y_true, y_score, average="weighted"), 0.5)
+    assert_almost_equal(roc_auc_score(y_true, y_score, average="samples"), 0.5)
+    assert_almost_equal(roc_auc_score(y_true, y_score, average="micro"), 0.5)
+
+
+def test_roc_curve_drop_intermediate():
+    # Test that drop_intermediate drops the correct thresholds
+    y_true = [0, 0, 0, 0, 1, 1]
+    y_score = [0.0, 0.2, 0.5, 0.6, 0.7, 1.0]
+    tpr, fpr, thresholds = roc_curve(y_true, y_score, drop_intermediate=True)
+    assert_array_almost_equal(thresholds, [2.0, 1.0, 0.7, 0.0])
+
+    # Test dropping thresholds with repeating scores
+    y_true = [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1]
+    y_score = [0.0, 0.1, 0.6, 0.6, 0.7, 0.8, 0.9, 0.6, 0.7, 0.8, 0.9, 0.9, 1.0]
+    tpr, fpr, thresholds = roc_curve(y_true, y_score, drop_intermediate=True)
+    assert_array_almost_equal(thresholds, [2.0, 1.0, 0.9, 0.7, 0.6, 0.0])
+
+
+def test_roc_curve_fpr_tpr_increasing():
+    # Ensure that fpr and tpr returned by roc_curve are increasing.
+    # Construct an edge case with float y_score and sample_weight
+    # when some adjacent values of fpr and tpr are actually the same.
+    y_true = [0, 0, 1, 1, 1]
+    y_score = [0.1, 0.7, 0.3, 0.4, 0.5]
+    sample_weight = np.repeat(0.2, 5)
+    fpr, tpr, _ = roc_curve(y_true, y_score, sample_weight=sample_weight)
+    assert (np.diff(fpr) < 0).sum() == 0
+    assert (np.diff(tpr) < 0).sum() == 0
+

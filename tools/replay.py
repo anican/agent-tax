@@ -53,6 +53,19 @@ def restore(task, snap):
         r = sh(f"{AT}/tools/restore.sh {task} {snap}")
         if r.returncode: raise RuntimeError(f"restore {task} {snap} failed")
 
+def setup_packages_before(task, calls, seq):
+    """Packages installed by setup-phase commands that ran before command `seq`."""
+    pkgs = []
+    for c in calls:
+        if c["kind"] == "cmd" and c["phase"] == "setup" and c["seq"] < seq:
+            out = open(f"{AT}/logs/{task}/out/{c['seq']:04d}.txt", errors="replace").read()
+            for m in re.finditer(r"Successfully installed (.+)", out):
+                for nv in m.group(1).split():
+                    n, v = nv.rsplit("-", 1)
+                    if "dev" in v or "+" in v: continue
+                    pkgs.append(f"{n}=={v}")
+    return pkgs
+
 def start_packages(task, calls):
     """Package spec list describing the venv at episode start."""
     fz = f"{AT}/logs/{task}/freeze_start.txt"
@@ -107,10 +120,18 @@ class Env:
             return d, env
         restore(self.task, c["pre_snap"])
         venv = self.venv
+        if cls == "build" and c["phase"] == "setup":
+            # a setup-time build started from a clean tree: remove ignored build outputs
+            # (build/, *.so, generated .c) so every replay is a full build, not a no-op
+            sh(f"cd {self.repo} && git clean -qfdX")
         if cls == "package install":
             venv = self._fresh("v")
             if c["phase"] == "setup":
                 sh(f"{REPLAY_PY} -m venv {venv}", check=True, stdout=subprocess.DEVNULL)
+                prev = setup_packages_before(self.task, self.calls, c["seq"])
+                if prev:   # reproduce what earlier setup installs put into the venv
+                    sh(f"{venv}/bin/python -m pip install -q " + " ".join(f"'{p}'" for p in prev),
+                       check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
             else:
                 self._populate(venv)
         elif c["phase"] == "solve" and self.first_solve_install and c["seq"] < self.first_solve_install:
@@ -172,7 +193,7 @@ def main():
         print(f"[replay] {a.task} seq={c['seq']} class={cls} orig={c['dur_s']:.2f}s :: {c['cmd'][:70]!r}", flush=True)
         meta = {"task": a.task, "seq": c["seq"], "phase": c["phase"], "cls": cls, "cmd": c["cmd"],
                 "orig_rc": c["rc"], "orig_dur_s": c["dur_s"], "reps": []}
-        if not a.no_warmup:
+        if not a.no_warmup and cls != "build":   # a warm-up full build only costs time
             cwd, env = E.prepare(c, cls)
             sh(f"timeout -s KILL {TIMEOUT} bash -c {sq(replay_cmd(c))} > /dev/null 2>&1", cwd=cwd, env=env)
         for rep in range(1, a.reps + 1):

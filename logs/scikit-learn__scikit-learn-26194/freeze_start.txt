@@ -1,0 +1,18 @@
+cloudpickle==3.1.2
+Cython==0.29.37
+iniconfig==2.3.1
+joblib==1.6.0
+numpy==1.26.4
+packaging==26.3
+pandas==3.0.6
+pip==24.0
+pluggy==1.7.0
+Pygments==2.21.0
+pytest==9.2.0
+python-dateutil==4.0.0
+-e git+https://github.com/scikit-learn/scikit-learn@e886ce4e1444c61b865e7839c9cff5464ee20ace#egg=scikit_learn
+scipy==1.11.4
+setuptools==69.5.1
+threadpoolctl==3.7.0
+tzdata==2026.6
+wheel==0.48.0

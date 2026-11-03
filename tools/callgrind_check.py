@@ -30,6 +30,7 @@ SAMPLE = [
     ("sympy_repro_script", "sympy__sympy-24066", 6, None),
     ("sympy_pytest_quantities", "sympy__sympy-24066", 9, "python -m pytest -q sympy/physics/units/tests/test_quantities.py 2>&1 | tail -5"),
     ("django_runtests_optimizer", "django__django-16595", 6, None),
+    ("sklearn_pytest_ranking", "scikit-learn__scikit-learn-26194", 8, None),
 ]
 
 def merge(cat):
@@ -57,7 +58,9 @@ def main():
         calls = load_calls(f"{AT}/logs/{task}/calls.jsonl")
         c = dict([x for x in calls if x["kind"] == "cmd" and x["seq"] == seq][0])
         if override: c["cmd"] = override
-        cls = classify(c["cmd"]); swap_venv(f"{WORK}/{task}/venv"); E = Env(task, calls)
+        cls = classify(c["cmd"])
+        need = not glob.glob(f"{d}/callgrind.out.*") or not all(os.path.exists(f"{d}/rep{r}.profile.json") for r in range(1, 4))
+        if need: swap_venv(f"{WORK}/{task}/venv"); E = Env(task, calls)
         print(f"[callgrind] {name}: {c['cmd'][:80]!r}", flush=True)
         if not glob.glob(f"{d}/callgrind.out.*"):
             cwd, env = E.prepare(c, cls)
@@ -68,8 +71,9 @@ def main():
         for rep in range(1, 4):
             if not os.path.exists(f"{d}/rep{rep}.profile.json"):
                 cwd, env = E.prepare(c, cls); run_record(c["cmd"], cwd, env, d, rep)
-        E.cleanup()
-        restore(task, [x for x in calls if x["kind"] == "snap" and x["reason"] == "episode_end"][-1]["snap"])
+        if need:
+            E.cleanup()
+            restore(task, [x for x in calls if x["kind"] == "snap" and x["reason"] == "episode_end"][-1]["snap"])
         # callgrind side
         cg = Counter()
         for f in glob.glob(f"{d}/callgrind.out.*"):

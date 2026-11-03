@@ -52,3 +52,20 @@
 [replay] scikit-learn__scikit-learn-26194 seq=13 class=test run orig=1.28s :: 'sed -n 1050,1060p sklearn/metrics/_ranking.py; python -m pytest -q -p '
     rep1: stat rc=0 1.602750539779663 | record rc=0 2.247577428817749
     rep2: stat rc=0 1.571578025817871 | record rc=0 2.288530111312866
+    rep3: stat rc=0 1.486076831817627 | record rc=0 2.273317575454712
+[replay] scikit-learn__scikit-learn-26194 seq=14 class=git orig=1.08s :: 'python -c "\nimport numpy as np\nfrom sklearn import metrics\ny = np.arra'
+    rep1: stat rc=0 0.9546701908111572 | record rc=0 2.3178749084472656
+    rep2: stat rc=0 0.9108724594116211 | record rc=0 2.323411703109741
+    rep3: stat rc=0 0.8528385162353516 | record rc=0 2.2882189750671387
+[loop] scikit-learn__scikit-learn-26194 seq=6 :: 'sed -n 1060,1110p sklearn/metrics/_ranking.py'
+    loop1: rc=0 1.29s
+    loop2: rc=0 1.24s
+    loop3: rc=0 1.30s
+[loop] scikit-learn__scikit-learn-26194 seq=7 :: 'grep -n "max(y_score) + 1\\|arbitrarily set" -B2 -A2 sklearn/metrics/_r'
+    loop1: rc=0 1.26s
+    loop2: rc=0 1.28s
+    loop3: rc=0 1.31s
+[loop] scikit-learn__scikit-learn-26194 seq=10 :: 'sed -n 405,440p sklearn/metrics/tests/test_ranking.py'
+    loop1: rc=0 1.25s
+    loop2: rc=0 1.25s
+    loop3: rc=0 1.29s

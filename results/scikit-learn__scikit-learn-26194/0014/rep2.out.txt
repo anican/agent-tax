@@ -1,0 +1,4 @@
+array([ inf, 0.8 , 0.4 , 0.35, 0.1 ])
+ sklearn/metrics/_ranking.py           |  6 +++---
+ sklearn/metrics/tests/test_ranking.py | 15 +++++++++++++--
+ 2 files changed, 16 insertions(+), 5 deletions(-)

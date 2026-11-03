@@ -3,3 +3,13 @@
     rep2: stat rc=0 2.32s | record rc=0 3.50s
     rep3: stat rc=0 2.29s | record rc=0 3.35s
 [replay] scikit-learn__scikit-learn-26194 seq=2 class=package install orig=4.91s :: '/usr/bin/python3.11 -m venv venv'
+    rep1: stat rc=0 7.07s | record rc=0 8.30s
+    rep2: stat rc=0 6.35s | record rc=0 8.32s
+    rep3: stat rc=0 7.06s | record rc=0 9.39s
+[replay] scikit-learn__scikit-learn-26194 seq=3 class=package install orig=27.46s :: 'python -m pip install "numpy<2" "scipy<1.12" "cython<3" "setuptools<70'
+    rep1: stat rc=0 24.14s | record rc=0 32.28s
+    rep2: stat rc=0 27.11s | record rc=0 31.29s
+    rep3: stat rc=0 27.29s | record rc=0 32.35s
+[replay] scikit-learn__scikit-learn-26194 seq=4 class=build orig=153.94s :: 'python setup.py build_ext --inplace -j 4 > /tmp/sk_build.log 2>&1; rc='
+    rep1: stat rc=0 162.30s | record rc=0 163.45s
+    rep2: stat rc=0 152.05s | record rc=0 160.44s

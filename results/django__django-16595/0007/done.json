@@ -1,0 +1,32 @@
+{
+ "task": "django__django-16595",
+ "seq": 7,
+ "phase": "solve",
+ "cls": "test run",
+ "cmd": "cd tests && python runtests.py migrations --parallel 4 2>&1 | tail -8",
+ "orig_rc": 0,
+ "orig_dur_s": 11.186018048,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 13.273436307907104,
+   "rec_rc": 0,
+   "rec_wall_s": 14.360260009765625
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 11.14326810836792,
+   "rec_rc": 0,
+   "rec_wall_s": 13.344651460647583
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 12.37723159790039,
+   "rec_rc": 0,
+   "rec_wall_s": 13.266487121582031
+  }
+ ]
+}

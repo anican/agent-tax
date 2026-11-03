@@ -19,3 +19,15 @@
     rep2: stat rc=0 0.04s | record rc=0 1.26s
     rep3: stat rc=0 0.04s | record rc=0 1.35s
 [replay] django__django-16595 seq=6 class=test run orig=1.59s :: 'cd tests && python runtests.py migrations.test_optimizer --verbosity 1'
+    rep1: stat rc=0 0.65s | record rc=0 1.29s
+    rep2: stat rc=0 0.80s | record rc=0 1.31s
+    rep3: stat rc=0 0.74s | record rc=0 1.25s
+[replay] django__django-16595 seq=7 class=test run orig=11.19s :: 'cd tests && python runtests.py migrations --parallel 4 2>&1 | tail -8'
+    rep1: stat rc=0 13.27s | record rc=0 14.36s
+    rep2: stat rc=0 11.14s | record rc=0 13.34s
+    rep3: stat rc=0 12.38s | record rc=0 13.27s
+[replay] django__django-16595 seq=8 class=git orig=0.08s :: 'git diff --stat && grep -c "^OK\\|FAILED" /home/user/agent-tax/logs/dja'
+    rep1: stat rc=1 0.06s | record rc=1 1.25s
+    rep2: stat rc=1 0.06s | record rc=1 1.26s
+    rep3: stat rc=1 0.07s | record rc=1 1.29s
+[replay] django__django-16595 seq=9 class=test run orig=10.12s :: 'cd tests && python runtests.py migrations --parallel 4 2>&1 | grep -E '

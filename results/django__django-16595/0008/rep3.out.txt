@@ -1,0 +1,4 @@
+ django/db/migrations/operations/fields.py |  6 +++---
+ tests/migrations/test_optimizer.py        | 19 +++++++++++++++++++
+ 2 files changed, 22 insertions(+), 3 deletions(-)
+0

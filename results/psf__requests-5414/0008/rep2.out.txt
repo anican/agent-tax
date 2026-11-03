@@ -1,0 +1,17 @@
+
+    @pytest.mark.parametrize(
+        'exception, url', (
+            (MissingSchema, 'hiwpefhipowhefopw'),
+            (InvalidSchema, 'localhost:3128'),
+            (InvalidSchema, 'localhost.localdomain:3128/'),
+            (InvalidSchema, '10.122.1.1:3128/'),
+            (InvalidURL, 'http://'),
+        ))
+    def test_invalid_url(self, exception, url):
+        with pytest.raises(exception):
+            requests.get(url)
+
+    def test_basic_building(self):
+        req = requests.Request()
+        req.url = 'http://kennethreitz.org/'
+        req.data = {'life': '42'}

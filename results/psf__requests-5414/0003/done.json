@@ -1,0 +1,32 @@
+{
+ "task": "psf__requests-5414",
+ "seq": 3,
+ "phase": "setup",
+ "cls": "package install",
+ "cmd": "python -m pip install -e . pytest pytest-httpbin \"pytest-mock\" trustme",
+ "orig_rc": 0,
+ "orig_dur_s": 11.721815808,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 14.261317014694214,
+   "rec_rc": 0,
+   "rec_wall_s": 14.390310525894165
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 13.216108322143555,
+   "rec_rc": 0,
+   "rec_wall_s": 14.268012762069702
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 12.418633937835693,
+   "rec_rc": 0,
+   "rec_wall_s": 12.266123056411743
+  }
+ ]
+}

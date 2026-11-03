@@ -1,0 +1,5 @@
+[replay] pytest-dev__pytest-10081 seq=1 class=test run orig=1.26s :: 'git init -q repo && cd repo && git remote add origin https://github.co'
+    rep1: stat rc=0 0.97s | record rc=0 2.30s
+    rep2: stat rc=0 1.24s | record rc=0 2.30s
+    rep3: stat rc=0 1.13s | record rc=0 2.26s
+[replay] pytest-dev__pytest-10081 seq=2 class=package install orig=5.36s :: '/usr/bin/python3.11 -m venv venv'

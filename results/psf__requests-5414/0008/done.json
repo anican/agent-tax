@@ -1,0 +1,33 @@
+{
+ "task": "psf__requests-5414",
+ "seq": 8,
+ "phase": "solve",
+ "cls": "search/read",
+ "cmd": "sed -n 76,92p tests/test_requests.py",
+ "orig_rc": 0,
+ "orig_dur_s": 0.006842368,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 0.039939165115356445,
+   "rec_rc": 0,
+   "rec_wall_s": 1.319521188735962
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 0.04449272155761719,
+   "rec_rc": 0,
+   "rec_wall_s": 1.2491419315338135
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 0.03568840026855469,
+   "rec_rc": 0,
+   "rec_wall_s": 1.2536087036132812
+  }
+ ],
+ "loop_iterations": 30
+}

@@ -5,3 +5,7 @@
 [replay] psf__requests-5414 seq=2 class=package install orig=5.63s :: '/usr/bin/python3.11 -m venv venv'
     rep1: stat rc=0 5.89s | record rc=0 7.27s
     rep2: stat rc=0 5.11s | record rc=0 6.26s
+    rep3: stat rc=0 5.24s | record rc=0 6.39s
+[replay] psf__requests-5414 seq=3 class=package install orig=11.72s :: 'python -m pip install -e . pytest pytest-httpbin "pytest-mock" trustme'
+    rep1: stat rc=0 14.26s | record rc=0 14.39s
+    rep2: stat rc=0 13.22s | record rc=0 14.27s

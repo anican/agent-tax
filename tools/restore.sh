@@ -7,7 +7,7 @@
 source /home/user/agent-tax/tools/env.sh
 task=$1; n=$2; repo=$WORK/$task/repo
 cd "$repo" || exit 1
-target_commit=$(git rev-parse "refs/snaps/$n") || exit 1
+target_commit=$(git rev-parse "refs/${SNAP_NS:-snaps}/$n") || exit 1
 target=$(git rev-parse "$target_commit^{tree}")
 want_head=$(git rev-parse "$target_commit^1")
 [ "$(git rev-parse HEAD)" != "$want_head" ] && git checkout -q --detach "$want_head"

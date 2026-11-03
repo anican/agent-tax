@@ -247,3 +247,28 @@ corrections (marked **[correction]**).
   the clone (with its `refs/snaps/*` checkpoints) and compressed perf.data
   files are kept.
 
+## D13. Optional step B5: public trajectories
+
+- `SWE-bench/experiments` (sparse clone) does not contain trajectories
+  itself; its `metadata.yaml` files point to the public S3 bucket
+  `swe-bench-submissions`, which is reachable. Most agents' trajectories use
+  custom tool calls (editor tools, SWE-agent commands) that are not directly
+  replayable as shell commands. The **bash-only mini-swe-agent** entries
+  (`bash-only/20250726_mini-v1.0.0_claude-sonnet-4-20250514`) consist only of
+  shell commands, one `bash -c` per step, so they are replayable.
+- Trajectories for 5 of our task IDs were downloaded to `/home/user/ext/`
+  (outside the repo) and their commands extracted as data
+  (`tools/extract_traj_cmds.py`). Two were chosen for replay because their
+  venvs still existed: `psf__requests-5414` (39 commands) and
+  `pytest-dev__pytest-10081` (24 commands). All commands were read before
+  execution: file reads, `sed -i` edits, small Python test scripts (the
+  requests ones only use deliberately invalid hosts, so no real network
+  I/O), pytest runs, `git diff/add`. Nothing destructive outside the repo.
+- Method: the commands are executed once, in order, from the base commit,
+  through `run.sh` under a pseudo-task `mini__<task>` (shared repo/venv,
+  checkpoints under `refs/mini/*`), which yields per-command checkpoints;
+  then the same `replay.py`/`replay_loop.py` pipeline profiles them. The
+  pseudo-tasks are excluded from the time view (their timestamps are from
+  our re-execution, not from the original agent) and from the main CPU-view
+  aggregates; they appear only in a separate comparison table.
+

@@ -19,11 +19,14 @@ CAT_COLORS = dict(zip(CATS, ["#4C72B0", "#DD8452", "#C44E52", "#8172B3", "#93786
 CLS_ORDER = ["search/read", "git", "package install", "build", "test run", "other"]
 
 # ------------------------------------------------------------------ CPU VIEW
-def load_profiles():
+def is_mini(task): return task.startswith("mini__")
+
+def load_profiles(mini=False):
     rows, leaf_rows, incl_rows, kth_rows, groups_rows = [], [], [], [], []
     cache = {}
     for done in sorted(glob.glob(f"{AT}/results/*/*/done.json")):
         meta = json.load(open(done)); d = os.path.dirname(done)
+        if is_mini(meta["task"]) != mini: continue
         for r, pf in [(r, f"{d}/{t}{r['rep']}.profile.json") for r in meta["reps"] for t in ("rep", "loop")]:
             if not os.path.exists(pf): continue
             prof = json.load(open(pf))
@@ -167,6 +170,7 @@ def counters():
     rows = []
     for done in sorted(glob.glob(f"{AT}/results/*/*/done.json")):
         meta = json.load(open(done)); d = os.path.dirname(done)
+        if is_mini(meta["task"]): continue
         for r in meta["reps"]:
             sp, tp = f"{d}/rep{r['rep']}.stat.csv", f"{d}/rep{r['rep']}.time.txt"
             if not (os.path.exists(sp) and os.path.exists(tp)): continue
@@ -214,6 +218,7 @@ def time_view():
     rows, tl = [], {}
     for f in sorted(glob.glob(f"{AT}/logs/*/calls.jsonl")):
         task = f.split("/")[-2]
+        if is_mini(task): continue
         calls = load_calls(f)
         st = [c for c in calls if c["kind"] == "episode_start"]; en = [c for c in calls if c["kind"] == "episode_end"]
         if not st or not en: continue
@@ -284,11 +289,33 @@ def time_view():
         fig.tight_layout(); fig.savefig(f"{FIG}/timeline_{task}.png", dpi=120); plt.close(fig)
     return df
 
+def mini_comparison():
+    m, *_ = load_profiles(mini=True)
+    if not len(m): return None
+    m["src"] = "mini-swe-agent (public trajectory)"; m["task"] = m["task"].str.replace("mini__", "")
+    o, *_ = load_profiles(mini=False)
+    o = o[(o.task.isin(m.task.unique())) & (o.phase == "solve")].copy(); o["src"] = "this study (Claude Code episode)"
+    both = pd.concat([m, o])
+    t = both.groupby(["src", "task", "cls", "cat"])["n"].sum()
+    t = (t / t.groupby(["src", "task", "cls"]).transform("sum") * 100).unstack("cat", fill_value=0)
+    t.to_csv(f"{OUT}/mini_vs_own_by_class.csv", float_format="%.2f")
+    a = both.groupby(["src", "task", "cat"])["n"].sum()
+    a = (a / a.groupby(["src", "task"]).transform("sum") * 100).unstack("cat", fill_value=0)
+    cols = [c for c in CATS if c in a.columns]
+    a = a[cols]; a.to_csv(f"{OUT}/mini_vs_own_all.csv", float_format="%.2f")
+    ncmd = both.groupby(["src", "task"])[["seq"]].nunique()["seq"]
+    lines = ["| Source | Task | #cmds | " + " | ".join(cols) + " |", "|---" * (len(cols) + 3) + "|"]
+    for (src, task), r in a.iterrows():
+        lines.append(f"| {src} | {task} | {ncmd[(src, task)]} | " + " | ".join(f"{r[c]:.1f}" for c in cols) + " |")
+    open(f"{OUT}/mini_vs_own.md", "w").write("\n".join(lines) + "\n")
+    return a
+
 def main():
     tv = time_view()
     cat, leaf, incl, kth, groups = load_profiles()
     if len(cat): cpu_view(cat, leaf, incl, kth, groups)
     counters()
+    mini_comparison()
     print(tv.to_string() if len(tv) else "no episodes")
     print(open(f"{OUT}/cpu_category_shares.md").read() if os.path.exists(f"{OUT}/cpu_category_shares.md") else "")
 

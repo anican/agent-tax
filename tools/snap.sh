@@ -8,13 +8,13 @@ task=$1; reason=${2:-manual}
 repo=$WORK/$task/repo; logdir=$AT_ROOT/logs/$task; mkdir -p "$logdir"
 t0=$(date +%s%N)
 cd "$repo" || exit 1
-export GIT_INDEX_FILE=$WORK/$task/snap.index
+export GIT_INDEX_FILE=$WORK/$task/snap.index   # per (pseudo-)task private index
 git add -A . 2>/dev/null
 tree=$(git write-tree)
 head=$(git rev-parse HEAD)
 n=$(( $(cat "$logdir/.snapn" 2>/dev/null || echo 0) + 1 )); echo $n > "$logdir/.snapn"
 commit=$(echo "snap $n $reason" | git commit-tree "$tree" -p "$head")
-git update-ref "refs/snaps/$n" "$commit"
+git update-ref "refs/${SNAP_NS:-snaps}/$n" "$commit"
 echo "$n" > "$logdir/.last_snap"
 t1=$(date +%s%N)
 jq -nc --arg task "$task" --argjson n $n --arg reason "$reason" --arg commit "$commit" \

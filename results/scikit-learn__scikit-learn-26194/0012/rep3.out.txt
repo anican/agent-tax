@@ -1,0 +1,7 @@
+sklearn/metrics/_ranking.py:80:    >>> fpr, tpr, thresholds = metrics.roc_curve(y, pred, pos_label=2)
+sklearn/metrics/_ranking.py:360:    fpr, tpr, _ = roc_curve(y_true, y_score, sample_weight=sample_weight)
+sklearn/metrics/_ranking.py:1053:    >>> fpr, tpr, thresholds = metrics.roc_curve(y, scores, pos_label=2)
+sklearn/metrics/_plot/roc_curve.py:70:    >>> fpr, tpr, thresholds = metrics.roc_curve(y, pred)
+sklearn/metrics/_plot/roc_curve.py:391:        fpr, tpr, _ = roc_curve(
+...................                                                      [100%]
+2638 passed, 323 skipped, 10 xfailed, 717 warnings in 60.99s (0:01:00)

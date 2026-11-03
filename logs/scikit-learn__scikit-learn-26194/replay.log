@@ -46,3 +46,9 @@
     rep2: stat rc=0 3.651609182357788 | record rc=0 5.2516725063323975
     rep3: stat rc=0 3.6843183040618896 | record rc=0 4.293465852737427
 [replay] scikit-learn__scikit-learn-26194 seq=12 class=test run orig=67.24s :: 'grep -rn "roc_curve(" --include=*.py sklearn | grep -v "tests/" | grep'
+    rep1: stat rc=0 62.02980923652649 | record rc=0 67.4010112285614
+    rep2: stat rc=0 66.60143184661865 | record rc=0 68.34097218513489
+    rep3: stat rc=0 63.477097272872925 | record rc=0 71.3827714920044
+[replay] scikit-learn__scikit-learn-26194 seq=13 class=test run orig=1.28s :: 'sed -n 1050,1060p sklearn/metrics/_ranking.py; python -m pytest -q -p '
+    rep1: stat rc=0 1.602750539779663 | record rc=0 2.247577428817749
+    rep2: stat rc=0 1.571578025817871 | record rc=0 2.288530111312866

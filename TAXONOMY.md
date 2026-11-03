@@ -45,24 +45,33 @@ Syscall sets used by the rules:
 | 16 | U5 | serialization/parsing | json/pickle/xml/struct | user | user leaf in _json/_pickle/pyexpat/libexpat/_csv/_struct/_elementtree, or JSON scanner/encoder symbols |
 | 17 | U6a | interpreter startup/imports | source compile / unmarshal (under import) | user | CPython tokenizer/PEG parser/AST/compiler/assembler or marshal (r_object/w_object) leaf, with an import or interpreter-init frame on the stack |
 | 18 | U6b | serialization/parsing | python source compile / marshal (not under import) | user | same leaves as U6a without an import/init frame (e.g. compile()/exec of strings, doctest, marshal outside import) |
-| 19 | U7 | process lifecycle | dynamic linking / libc start & exit | user | user leaf in ld-linux*.so, or libc start/exit/fork/exec/_dl_* symbols |
-| 20 | U8 | process lifecycle | python interpreter teardown | user | interpreter leaf with Py_FinalizeEx/finalize_modules/Py_Exit on the stack (module teardown at exit) |
-| 21 | U9 | scheduling/context switch | locks / GIL / sleeps | user | user leaf: pthread mutex/cond/rwlock/once, futex wrappers, semaphores, CPython GIL (take_gil/drop_gil, PyCOND_*/PyMUTEX_*, PyThread_*), sleeps |
-| 22 | U10 | interpreter startup/imports | import machinery & module execution | user | interpreter leaf (python binary/libpython/extension module) with an import frame (PyImport_*, import_find_and_load, _imp_*, builtin___import__) or interpreter-init frame (pymain_init, Py_InitializeFromConfig, init_interp_main...) on the stack |
-| 23 | K5 | virtualization-related | paravirt / KVM / virtio | kernel | kernel leaf: pv_*, __pv_queued_spin_*, kvm_*, kvmclock/pvclock, virtio*/vring*/virtqueue*, hypercall paths |
-| 24 | K6 | scheduling/context switch | scheduler / futex | kernel | kernel leaf in the scheduler (schedule, __switch_to, finish_task_switch, pick_next*, enqueue/dequeue*, update_curr, ttwu*, psi_*), futex code, or any kernel leaf under futex/sched_yield/nanosleep syscalls |
-| 25 | K7 | process lifecycle | exec/fork/exit/wait syscalls | kernel | any kernel leaf under execve/clone/clone3/fork/vfork/exit/exit_group/wait4/waitid, or leaf in mm teardown/copy (unmap_page_range, zap_pte_range, copy_page_range, exit_mmap, load_elf_binary...) |
-| 26 | K8 | process lifecycle | page fault handling | kernel | kernel leaf with exc_page_fault/handle_mm_fault on the stack, or a fault-path leaf (do_user_addr_fault, filemap_map_pages, set_pte_range, next_uptodate_folio, lock_vma_under_rcu...) |
-| 27 | K9 | process lifecycle | mmap/mprotect for dynamic loading | kernel | kernel leaf under mmap/munmap/mprotect/brk with ld.so frames on the user stack |
-| 28 | K10 | allocation | mmap/brk/madvise (heap management) | kernel | kernel leaf under brk/mmap/munmap/mremap/madvise/mprotect without ld.so frames |
-| 29 | K11 | filesystem metadata | path lookup / stat / open / readdir | kernel | kernel leaf under a metadata syscall (stat family, access, open/openat/close, getdents64, readlink, getcwd, chdir, mkdir/unlink/rename, utimensat, chmod...), or a path-walk/dcache/readdir leaf |
-| 30 | K12 | other kernel | other kernel | kernel | any other kernel leaf (data read/write, pipes, signals, timers, interrupts/softirqs, networking...) |
-| 31 | U11 | core logic | python interpreter / extensions | user | remaining user leaf in a python process in the interpreter, an extension module, libm/BLAS/libstdc++ (the program's own work) |
-| 32 | U12 | core logic | compiler | user | remaining user leaf in a compiler/assembler/linker process (cc1, cc1plus, as, ld, collect2, lto1, clang) |
-| 33 | U13 | core logic | cli tool (git/grep/sed/...) | user | remaining user leaf in git, grep, rg, sed, cat, find, head/tail, wc, ls... (their own binary, libc string/regex routines, libpcre) |
-| 34 | U14 | other user-space | shell / glue / misc libc | user | remaining user leaf in bash/sh/timeout/tee/env, the vDSO, or libc routines not covered above (stdio, getenv, qsort, strtol, locale...) |
+| 19 | U6v | virtualization-related | CPUID VM exits in glibc CPU-feature detection | user | ld.so/libc CPU-feature and cache-size detection (intel_check_word, handle_intel, get_common_cache_info, init_cpu_features, update_active...): CPUID-bound code run at every process start; CPUID traps to the hypervisor (~11 us per call measured in this guest), so nearly all of this time is VM-exit cost |
+| 20 | U7 | process lifecycle | dynamic linking / libc start & exit | user | user leaf in ld-linux*.so, or libc start/exit/fork/exec/_dl_* symbols |
+| 21 | U8 | process lifecycle | python interpreter teardown | user | interpreter leaf with Py_FinalizeEx/finalize_modules/Py_Exit on the stack (module teardown at exit) |
+| 22 | U9 | scheduling/context switch | locks / GIL / sleeps | user | user leaf: pthread mutex/cond/rwlock/once, futex wrappers, semaphores, CPython GIL (take_gil/drop_gil, PyCOND_*/PyMUTEX_*, PyThread_*), sleeps |
+| 23 | U10 | interpreter startup/imports | import machinery & module execution | user | interpreter leaf (python binary/libpython/extension module) with an import frame (PyImport_*, import_find_and_load, _imp_*, builtin___import__) or interpreter-init frame (pymain_init, Py_InitializeFromConfig, init_interp_main...) on the stack |
+| 24 | K5 | virtualization-related | paravirt / KVM / virtio | kernel | kernel leaf: pv_*, __pv_queued_spin_*, kvm_*, kvmclock/pvclock, virtio*/vring*/virtqueue*, hypercall paths |
+| 25 | K6 | scheduling/context switch | scheduler / futex | kernel | kernel leaf in the scheduler (schedule, __switch_to, finish_task_switch, pick_next*, enqueue/dequeue*, update_curr, ttwu*, psi_*), futex code, or any kernel leaf under futex/sched_yield/nanosleep syscalls |
+| 26 | K7 | process lifecycle | exec/fork/exit/wait syscalls | kernel | any kernel leaf under execve/clone/clone3/fork/vfork/exit/exit_group/wait4/waitid, or leaf in mm teardown/copy (unmap_page_range, zap_pte_range, copy_page_range, exit_mmap, load_elf_binary...) |
+| 27 | K8 | process lifecycle | page fault handling | kernel | kernel leaf with exc_page_fault/handle_mm_fault on the stack, or a fault-path leaf (do_user_addr_fault, filemap_map_pages, set_pte_range, next_uptodate_folio, lock_vma_under_rcu...) |
+| 28 | K9 | process lifecycle | mmap/mprotect for dynamic loading | kernel | kernel leaf under mmap/munmap/mprotect/brk with ld.so frames on the user stack |
+| 29 | K10 | allocation | mmap/brk/madvise (heap management) | kernel | kernel leaf under brk/mmap/munmap/mremap/madvise/mprotect without ld.so frames |
+| 30 | K11 | filesystem metadata | path lookup / stat / open / readdir | kernel | kernel leaf under a metadata syscall (stat family, access, open/openat/close, getdents64, readlink, getcwd, chdir, mkdir/unlink/rename, utimensat, chmod...), or a path-walk/dcache/readdir leaf |
+| 31 | K12 | other kernel | other kernel | kernel | any other kernel leaf (data read/write, pipes, signals, timers, interrupts/softirqs, networking...) |
+| 32 | U11 | core logic | python interpreter / extensions | user | remaining user leaf in a python process in the interpreter, an extension module, libm/BLAS/libstdc++ (the program's own work) |
+| 33 | U12 | core logic | compiler | user | remaining user leaf in a compiler/assembler/linker process (cc1, cc1plus, as, ld, collect2, lto1, clang) |
+| 34 | U13 | core logic | cli tool (git/grep/sed/...) | user | remaining user leaf in git, grep, rg, sed, cat, find, head/tail, wc, ls... (their own binary, libc string/regex routines, libpcre) |
+| 35 | U14 | other user-space | shell / glue / misc libc | user | remaining user leaf in bash/sh/timeout/tee/env, the vDSO, or libc routines not covered above (stdio, getenv, qsort, strtol, locale...) |
 
 ## Notes
+
+- **CPUID in a microVM (rule U6v, added after measurement; DECISIONS.md D16).**
+  glibc's CPU-feature/cache-size detection in ld.so executes CPUID dozens of
+  times per process start. In this guest one CPUID costs ~11 µs (VM exit;
+  `tools/microbench/cpuid_cost.c`), and ~67% of a `/bin/true` start is spent
+  in these functions. Their samples are therefore counted as
+  *virtualization-related*, not as dynamic linking. The report gives H4 both
+  ways.
 
 - **Leaf-first.** A specific leaf (memcpy, malloc, sha1, inflate, ...) wins over
   any stack context; context only disambiguates generic leaves (interpreter

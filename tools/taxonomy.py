@@ -50,6 +50,9 @@ U_HASH = R(r"^(sha1|SHA1|sha256|SHA256|sha512|SHA512|blake2|BLAKE2|md5|MD5|_?sha
 U_SER_DSO = R(r"(_json\.cpython|_pickle\.cpython|pyexpat\.cpython|libexpat|libyaml|_yaml|libxml2|lxml|_csv\.cpython|_struct\.cpython|_elementtree)")
 U_SER = R(r"^(scanstring|scan_once|_?encoder_|py_scanstring|_json|json_|XML_|PyXML|doContent|normal_|little2_|big2_|_Pickle|Pickler|Unpickler)")
 U_PYCOMPILE = R(r"^(_PyPegen|_PyParser|_PyTokenizer|tok_|.*_rule$|_loop[01]_|_gather_|_tmp_\d+|compiler_|_PyCompile|assemble|_PyAST_|PyAST_|astfold_|fold_|symtable_|_PySymtable|optimize_|makecode|_PyCode_|stackdepth|label_exception|mark_reachable|write_location|insert_superinstructions|cfg_|basicblock_|instr_|validate_|_PyFuture|future_|unicode_decode_utf8|decode_unicode_with_escapes|parsestr|_PyUnicode_DecodeUnicodeEscape|ast_|PyAST|_PyArena|PyArena|r_object|r_long|r_string|r_ref|r_byte|r_short|r_float|read_object|PyMarshal_|marshal_|_PyMarshal|w_object|w_ref|w_long|w_string|w_complex_object|w_short|w_pstring|w_flush)")
+# glibc CPU-feature / cache-size detection: executes CPUID dozens of times per process
+# start; in this microVM every CPUID is a VM exit costing ~11 us (tools/microbench/cpuid_cost.c)
+U_CPUID = R(r"^(intel_check_word|handle_intel|handle_amd|handle_zhaoxin|get_common_cache_info|get_common_indices|update_active|init_cpu_features|init_cacheinfo|dl_init_cacheinfo|_dl_x86_init_cpu_features|cpu_features_init|get_extended_indices|update_usable)")
 U_LIFE = R(r"^(_dl_|__libc_start|__libc_fork|_Fork$|fork$|__spawn|posix_spawn|__posix_spawn|execve$|__execve$|_exit$|exit$|__run_exit_handlers|_IO_cleanup|__libc_early_init|__tunables|init_cacheinfo|intel_check|handle_intel|dl_|__dl|do_lookup_x|check_match|elf_|__libc_setup_tls|_dl_runtime|__GI__exit|__GI_exit|__libc_csu|_start$|_init$|_fini$)")
 U_SCHED = R(r"^(GOMP_barrier|GOMP_parallel|gomp_barrier|gomp_team|gomp_thread|gomp_mutex|gomp_sem|pthread_mutex|pthread_cond|__pthread_mutex|__pthread_cond|___pthread|__lll_lock|__lll_unlock|lll_|__futex|futex_|sem_|__new_sem|pthread_once|__pthread_once|take_gil|drop_gil|PyCOND_|PyMUTEX_|_PyThread_|PyThread_|PyEval_RestoreThread|PyEval_SaveThread|_PyEval_SignalReceived|sched_yield|__sched_yield|pthread_spin|__pthread_spin|pthread_rwlock|__pthread_rwlock|clock_nanosleep|__clock_nanosleep|nanosleep|__nanosleep|usleep|__GI___clock_nanosleep|__pthread_clockjoin|pthread_join|_PyMutex|PyMutex|_PySemaphore|_PyParkingLot)")
 U_LIBC_STR = R(r"^_*(mem(r)?chr|rawmemchr|str|wcs|wmem(chr|cmp)|memcmp|bcmp|__memcmp|__strn?cmp|__strn?casecmp|__strchr|__strlen|__strnlen|__strcpy|__stpcpy|re_search|re_|regexec|regcomp|dfa|kws|fgrep|__GI_str|__GI_mem)")
@@ -67,7 +70,7 @@ def _ctx(k): return set(k["ctx"].split("|")) if k["ctx"] else set()
 
 STRIPPED_SHELL = R(r"/(bash|sh|dash|timeout|tee|env|time|truncate|date|jq)$")
 STRIPPED_TOOL = R(r"/(git|git-[\w-]+|grep|rg|sed|cat|find|head|tail|wc|mawk|gawk|ls|sort|diff|cut|uniq|xargs|tr)$")
-STRIPPED_CC = R(r"/(cc1|cc1plus|as|ld|ld\.bfd|ld\.gold|collect2|lto1|clang[\w.+-]*)$")
+STRIPPED_CC = R(r"/((x86_64-linux-gnu-)?(cc1|cc1plus|as|ld|ld\.bfd|ld\.gold)|collect2|lto1|clang[\w.+-]*)$")
 
 RULES = [
  ("U0a", "other user-space", "shell / glue (stripped binary)", "user", "unresolved leaf inside a stripped shell/glue binary (bash, sh, timeout, tee, ...): the whole binary is shell glue",
@@ -106,6 +109,8 @@ RULES = [
   lambda k: not k["kern"] and PY_DSO.search(k["dso"]) and U_PYCOMPILE.match(k["sym"]) and (_ctx(k) & {"import", "pystartup"})),
  ("U6b", "serialization/parsing", "python source compile / marshal (not under import)", "user", "same leaves as U6a without an import/init frame (e.g. compile()/exec of strings, doctest, marshal outside import)",
   lambda k: not k["kern"] and PY_DSO.search(k["dso"]) and U_PYCOMPILE.match(k["sym"])),
+ ("U6v", "virtualization-related", "CPUID VM exits in glibc CPU-feature detection", "user", "ld.so/libc CPU-feature and cache-size detection (intel_check_word, handle_intel, get_common_cache_info, init_cpu_features, update_active...): CPUID-bound code run at every process start; CPUID traps to the hypervisor (~11 us per call measured in this guest), so nearly all of this time is VM-exit cost",
+  lambda k: not k["kern"] and ("ld-linux" in k["dso"] or "/libc." in k["dso"] or "libc.so" in k["dso"]) and U_CPUID.match(k["sym"])),
  ("U7", "process lifecycle", "dynamic linking / libc start & exit", "user", "user leaf in ld-linux*.so, or libc start/exit/fork/exec/_dl_* symbols",
   lambda k: not k["kern"] and ("ld-linux" in k["dso"] or "/ld-" in k["dso"] or U_LIFE.match(k["sym"]))),
  ("U8", "process lifecycle", "python interpreter teardown", "user", "interpreter leaf with Py_FinalizeEx/finalize_modules/Py_Exit on the stack (module teardown at exit)",

@@ -298,3 +298,40 @@ corrections (marked **[correction]**).
   interruption had left empty (seq 5, rep 3; D14) was re-measured; the
   resume check now requires non-empty output files.
 
+## D16. CPUID / VM-exit attribution (post-hoc, evidence-based taxonomy change)
+
+- While checking the top leaf functions, ~25% of all samples of short
+  commands (search/read, git; looped profiles) were in glibc's CPU-feature and
+  cache-size detection inside ld.so (`intel_check_word`, `handle_intel`,
+  `get_common_cache_info`, `update_active`, `init_cpu_features`, ...). That
+  code executes CPUID many times per process start.
+- Measured directly (`tools/microbench/cpuid_cost.c`, results in
+  `results/microbench/`): one CPUID costs **~11 µs** in this guest (leaves 0,
+  2 and 4 alike; 3 runs), vs ~1.6 ns for a dependent add, i.e. every CPUID is
+  a VM exit. A loop of 2000 `/bin/true` starts costs 1.9 ms of CPU per start,
+  and ~67% of those samples are in these functions (≈115 CPUIDs per start at
+  11 µs). The callgrind cross-check confirms it from the other side: for
+  `grep | sed` these functions are 0.4% of executed instructions but 57% of
+  user-space on-CPU time.
+- Rule U6v therefore attributes these functions to **virtualization-
+  related** ("CPUID VM exits in glibc CPU-feature detection") rather than to
+  dynamic linking. Because this changes a category that H4 depends on after
+  data collection, the report gives the H4 verdict under both mappings
+  (`tools/hypotheses.py`); the verdict does not change.
+
+## D17. Classifier precedence change (post-hoc, one command affected)
+
+- Compound commands that run an ad-hoc Python snippet *and* a git or read
+  command (`python -c "..."; git diff --stat`) were first classed as *git*.
+  Their CPU time is the Python part, so an ad-hoc `python` invocation now
+  takes precedence over git/search-read (class *other*). Only
+  scikit-learn seq 14 changed class. The analysis re-derives classes from the
+  command text, so the stored replay metadata keeps the old label.
+
+## D0 (end-of-study check)
+
+- At the end of the study (after all measurements) the session metadata
+  again reported effort level `high` and the same model for both the
+  configured and the last-served model, i.e. no model switch or fallback
+  was recorded during the study.
+

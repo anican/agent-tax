@@ -1,0 +1,32 @@
+{
+ "task": "scikit-learn__scikit-learn-26194",
+ "seq": 5,
+ "phase": "setup",
+ "cls": "package install",
+ "cmd": "python -m pip install --no-build-isolation --no-deps -e . 2>&1 | tail -2",
+ "orig_rc": 0,
+ "orig_dur_s": 488.076138496,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 513.61,
+   "rec_rc": null,
+   "rec_wall_s": null
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 548.28,
+   "rec_rc": null,
+   "rec_wall_s": null
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 533.9065096378326,
+   "rec_rc": null,
+   "rec_wall_s": null
+  }
+ ]
+}

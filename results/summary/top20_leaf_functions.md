@@ -13,10 +13,10 @@
 | 11 | `clear_page_erms` | [kernel.kallsyms] | memory movement | 0.86 |
 | 12 | `bitmap_set_bit(bitmap_head*, int)` | cc1 | core logic | 0.84 |
 | 13 | `_PyEval_EvalFrameDefault` | python3.11 | interpreter startup/imports | 0.80 |
-| 14 | `[unknown]` | libgomp.so.1.0.0 | unclassified | 0.79 |
+| 14 | `[unknown]` | libgomp.so.1.0.0 | scheduling/context switch | 0.79 |
 | 15 | `visit_reachable` | python3.11 | allocation | 0.70 |
 | 16 | `__memmove_evex_unaligned_erms` | libc.so.6 | memory movement | 0.68 |
 | 17 | `_PyObject_Free` | python3.11 | allocation | 0.63 |
 | 18 | `__memset_evex_unaligned_erms` | libc.so.6 | memory movement | 0.58 |
-| 19 | `[unknown]` | x86_64-linux-gnu-as | unclassified | 0.57 |
+| 19 | `[unknown]` | x86_64-linux-gnu-as | core logic | 0.57 |
 | 20 | `rep_movs_alternative` | [kernel.kallsyms] | memory movement | 0.51 |

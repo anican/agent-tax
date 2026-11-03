@@ -242,9 +242,9 @@ scikit-learn__scikit-learn-26194,12,solve,test run,3,rep,27731,110659,576.0,57.0
 scikit-learn__scikit-learn-26194,13,solve,test run,1,rep,16,2011,30.0,5.0
 scikit-learn__scikit-learn-26194,13,solve,test run,2,rep,22,2301,598.0,6.0
 scikit-learn__scikit-learn-26194,13,solve,test run,3,rep,1526,2282,172.0,4.0
-scikit-learn__scikit-learn-26194,14,solve,git,1,rep,846,1630,28.0,1.0
-scikit-learn__scikit-learn-26194,14,solve,git,2,rep,785,1562,16.0,0.0
-scikit-learn__scikit-learn-26194,14,solve,git,3,rep,784,1456,332.0,1.0
+scikit-learn__scikit-learn-26194,14,solve,other,1,rep,846,1630,28.0,1.0
+scikit-learn__scikit-learn-26194,14,solve,other,2,rep,785,1562,16.0,0.0
+scikit-learn__scikit-learn-26194,14,solve,other,3,rep,784,1456,332.0,1.0
 sympy__sympy-24066,1,setup,git,1,rep,1877,1007,189.0,3.0
 sympy__sympy-24066,1,setup,git,2,rep,1924,1275,168.0,4.0
 sympy__sympy-24066,1,setup,git,3,rep,1890,1078,178.0,2.0

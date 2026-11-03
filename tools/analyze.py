@@ -34,7 +34,7 @@ def load_profiles(mini=False):
             # command still counts as ONE execution (rep + ITER loop executions averaged)
             has_loop = os.path.exists(f"{d}/loop{r['rep']}.profile.json")
             w = 1.0 / (1 + meta.get("loop_iterations", 30)) if has_loop else 1.0
-            base = dict(task=meta["task"], seq=meta["seq"], phase=meta["phase"], cls=meta["cls"], rep=r["rep"],
+            base = dict(task=meta["task"], seq=meta["seq"], phase=meta["phase"], cls=classify(meta["cmd"]), rep=r["rep"],
                         src="loop" if "/loop" in pf else "rep")
             groups_rows.append({**base, **{f"g_{k}": v for k, v in prof["groups"].items()}})
             for g, comm, sym, dso, sc, ctx, n in prof["samples"]:
@@ -202,7 +202,7 @@ def counters():
         for r in meta["reps"]:
             sp, tp = f"{d}/rep{r['rep']}.stat.csv", f"{d}/rep{r['rep']}.time.txt"
             if not (os.path.exists(sp) and os.path.exists(tp)): continue
-            row = dict(task=meta["task"], seq=meta["seq"], cls=meta["cls"], rep=r["rep"], rc=r["stat_rc"], orig_rc=meta["orig_rc"])
+            row = dict(task=meta["task"], seq=meta["seq"], cls=classify(meta["cmd"]), rep=r["rep"], rc=r["stat_rc"], orig_rc=meta["orig_rc"])
             row.update(parse_stat(sp)); row.update(parse_time(tp)); rows.append(row)
     df = pd.DataFrame(rows)
     df.to_csv(f"{OUT}/counters_per_run.csv", index=False, float_format="%.4f")

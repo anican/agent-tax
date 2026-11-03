@@ -1,0 +1,12 @@
+cpuid leaf 0: 11176.6 ns/call
+cpuid leaf 2: 11405.4 ns/call
+cpuid leaf 4: 11324.3 ns/call
+reference add loop: 1.51 ns/iter
+cpuid leaf 0: 11719.6 ns/call
+cpuid leaf 2: 11835.4 ns/call
+cpuid leaf 4: 10965.5 ns/call
+reference add loop: 1.68 ns/iter
+cpuid leaf 0: 11187.2 ns/call
+cpuid leaf 2: 10227.9 ns/call
+cpuid leaf 4: 11188.9 ns/call
+reference add loop: 1.64 ns/iter

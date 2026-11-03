@@ -7,13 +7,17 @@
   "callgrind_Ir": 3465455,
   "perf_user_samples": 480,
   "shares": {
-   "process lifecycle": {
-    "callgrind_pct": 33.220139923906096,
-    "perf_pct": 73.54166666666667
-   },
    "other user-space": {
     "callgrind_pct": 43.77526183430459,
     "perf_pct": 17.291666666666668
+   },
+   "virtualization-related": {
+    "callgrind_pct": 0.3682633305006125,
+    "perf_pct": 56.875
+   },
+   "process lifecycle": {
+    "callgrind_pct": 32.851876593405485,
+    "perf_pct": 16.666666666666668
    },
    "allocation": {
     "callgrind_pct": 10.209568440507812,
@@ -49,13 +53,17 @@
     "callgrind_pct": 75.16656143386514,
     "perf_pct": 27.828746177370032
    },
-   "process lifecycle": {
-    "callgrind_pct": 5.986466513929357,
-    "perf_pct": 36.289500509684
-   },
    "other user-space": {
     "callgrind_pct": 5.704741588837654,
     "perf_pct": 26.50356778797146
+   },
+   "virtualization-related": {
+    "callgrind_pct": 0.06533597728507358,
+    "perf_pct": 26.91131498470948
+   },
+   "process lifecycle": {
+    "callgrind_pct": 5.9211305366442835,
+    "perf_pct": 9.378185524974516
    },
    "allocation": {
     "callgrind_pct": 7.971542142550078,
@@ -111,13 +119,17 @@
     "callgrind_pct": 0.13904769856510713,
     "perf_pct": 1.048584411045089
    },
-   "process lifecycle": {
-    "callgrind_pct": 0.059528898338847135,
-    "perf_pct": 0.8388675288360713
-   },
    "scheduling/context switch": {
     "callgrind_pct": 0.27170617479987835,
     "perf_pct": 0.3145753233135267
+   },
+   "virtualization-related": {
+    "callgrind_pct": 0.0004952969766790781,
+    "perf_pct": 0.5592450192240476
+   },
+   "process lifecycle": {
+    "callgrind_pct": 0.05903360136216806,
+    "perf_pct": 0.2796225096120238
    },
    "unclassified": {
     "callgrind_pct": 0.06350210222440744,
@@ -157,16 +169,20 @@
     "callgrind_pct": 1.314608434421557,
     "perf_pct": 0.7665772326561902
    },
-   "process lifecycle": {
-    "callgrind_pct": 0.042235792872814225,
-    "perf_pct": 0.8049060942889996
-   },
    "other user-space": {
     "callgrind_pct": 0.06773410534767982,
     "perf_pct": 0.6899195093905711
    },
+   "virtualization-related": {
+    "callgrind_pct": 0.00021470796791762074,
+    "perf_pct": 0.5749329244921426
+   },
    "scheduling/context switch": {
     "callgrind_pct": 0.17017241750880127,
+    "perf_pct": 0.22997316979685703
+   },
+   "process lifecycle": {
+    "callgrind_pct": 0.04202108490489661,
     "perf_pct": 0.22997316979685703
    },
    "unclassified": {
@@ -215,13 +231,17 @@
     "callgrind_pct": 0.19867454381159563,
     "perf_pct": 0.23183925811437403
    },
-   "process lifecycle": {
-    "callgrind_pct": 0.03640817494249828,
-    "perf_pct": 0.2704791344667697
+   "virtualization-related": {
+    "callgrind_pct": 0.0002993663534633886,
+    "perf_pct": 0.23183925811437403
    },
    "unclassified": {
     "callgrind_pct": 0.055686762898525984,
     "perf_pct": 0.07727975270479134
+   },
+   "process lifecycle": {
+    "callgrind_pct": 0.036108808589034896,
+    "perf_pct": 0.03863987635239567
    },
    "compression": {
     "callgrind_pct": 1.142386884004625e-05,
@@ -257,13 +277,17 @@
     "callgrind_pct": 2.1367193212831346,
     "perf_pct": 0.4694835680751174
    },
-   "process lifecycle": {
-    "callgrind_pct": 0.21616599237835926,
-    "perf_pct": 1.8192488262910798
-   },
    "other user-space": {
     "callgrind_pct": 0.33640913120594707,
     "perf_pct": 0.8802816901408451
+   },
+   "virtualization-related": {
+    "callgrind_pct": 0.0020784731170233298,
+    "perf_pct": 1.1737089201877935
+   },
+   "process lifecycle": {
+    "callgrind_pct": 0.21408751926133596,
+    "perf_pct": 0.6455399061032864
    },
    "scheduling/context switch": {
     "callgrind_pct": 0.4232467022187718,
@@ -288,7 +312,7 @@
   "perf_user_samples": 13565,
   "shares": {
    "core logic": {
-    "callgrind_pct": 78.09131058403983,
+    "callgrind_pct": 78.09119840282932,
     "perf_pct": 65.73534832288979
    },
    "allocation": {
@@ -296,8 +320,8 @@
     "perf_pct": 22.034647991153705
    },
    "scheduling/context switch": {
-    "callgrind_pct": 0.46312636764125,
-    "perf_pct": 7.0696645779579805
+    "callgrind_pct": 0.4634521452981978,
+    "perf_pct": 7.077036490969406
    },
    "serialization/parsing": {
     "callgrind_pct": 3.7215623622264578,
@@ -308,8 +332,8 @@
     "perf_pct": 1.1573903427939551
    },
    "process lifecycle": {
-    "callgrind_pct": 0.6879391509913896,
-    "perf_pct": 1.0173239955768523
+    "callgrind_pct": 0.6876792278598662,
+    "perf_pct": 0.85514190932547
    },
    "other user-space": {
     "callgrind_pct": 0.2367675121353008,
@@ -320,7 +344,11 @@
     "perf_pct": 0.36859565057132326
    },
    "unclassified": {
-    "callgrind_pct": 0.10151217859494484,
+    "callgrind_pct": 0.10129858214849932,
+    "perf_pct": 0.15481017323995577
+   },
+   "virtualization-related": {
+    "callgrind_pct": 0.00025992313152332837,
     "perf_pct": 0.16218208625138222
    },
    "compression": {

@@ -51,7 +51,7 @@ scikit-learn__scikit-learn-26194,1,git,7.51
 scikit-learn__scikit-learn-26194,2,package install,5.87
 scikit-learn__scikit-learn-26194,3,package install,7.31
 scikit-learn__scikit-learn-26194,4,build,3.70
-scikit-learn__scikit-learn-26194,5,package install,4.73
+scikit-learn__scikit-learn-26194,5,package install,3.36
 scikit-learn__scikit-learn-26194,6,search/read,0.72
 scikit-learn__scikit-learn-26194,7,search/read,16.45
 scikit-learn__scikit-learn-26194,8,test run,14.94
@@ -60,7 +60,7 @@ scikit-learn__scikit-learn-26194,10,search/read,11.94
 scikit-learn__scikit-learn-26194,11,test run,2.35
 scikit-learn__scikit-learn-26194,12,test run,3.42
 scikit-learn__scikit-learn-26194,13,test run,2.30
-scikit-learn__scikit-learn-26194,14,git,3.50
+scikit-learn__scikit-learn-26194,14,other,3.50
 sympy__sympy-24066,1,git,2.26
 sympy__sympy-24066,2,package install,6.05
 sympy__sympy-24066,3,package install,7.43

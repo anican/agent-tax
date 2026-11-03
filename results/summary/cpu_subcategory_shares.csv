@@ -1,18 +1,19 @@
 cat,sub,rule,share_pct
 core logic,compiler,U12,31.88
 core logic,python interpreter / extensions,U11,20.93
-core logic,compiler (stripped binary),U0c,19.93
+core logic,compiler (stripped binary),U0c,20.52
 allocation,malloc / pymalloc / GC,U2,11.50
 interpreter startup/imports,import machinery & module execution,U10,2.67
 serialization/parsing,python source compile / marshal (not under import),U6b,1.96
-unclassified,unresolved symbol,U0,1.80
 memory movement,kernel copy/zero,K1,1.49
 memory movement,libc mem*,U1,1.33
 process lifecycle,page fault handling,K8,1.21
 filesystem metadata,path lookup / stat / open / readdir,K11,0.82
+scheduling/context switch,OpenMP runtime (stripped libgomp),U0f,0.79
 interpreter startup/imports,source compile / unmarshal (under import),U6a,0.66
 other user-space,shell / glue / misc libc,U14,0.62
 other kernel,other kernel,K12,0.50
+unclassified,unresolved symbol,U0,0.42
 scheduling/context switch,locks / GIL / sleeps,U9,0.41
 allocation,kernel page/slab alloc,K2,0.36
 scheduling/context switch,scheduler / futex,K6,0.28
@@ -21,9 +22,10 @@ compression,zlib/lzma/bz2/zstd,U3,0.27
 process lifecycle,exec/fork/exit/wait syscalls,K7,0.23
 hashing/crypto,sha/md5/siphash,U4,0.22
 allocation,mmap/brk/madvise (heap management),K10,0.20
-process lifecycle,dynamic linking / libc start & exit,U7,0.18
+virtualization-related,CPUID VM exits in glibc CPU-feature detection,U6v,0.09
 core logic,cli tool (stripped binary),U0b,0.09
 compression,zlib/lzma/bz2/zstd (stripped library),U0d,0.09
+process lifecycle,dynamic linking / libc start & exit,U7,0.08
 core logic,cli tool (git/grep/sed/...),U13,0.03
 virtualization-related,paravirt / KVM / virtio,K5,0.03
 process lifecycle,mmap/mprotect for dynamic loading,K9,0.02

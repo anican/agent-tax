@@ -1,5 +1,5 @@
 src,task,core logic,memory movement,allocation,compression,hashing/crypto,serialization/parsing,process lifecycle,interpreter startup/imports,filesystem metadata,scheduling/context switch,virtualization-related,other kernel,other user-space,unclassified
-mini-swe-agent (public trajectory),psf__requests-5414,2.33,4.20,24.89,0.01,0.81,0.04,21.20,39.29,3.35,0.34,0.09,0.97,2.35,0.14
-mini-swe-agent (public trajectory),pytest-dev__pytest-10081,31.14,2.67,22.78,0.00,0.54,0.50,6.50,28.81,4.91,0.33,0.06,0.77,0.95,0.04
-this study (Claude Code episode),psf__requests-5414,42.05,2.30,29.42,0.01,0.47,2.99,3.94,11.93,1.38,1.90,0.06,2.65,0.84,0.05
-this study (Claude Code episode),pytest-dev__pytest-10081,39.81,2.19,22.58,0.01,0.42,0.48,4.02,22.62,5.30,0.38,0.05,0.99,1.13,0.04
+mini-swe-agent (public trajectory),psf__requests-5414,2.33,4.20,24.89,0.01,0.81,0.04,15.90,39.29,3.35,0.34,5.38,0.97,2.35,0.14
+mini-swe-agent (public trajectory),pytest-dev__pytest-10081,31.14,2.67,22.78,0.00,0.54,0.50,5.85,28.81,4.91,0.33,0.71,0.77,0.95,0.04
+this study (Claude Code episode),psf__requests-5414,42.05,2.30,29.42,0.01,0.47,2.99,3.62,11.93,1.38,1.90,0.38,2.65,0.84,0.05
+this study (Claude Code episode),pytest-dev__pytest-10081,39.81,2.19,22.58,0.01,0.42,0.48,3.66,22.62,5.30,0.38,0.41,0.99,1.13,0.04

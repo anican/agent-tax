@@ -69,3 +69,7 @@
     loop1: rc=0 1.25s
     loop2: rc=0 1.25s
     loop3: rc=0 1.29s
+[replay] scikit-learn__scikit-learn-26194 seq=5 class=package install orig=488.08s :: 'python -m pip install --no-build-isolation --no-deps -e . 2>&1 | tail '
+    rep1: stat rc=0 513.61 | record rc=None None
+    rep2: stat rc=0 548.28 | record rc=None None
+    rep3: stat rc=0 533.9065096378326 | record rc=None None

@@ -31,7 +31,7 @@ def _verb(seg):
 
 def classify(cmd):
     """Map a recorded shell command to a command class (precedence: package
-    install > build > test run > git > search/read > other)."""
+    install > build > test run > ad-hoc python ('other') > git > search/read > other)."""
     segs = [_verb(s) for s in _segments(cmd)]
     flat = " ".join(" ".join(t) for t in segs)
     if re.search(r"\bpip3? (install|download|uninstall)\b|\buv pip\b|-m venv\b|\bvirtualenv\b|setup\.py (develop|install)", flat):
@@ -41,6 +41,8 @@ def classify(cmd):
     if re.search(r"\bpytest\b|runtests\.py|bin/test\b|-m unittest\b|\btox\b|\bnox\b", flat):
         return "test run"
     verbs = [t[0].split("/")[-1] for t in segs if t]
+    if any(re.match(r"^python(3(\.\d+)?)?$", v) for v in verbs):
+        return "other"          # ad-hoc python (repro scripts, python -c checks) dominates CPU
     if "git" in verbs:
         return "git"
     readers = {"grep", "rg", "cat", "find", "sed", "head", "tail", "ls", "wc", "awk", "less", "tree", "nl", "sort", "uniq", "cut", "diff", "file", "stat", "echo", "cd", "pwd", "xargs", "true", "printf"}

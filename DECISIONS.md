@@ -272,3 +272,13 @@ corrections (marked **[correction]**).
   our re-execution, not from the original agent) and from the main CPU-view
   aggregates; they appear only in a separate comparison table.
 
+## D14. Batch interruption and resume
+
+- The wave-2 replay batch ran into the session's 2-hour limit for a single
+  background command and was killed during scikit-learn seq 5 (the 8-minute
+  editable install), after reps 1–2 and the rep-3 `perf stat` run had
+  completed. `replay.py` was given rep-level resume (reuse finished
+  stat/record runs; exit code and wall time recovered from `time -v`), the
+  partial rep-3 recording was deleted, and the task was resumed after the
+  70 s ext4 quiet period. No completed measurement was discarded or repeated.
+

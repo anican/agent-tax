@@ -197,10 +197,20 @@ def main():
             cwd, env = E.prepare(c, cls)
             sh(f"timeout -s KILL {TIMEOUT} bash -c {sq(replay_cmd(c))} > /dev/null 2>&1", cwd=cwd, env=env)
         for rep in range(1, a.reps + 1):
-            cwd, env = E.prepare(c, cls); rc_s, wall_s = run_stat(replay_cmd(c), cwd, env, d, rep)
-            cwd, env = E.prepare(c, cls); rc_r, wall_r = run_record(replay_cmd(c), cwd, env, d, rep)
+            # resume support: reuse runs that already completed (e.g. after the batch was killed)
+            if os.path.exists(f"{d}/rep{rep}.stat.csv") and os.path.exists(f"{d}/rep{rep}.time.txt"):
+                tt = open(f"{d}/rep{rep}.time.txt").read()
+                m = re.search(r"Exit status: (\d+)", tt); rc_s = int(m.group(1)) if m else None
+                m = re.search(r"Elapsed \(wall clock\) time \(h:mm:ss or m:ss\): ([\d:.]+)", tt)
+                wall_s = sum(float(x) * 60 ** i for i, x in enumerate(reversed(m.group(1).split(":")))) if m else None
+            else:
+                cwd, env = E.prepare(c, cls); rc_s, wall_s = run_stat(replay_cmd(c), cwd, env, d, rep)
+            if os.path.exists(f"{d}/rep{rep}.profile.json"):
+                rc_r, wall_r = None, None
+            else:
+                cwd, env = E.prepare(c, cls); rc_r, wall_r = run_record(replay_cmd(c), cwd, env, d, rep)
             meta["reps"].append({"rep": rep, "stat_rc": rc_s, "stat_wall_s": wall_s, "rec_rc": rc_r, "rec_wall_s": wall_r})
-            print(f"    rep{rep}: stat rc={rc_s} {wall_s:.2f}s | record rc={rc_r} {wall_r:.2f}s", flush=True)
+            print(f"    rep{rep}: stat rc={rc_s} {wall_s} | record rc={rc_r} {wall_r}", flush=True)
         json.dump(meta, open(f"{d}/done.json", "w"), indent=1)
     # leave the task repo in its episode-end state
     end = [c for c in calls if c["kind"] == "snap" and c["reason"] == "episode_end"]

@@ -42,3 +42,7 @@
     rep2: stat rc=0 0.04147934913635254 | record rc=0 1.2770013809204102
     rep3: stat rc=0 0.044332265853881836 | record rc=0 1.2427103519439697
 [replay] scikit-learn__scikit-learn-26194 seq=11 class=test run orig=3.67s :: 'python -m pytest -q -p no:cacheprovider --color=no sklearn/metrics/tes'
+    rep1: stat rc=0 3.8575873374938965 | record rc=0 5.256170749664307
+    rep2: stat rc=0 3.651609182357788 | record rc=0 5.2516725063323975
+    rep3: stat rc=0 3.6843183040618896 | record rc=0 4.293465852737427
+[replay] scikit-learn__scikit-learn-26194 seq=12 class=test run orig=67.24s :: 'grep -rn "roc_curve(" --include=*.py sklearn | grep -v "tests/" | grep'

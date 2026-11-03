@@ -32,3 +32,5 @@
 [replay] scikit-learn__scikit-learn-26194 seq=8 class=test run orig=4.06s :: 'python -m pytest -q sklearn/metrics/tests/test_ranking.py 2>&1 | tail '
     rep1: stat rc=0 3.4682564735412598 | record rc=0 5.248739242553711
     rep2: stat rc=0 3.4876668453216553 | record rc=0 4.251427173614502
+    rep3: stat rc=0 4.656160116195679 | record rc=0 6.364484786987305
+[replay] scikit-learn__scikit-learn-26194 seq=9 class=test run orig=3.32s :: 'python -m pytest -q -p no:cacheprovider --color=no sklearn/metrics/tes'

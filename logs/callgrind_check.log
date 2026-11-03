@@ -123,3 +123,31 @@
 "perf_pct"
 [callgrind] sympy_pytest_quantities: 'python -m pytest -q sympy/physics/units/tests/test_quantities.py 2>&1 | tail -5'
    valgrind rc=0
+{
+"other user-space": {
+"callgrind_pct": 77.90860467959115,
+"perf_pct": 0.7148377125193199
+},
+"core logic": {
+"callgrind_pct": 7.417304573352411e-05,
+"perf_pct": 60.239567233384854
+},
+"allocation": {
+"callgrind_pct": 14.822339536248434,
+"perf_pct": 33.82921174652241
+},
+"serialization/parsing": {
+"callgrind_pct": 3.939346105150826,
+"perf_pct": 2.6854714064914993
+},
+"memory movement": {
+"callgrind_pct": 1.7623533259512496,
+"perf_pct": 1.294435857805255
+},
+"hashing/crypto": {
+"callgrind_pct": 1.2765012744911428,
+"perf_pct": 0.6568778979907264
+},
+"scheduling/context switch": {
+"callgrind_pct": 0.1
+[callgrind] django_runtests_optimizer: 'cd tests && python runtests.py migrations.test_optimizer --verbosity 1 2>&1 | ta'

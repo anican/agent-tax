@@ -151,3 +151,31 @@
 "scheduling/context switch": {
 "callgrind_pct": 0.1
 [callgrind] django_runtests_optimizer: 'cd tests && python runtests.py migrations.test_optimizer --verbosity 1 2>&1 | ta'
+   valgrind rc=0
+{
+"other user-space": {
+"callgrind_pct": 66.09727617114287,
+"perf_pct": 0.8802816901408451
+},
+"allocation": {
+"callgrind_pct": 19.787538204365994,
+"perf_pct": 38.20422535211268
+},
+"core logic": {
+"callgrind_pct": 0.02589746233881711,
+"perf_pct": 52.582159624413144
+},
+"serialization/parsing": {
+"callgrind_pct": 9.132339872889554,
+"perf_pct": 3.9906103286384975
+},
+"memory movement": {
+"callgrind_pct": 2.1238023974949947,
+"perf_pct": 1.6431924882629108
+},
+"hashing/crypto": {
+"callgrind_pct": 2.1367193212831346,
+"perf_pct": 0.4694835680751174
+},
+"process lifecycle": {
+"callgrind_pct": 0.2161659923

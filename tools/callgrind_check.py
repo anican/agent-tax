@@ -39,13 +39,13 @@ def merge(cat):
 def parse_annotate(path):
     out = subprocess.run(f"callgrind_annotate --inclusive=no --threshold=100 {path}", shell=True,
                          capture_output=True, text=True).stdout
-    cmd = re.search(r"^Cmd:\s*(.*)$", out, re.M)
+    cmd = re.search(r"^(?:Cmd|Profiled target):\s*(.*)$", out, re.M)
     comm = os.path.basename(cmd.group(1).split()[0]) if cmd else "?"
     rows = []
     for line in out.splitlines():
         m = re.match(r"^\s*([\d,]+)\s+\([\s\d.]+%\)\s+(.*?):(.*?) \[(.*)\]\s*$", line)
         if m:
-            ir = int(m.group(1).replace(",", "")); fn = m.group(3).strip(); obj = m.group(4)
+            ir = int(m.group(1).replace(",", "")); fn = re.sub(r"'\d+$", "", m.group(3).strip()); obj = m.group(4)
             rows.append((comm, fn, obj, ir))
     return rows
 
@@ -79,8 +79,11 @@ def main():
                 cg[cat] += ir
         # perf side: user-space samples only, leaf-only categorization
         pf = Counter()
-        for rep in range(1, 4):
-            prof = json.load(open(f"{d}/rep{rep}.profile.json"))
+        # use looped profiles of the same command too, when they exist (D8)
+        srcs = [f"{d}/rep{r}.profile.json" for r in range(1, 4)]
+        srcs += sorted(glob.glob(f"{AT}/results/{task}/{seq:04d}/loop*.profile.json")) if not override else []
+        for src in srcs:
+            prof = json.load(open(src))
             for g, comm, sym, dso, sc, ctx, n in prof["samples"]:
                 if g != "cmd" or is_kernel(dso): continue
                 cat, sub, rid = categorize(g, comm, sym, dso, "", "")
@@ -94,7 +97,7 @@ def main():
     # markdown
     lines = []
     for name, s in summary.items():
-        lines.append(f"\n**{name}** (`{s['task']}` seq {s['seq']}, class {s['cls']}; callgrind {s['callgrind_Ir']:,} Ir, perf {s['perf_user_samples']} user-space samples over 3 reps)\n")
+        lines.append(f"\n**{name}** (`{s['task']}` seq {s['seq']}, class {s['cls']}; callgrind {s['callgrind_Ir']:,} Ir, perf {s['perf_user_samples']} user-space samples over 3 reps + looped profiles if any)\n")
         lines.append("| Category (user-space, leaf-only) | callgrind % of Ir | perf % of user samples | Δ (pp) |")
         lines.append("|---|---|---|---|")
         for k, v in s["shares"].items():

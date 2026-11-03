@@ -1,0 +1,72 @@
+1/100100 1/200
+1589:    def __new__(cls, p, q=None, gcd=None):
+1590-        if q is None:
+1591-            if isinstance(p, Rational):
+1592-                return p
+1593-
+1594-            if isinstance(p, SYMPY_INTS):
+1595-                pass
+1596-            else:
+1597-                if isinstance(p, (float, Float)):
+1598-                    return Rational(*_as_integer_ratio(p))
+1599-
+1600-                if not isinstance(p, str):
+1601-                    try:
+1602-                        p = sympify(p)
+1603-                    except (SympifyError, SyntaxError):
+1604-                        pass  # error will raise below
+1605-                else:
+1606-                    if p.count('/') > 1:
+1607-                        raise TypeError('invalid input: %s' % p)
+1608-                    p = p.replace(' ', '')
+1609-                    pq = p.rsplit('/', 1)
+1610-                    if len(pq) == 2:
+1611-                        p, q = pq
+1612-                        fp = fractions.Fraction(p)
+1613-                        fq = fractions.Fraction(q)
+1614-                        p = fp/fq
+1615-                    try:
+1616-                        p = fractions.Fraction(p)
+1617-                    except ValueError:
+1618-                        pass  # error will raise below
+1619-                    else:
+1620-                        return Rational(p.numerator, p.denominator, 1)
+1621-
+1622-                if not isinstance(p, Rational):
+1623-                    raise TypeError('invalid input: %s' % p)
+1624-
+1625-            q = 1
+1626-            gcd = 1
+1627-
+1628-        if not isinstance(p, SYMPY_INTS):
+1629-            p = Rational(p)
+1630-            q *= p.q
+1631-            p = p.p
+1632-        else:
+1633-            p = int(p)
+1634-
+1635-        if not isinstance(q, SYMPY_INTS):
+1636-            q = Rational(q)
+1637-            p *= q.q
+1638-            q = q.p
+1639-        else:
+1640-            q = int(q)
+1641-
+1642-        # p and q are now ints
+1643-        if q == 0:
+1644-            if p == 0:
+1645-                if _errdict["divide"]:
+1646-                    raise ValueError("Indeterminate 0/0")
+1647-                else:
+1648-                    return S.NaN
+1649-            return S.ComplexInfinity
+1650-        if q < 0:
+1651-            q = -q
+1652-            p = -p
+1653-        if not gcd:
+1654-            gcd = igcd(abs(p), q)
+1655-        if gcd > 1:
+1656-            p //= gcd
+1657-            q //= gcd
+1658-        if q == 1:
+1659-            return Integer(p)

@@ -1,0 +1,21 @@
+comm,cat,n
+kworker,other kernel,395
+kworker/u16,other kernel,276
+rcu_preempt,scheduling/context switch,89
+rcu_preempt,other kernel,83
+kworker,scheduling/context switch,37
+ksoftirqd,other kernel,19
+kworker/u16,allocation,16
+kworker/u16,scheduling/context switch,12
+ksoftirqd,allocation,10
+kcompactd0,other kernel,7
+kworker,virtualization-related,7
+kworker,allocation,7
+ksoftirqd,scheduling/context switch,7
+kworker/u16,virtualization-related,5
+kworker/u16,memory movement,5
+migration,scheduling/context switch,4
+kworker/u16,process lifecycle,4
+kworker/u16,filesystem metadata,2
+kcompactd0,scheduling/context switch,1
+migration,other kernel,1

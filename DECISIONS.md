@@ -197,3 +197,33 @@ corrections (marked **[correction]**).
   libc) and **other kernel** was split by syscall in an appendix table.
   **unclassified** holds samples whose leaf symbol did not resolve.
 
+## D10. Replay-fidelity fixes found during wave-1 sanity checks (before any reporting)
+
+- **ext4 inode-allocation artifact.** The first wave-1 replays deleted the
+  previous scratch clone/venv right before the next run created thousands of
+  files. ext4's inode allocator then repeatedly ran `recently_deleted()` /
+  `lookup_bh_lru()` / `__brelse()` (skipping inodes freed in the last few
+  dirty-expire intervals): ~6.5% of all samples, concentrated in clone, venv
+  and pip-install replays — an artifact of the replay harness, not of agent
+  behaviour. Fix: each execution gets a fresh scratch dir; all scratch is
+  deleted only at the end of a task, followed by `sync` and a 70 s pause
+  (`dirty_expire_centisecs` = 3000). The affected commands (all setup
+  commands, and flask seq 6–8) were deleted and re-replayed.
+- **Venv state is not checkpointed by snap.sh.** In flask the agent ran
+  `pip install "pytest<8"` mid-episode; commands before it were first
+  replayed against the post-install venv (exit code 1 instead of 0 for seq 7,
+  because the pytest-8 error they were looking at no longer occurred). Fix:
+  solve-phase commands that precede the episode's first package install are
+  replayed in a venv rebuilt with the episode-start package set
+  (`freeze_start.txt` for wave-2 tasks; reconstructed from the setup log's
+  "Successfully installed" line for wave-1 tasks). Exact only when an
+  episode installs packages at most once (true for every recorded episode
+  so far; see TASKS.md).
+- **Stripped interpreter in recorded setup commands.** `/usr/bin/python3.11
+  -m venv venv` is replayed with the replay interpreter's path substituted
+  (otherwise ~8% of all samples were `[unknown]` in the stripped binary).
+- Unresolved leaves inside single-purpose stripped libraries/binaries are
+  attributed by DSO (libz → compression, libcrypto → hashing/crypto, bash →
+  shell glue, git/grep/sed → CLI tool core). Unresolved leaves in
+  multi-purpose DSOs (libc, interpreters) stay UNCLASSIFIED.
+

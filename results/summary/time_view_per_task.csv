@@ -1,0 +1,4 @@
+task,episode_s,n_cmds,n_edits,setup_s,snapshot_s,tool:search/read,tool:git,tool:package install,tool:build,tool:test run,tool:other,tool_total_s,model_loop_s,median_gap_s,max_gap_s,resolved
+django__django-16595,87.910,6,2,57.797,0.716,0.020,0.084,0.000,0.000,22.900,0.000,23.004,64.191,2.437,20.778,resolved
+pallets__flask-5014,78.094,7,2,14.905,0.293,0.023,0.000,20.999,0.000,9.612,0.000,30.634,47.167,2.447,8.570,resolved
+sympy__sympy-24066,64.128,8,2,15.336,0.357,0.036,0.064,0.000,0.000,6.219,3.904,10.223,53.548,0.022,12.012,resolved

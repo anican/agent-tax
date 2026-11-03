@@ -1,0 +1,26 @@
+flag,ALL,git,other,package install,search/read,test run
+syscall:openat,9.88,46.89,0.47,12.93,2.52,0.61
+syscall:mkdir,2.10,18.08,0.00,1.73,0.00,0.17
+syscall:write,1.77,2.53,0.04,3.00,0.27,0.14
+syscall:newstat,0.83,0.00,0.91,0.86,0.00,0.91
+syscall:read,0.68,1.92,1.61,0.49,1.37,0.71
+syscall:exit_group,0.33,0.28,0.33,0.17,4.95,0.54
+syscall:getdents64,0.19,0.02,0.19,0.18,0.00,0.24
+syscall:newfstatat,0.17,1.00,0.04,0.20,2.25,0.01
+syscall:close,0.13,0.17,0.06,0.13,0.24,0.14
+syscall:execve,0.13,0.28,0.19,0.13,11.75,0.09
+syscall:rename,0.11,0.03,0.00,0.19,0.00,0.03
+syscall:mmap,0.11,0.08,0.10,0.09,2.98,0.14
+syscall:munmap,0.10,0.03,0.19,0.11,0.31,0.09
+syscall:unlinkat,0.08,0.00,0.00,0.07,0.00,0.11
+syscall:brk,0.08,0.04,0.16,0.09,0.24,0.07
+syscall:newfstat,0.06,0.10,0.08,0.06,0.22,0.06
+syscall:newlstat,0.06,0.00,0.02,0.06,0.00,0.07
+syscall:ioctl,0.05,0.00,0.04,0.05,0.05,0.04
+syscall:clone,0.04,0.12,0.02,0.03,4.15,0.04
+syscall:fsync,0.04,0.07,0.00,0.07,0.00,0.00
+syscall:mprotect,0.03,0.03,0.02,0.02,1.04,0.03
+syscall:ftruncate,0.02,0.00,0.00,0.00,0.00,0.05
+syscall:lseek,0.02,0.01,0.02,0.03,0.01,0.02
+syscall:futex,0.02,0.18,0.00,0.00,0.05,0.02
+syscall:wait4,0.01,0.02,0.00,0.01,0.60,0.02

@@ -31,3 +31,6 @@
     rep2: stat rc=1 0.06s | record rc=1 1.26s
     rep3: stat rc=1 0.07s | record rc=1 1.29s
 [replay] django__django-16595 seq=9 class=test run orig=10.12s :: 'cd tests && python runtests.py migrations --parallel 4 2>&1 | grep -E '
+    rep1: stat rc=0 11.75s | record rc=0 13.50s
+    rep2: stat rc=0 9.94s | record rc=0 13.30s
+    rep3: stat rc=0 11.43s | record rc=0 13.28s

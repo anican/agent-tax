@@ -70,33 +70,67 @@ def start_packages(task, calls):
     return pkgs, False
 
 class Env:
+    """Per-task replay environment.
+
+    Scratch dirs/venvs are never deleted right before a profiled run: deleting
+    thousands of files and immediately creating new ones makes ext4's inode
+    allocator scan recently-deleted inodes (`recently_deleted`), which the live
+    run did not pay. Each execution gets a fresh directory under replay_trash/,
+    and the trash is removed only at the end of the task, followed by a pause
+    longer than the ext4 'recently deleted' window."""
     def __init__(self, task, calls):
         self.task = task; self.calls = calls
         self.repo = f"{WORK}/{task}/repo"; self.venv = f"{WORK}/{task}/venv"
-        self.scratch = f"{WORK}/{task}/replay_scratch"
-        self.svenv = f"{WORK}/{task}/replay_venv"
-        self.pkgs = None
+        self.trash = f"{WORK}/{task}/replay_trash"; os.makedirs(self.trash, exist_ok=True)
+        self.startvenv = f"{WORK}/{task}/replay_startvenv"
+        self.n = 0; self.pkgs = None
+        cmds = [c for c in calls if c["kind"] == "cmd"]
+        inst = [c["seq"] for c in cmds if c["phase"] == "solve" and classify(c["cmd"]) == "package install"]
+        self.first_solve_install = min(inst) if inst else None
+
+    def _fresh(self, prefix):
+        self.n += 1; p = f"{self.trash}/{prefix}{self.n}"
+        return p
+
+    def _populate(self, venv):
+        sh(f"{REPLAY_PY} -m venv {venv}", check=True, stdout=subprocess.DEVNULL)
+        if self.pkgs is None: self.pkgs, _ = start_packages(self.task, self.calls)
+        sh(f"cd {self.repo} && {venv}/bin/python -m pip install -q -e . " + " ".join(f"'{p}'" for p in self.pkgs),
+           check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
     def prepare(self, c, cls):
         """Return (cwd, env) for one execution of command c, after resetting state."""
         env = dict(os.environ)
         env.pop("VIRTUAL_ENV", None)
         if c["phase"] == "setup" and os.path.realpath(c["cwd"]) == os.path.realpath(f"{WORK}/{self.task}"):
-            shutil.rmtree(self.scratch, ignore_errors=True); os.makedirs(self.scratch)
-            return self.scratch, env
+            d = self._fresh("s"); os.makedirs(d)
+            return d, env
         restore(self.task, c["pre_snap"])
         venv = self.venv
         if cls == "package install":
-            shutil.rmtree(self.svenv, ignore_errors=True)
-            sh(f"{REPLAY_PY} -m venv {self.svenv}", check=True, stdout=subprocess.DEVNULL)
-            if c["phase"] != "setup":
-                if self.pkgs is None: self.pkgs, _ = start_packages(self.task, self.calls)
-                sh(f"cd {self.repo} && {self.svenv}/bin/python -m pip install -q -e . " + " ".join(f"'{p}'" for p in self.pkgs),
-                   check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-            venv = self.svenv
+            venv = self._fresh("v")
+            if c["phase"] == "setup":
+                sh(f"{REPLAY_PY} -m venv {venv}", check=True, stdout=subprocess.DEVNULL)
+            else:
+                self._populate(venv)
+        elif c["phase"] == "solve" and self.first_solve_install and c["seq"] < self.first_solve_install:
+            # the venv changed during the episode: commands before the first in-episode
+            # install see the episode-start package set
+            if not os.path.exists(f"{self.startvenv}/bin/python"): self._populate(self.startvenv)
+            venv = self.startvenv
         env["VIRTUAL_ENV"] = venv
         env["PATH"] = f"{venv}/bin:" + env["PATH"]
         return c["cwd"], env
+
+    def cleanup(self):
+        if os.path.isdir(self.trash) and os.listdir(self.trash):
+            shutil.rmtree(self.trash, ignore_errors=True); sh("sync"); time.sleep(70)
+        shutil.rmtree(self.trash, ignore_errors=True)
+
+def replay_cmd(c):
+    """The command as executed in replays: the stripped deadsnakes interpreter path is
+    replaced by the symbol-rich replay interpreter (same 3.11 ABI; DECISIONS.md D3)."""
+    return c["cmd"].replace("/usr/bin/python3.11", REPLAY_PY)
 
 def run_stat(cmd, cwd, env, d, rep):
     t0 = time.time()
@@ -140,17 +174,17 @@ def main():
                 "orig_rc": c["rc"], "orig_dur_s": c["dur_s"], "reps": []}
         if not a.no_warmup:
             cwd, env = E.prepare(c, cls)
-            sh(f"timeout -s KILL {TIMEOUT} bash -c {sq(c['cmd'])} > /dev/null 2>&1", cwd=cwd, env=env)
+            sh(f"timeout -s KILL {TIMEOUT} bash -c {sq(replay_cmd(c))} > /dev/null 2>&1", cwd=cwd, env=env)
         for rep in range(1, a.reps + 1):
-            cwd, env = E.prepare(c, cls); rc_s, wall_s = run_stat(c["cmd"], cwd, env, d, rep)
-            cwd, env = E.prepare(c, cls); rc_r, wall_r = run_record(c["cmd"], cwd, env, d, rep)
+            cwd, env = E.prepare(c, cls); rc_s, wall_s = run_stat(replay_cmd(c), cwd, env, d, rep)
+            cwd, env = E.prepare(c, cls); rc_r, wall_r = run_record(replay_cmd(c), cwd, env, d, rep)
             meta["reps"].append({"rep": rep, "stat_rc": rc_s, "stat_wall_s": wall_s, "rec_rc": rc_r, "rec_wall_s": wall_r})
             print(f"    rep{rep}: stat rc={rc_s} {wall_s:.2f}s | record rc={rc_r} {wall_r:.2f}s", flush=True)
         json.dump(meta, open(f"{d}/done.json", "w"), indent=1)
     # leave the task repo in its episode-end state
     end = [c for c in calls if c["kind"] == "snap" and c["reason"] == "episode_end"]
     if end: restore(a.task, end[-1]["snap"])
-    shutil.rmtree(E.scratch, ignore_errors=True); shutil.rmtree(E.svenv, ignore_errors=True)
+    E.cleanup()
 
 if __name__ == "__main__":
     main()

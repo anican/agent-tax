@@ -1,0 +1,31 @@
+task,seq,cls,task_clock_cv_pct
+django__django-16595,1,git,12.15
+django__django-16595,2,package install,9.75
+django__django-16595,3,package install,5.15
+django__django-16595,4,search/read,18.24
+django__django-16595,5,search/read,19.23
+django__django-16595,6,test run,11.85
+django__django-16595,7,test run,2.86
+django__django-16595,8,git,17.17
+django__django-16595,9,test run,5.35
+pallets__flask-5014,1,git,10.00
+pallets__flask-5014,2,package install,6.09
+pallets__flask-5014,3,package install,5.55
+pallets__flask-5014,4,search/read,9.02
+pallets__flask-5014,5,search/read,18.98
+pallets__flask-5014,6,test run,12.61
+pallets__flask-5014,7,test run,7.61
+pallets__flask-5014,8,package install,6.43
+pallets__flask-5014,9,test run,7.43
+pallets__flask-5014,10,test run,3.57
+sympy__sympy-24066,1,git,18.36
+sympy__sympy-24066,2,package install,9.07
+sympy__sympy-24066,3,package install,14.07
+sympy__sympy-24066,4,search/read,17.11
+sympy__sympy-24066,5,other,18.78
+sympy__sympy-24066,6,other,8.29
+sympy__sympy-24066,7,search/read,12.21
+sympy__sympy-24066,8,search/read,2.30
+sympy__sympy-24066,9,test run,13.83
+sympy__sympy-24066,10,test run,8.74
+sympy__sympy-24066,11,git,9.84

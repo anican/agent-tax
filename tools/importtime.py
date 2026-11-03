@@ -40,6 +40,7 @@ def main():
             tc = re.search(r"([\d.]+),msec,task-clock", txt)
             res.append({"wall_s": wall, "task_clock_s": float(tc.group(1)) / 1000 if tc else None,
                         "top_level_import_s": sum(top) / 1e6, "n_top_level": len(top)})
+        E.cleanup()
         restore(task, [x for x in calls if x["kind"] == "snap" and x["reason"] == "episode_end"][-1]["snap"])
         r = {"task": task, "seq": seq, "cls": cls, "cmd": c["cmd"][:120], "profiled_cmd": core, "reps": res}
         json.dump(r, open(f"{AT}/results/importtime/{task}_{seq}.json", "w"), indent=1)

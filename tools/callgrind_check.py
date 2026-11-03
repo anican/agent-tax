@@ -68,6 +68,7 @@ def main():
         for rep in range(1, 4):
             if not os.path.exists(f"{d}/rep{rep}.profile.json"):
                 cwd, env = E.prepare(c, cls); run_record(c["cmd"], cwd, env, d, rep)
+        E.cleanup()
         restore(task, [x for x in calls if x["kind"] == "snap" and x["reason"] == "episode_end"][-1]["snap"])
         # callgrind side
         cg = Counter()

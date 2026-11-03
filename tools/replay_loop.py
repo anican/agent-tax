@@ -40,6 +40,7 @@ def main():
             print(f"    loop{k}: rc={rc} {wall:.2f}s", flush=True)
         meta = json.load(open(f"{d}/done.json")); meta["loop_iterations"] = ITER
         json.dump(meta, open(f"{d}/done.json", "w"), indent=1)
+    E.cleanup()
     end = [x for x in calls if x["kind"] == "snap" and x["reason"] == "episode_end"]
     if end: restore(task, end[-1]["snap"])
 

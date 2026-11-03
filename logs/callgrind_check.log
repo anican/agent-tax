@@ -64,3 +64,31 @@
 "scheduling/contex
 [callgrind] flask_pytest_blueprints: 'python -m pytest -q tests/test_blueprints.py 2>&1 | tail -3'
    valgrind rc=0
+{
+"other user-space": {
+"callgrind_pct": 72.41286287288551,
+"perf_pct": 1.048584411045089
+},
+"core logic": {
+"callgrind_pct": 0.00706747103464897,
+"perf_pct": 59.07025515554002
+},
+"allocation": {
+"callgrind_pct": 15.93312643663727,
+"perf_pct": 30.6186648025166
+},
+"serialization/parsing": {
+"callgrind_pct": 8.087000585124956,
+"perf_pct": 6.011883956658511
+},
+"memory movement": {
+"callgrind_pct": 1.7573517073458462,
+"perf_pct": 1.4330653617616218
+},
+"hashing/crypto": {
+"callgrind_pct": 1.4078348509952758,
+"perf_pct": 0.6291506466270534
+},
+"process lifecycle": {
+"callgrind_pct": 0.059528898338847
+[callgrind] sympy_repro_script: 'python /tmp/repro_24066.py'

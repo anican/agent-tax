@@ -1,0 +1,13 @@
+[replay] mini__pytest-dev__pytest-10081 seq=1 class=search/read orig=0.01s :: 'ls -la'
+    rep1: stat rc=0 0.05577898025512695 | record rc=0 1.2561416625976562
+    rep2: stat rc=0 0.03287148475646973 | record rc=0 1.2819030284881592
+    rep3: stat rc=0 0.04352712631225586 | record rc=0 1.264448881149292
+[replay] mini__pytest-dev__pytest-10081 seq=2 class=search/read orig=0.01s :: 'find src -type f -name "*.py" | head -20'
+    rep1: stat rc=0 0.06346321105957031 | record rc=0 1.2878806591033936
+    rep2: stat rc=0 0.047481536865234375 | record rc=0 1.3062636852264404
+    rep3: stat rc=0 0.04677534103393555 | record rc=0 1.2566781044006348
+[replay] mini__pytest-dev__pytest-10081 seq=3 class=other orig=0.01s :: "cat <<'EOF' > test_repro_skip_class.py\nimport unittest\n\n@unittest.skip"
+    rep1: stat rc=0 0.04074978828430176 | record rc=0 1.2787318229675293
+    rep2: stat rc=0 0.03323078155517578 | record rc=0 1.2519099712371826
+    rep3: stat rc=0 0.03927159309387207 | record rc=0 1.254072666168213
+[replay] mini__pytest-dev__pytest-10081 seq=4 class=test run orig=0.58s :: 'python -m pytest test_repro_skip_class.py -v'

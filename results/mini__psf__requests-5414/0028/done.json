@@ -1,0 +1,33 @@
+{
+ "task": "mini__psf__requests-5414",
+ "seq": 28,
+ "phase": "solve",
+ "cls": "search/read",
+ "cmd": "grep -n \"def get\\|prepare_url\" requests/api.py",
+ "orig_rc": 0,
+ "orig_dur_s": 0.009803008,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 0.06667804718017578,
+   "rec_rc": 0,
+   "rec_wall_s": 1.2638113498687744
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 0.04725956916809082,
+   "rec_rc": 0,
+   "rec_wall_s": 1.2870194911956787
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 0.0347135066986084,
+   "rec_rc": 0,
+   "rec_wall_s": 1.2614591121673584
+  }
+ ],
+ "loop_iterations": 30
+}

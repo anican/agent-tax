@@ -1,0 +1,32 @@
+{
+ "task": "mini__psf__requests-5414",
+ "seq": 19,
+ "phase": "solve",
+ "cls": "other",
+ "cmd": "cat <<'EOF' > test_unicode_error.py\nimport requests\nfrom requests.models import PreparedRequest\n\n# Test different problematic URLs that might trigger UnicodeError\ntest_urls = [\n    \"http://.example.com\",\n    \"http://..example.com\", \n    \"http://example..com\",\n    \"http://.com\",\n    \"http://.\",\n]\n\nfor url in test_urls:\n    print(f\"\\nTesting URL: {url}\")\n    try:\n        response = requests.get(url)\n        print(\"  SUCCESS: Request completed\")\n    except Exception as e:\n        print(f\"  EXCEPTION: {type(e).__name__}: {e}\")\n        \n        # Also test direct URL preparation\n        try:\n            req = PreparedRequest()\n            req.prepare_url(url, None)\n            print(\"  URL preparation succeeded\")\n        except Exception as e2:\n            print(f\"  URL preparation failed: {type(e2).__name__}: {e2}\")\nEOF",
+ "orig_rc": 0,
+ "orig_dur_s": 0.00739968,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 0.04874753952026367,
+   "rec_rc": 0,
+   "rec_wall_s": 1.337054967880249
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 0.05172586441040039,
+   "rec_rc": 0,
+   "rec_wall_s": 1.3053135871887207
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 0.040541648864746094,
+   "rec_rc": 0,
+   "rec_wall_s": 1.3712224960327148
+  }
+ ]
+}

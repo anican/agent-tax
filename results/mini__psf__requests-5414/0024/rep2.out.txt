@@ -1,0 +1,11 @@
+   440	            else:
+   441	                query = enc_params
+   442	
+   443	        try:
+   444	            url = requote_uri(urlunparse([scheme, netloc, path, None, query, fragment]))
+   445	        except UnicodeError:
+   446	            raise InvalidURL("URL has an invalid label.")
+   447	        self.url = url
+   448	
+   449	    def prepare_headers(self, headers):
+   450	        """Prepares the given HTTP headers."""

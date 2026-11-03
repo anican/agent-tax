@@ -1,0 +1,17 @@
+    64	def get(url, params=None, **kwargs):
+    65	    r"""Sends a GET request.
+    66	
+    67	    :param url: URL for the new :class:`Request` object.
+    68	    :param params: (optional) Dictionary, list of tuples or bytes to send
+    69	        in the query string for the :class:`Request`.
+    70	    :param \*\*kwargs: Optional arguments that ``request`` takes.
+    71	    :return: :class:`Response <Response>` object
+    72	    :rtype: requests.Response
+    73	    """
+    74	
+    75	    return request('get', url, params=params, **kwargs)
+    76	
+    77	
+    78	def options(url, **kwargs):
+    79	    r"""Sends an OPTIONS request.
+    80	

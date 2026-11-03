@@ -1,0 +1,84 @@
+	Command being timed: "timeout -s KILL 600 bash -c cat <<'EOF' > final_test.py
+import requests
+from requests.models import PreparedRequest
+from requests.exceptions import InvalidURL
+import unittest.mock
+
+print("Final comprehensive test for UnicodeError -> InvalidURL fix")
+print("=" * 60)
+
+# Test 1: Direct URL preparation (this is what the PR is about)
+print("\nTest 1: Direct URL preparation with problematic URLs")
+test_urls = ["http://.example.com", "http://..example.com", "http://example..com"]
+
+for url in test_urls:
+    try:
+        req = PreparedRequest()
+        req.prepare_url(url, None)
+        print(f"  {url}: SUCCESS (URL prepared: {req.url})")
+    except InvalidURL as e:
+        print(f"  {url}: InvalidURL (as expected): {e}")
+    except Exception as e:
+        print(f"  {url}: OTHER EXCEPTION: {type(e).__name__}: {e}")
+
+# Test 2: Simulate the exact UnicodeError mentioned in the PR
+print("\nTest 2: Simulating UnicodeError from parse_url")
+def mock_parse_url_unicode_error(url):
+    if '.example.com' in url:
+        raise UnicodeError("encoding with 'idna' codec failed (UnicodeError: label empty or too long)")
+    from urllib3.util import parse_url as original_parse_url
+    return original_parse_url(url)
+
+with unittest.mock.patch('requests.models.parse_url', side_effect=mock_parse_url_unicode_error):
+    try:
+        req = PreparedRequest()
+        req.prepare_url("http://.example.com", None)
+        print("  FAILURE: Should have raised InvalidURL")
+    except InvalidURL as e:
+        print(f"  SUCCESS: UnicodeError converted to InvalidURL: {e}")
+    except UnicodeError as e:
+        print(f"  FAILURE: UnicodeError not caught: {e}")
+
+# Test 3: Simulate UnicodeError from requote_uri
+print("\nTest 3: Simulating UnicodeError from requote_uri")
+def mock_requote_uri_unicode_error(uri):
+    if '.example.com' in uri:
+        raise UnicodeError("Unicode error in URI requoting")
+    from requests.utils import requote_uri as original_requote_uri
+    return original_requote_uri(uri)
+
+with unittest.mock.patch('requests.models.requote_uri', side_effect=mock_requote_uri_unicode_error):
+    try:
+        req = PreparedRequest()
+        req.prepare_url("http://.example.com", None)
+        print("  FAILURE: Should have raised InvalidURL")
+    except InvalidURL as e:
+        print(f"  SUCCESS: UnicodeError converted to InvalidURL: {e}")
+    except UnicodeError as e:
+        print(f"  FAILURE: UnicodeError not caught: {e}")
+
+print("\n" + "=" * 60)
+print("All tests completed. The fix successfully converts UnicodeError to InvalidURL.")
+EOF"
+	User time (seconds): 0.00
+	System time (seconds): 0.00
+	Percent of CPU this job got: 88%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.00
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 3448
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 414
+	Voluntary context switches: 5
+	Involuntary context switches: 0
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 8
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

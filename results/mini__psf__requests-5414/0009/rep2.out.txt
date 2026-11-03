@@ -1,0 +1,21 @@
+   350	    @staticmethod
+   351	    def _get_idna_encoded_host(host):
+   352	        import idna
+   353	
+   354	        try:
+   355	            host = idna.encode(host, uts46=True).decode('utf-8')
+   356	        except idna.IDNAError:
+   357	            raise UnicodeError
+   358	        return host
+   359	
+   360	    def prepare_url(self, url, params):
+   361	        """Prepares the given HTTP URL."""
+   362	        #: Accept objects that have string representations.
+   363	        #: We're unable to blindly call unicode/str functions
+   364	        #: as this will include the bytestring indicator (b'')
+   365	        #: on python 3.x.
+   366	        #: https://github.com/psf/requests/pull/2238
+   367	        if isinstance(url, bytes):
+   368	            url = url.decode('utf8')
+   369	        else:
+   370	            url = unicode(url) if is_py2 else str(url)

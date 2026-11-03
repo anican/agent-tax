@@ -1,0 +1,32 @@
+{
+ "task": "mini__psf__requests-5414",
+ "seq": 38,
+ "phase": "solve",
+ "cls": "other",
+ "cmd": "python final_test.py",
+ "orig_rc": 0,
+ "orig_dur_s": 0.32438528,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 0.23698186874389648,
+   "rec_rc": 0,
+   "rec_wall_s": 1.2501037120819092
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 0.25739526748657227,
+   "rec_rc": 0,
+   "rec_wall_s": 1.2464535236358643
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 0.23594117164611816,
+   "rec_rc": 0,
+   "rec_wall_s": 1.2581729888916016
+  }
+ ]
+}

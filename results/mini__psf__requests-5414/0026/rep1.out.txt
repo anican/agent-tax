@@ -1,0 +1,2 @@
+22:    DecodeError, ReadTimeoutError, ProtocolError, LocationParseError)
+385:        except (LocationParseError, UnicodeError) as e:

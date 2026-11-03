@@ -1,0 +1,2 @@
+37:    guess_filename, get_auth_from_url, requote_uri,
+443:        url = requote_uri(urlunparse([scheme, netloc, path, None, query, fragment]))

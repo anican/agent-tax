@@ -16,3 +16,217 @@
     rep3: stat rc=0 0.03586459159851074 | record rc=0 1.2641983032226562
 [replay] mini__psf__requests-5414 seq=5 class=other orig=0.24s :: 'python reproduce_issue.py'
     rep1: stat rc=0 0.20697593688964844 | record rc=0 1.2545382976531982
+    rep2: stat rc=0 0.27295804023742676 | record rc=0 1.3004570007324219
+    rep3: stat rc=0 0.21689438819885254 | record rc=0 1.2668874263763428
+[replay] mini__psf__requests-5414 seq=6 class=other orig=0.18s :: 'python -c "import requests; print(requests.__version__)"'
+    rep1: stat rc=0 0.2577972412109375 | record rc=0 1.266017198562622
+    rep2: stat rc=0 0.19466447830200195 | record rc=0 1.3820013999938965
+    rep3: stat rc=0 0.20136237144470215 | record rc=0 1.24861478805542
+[replay] mini__psf__requests-5414 seq=7 class=search/read orig=0.01s :: 'cat requests/exceptions.py'
+    rep1: stat rc=0 0.0370793342590332 | record rc=0 1.251396894454956
+    rep2: stat rc=0 0.05670976638793945 | record rc=0 1.269482135772705
+    rep3: stat rc=0 0.0385587215423584 | record rc=0 1.2517781257629395
+[replay] mini__psf__requests-5414 seq=8 class=search/read orig=0.01s :: 'grep -n "UnicodeError\\|InvalidURL\\|_get_idna_encoded_host" requests/mo'
+    rep1: stat rc=0 0.05265331268310547 | record rc=0 1.257676601409912
+    rep2: stat rc=0 0.05914950370788574 | record rc=0 1.2963762283325195
+    rep3: stat rc=0 0.035518646240234375 | record rc=0 1.2386326789855957
+[replay] mini__psf__requests-5414 seq=9 class=search/read orig=0.01s :: "nl -ba requests/models.py | sed -n '350,370p'"
+    rep1: stat rc=0 0.038281917572021484 | record rc=0 1.3120253086090088
+    rep2: stat rc=0 0.037241220474243164 | record rc=0 1.2584142684936523
+    rep3: stat rc=0 0.055673837661743164 | record rc=0 1.2541744709014893
+[replay] mini__psf__requests-5414 seq=10 class=search/read orig=0.01s :: "nl -ba requests/models.py | sed -n '360,450p'"
+    rep1: stat rc=0 0.03351116180419922 | record rc=0 1.2567691802978516
+    rep2: stat rc=0 0.03774523735046387 | record rc=0 1.2610876560211182
+    rep3: stat rc=0 0.033554792404174805 | record rc=0 1.2583725452423096
+[replay] mini__psf__requests-5414 seq=11 class=search/read orig=0.01s :: 'grep -n "parse_url\\|from.*parse_url\\|import.*parse_url" requests/model'
+    rep1: stat rc=0 0.03702521324157715 | record rc=0 1.2603745460510254
+    rep2: stat rc=0 0.05692648887634277 | record rc=0 1.256852149963379
+    rep3: stat rc=0 0.04600024223327637 | record rc=0 1.302586317062378
+[replay] mini__psf__requests-5414 seq=12 class=other orig=0.01s :: "cat <<'EOF' > reproduce_issue2.py\nimport requests\nfrom requests.models"
+    rep1: stat rc=0 0.04802870750427246 | record rc=0 1.3062448501586914
+    rep2: stat rc=0 0.041307926177978516 | record rc=0 1.3751397132873535
+    rep3: stat rc=0 0.039362192153930664 | record rc=0 1.2434070110321045
+[replay] mini__psf__requests-5414 seq=13 class=other orig=0.17s :: 'python reproduce_issue2.py'
+    rep1: stat rc=0 0.16980910301208496 | record rc=0 1.2585210800170898
+    rep2: stat rc=0 0.24310088157653809 | record rc=0 1.255380630493164
+    rep3: stat rc=0 0.21175503730773926 | record rc=0 1.300746202468872
+[replay] mini__psf__requests-5414 seq=14 class=other orig=0.05s :: 'python -c "\nimport idna\ntry:\n    result = idna.encode(\'.example.com\', '
+    rep1: stat rc=0 0.10466814041137695 | record rc=0 1.2853093147277832
+    rep2: stat rc=0 0.08870339393615723 | record rc=0 1.2794272899627686
+    rep3: stat rc=0 0.0964806079864502 | record rc=0 1.2693696022033691
+[replay] mini__psf__requests-5414 seq=15 class=search/read orig=0.01s :: 'grep -n "requote_uri\\|from.*requote_uri\\|import.*requote_uri" requests'
+    rep1: stat rc=0 0.049784183502197266 | record rc=0 1.3426246643066406
+    rep2: stat rc=0 0.05034780502319336 | record rc=0 1.257472276687622
+    rep3: stat rc=0 0.04698681831359863 | record rc=0 1.2935400009155273
+[replay] mini__psf__requests-5414 seq=16 class=search/read orig=0.01s :: 'grep -A 20 -B 5 "def requote_uri" requests/utils.py'
+    rep1: stat rc=0 0.05998039245605469 | record rc=0 1.2431349754333496
+    rep2: stat rc=0 0.04906153678894043 | record rc=0 1.2643213272094727
+    rep3: stat rc=0 0.0424342155456543 | record rc=0 1.252875566482544
+[replay] mini__psf__requests-5414 seq=17 class=other orig=0.01s :: 'cp requests/models.py requests/models.py.backup'
+    rep1: stat rc=0 0.05009961128234863 | record rc=0 1.3206632137298584
+    rep2: stat rc=0 0.04854536056518555 | record rc=0 1.2669670581817627
+    rep3: stat rc=0 0.0363011360168457 | record rc=0 1.2533283233642578
+[replay] mini__psf__requests-5414 seq=18 class=search/read orig=0.01s :: "nl -ba requests/models.py | sed -n '360,445p'"
+    rep1: stat rc=0 0.03847074508666992 | record rc=0 1.2504448890686035
+    rep2: stat rc=0 0.049803972244262695 | record rc=0 1.2539715766906738
+    rep3: stat rc=0 0.05615425109863281 | record rc=0 1.2737793922424316
+[replay] mini__psf__requests-5414 seq=19 class=other orig=0.01s :: "cat <<'EOF' > test_unicode_error.py\nimport requests\nfrom requests.mode"
+    rep1: stat rc=0 0.04874753952026367 | record rc=0 1.337054967880249
+    rep2: stat rc=0 0.05172586441040039 | record rc=0 1.3053135871887207
+    rep3: stat rc=0 0.040541648864746094 | record rc=0 1.3712224960327148
+[replay] mini__psf__requests-5414 seq=20 class=other orig=0.21s :: 'python test_unicode_error.py'
+    rep1: stat rc=0 0.22703075408935547 | record rc=0 1.264770269393921
+    rep2: stat rc=0 0.2466120719909668 | record rc=0 1.30851411819458
+    rep3: stat rc=0 0.20098543167114258 | record rc=0 1.2523038387298584
+[replay] mini__psf__requests-5414 seq=21 class=search/read orig=0.01s :: "sed -i '385,386c\\        except (LocationParseError, UnicodeError) as "
+    rep1: stat rc=0 0.03939032554626465 | record rc=0 1.2804627418518066
+    rep2: stat rc=0 0.05045032501220703 | record rc=0 1.2545123100280762
+    rep3: stat rc=0 0.05180644989013672 | record rc=0 1.3118605613708496
+[replay] mini__psf__requests-5414 seq=22 class=search/read orig=0.01s :: "nl -ba requests/models.py | sed -n '380,390p'"
+    rep1: stat rc=0 0.03522515296936035 | record rc=0 1.2674651145935059
+    rep2: stat rc=0 0.0484623908996582 | record rc=0 1.2771410942077637
+    rep3: stat rc=0 0.056320905685424805 | record rc=0 1.3292229175567627
+[replay] mini__psf__requests-5414 seq=23 class=search/read orig=0.01s :: "sed -i '443c\\        try:\\\n            url = requote_uri(urlunparse([s"
+    rep1: stat rc=0 0.039397478103637695 | record rc=0 1.3054373264312744
+    rep2: stat rc=0 0.06307673454284668 | record rc=0 1.2647979259490967
+    rep3: stat rc=0 0.03356146812438965 | record rc=0 1.331218957901001
+[replay] mini__psf__requests-5414 seq=24 class=search/read orig=0.01s :: "nl -ba requests/models.py | sed -n '440,450p'"
+    rep1: stat rc=0 0.06112170219421387 | record rc=0 1.2842750549316406
+    rep2: stat rc=0 0.0368194580078125 | record rc=0 1.267289638519287
+    rep3: stat rc=0 0.04074454307556152 | record rc=0 1.244499683380127
+[replay] mini__psf__requests-5414 seq=25 class=other orig=0.18s :: 'python reproduce_issue.py'
+    rep1: stat rc=0 0.27005529403686523 | record rc=0 1.3896641731262207
+    rep2: stat rc=0 0.19048476219177246 | record rc=0 1.2657179832458496
+    rep3: stat rc=0 0.20865082740783691 | record rc=0 1.2634825706481934
+[replay] mini__psf__requests-5414 seq=26 class=search/read orig=0.01s :: 'grep -n "LocationParseError" requests/models.py'
+    rep1: stat rc=0 0.0415496826171875 | record rc=0 1.2572453022003174
+    rep2: stat rc=0 0.05443763732910156 | record rc=0 1.2667832374572754
+    rep3: stat rc=0 0.05222463607788086 | record rc=0 1.257962942123413
+[replay] mini__psf__requests-5414 seq=27 class=search/read orig=0.01s :: 'grep -n "prepare_url\\|LocationParseError" requests/sessions.py'
+    rep1: stat rc=1 0.051247358322143555 | record rc=1 1.2748866081237793
+    rep2: stat rc=1 0.036620140075683594 | record rc=1 1.2534141540527344
+    rep3: stat rc=1 0.042318105697631836 | record rc=1 1.2638359069824219
+[replay] mini__psf__requests-5414 seq=28 class=search/read orig=0.01s :: 'grep -n "def get\\|prepare_url" requests/api.py'
+    rep1: stat rc=0 0.06667804718017578 | record rc=0 1.2638113498687744
+    rep2: stat rc=0 0.04725956916809082 | record rc=0 1.2870194911956787
+    rep3: stat rc=0 0.0347135066986084 | record rc=0 1.2614591121673584
+[replay] mini__psf__requests-5414 seq=29 class=search/read orig=0.01s :: "nl -ba requests/api.py | sed -n '64,80p'"
+    rep1: stat rc=0 0.049713134765625 | record rc=0 1.3498308658599854
+    rep2: stat rc=0 0.04465651512145996 | record rc=0 1.2676310539245605
+    rep3: stat rc=0 0.05791330337524414 | record rc=0 1.2549083232879639
+[replay] mini__psf__requests-5414 seq=30 class=search/read orig=0.01s :: 'grep -A 10 -B 5 "def request" requests/api.py'
+    rep1: stat rc=0 0.0469818115234375 | record rc=0 1.3391320705413818
+    rep2: stat rc=0 0.03689241409301758 | record rc=0 1.270829677581787
+    rep3: stat rc=0 0.059790611267089844 | record rc=0 1.2914001941680908
+[replay] mini__psf__requests-5414 seq=31 class=search/read orig=0.01s :: "nl -ba requests/api.py | sed -n '15,65p'"
+    rep1: stat rc=0 0.05073380470275879 | record rc=0 1.2815332412719727
+    rep2: stat rc=0 0.03676557540893555 | record rc=0 1.2687349319458008
+    rep3: stat rc=0 0.03592061996459961 | record rc=0 1.2657976150512695
+[replay] mini__psf__requests-5414 seq=32 class=other orig=0.01s :: "cat <<'EOF' > test_fix.py\nimport requests\nfrom requests.models import "
+    rep1: stat rc=0 0.030056238174438477 | record rc=0 1.248258113861084
+    rep2: stat rc=0 0.03668785095214844 | record rc=0 1.250910997390747
+    rep3: stat rc=0 0.041306495666503906 | record rc=0 1.2663235664367676
+[replay] mini__psf__requests-5414 seq=33 class=other orig=0.24s :: 'python test_fix.py'
+    rep1: stat rc=0 0.27791762351989746 | record rc=0 1.3358500003814697
+    rep2: stat rc=0 0.24293756484985352 | record rc=0 1.2432951927185059
+    rep3: stat rc=0 0.26115870475769043 | record rc=0 1.2747642993927002
+[replay] mini__psf__requests-5414 seq=34 class=other orig=0.01s :: "cat <<'EOF' > test_fix2.py\nimport requests\nfrom requests.models import"
+    rep1: stat rc=0 0.03323245048522949 | record rc=0 1.2471435070037842
+    rep2: stat rc=0 0.0344843864440918 | record rc=0 1.274475336074829
+    rep3: stat rc=0 0.0341639518737793 | record rc=0 1.2891440391540527
+[replay] mini__psf__requests-5414 seq=35 class=other orig=0.20s :: 'python test_fix2.py'
+    rep1: stat rc=0 0.2658555507659912 | record rc=0 1.2759497165679932
+    rep2: stat rc=0 0.24910640716552734 | record rc=0 1.3111603260040283
+    rep3: stat rc=0 0.2877485752105713 | record rc=0 1.3176281452178955
+[replay] mini__psf__requests-5414 seq=36 class=other orig=0.22s :: 'python reproduce_issue.py'
+    rep1: stat rc=0 0.19764113426208496 | record rc=0 1.2615537643432617
+    rep2: stat rc=0 0.23153352737426758 | record rc=0 1.3094007968902588
+    rep3: stat rc=0 0.20346808433532715 | record rc=0 1.2773675918579102
+[replay] mini__psf__requests-5414 seq=37 class=other orig=0.01s :: "cat <<'EOF' > final_test.py\nimport requests\nfrom requests.models impor"
+    rep1: stat rc=0 0.04515552520751953 | record rc=0 1.3932595252990723
+    rep2: stat rc=0 0.029896020889282227 | record rc=0 1.240739107131958
+    rep3: stat rc=0 0.04156064987182617 | record rc=0 1.275341272354126
+[replay] mini__psf__requests-5414 seq=38 class=other orig=0.32s :: 'python final_test.py'
+    rep1: stat rc=0 0.23698186874389648 | record rc=0 1.2501037120819092
+    rep2: stat rc=0 0.25739526748657227 | record rc=0 1.2464535236358643
+    rep3: stat rc=0 0.23594117164611816 | record rc=0 1.2581729888916016
+[replay] mini__psf__requests-5414 seq=39 class=git orig=0.02s :: 'echo MICRO_SWE_AGENT_FINAL_OUTPUT && git add -A && git diff --cached'
+    rep1: stat rc=0 0.048769474029541016 | record rc=0 1.246734619140625
+    rep2: stat rc=0 0.05914592742919922 | record rc=0 1.2997643947601318
+    rep3: stat rc=0 0.059662580490112305 | record rc=0 1.256288766860962
+[loop] mini__psf__requests-5414 seq=1 :: 'ls -la'
+    loop1: rc=0 1.29s
+    loop2: rc=0 1.29s
+    loop3: rc=0 1.26s
+[loop] mini__psf__requests-5414 seq=2 :: 'ls -la requests/'
+    loop1: rc=0 1.27s
+    loop2: rc=0 1.27s
+    loop3: rc=0 1.42s
+[loop] mini__psf__requests-5414 seq=3 :: "nl -ba requests/models.py | sed -n '390,410p'"
+    loop1: rc=0 1.26s
+    loop2: rc=0 1.24s
+    loop3: rc=0 1.29s
+[loop] mini__psf__requests-5414 seq=7 :: 'cat requests/exceptions.py'
+    loop1: rc=0 1.24s
+    loop2: rc=0 1.26s
+    loop3: rc=0 1.27s
+[loop] mini__psf__requests-5414 seq=8 :: 'grep -n "UnicodeError\\|InvalidURL\\|_get_idna_encoded_host" requests/mo'
+    loop1: rc=0 1.25s
+    loop2: rc=0 1.27s
+    loop3: rc=0 1.44s
+[loop] mini__psf__requests-5414 seq=9 :: "nl -ba requests/models.py | sed -n '350,370p'"
+    loop1: rc=0 1.26s
+    loop2: rc=0 1.34s
+    loop3: rc=0 1.29s
+[loop] mini__psf__requests-5414 seq=10 :: "nl -ba requests/models.py | sed -n '360,450p'"
+    loop1: rc=0 1.27s
+    loop2: rc=0 1.32s
+    loop3: rc=0 1.28s
+[loop] mini__psf__requests-5414 seq=11 :: 'grep -n "parse_url\\|from.*parse_url\\|import.*parse_url" requests/model'
+    loop1: rc=0 1.37s
+    loop2: rc=0 1.37s
+    loop3: rc=0 1.25s
+[loop] mini__psf__requests-5414 seq=15 :: 'grep -n "requote_uri\\|from.*requote_uri\\|import.*requote_uri" requests'
+    loop1: rc=0 1.27s
+    loop2: rc=0 1.31s
+    loop3: rc=0 1.31s
+[loop] mini__psf__requests-5414 seq=16 :: 'grep -A 20 -B 5 "def requote_uri" requests/utils.py'
+    loop1: rc=0 1.28s
+    loop2: rc=0 1.32s
+    loop3: rc=0 1.24s
+[loop] mini__psf__requests-5414 seq=18 :: "nl -ba requests/models.py | sed -n '360,445p'"
+    loop1: rc=0 1.29s
+    loop2: rc=0 1.25s
+    loop3: rc=0 1.27s
+[loop] mini__psf__requests-5414 seq=22 :: "nl -ba requests/models.py | sed -n '380,390p'"
+    loop1: rc=0 1.26s
+    loop2: rc=0 1.25s
+    loop3: rc=0 1.27s
+[loop] mini__psf__requests-5414 seq=24 :: "nl -ba requests/models.py | sed -n '440,450p'"
+    loop1: rc=0 1.27s
+    loop2: rc=0 1.27s
+    loop3: rc=0 1.40s
+[loop] mini__psf__requests-5414 seq=26 :: 'grep -n "LocationParseError" requests/models.py'
+    loop1: rc=0 1.27s
+    loop2: rc=0 1.27s
+    loop3: rc=0 1.30s
+[loop] mini__psf__requests-5414 seq=27 :: 'grep -n "prepare_url\\|LocationParseError" requests/sessions.py'
+    loop1: rc=1 1.25s
+    loop2: rc=1 1.28s
+    loop3: rc=1 1.39s
+[loop] mini__psf__requests-5414 seq=28 :: 'grep -n "def get\\|prepare_url" requests/api.py'
+    loop1: rc=0 1.27s
+    loop2: rc=0 1.30s
+    loop3: rc=0 1.29s
+[loop] mini__psf__requests-5414 seq=29 :: "nl -ba requests/api.py | sed -n '64,80p'"
+    loop1: rc=0 1.27s
+    loop2: rc=0 1.27s
+    loop3: rc=0 1.25s
+[loop] mini__psf__requests-5414 seq=30 :: 'grep -A 10 -B 5 "def request" requests/api.py'
+    loop1: rc=0 1.26s
+    loop2: rc=0 1.24s
+    loop3: rc=0 1.25s
+[loop] mini__psf__requests-5414 seq=31 :: "nl -ba requests/api.py | sed -n '15,65p'"
+    loop1: rc=0 1.26s
+    loop2: rc=0 1.27s
+    loop3: rc=0 1.25s

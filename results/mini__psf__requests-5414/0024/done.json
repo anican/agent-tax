@@ -1,0 +1,33 @@
+{
+ "task": "mini__psf__requests-5414",
+ "seq": 24,
+ "phase": "solve",
+ "cls": "search/read",
+ "cmd": "nl -ba requests/models.py | sed -n '440,450p'",
+ "orig_rc": 0,
+ "orig_dur_s": 0.008305408,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 0.06112170219421387,
+   "rec_rc": 0,
+   "rec_wall_s": 1.2842750549316406
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 0.0368194580078125,
+   "rec_rc": 0,
+   "rec_wall_s": 1.267289638519287
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 0.04074454307556152,
+   "rec_rc": 0,
+   "rec_wall_s": 1.244499683380127
+  }
+ ],
+ "loop_iterations": 30
+}

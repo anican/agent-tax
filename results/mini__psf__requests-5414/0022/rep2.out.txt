@@ -1,0 +1,11 @@
+   380	            return
+   381	
+   382	        # Support for unicode domain names and paths.
+   383	        try:
+   384	            scheme, auth, host, port, path, query, fragment = parse_url(url)
+   385	        except (LocationParseError, UnicodeError) as e:
+   386	            raise InvalidURL(*e.args)
+   387	
+   388	        if not scheme:
+   389	            error = ("Invalid URL {0!r}: No schema supplied. Perhaps you meant http://{0}?")
+   390	            error = error.format(to_native_string(url, 'utf8'))

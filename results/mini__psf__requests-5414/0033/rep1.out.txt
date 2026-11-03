@@ -1,0 +1,17 @@
+Testing the fix for UnicodeError -> InvalidURL conversion
+
+Testing URL: http://.example.com
+  SUCCESS: URL preparation completed
+  Prepared URL: http://.example.com/
+
+Testing URL: http://..example.com
+  SUCCESS: URL preparation completed
+  Prepared URL: http://..example.com/
+
+Testing URL: http://example..com
+  SUCCESS: URL preparation completed
+  Prepared URL: http://example..com/
+
+==================================================
+Testing with forced UnicodeError simulation
+  SUCCESS: Caught InvalidURL as expected: encoding with 'idna' codec failed (UnicodeError: label empty or too long)

@@ -92,3 +92,33 @@
 "process lifecycle": {
 "callgrind_pct": 0.059528898338847
 [callgrind] sympy_repro_script: 'python /tmp/repro_24066.py'
+   valgrind rc=0
+{
+"other user-space": {
+"callgrind_pct": 76.53108780616452,
+"perf_pct": 0.6899195093905711
+},
+"core logic": {
+"callgrind_pct": 0.0,
+"perf_pct": 61.47949405902645
+},
+"allocation": {
+"callgrind_pct": 15.162760376949524,
+"perf_pct": 31.429666538903795
+},
+"serialization/parsing": {
+"callgrind_pct": 4.853034356798318,
+"perf_pct": 2.721349175929475
+},
+"memory movement": {
+"callgrind_pct": 1.87377707907276,
+"perf_pct": 1.6864699118436182
+},
+"hashing/crypto": {
+"callgrind_pct": 1.314608434421557,
+"perf_pct": 0.7665772326561902
+},
+"process lifecycle": {
+"callgrind_pct": 0.042235792872814225,
+"perf_pct"
+[callgrind] sympy_pytest_quantities: 'python -m pytest -q sympy/physics/units/tests/test_quantities.py 2>&1 | tail -5'

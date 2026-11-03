@@ -1,0 +1,32 @@
+{
+ "task": "scikit-learn__scikit-learn-26194",
+ "seq": 7,
+ "phase": "solve",
+ "cls": "search/read",
+ "cmd": "grep -n \"max(y_score) + 1\\|arbitrarily set\" -B2 -A2 sklearn/metrics/_ranking.py; grep -rn \"thresholds\\[0\\]\\|max(y_score) + 1\" sklearn/metrics/tests/test_ranking.py | head",
+ "orig_rc": 0,
+ "orig_dur_s": 0.012532992,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 0.040773630142211914,
+   "rec_rc": 0,
+   "rec_wall_s": 1.244739294052124
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 0.04100751876831055,
+   "rec_rc": 0,
+   "rec_wall_s": 1.29026460647583
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 0.042711734771728516,
+   "rec_rc": 0,
+   "rec_wall_s": 1.2656123638153076
+  }
+ ]
+}

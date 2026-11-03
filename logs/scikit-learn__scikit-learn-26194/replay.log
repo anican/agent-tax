@@ -18,3 +18,15 @@
     rep1: stat rc=0 513.65s | record rc=0 545.91s
     rep2: stat rc=0 548.32s | record rc=0 580.89s
 [replay] scikit-learn__scikit-learn-26194 seq=5 class=package install orig=488.08s :: 'python -m pip install --no-build-isolation --no-deps -e . 2>&1 | tail '
+    rep1: stat rc=0 513.61 | record rc=None None
+    rep2: stat rc=0 548.28 | record rc=None None
+    rep3: stat rc=None None | record rc=0 541.8569571971893
+[replay] scikit-learn__scikit-learn-26194 seq=6 class=search/read orig=0.01s :: 'sed -n 1060,1110p sklearn/metrics/_ranking.py'
+    rep1: stat rc=0 0.03629326820373535 | record rc=0 1.261113166809082
+    rep2: stat rc=0 0.03906702995300293 | record rc=0 1.2423231601715088
+    rep3: stat rc=0 0.04945206642150879 | record rc=0 1.3841207027435303
+[replay] scikit-learn__scikit-learn-26194 seq=7 class=search/read orig=0.01s :: 'grep -n "max(y_score) + 1\\|arbitrarily set" -B2 -A2 sklearn/metrics/_r'
+    rep1: stat rc=0 0.040773630142211914 | record rc=0 1.244739294052124
+    rep2: stat rc=0 0.04100751876831055 | record rc=0 1.29026460647583
+    rep3: stat rc=0 0.042711734771728516 | record rc=0 1.2656123638153076
+[replay] scikit-learn__scikit-learn-26194 seq=8 class=test run orig=4.06s :: 'python -m pytest -q sklearn/metrics/tests/test_ranking.py 2>&1 | tail '

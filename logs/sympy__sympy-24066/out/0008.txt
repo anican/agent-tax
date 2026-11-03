@@ -1,0 +1,36 @@
+    assert Da.scale_factor == 1.66053906660000e-24
+
+
+def test_issue_20288():
+    from sympy.core.numbers import E
+    from sympy.physics.units import energy
+    u = Quantity('u')
+    v = Quantity('v')
+    SI.set_quantity_dimension(u, energy)
+    SI.set_quantity_dimension(v, energy)
+    u.set_global_relative_scale_factor(1, joule)
+    v.set_global_relative_scale_factor(1, joule)
+    expr = 1 + exp(u**2/v**2)
+    assert SI._collect_factor_and_dimension(expr) == (1 + E, Dimension(1))
+
+
+def test_prefixed_property():
+    assert not meter.is_prefixed
+1:import warnings
+3:from sympy.core.add import Add
+4:from sympy.core.function import (Function, diff)
+5:from sympy.core.numbers import (Number, Rational)
+6:from sympy.core.singleton import S
+7:from sympy.core.symbol import (Symbol, symbols)
+8:from sympy.functions.elementary.complexes import Abs
+9:from sympy.functions.elementary.exponential import (exp, log)
+10:from sympy.functions.elementary.miscellaneous import sqrt
+11:from sympy.functions.elementary.trigonometric import sin
+12:from sympy.integrals.integrals import integrate
+13:from sympy.physics.units import (amount_of_substance, area, convert_to, find_unit,
+17:from sympy.physics.units.definitions import (amu, au, centimeter, coulomb,
+23:from sympy.physics.units.definitions.dimension_definitions import (
+27:from sympy.physics.units.prefixes import PREFIXES, kilo
+28:from sympy.physics.units.quantities import PhysicalConstant, Quantity
+29:from sympy.physics.units.systems import SI
+30:from sympy.testing.pytest import XFAIL, raises, warns_deprecated_sympy

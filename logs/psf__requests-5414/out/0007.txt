@@ -1,0 +1,6 @@
+25:    ConnectionError, ConnectTimeout, InvalidSchema, InvalidURL,
+83:            (InvalidURL, 'http://'),
+532:            # Inputing a URL that cannot be parsed should raise an InvalidURL error
+533:            ('http://fe80::5054:ff:fe5a:fc0', InvalidURL)
+2496:        with pytest.raises(requests.exceptions.InvalidURL):
+2502:            ('http://localhost:-1', InvalidURL),

@@ -1,0 +1,3 @@
+[2026-11-03 09:18:49,998] WARNING in core: flasgger is not installed; serving the static landing page at / and skipping the Swagger UI and /spec.json.
+.......                                                                  [100%]
+7 passed, 283 deselected in 0.40s

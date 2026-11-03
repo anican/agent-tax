@@ -63,3 +63,4 @@
 },
 "scheduling/contex
 [callgrind] flask_pytest_blueprints: 'python -m pytest -q tests/test_blueprints.py 2>&1 | tail -3'
+   valgrind rc=0

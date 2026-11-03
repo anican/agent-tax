@@ -1,0 +1,5 @@
+
+
+def _is_skipped(obj) -> bool:
+    """Return True if the given object has been marked with @unittest.skip."""
+    return bool(getattr(obj, "__unittest_skip__", False))

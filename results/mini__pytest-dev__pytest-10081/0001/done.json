@@ -28,5 +28,6 @@
    "rec_rc": 0,
    "rec_wall_s": 1.264448881149292
   }
- ]
+ ],
+ "loop_iterations": 30
 }

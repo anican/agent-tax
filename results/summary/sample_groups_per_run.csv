@@ -1,118 +1,319 @@
-task,seq,phase,cls,rep,src,g_cmd,g_idle,g_other,g_kthread
-django__django-16595,1,setup,git,1,rep,5197,1489,212.0,48.0
-django__django-16595,1,setup,git,2,rep,2349,2930,233.0,4.0
-django__django-16595,1,setup,git,3,rep,2341,2099,145.0,5.0
-django__django-16595,2,setup,package install,1,rep,5254,2592,53.0,147.0
-django__django-16595,2,setup,package install,2,rep,5011,4722,105.0,184.0
-django__django-16595,2,setup,package install,3,rep,5357,3497,108.0,39.0
-django__django-16595,3,setup,package install,1,rep,26649,16931,433.0,211.0
-django__django-16595,3,setup,package install,2,rep,29184,27349,275.0,186.0
-django__django-16595,3,setup,package install,3,rep,30385,30908,301.0,223.0
-django__django-16595,4,solve,search/read,1,rep,23,16,0.0,0.0
-django__django-16595,4,solve,search/read,1,loop,339,126,61.0,0.0
-django__django-16595,4,solve,search/read,2,rep,16,5,2.0,0.0
-django__django-16595,4,solve,search/read,2,loop,333,157,1.0,1.0
-django__django-16595,4,solve,search/read,3,rep,14,8,17.0,0.0
-django__django-16595,4,solve,search/read,3,loop,314,132,5.0,3.0
-django__django-16595,5,solve,search/read,1,rep,18,9,2.0,0.0
-django__django-16595,5,solve,search/read,1,loop,325,156,63.0,1.0
-django__django-16595,5,solve,search/read,2,rep,17,10,19.0,0.0
-django__django-16595,5,solve,search/read,2,loop,323,153,2.0,0.0
-django__django-16595,5,solve,search/read,3,rep,18,2,0.0,0.0
-django__django-16595,5,solve,search/read,3,loop,304,136,5.0,0.0
-django__django-16595,6,solve,test run,1,rep,803,564,438.0,2.0
-django__django-16595,6,solve,test run,2,rep,827,804,7.0,1.0
-django__django-16595,6,solve,test run,3,rep,836,12,72.0,29.0
-django__django-16595,7,solve,test run,1,rep,24066,8717,425.0,31.0
-django__django-16595,7,solve,test run,2,rep,24366,6218,233.0,49.0
-django__django-16595,7,solve,test run,3,rep,22724,8650,287.0,33.0
-django__django-16595,8,solve,git,1,rep,49,14,0.0,0.0
-django__django-16595,8,solve,git,1,loop,1387,483,56.0,6.0
-django__django-16595,8,solve,git,2,rep,48,22,0.0,0.0
-django__django-16595,8,solve,git,2,loop,1399,488,14.0,8.0
-django__django-16595,8,solve,git,3,rep,53,23,2.0,0.0
-django__django-16595,8,solve,git,3,loop,1295,442,66.0,6.0
-django__django-16595,9,solve,test run,1,rep,22474,2592,434.0,23.0
-django__django-16595,9,solve,test run,2,rep,21579,8144,320.0,40.0
-django__django-16595,9,solve,test run,3,rep,23245,5816,235.0,31.0
-pallets__flask-5014,1,setup,git,1,rep,271,783,66.0,2.0
-pallets__flask-5014,1,setup,git,2,rep,340,687,72.0,2.0
-pallets__flask-5014,1,setup,git,3,rep,325,526,47.0,3.0
-pallets__flask-5014,2,setup,package install,1,rep,4561,2472,76.0,9.0
-pallets__flask-5014,2,setup,package install,2,rep,4988,2014,471.0,19.0
-pallets__flask-5014,2,setup,package install,3,rep,5528,2441,153.0,41.0
-pallets__flask-5014,3,setup,package install,1,rep,6895,6693,155.0,53.0
-pallets__flask-5014,3,setup,package install,2,rep,7297,6835,158.0,38.0
-pallets__flask-5014,3,setup,package install,3,rep,7646,7944,452.0,13.0
-pallets__flask-5014,4,solve,search/read,1,rep,24,14,3.0,0.0
-pallets__flask-5014,4,solve,search/read,1,loop,514,228,1.0,3.0
-pallets__flask-5014,4,solve,search/read,2,rep,24,15,1.0,0.0
-pallets__flask-5014,4,solve,search/read,2,loop,482,211,2.0,3.0
-pallets__flask-5014,4,solve,search/read,3,rep,22,14,0.0,0.0
-pallets__flask-5014,4,solve,search/read,3,loop,500,212,6.0,0.0
-pallets__flask-5014,5,solve,search/read,1,rep,14,7,0.0,0.0
-pallets__flask-5014,5,solve,search/read,1,loop,332,212,5.0,2.0
-pallets__flask-5014,5,solve,search/read,2,rep,18,10,1.0,0.0
-pallets__flask-5014,5,solve,search/read,2,loop,289,207,5.0,1.0
-pallets__flask-5014,5,solve,search/read,3,rep,18,13,2.0,0.0
-pallets__flask-5014,5,solve,search/read,3,loop,293,264,0.0,0.0
-pallets__flask-5014,6,solve,test run,1,rep,1154,14,8.0,0.0
-pallets__flask-5014,6,solve,test run,2,rep,1057,1036,11.0,0.0
-pallets__flask-5014,6,solve,test run,3,rep,968,13,31.0,3.0
-pallets__flask-5014,7,solve,test run,1,rep,700,689,9.0,1.0
-pallets__flask-5014,7,solve,test run,2,rep,601,580,89.0,0.0
-pallets__flask-5014,7,solve,test run,3,rep,640,605,202.0,2.0
-pallets__flask-5014,8,solve,package install,1,rep,2473,1144,52.0,5.0
-pallets__flask-5014,8,solve,package install,2,rep,2425,1732,11.0,8.0
-pallets__flask-5014,8,solve,package install,3,rep,2522,1458,47.0,32.0
-pallets__flask-5014,9,solve,test run,1,rep,3408,3411,25.0,7.0
-pallets__flask-5014,9,solve,test run,2,rep,3762,395,83.0,10.0
-pallets__flask-5014,9,solve,test run,3,rep,3033,286,72.0,6.0
-pallets__flask-5014,10,solve,test run,1,rep,4156,3996,478.0,5.0
-pallets__flask-5014,10,solve,test run,2,rep,3733,3701,197.0,7.0
-pallets__flask-5014,10,solve,test run,3,rep,3892,3796,331.0,17.0
-sympy__sympy-24066,1,setup,git,1,rep,1269,2690,160.0,4.0
-sympy__sympy-24066,1,setup,git,2,rep,1563,2607,146.0,6.0
-sympy__sympy-24066,1,setup,git,3,rep,1630,2825,162.0,3.0
-sympy__sympy-24066,2,setup,package install,1,rep,5375,5254,80.0,84.0
-sympy__sympy-24066,2,setup,package install,2,rep,5607,5448,47.0,87.0
-sympy__sympy-24066,2,setup,package install,3,rep,5271,280,40.0,54.0
-sympy__sympy-24066,3,setup,package install,1,rep,7508,4722,102.0,54.0
-sympy__sympy-24066,3,setup,package install,2,rep,7883,6893,92.0,34.0
-sympy__sympy-24066,3,setup,package install,3,rep,8440,8368,122.0,67.0
-sympy__sympy-24066,4,solve,search/read,1,rep,13,6,0.0,0.0
-sympy__sympy-24066,4,solve,search/read,1,loop,152,145,0.0,2.0
-sympy__sympy-24066,4,solve,search/read,2,rep,13,6,2.0,0.0
-sympy__sympy-24066,4,solve,search/read,2,loop,170,100,2.0,1.0
-sympy__sympy-24066,4,solve,search/read,3,rep,15,4,1.0,0.0
-sympy__sympy-24066,4,solve,search/read,3,loop,197,113,2.0,0.0
-sympy__sympy-24066,5,solve,other,1,rep,966,964,5.0,0.0
-sympy__sympy-24066,5,solve,other,2,rep,743,8,8.0,6.0
-sympy__sympy-24066,5,solve,other,3,rep,733,716,4.0,2.0
-sympy__sympy-24066,6,solve,other,1,rep,908,8,36.0,1.0
-sympy__sympy-24066,6,solve,other,2,rep,1024,663,806.0,3.0
-sympy__sympy-24066,6,solve,other,3,rep,766,752,33.0,0.0
-sympy__sympy-24066,7,solve,search/read,1,rep,20,8,2.0,1.0
-sympy__sympy-24066,7,solve,search/read,1,loop,486,230,9.0,0.0
-sympy__sympy-24066,7,solve,search/read,2,rep,23,14,22.0,0.0
-sympy__sympy-24066,7,solve,search/read,2,loop,420,252,2.0,0.0
-sympy__sympy-24066,7,solve,search/read,3,rep,20,13,0.0,0.0
-sympy__sympy-24066,7,solve,search/read,3,loop,446,224,2.0,6.0
-sympy__sympy-24066,8,solve,search/read,1,rep,16,6,19.0,0.0
-sympy__sympy-24066,8,solve,search/read,1,loop,399,215,49.0,1.0
-sympy__sympy-24066,8,solve,search/read,2,rep,18,13,1.0,0.0
-sympy__sympy-24066,8,solve,search/read,2,loop,408,211,1.0,1.0
-sympy__sympy-24066,8,solve,search/read,3,rep,21,13,1.0,0.0
-sympy__sympy-24066,8,solve,search/read,3,loop,403,215,6.0,0.0
-sympy__sympy-24066,9,solve,test run,1,rep,2549,2507,102.0,4.0
-sympy__sympy-24066,9,solve,test run,2,rep,2681,10,90.0,5.0
-sympy__sympy-24066,9,solve,test run,3,rep,2754,2711,94.0,3.0
-sympy__sympy-24066,10,solve,test run,1,rep,3317,496,366.0,6.0
-sympy__sympy-24066,10,solve,test run,2,rep,2797,737,17.0,3.0
-sympy__sympy-24066,10,solve,test run,3,rep,2503,1894,258.0,1.0
-sympy__sympy-24066,11,solve,git,1,rep,37,25,2.0,0.0
-sympy__sympy-24066,11,solve,git,1,loop,737,434,72.0,1.0
-sympy__sympy-24066,11,solve,git,2,rep,35,28,1.0,0.0
-sympy__sympy-24066,11,solve,git,2,loop,781,519,4.0,0.0
-sympy__sympy-24066,11,solve,git,3,rep,32,19,1.0,0.0
-sympy__sympy-24066,11,solve,git,3,loop,814,402,9.0,2.0
+task,seq,phase,cls,rep,src,g_idle,g_cmd,g_other,g_kthread
+django__django-16595,1,setup,git,1,rep,3948,3473,210.0,7.0
+django__django-16595,1,setup,git,2,rep,2535,1607,142.0,2.0
+django__django-16595,1,setup,git,3,rep,2363,1767,171.0,6.0
+django__django-16595,2,setup,package install,1,rep,2592,5254,53.0,147.0
+django__django-16595,2,setup,package install,2,rep,4722,5011,105.0,184.0
+django__django-16595,2,setup,package install,3,rep,3497,5357,108.0,39.0
+django__django-16595,3,setup,package install,1,rep,16931,26649,433.0,211.0
+django__django-16595,3,setup,package install,2,rep,27349,29184,275.0,186.0
+django__django-16595,3,setup,package install,3,rep,30908,30385,301.0,223.0
+django__django-16595,4,solve,search/read,1,rep,16,23,0.0,0.0
+django__django-16595,4,solve,search/read,1,loop,126,339,61.0,0.0
+django__django-16595,4,solve,search/read,2,rep,5,16,2.0,0.0
+django__django-16595,4,solve,search/read,2,loop,157,333,1.0,1.0
+django__django-16595,4,solve,search/read,3,rep,8,14,17.0,0.0
+django__django-16595,4,solve,search/read,3,loop,132,314,5.0,3.0
+django__django-16595,5,solve,search/read,1,rep,9,18,2.0,0.0
+django__django-16595,5,solve,search/read,1,loop,156,325,63.0,1.0
+django__django-16595,5,solve,search/read,2,rep,10,17,19.0,0.0
+django__django-16595,5,solve,search/read,2,loop,153,323,2.0,0.0
+django__django-16595,5,solve,search/read,3,rep,2,18,0.0,0.0
+django__django-16595,5,solve,search/read,3,loop,136,304,5.0,0.0
+django__django-16595,6,solve,test run,1,rep,564,803,438.0,2.0
+django__django-16595,6,solve,test run,2,rep,804,827,7.0,1.0
+django__django-16595,6,solve,test run,3,rep,12,836,72.0,29.0
+django__django-16595,7,solve,test run,1,rep,8717,24066,425.0,31.0
+django__django-16595,7,solve,test run,2,rep,6218,24366,233.0,49.0
+django__django-16595,7,solve,test run,3,rep,8650,22724,287.0,33.0
+django__django-16595,8,solve,git,1,rep,14,49,0.0,0.0
+django__django-16595,8,solve,git,1,loop,483,1387,56.0,6.0
+django__django-16595,8,solve,git,2,rep,22,48,0.0,0.0
+django__django-16595,8,solve,git,2,loop,488,1399,14.0,8.0
+django__django-16595,8,solve,git,3,rep,23,53,2.0,0.0
+django__django-16595,8,solve,git,3,loop,442,1295,66.0,6.0
+django__django-16595,9,solve,test run,1,rep,2592,22474,434.0,23.0
+django__django-16595,9,solve,test run,2,rep,8144,21579,320.0,40.0
+django__django-16595,9,solve,test run,3,rep,5816,23245,235.0,31.0
+django__django-16667,1,setup,git,1,rep,2381,1888,454.0,5.0
+django__django-16667,1,setup,git,2,rep,2552,1982,1046.0,5.0
+django__django-16667,1,setup,git,3,rep,2580,1794,373.0,8.0
+django__django-16667,2,setup,package install,1,rep,2120,5037,143.0,231.0
+django__django-16667,2,setup,package install,2,rep,5513,5697,134.0,101.0
+django__django-16667,2,setup,package install,3,rep,3712,5886,89.0,28.0
+django__django-16667,3,setup,package install,1,rep,25051,30010,457.0,229.0
+django__django-16667,3,setup,package install,2,rep,26249,29759,408.0,238.0
+django__django-16667,3,setup,package install,3,rep,15925,33094,411.0,228.0
+django__django-16667,4,solve,search/read,1,rep,7,25,1.0,0.0
+django__django-16667,4,solve,search/read,1,loop,170,418,18.0,1.0
+django__django-16667,4,solve,search/read,2,rep,13,18,2.0,0.0
+django__django-16667,4,solve,search/read,2,loop,172,444,1.0,0.0
+django__django-16667,4,solve,search/read,3,rep,12,19,1.0,0.0
+django__django-16667,4,solve,search/read,3,loop,208,455,1.0,1.0
+django__django-16667,5,solve,search/read,1,rep,13,19,1.0,0.0
+django__django-16667,5,solve,search/read,1,loop,149,321,25.0,0.0
+django__django-16667,5,solve,search/read,2,rep,9,15,1.0,0.0
+django__django-16667,5,solve,search/read,2,loop,145,315,2.0,0.0
+django__django-16667,5,solve,search/read,3,rep,13,17,0.0,5.0
+django__django-16667,5,solve,search/read,3,loop,157,308,0.0,2.0
+django__django-16667,6,solve,search/read,1,rep,10,14,0.0,0.0
+django__django-16667,6,solve,search/read,1,loop,119,203,2.0,0.0
+django__django-16667,6,solve,search/read,2,rep,5,11,1.0,0.0
+django__django-16667,6,solve,search/read,2,loop,83,164,3.0,1.0
+django__django-16667,6,solve,search/read,3,rep,7,14,0.0,0.0
+django__django-16667,6,solve,search/read,3,loop,111,183,3.0,1.0
+django__django-16667,7,solve,search/read,1,rep,7,11,0.0,0.0
+django__django-16667,7,solve,search/read,1,loop,174,192,5.0,1.0
+django__django-16667,7,solve,search/read,2,rep,4,12,0.0,0.0
+django__django-16667,7,solve,search/read,2,loop,169,184,1.0,1.0
+django__django-16667,7,solve,search/read,3,rep,5,14,0.0,0.0
+django__django-16667,7,solve,search/read,3,loop,172,186,1.0,2.0
+django__django-16667,8,solve,test run,1,rep,189,988,12.0,0.0
+django__django-16667,8,solve,test run,2,rep,270,1030,4.0,1.0
+django__django-16667,8,solve,test run,3,rep,398,999,9.0,2.0
+django__django-16667,9,solve,test run,1,rep,1302,4854,32.0,2.0
+django__django-16667,9,solve,test run,2,rep,1207,4694,41.0,0.0
+django__django-16667,9,solve,test run,3,rep,846,5193,42.0,2.0
+pallets__flask-5014,1,setup,git,1,rep,783,271,66.0,2.0
+pallets__flask-5014,1,setup,git,2,rep,687,340,72.0,2.0
+pallets__flask-5014,1,setup,git,3,rep,526,325,47.0,3.0
+pallets__flask-5014,2,setup,package install,1,rep,2472,4561,76.0,9.0
+pallets__flask-5014,2,setup,package install,2,rep,2014,4988,471.0,19.0
+pallets__flask-5014,2,setup,package install,3,rep,2441,5528,153.0,41.0
+pallets__flask-5014,3,setup,package install,1,rep,6693,6895,155.0,53.0
+pallets__flask-5014,3,setup,package install,2,rep,6835,7297,158.0,38.0
+pallets__flask-5014,3,setup,package install,3,rep,7944,7646,452.0,13.0
+pallets__flask-5014,4,solve,search/read,1,rep,14,24,3.0,0.0
+pallets__flask-5014,4,solve,search/read,1,loop,228,514,1.0,3.0
+pallets__flask-5014,4,solve,search/read,2,rep,15,24,1.0,0.0
+pallets__flask-5014,4,solve,search/read,2,loop,211,482,2.0,3.0
+pallets__flask-5014,4,solve,search/read,3,rep,14,22,0.0,0.0
+pallets__flask-5014,4,solve,search/read,3,loop,212,500,6.0,0.0
+pallets__flask-5014,5,solve,search/read,1,rep,7,14,0.0,0.0
+pallets__flask-5014,5,solve,search/read,1,loop,212,332,5.0,2.0
+pallets__flask-5014,5,solve,search/read,2,rep,10,18,1.0,0.0
+pallets__flask-5014,5,solve,search/read,2,loop,207,289,5.0,1.0
+pallets__flask-5014,5,solve,search/read,3,rep,13,18,2.0,0.0
+pallets__flask-5014,5,solve,search/read,3,loop,264,293,0.0,0.0
+pallets__flask-5014,6,solve,test run,1,rep,14,1154,8.0,0.0
+pallets__flask-5014,6,solve,test run,2,rep,1036,1057,11.0,0.0
+pallets__flask-5014,6,solve,test run,3,rep,13,968,31.0,3.0
+pallets__flask-5014,7,solve,test run,1,rep,689,700,9.0,1.0
+pallets__flask-5014,7,solve,test run,2,rep,580,601,89.0,0.0
+pallets__flask-5014,7,solve,test run,3,rep,605,640,202.0,2.0
+pallets__flask-5014,8,solve,package install,1,rep,1144,2473,52.0,5.0
+pallets__flask-5014,8,solve,package install,2,rep,1732,2425,11.0,8.0
+pallets__flask-5014,8,solve,package install,3,rep,1458,2522,47.0,32.0
+pallets__flask-5014,9,solve,test run,1,rep,3411,3408,25.0,7.0
+pallets__flask-5014,9,solve,test run,2,rep,395,3762,83.0,10.0
+pallets__flask-5014,9,solve,test run,3,rep,286,3033,72.0,6.0
+pallets__flask-5014,10,solve,test run,1,rep,3996,4156,478.0,5.0
+pallets__flask-5014,10,solve,test run,2,rep,3701,3733,197.0,7.0
+pallets__flask-5014,10,solve,test run,3,rep,3796,3892,331.0,17.0
+psf__requests-5414,1,setup,git,1,rep,648,322,51.0,2.0
+psf__requests-5414,1,setup,git,2,rep,790,426,109.0,5.0
+psf__requests-5414,1,setup,git,3,rep,672,431,973.0,9.0
+psf__requests-5414,2,setup,package install,1,rep,2959,6046,968.0,5.0
+psf__requests-5414,2,setup,package install,2,rep,5022,5281,199.0,18.0
+psf__requests-5414,2,setup,package install,3,rep,3144,5267,118.0,30.0
+psf__requests-5414,3,setup,package install,1,rep,7775,12591,1863.0,93.0
+psf__requests-5414,3,setup,package install,2,rep,7188,12206,712.0,51.0
+psf__requests-5414,3,setup,package install,3,rep,9377,11026,1599.0,77.0
+psf__requests-5414,4,solve,search/read,1,rep,12,20,0.0,0.0
+psf__requests-5414,4,solve,search/read,1,loop,211,347,1.0,2.0
+psf__requests-5414,4,solve,search/read,2,rep,15,22,1.0,0.0
+psf__requests-5414,4,solve,search/read,2,loop,164,329,4.0,0.0
+psf__requests-5414,4,solve,search/read,3,rep,13,15,1.0,0.0
+psf__requests-5414,4,solve,search/read,3,loop,176,320,2.0,0.0
+psf__requests-5414,5,solve,search/read,1,rep,21,19,0.0,0.0
+psf__requests-5414,5,solve,search/read,1,loop,136,222,3.0,1.0
+psf__requests-5414,5,solve,search/read,2,rep,23,16,1.0,0.0
+psf__requests-5414,5,solve,search/read,2,loop,200,216,4.0,1.0
+psf__requests-5414,5,solve,search/read,3,rep,7,11,0.0,0.0
+psf__requests-5414,5,solve,search/read,3,loop,108,203,2.0,0.0
+psf__requests-5414,6,solve,other,1,rep,206,209,9.0,0.0
+psf__requests-5414,6,solve,other,2,rep,21,211,3.0,0.0
+psf__requests-5414,6,solve,other,3,rep,8,198,0.0,0.0
+psf__requests-5414,7,solve,search/read,1,rep,4,14,13.0,0.0
+psf__requests-5414,7,solve,search/read,1,loop,149,319,5.0,1.0
+psf__requests-5414,7,solve,search/read,2,rep,4,17,1.0,0.0
+psf__requests-5414,7,solve,search/read,2,loop,166,297,5.0,0.0
+psf__requests-5414,7,solve,search/read,3,rep,5,19,9.0,0.0
+psf__requests-5414,7,solve,search/read,3,loop,148,275,6.0,1.0
+psf__requests-5414,8,solve,search/read,1,rep,6,13,3.0,0.0
+psf__requests-5414,8,solve,search/read,1,loop,98,172,0.0,0.0
+psf__requests-5414,8,solve,search/read,2,rep,19,18,0.0,0.0
+psf__requests-5414,8,solve,search/read,2,loop,92,154,0.0,2.0
+psf__requests-5414,8,solve,search/read,3,rep,11,11,1.0,0.0
+psf__requests-5414,8,solve,search/read,3,loop,124,212,6.0,0.0
+psf__requests-5414,9,solve,test run,1,rep,822,835,20.0,12.0
+psf__requests-5414,9,solve,test run,2,rep,11,849,20.0,1.0
+psf__requests-5414,9,solve,test run,3,rep,837,854,22.0,1.0
+psf__requests-5414,10,solve,test run,1,rep,549,1453,32.0,4.0
+psf__requests-5414,10,solve,test run,2,rep,1749,1443,29.0,2.0
+psf__requests-5414,10,solve,test run,3,rep,1238,1629,33.0,3.0
+psf__requests-5414,11,solve,test run,1,rep,68543,10515,1010.0,24.0
+psf__requests-5414,11,solve,test run,2,rep,65070,8895,784.0,19.0
+psf__requests-5414,11,solve,test run,3,rep,65370,8345,805.0,22.0
+pytest-dev__pytest-10081,1,setup,test run,1,rep,884,623,67.0,0.0
+pytest-dev__pytest-10081,1,setup,test run,2,rep,792,463,59.0,0.0
+pytest-dev__pytest-10081,1,setup,test run,3,rep,897,434,70.0,2.0
+pytest-dev__pytest-10081,2,setup,package install,1,rep,2498,5817,1225.0,17.0
+pytest-dev__pytest-10081,2,setup,package install,2,rep,5629,6044,174.0,35.0
+pytest-dev__pytest-10081,2,setup,package install,3,rep,2215,5595,138.0,37.0
+pytest-dev__pytest-10081,3,setup,package install,1,rep,5917,12726,172.0,96.0
+pytest-dev__pytest-10081,3,setup,package install,2,rep,11739,12297,122.0,107.0
+pytest-dev__pytest-10081,3,setup,package install,3,rep,9951,12677,231.0,134.0
+pytest-dev__pytest-10081,4,solve,search/read,1,rep,14,14,0.0,0.0
+pytest-dev__pytest-10081,4,solve,search/read,1,loop,109,173,0.0,0.0
+pytest-dev__pytest-10081,4,solve,search/read,2,rep,9,13,0.0,0.0
+pytest-dev__pytest-10081,4,solve,search/read,2,loop,94,165,2.0,0.0
+pytest-dev__pytest-10081,4,solve,search/read,3,rep,14,14,1.0,0.0
+pytest-dev__pytest-10081,4,solve,search/read,3,loop,90,182,5.0,2.0
+pytest-dev__pytest-10081,5,solve,search/read,1,rep,11,17,0.0,0.0
+pytest-dev__pytest-10081,5,solve,search/read,1,loop,204,279,13.0,0.0
+pytest-dev__pytest-10081,5,solve,search/read,2,rep,8,17,4.0,1.0
+pytest-dev__pytest-10081,5,solve,search/read,2,loop,191,284,0.0,1.0
+pytest-dev__pytest-10081,5,solve,search/read,3,rep,11,19,1.0,0.0
+pytest-dev__pytest-10081,5,solve,search/read,3,loop,275,308,15.0,2.0
+pytest-dev__pytest-10081,6,solve,search/read,1,rep,14,13,1.0,0.0
+pytest-dev__pytest-10081,6,solve,search/read,1,loop,206,213,1.0,1.0
+pytest-dev__pytest-10081,6,solve,search/read,2,rep,6,12,0.0,0.0
+pytest-dev__pytest-10081,6,solve,search/read,2,loop,158,179,0.0,1.0
+pytest-dev__pytest-10081,6,solve,search/read,3,rep,6,15,1.0,0.0
+pytest-dev__pytest-10081,6,solve,search/read,3,loop,99,176,0.0,2.0
+pytest-dev__pytest-10081,7,solve,search/read,1,rep,15,18,1.0,0.0
+pytest-dev__pytest-10081,7,solve,search/read,1,loop,229,287,2.0,0.0
+pytest-dev__pytest-10081,7,solve,search/read,2,rep,7,14,0.0,0.0
+pytest-dev__pytest-10081,7,solve,search/read,2,loop,188,314,3.0,0.0
+pytest-dev__pytest-10081,7,solve,search/read,3,rep,13,16,0.0,0.0
+pytest-dev__pytest-10081,7,solve,search/read,3,loop,227,323,8.0,0.0
+pytest-dev__pytest-10081,8,solve,test run,1,rep,961,996,10.0,2.0
+pytest-dev__pytest-10081,8,solve,test run,2,rep,1170,1186,13.0,1.0
+pytest-dev__pytest-10081,8,solve,test run,3,rep,15,978,9.0,5.0
+pytest-dev__pytest-10081,9,solve,test run,1,rep,1451,6895,89.0,30.0
+pytest-dev__pytest-10081,9,solve,test run,2,rep,6950,7262,92.0,28.0
+pytest-dev__pytest-10081,9,solve,test run,3,rep,6786,6902,63.0,22.0
+scikit-learn__scikit-learn-26194,1,setup,git,1,rep,1966,1129,161.0,5.0
+scikit-learn__scikit-learn-26194,1,setup,git,2,rep,1844,1032,1073.0,5.0
+scikit-learn__scikit-learn-26194,1,setup,git,3,rep,1756,913,335.0,5.0
+scikit-learn__scikit-learn-26194,2,setup,package install,1,rep,7290,7630,517.0,74.0
+scikit-learn__scikit-learn-26194,2,setup,package install,2,rep,4264,7060,114.0,37.0
+scikit-learn__scikit-learn-26194,2,setup,package install,3,rep,4560,7919,61.0,52.0
+scikit-learn__scikit-learn-26194,3,setup,package install,1,rep,30113,29510,327.0,236.0
+scikit-learn__scikit-learn-26194,3,setup,package install,2,rep,29455,29585,247.0,186.0
+scikit-learn__scikit-learn-26194,3,setup,package install,3,rep,28582,29951,349.0,249.0
+scikit-learn__scikit-learn-26194,4,setup,build,1,rep,11515,595408,1636.0,124.0
+scikit-learn__scikit-learn-26194,4,setup,build,2,rep,13906,586995,1562.0,145.0
+scikit-learn__scikit-learn-26194,4,setup,build,3,rep,14906,627448,5741.0,158.0
+scikit-learn__scikit-learn-26194,5,setup,package install,1,rep,357480,628551,4407.0,503.0
+scikit-learn__scikit-learn-26194,5,setup,package install,2,rep,457946,668115,5067.0,523.0
+scikit-learn__scikit-learn-26194,5,setup,package install,3,rep,356220,635303,4268.0,412.0
+scikit-learn__scikit-learn-26194,6,solve,search/read,1,rep,5,11,3.0,0.0
+scikit-learn__scikit-learn-26194,6,solve,search/read,1,loop,120,193,4.0,1.0
+scikit-learn__scikit-learn-26194,6,solve,search/read,2,rep,12,11,1.0,0.0
+scikit-learn__scikit-learn-26194,6,solve,search/read,2,loop,166,179,0.0,0.0
+scikit-learn__scikit-learn-26194,6,solve,search/read,3,rep,5,13,0.0,0.0
+scikit-learn__scikit-learn-26194,6,solve,search/read,3,loop,164,167,3.0,2.0
+scikit-learn__scikit-learn-26194,7,solve,search/read,1,rep,5,21,0.0,0.0
+scikit-learn__scikit-learn-26194,7,solve,search/read,1,loop,219,387,1.0,1.0
+scikit-learn__scikit-learn-26194,7,solve,search/read,2,rep,13,19,1.0,0.0
+scikit-learn__scikit-learn-26194,7,solve,search/read,2,loop,222,346,2.0,4.0
+scikit-learn__scikit-learn-26194,7,solve,search/read,3,rep,15,21,6.0,0.0
+scikit-learn__scikit-learn-26194,7,solve,search/read,3,loop,184,393,5.0,0.0
+scikit-learn__scikit-learn-26194,8,solve,test run,1,rep,3486,4509,885.0,2.0
+scikit-learn__scikit-learn-26194,8,solve,test run,2,rep,3145,4346,501.0,1.0
+scikit-learn__scikit-learn-26194,8,solve,test run,3,rep,551,5465,564.0,8.0
+scikit-learn__scikit-learn-26194,9,solve,test run,1,rep,22,4994,1055.0,9.0
+scikit-learn__scikit-learn-26194,9,solve,test run,2,rep,4026,4922,378.0,3.0
+scikit-learn__scikit-learn-26194,9,solve,test run,3,rep,23,4864,76.0,2.0
+scikit-learn__scikit-learn-26194,10,solve,search/read,1,rep,16,16,5.0,0.0
+scikit-learn__scikit-learn-26194,10,solve,search/read,1,loop,93,172,1.0,4.0
+scikit-learn__scikit-learn-26194,10,solve,search/read,2,rep,11,15,0.0,0.0
+scikit-learn__scikit-learn-26194,10,solve,search/read,2,loop,111,188,1.0,0.0
+scikit-learn__scikit-learn-26194,10,solve,search/read,3,rep,6,12,3.0,0.0
+scikit-learn__scikit-learn-26194,10,solve,search/read,3,loop,103,182,2.0,0.0
+scikit-learn__scikit-learn-26194,11,solve,test run,1,rep,3538,4466,461.0,5.0
+scikit-learn__scikit-learn-26194,11,solve,test run,2,rep,3770,4571,45.0,3.0
+scikit-learn__scikit-learn-26194,11,solve,test run,3,rep,3506,4303,34.0,2.0
+scikit-learn__scikit-learn-26194,12,solve,test run,1,rep,24397,104928,755.0,112.0
+scikit-learn__scikit-learn-26194,12,solve,test run,2,rep,38430,108328,567.0,51.0
+scikit-learn__scikit-learn-26194,12,solve,test run,3,rep,27731,110659,576.0,57.0
+scikit-learn__scikit-learn-26194,13,solve,test run,1,rep,16,2011,30.0,5.0
+scikit-learn__scikit-learn-26194,13,solve,test run,2,rep,22,2301,598.0,6.0
+scikit-learn__scikit-learn-26194,13,solve,test run,3,rep,1526,2282,172.0,4.0
+scikit-learn__scikit-learn-26194,14,solve,git,1,rep,846,1630,28.0,1.0
+scikit-learn__scikit-learn-26194,14,solve,git,2,rep,785,1562,16.0,0.0
+scikit-learn__scikit-learn-26194,14,solve,git,3,rep,784,1456,332.0,1.0
+sympy__sympy-24066,1,setup,git,1,rep,1877,1007,189.0,3.0
+sympy__sympy-24066,1,setup,git,2,rep,1924,1275,168.0,4.0
+sympy__sympy-24066,1,setup,git,3,rep,1890,1078,178.0,2.0
+sympy__sympy-24066,2,setup,package install,1,rep,5619,5732,182.0,147.0
+sympy__sympy-24066,2,setup,package install,2,rep,5231,5323,144.0,78.0
+sympy__sympy-24066,2,setup,package install,3,rep,5065,5166,55.0,39.0
+sympy__sympy-24066,3,setup,package install,1,rep,5996,6628,107.0,50.0
+sympy__sympy-24066,3,setup,package install,2,rep,6047,6708,96.0,25.0
+sympy__sympy-24066,3,setup,package install,3,rep,4731,7313,119.0,50.0
+sympy__sympy-24066,4,solve,search/read,1,rep,6,13,0.0,0.0
+sympy__sympy-24066,4,solve,search/read,1,loop,145,152,0.0,2.0
+sympy__sympy-24066,4,solve,search/read,2,rep,6,13,2.0,0.0
+sympy__sympy-24066,4,solve,search/read,2,loop,100,170,2.0,1.0
+sympy__sympy-24066,4,solve,search/read,3,rep,4,15,1.0,0.0
+sympy__sympy-24066,4,solve,search/read,3,loop,113,197,2.0,0.0
+sympy__sympy-24066,5,solve,other,1,rep,964,966,5.0,0.0
+sympy__sympy-24066,5,solve,other,2,rep,8,743,8.0,6.0
+sympy__sympy-24066,5,solve,other,3,rep,716,733,4.0,2.0
+sympy__sympy-24066,6,solve,other,1,rep,8,908,36.0,1.0
+sympy__sympy-24066,6,solve,other,2,rep,663,1024,806.0,3.0
+sympy__sympy-24066,6,solve,other,3,rep,752,766,33.0,0.0
+sympy__sympy-24066,7,solve,search/read,1,rep,8,20,2.0,1.0
+sympy__sympy-24066,7,solve,search/read,1,loop,230,486,9.0,0.0
+sympy__sympy-24066,7,solve,search/read,2,rep,14,23,22.0,0.0
+sympy__sympy-24066,7,solve,search/read,2,loop,252,420,2.0,0.0
+sympy__sympy-24066,7,solve,search/read,3,rep,13,20,0.0,0.0
+sympy__sympy-24066,7,solve,search/read,3,loop,224,446,2.0,6.0
+sympy__sympy-24066,8,solve,search/read,1,rep,6,16,19.0,0.0
+sympy__sympy-24066,8,solve,search/read,1,loop,215,399,49.0,1.0
+sympy__sympy-24066,8,solve,search/read,2,rep,13,18,1.0,0.0
+sympy__sympy-24066,8,solve,search/read,2,loop,211,408,1.0,1.0
+sympy__sympy-24066,8,solve,search/read,3,rep,13,21,1.0,0.0
+sympy__sympy-24066,8,solve,search/read,3,loop,215,403,6.0,0.0
+sympy__sympy-24066,9,solve,test run,1,rep,2507,2549,102.0,4.0
+sympy__sympy-24066,9,solve,test run,2,rep,10,2681,90.0,5.0
+sympy__sympy-24066,9,solve,test run,3,rep,2711,2754,94.0,3.0
+sympy__sympy-24066,10,solve,test run,1,rep,496,3317,366.0,6.0
+sympy__sympy-24066,10,solve,test run,2,rep,737,2797,17.0,3.0
+sympy__sympy-24066,10,solve,test run,3,rep,1894,2503,258.0,1.0
+sympy__sympy-24066,11,solve,git,1,rep,25,37,2.0,0.0
+sympy__sympy-24066,11,solve,git,1,loop,434,737,72.0,1.0
+sympy__sympy-24066,11,solve,git,2,rep,28,35,1.0,0.0
+sympy__sympy-24066,11,solve,git,2,loop,519,781,4.0,0.0
+sympy__sympy-24066,11,solve,git,3,rep,19,32,1.0,0.0
+sympy__sympy-24066,11,solve,git,3,loop,402,814,9.0,2.0
+sympy__sympy-24562,1,setup,git,1,rep,2046,1185,452.0,5.0
+sympy__sympy-24562,1,setup,git,2,rep,1955,1319,592.0,6.0
+sympy__sympy-24562,1,setup,git,3,rep,1818,1366,612.0,14.0
+sympy__sympy-24562,2,setup,package install,1,rep,5856,6008,166.0,39.0
+sympy__sympy-24562,2,setup,package install,2,rep,6386,6480,121.0,96.0
+sympy__sympy-24562,2,setup,package install,3,rep,3312,5479,45.0,19.0
+sympy__sympy-24562,3,setup,package install,1,rep,7570,7417,112.0,27.0
+sympy__sympy-24562,3,setup,package install,2,rep,2443,6852,385.0,14.0
+sympy__sympy-24562,3,setup,package install,3,rep,3834,8434,124.0,28.0
+sympy__sympy-24562,4,solve,other,1,rep,648,658,6.0,0.0
+sympy__sympy-24562,4,solve,other,2,rep,6,572,10.0,2.0
+sympy__sympy-24562,4,solve,other,3,rep,591,605,5.0,4.0
+sympy__sympy-24562,5,solve,other,1,rep,660,660,6.0,0.0
+sympy__sympy-24562,5,solve,other,2,rep,732,745,4.0,1.0
+sympy__sympy-24562,5,solve,other,3,rep,564,577,31.0,0.0
+sympy__sympy-24562,6,solve,search/read,1,rep,6,12,0.0,0.0
+sympy__sympy-24562,6,solve,search/read,1,loop,202,201,3.0,1.0
+sympy__sympy-24562,6,solve,search/read,2,rep,7,13,3.0,0.0
+sympy__sympy-24562,6,solve,search/read,2,loop,148,176,3.0,1.0
+sympy__sympy-24562,6,solve,search/read,3,rep,6,12,1.0,0.0
+sympy__sympy-24562,6,solve,search/read,3,loop,115,191,1.0,0.0
+sympy__sympy-24562,7,solve,test run,1,rep,3504,3817,575.0,2.0
+sympy__sympy-24562,7,solve,test run,2,rep,4,3887,294.0,2.0
+sympy__sympy-24562,7,solve,test run,3,rep,14,3736,701.0,0.0
+sympy__sympy-24562,8,solve,test run,1,rep,51806,54480,440.0,16.0
+sympy__sympy-24562,8,solve,test run,2,rep,45711,60879,691.0,9.0
+sympy__sympy-24562,8,solve,test run,3,rep,54044,57599,527.0,5.0

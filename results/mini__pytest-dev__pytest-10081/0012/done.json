@@ -1,0 +1,32 @@
+{
+ "task": "mini__pytest-dev__pytest-10081",
+ "seq": 12,
+ "phase": "solve",
+ "cls": "search/read",
+ "cmd": "sed -i '319s/not _is_skipped(self.obj)/not (_is_skipped(self.obj) or _is_skipped(self.parent.obj))/' src/_pytest/unittest.py",
+ "orig_rc": 0,
+ "orig_dur_s": 0.009577728,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 0.0611114501953125,
+   "rec_rc": 0,
+   "rec_wall_s": 1.2552871704101562
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 0.04104757308959961,
+   "rec_rc": 0,
+   "rec_wall_s": 1.273498773574829
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 0.04790925979614258,
+   "rec_rc": 0,
+   "rec_wall_s": 1.2408218383789062
+  }
+ ]
+}

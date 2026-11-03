@@ -1,122 +1,158 @@
 cls,cat,sub,share_pct
-git,allocation,kernel page/slab alloc,1.63
-git,allocation,malloc / pymalloc / GC,3.89
-git,allocation,mmap/brk/madvise (heap management),0.15
-git,compression,zlib/lzma/bz2/zstd,3.90
-git,compression,zlib/lzma/bz2/zstd (stripped library),14.13
-git,core logic,cli tool (git/grep/sed/...),3.91
-git,core logic,cli tool (stripped binary),14.35
-git,filesystem metadata,path lookup / stat / open / readdir,33.37
-git,memory movement,kernel copy/zero,4.78
-git,memory movement,libc mem*,1.23
-git,other kernel,other kernel,7.04
-git,other user-space,shell / glue (stripped binary),0.02
-git,other user-space,shell / glue / misc libc,3.02
-git,process lifecycle,dynamic linking / libc start & exit,1.25
-git,process lifecycle,exec/fork/exit/wait syscalls,0.99
-git,process lifecycle,mmap/mprotect for dynamic loading,0.15
-git,process lifecycle,page fault handling,2.72
-git,scheduling/context switch,locks / GIL / sleeps,0.10
-git,scheduling/context switch,scheduler / futex,0.56
-git,unclassified,unresolved symbol,2.41
-git,virtualization-related,paravirt / KVM / virtio,0.40
-other,allocation,kernel page/slab alloc,0.72
-other,allocation,malloc / pymalloc / GC,28.17
-other,allocation,mmap/brk/madvise (heap management),0.27
-other,core logic,python interpreter / extensions,1.60
-other,filesystem metadata,path lookup / stat / open / readdir,1.61
-other,hashing/crypto,kernel crc/hash,0.02
-other,hashing/crypto,sha/md5/siphash,0.60
-other,interpreter startup/imports,import machinery & module execution,51.38
-other,interpreter startup/imports,source compile / unmarshal (under import),3.00
-other,memory movement,kernel copy/zero,1.85
-other,memory movement,libc mem*,1.15
-other,other kernel,other kernel,0.66
+build,allocation,kernel page/slab alloc,0.28
+build,allocation,malloc / pymalloc / GC,10.07
+build,allocation,mmap/brk/madvise (heap management),0.19
+build,compression,zlib/lzma/bz2/zstd,0.00
+build,compression,zlib/lzma/bz2/zstd (stripped library),0.00
+build,core logic,compiler,44.32
+build,core logic,compiler (stripped binary),27.51
+build,core logic,python interpreter / extensions,12.23
+build,filesystem metadata,path lookup / stat / open / readdir,0.14
+build,hashing/crypto,sha/md5/siphash,0.03
+build,interpreter startup/imports,import machinery & module execution,0.26
+build,interpreter startup/imports,source compile / unmarshal (under import),0.00
+build,memory movement,kernel copy/zero,0.57
+build,memory movement,libc mem*,1.22
+build,other kernel,other kernel,0.22
+build,other user-space,shell / glue / misc libc,0.04
+build,process lifecycle,dynamic linking / libc start & exit,0.09
+build,process lifecycle,exec/fork/exit/wait syscalls,0.19
+build,process lifecycle,mmap/mprotect for dynamic loading,0.01
+build,process lifecycle,page fault handling,1.17
+build,process lifecycle,python interpreter teardown,0.01
+build,scheduling/context switch,locks / GIL / sleeps,0.04
+build,scheduling/context switch,scheduler / futex,0.03
+build,serialization/parsing,json/pickle/xml/struct,0.00
+build,serialization/parsing,python source compile / marshal (not under import),0.04
+build,unclassified,unresolved symbol,1.31
+build,virtualization-related,paravirt / KVM / virtio,0.02
+git,allocation,kernel page/slab alloc,1.75
+git,allocation,malloc / pymalloc / GC,7.94
+git,allocation,mmap/brk/madvise (heap management),0.20
+git,compression,zlib/lzma/bz2/zstd,4.14
+git,compression,zlib/lzma/bz2/zstd (stripped library),14.58
+git,core logic,cli tool (git/grep/sed/...),4.71
+git,core logic,cli tool (stripped binary),14.53
+git,core logic,python interpreter / extensions,0.45
+git,filesystem metadata,path lookup / stat / open / readdir,15.94
+git,hashing/crypto,sha/md5/siphash,0.09
+git,interpreter startup/imports,import machinery & module execution,3.70
+git,interpreter startup/imports,source compile / unmarshal (under import),0.45
+git,memory movement,kernel copy/zero,3.61
+git,memory movement,libc mem*,1.50
+git,other kernel,other kernel,8.15
+git,other user-space,shell / glue (stripped binary),0.03
+git,other user-space,shell / glue / misc libc,3.46
+git,process lifecycle,dynamic linking / libc start & exit,1.71
+git,process lifecycle,exec/fork/exit/wait syscalls,1.30
+git,process lifecycle,mmap/mprotect for dynamic loading,0.26
+git,process lifecycle,page fault handling,2.47
+git,process lifecycle,python interpreter teardown,0.47
+git,scheduling/context switch,locks / GIL / sleeps,2.70
+git,scheduling/context switch,scheduler / futex,2.83
+git,unclassified,unresolved symbol,2.76
+git,virtualization-related,paravirt / KVM / virtio,0.27
+other,allocation,kernel page/slab alloc,0.87
+other,allocation,malloc / pymalloc / GC,28.79
+other,allocation,mmap/brk/madvise (heap management),0.43
+other,core logic,cli tool (stripped binary),0.01
+other,core logic,python interpreter / extensions,1.37
+other,filesystem metadata,path lookup / stat / open / readdir,1.99
+other,hashing/crypto,kernel crc/hash,0.01
+other,hashing/crypto,sha/md5/siphash,0.66
+other,interpreter startup/imports,import machinery & module execution,47.53
+other,interpreter startup/imports,source compile / unmarshal (under import),3.37
+other,memory movement,kernel copy/zero,2.22
+other,memory movement,libc mem*,1.35
+other,other kernel,other kernel,0.61
 other,other user-space,shell / glue (stripped binary),0.02
-other,other user-space,shell / glue / misc libc,0.72
-other,process lifecycle,dynamic linking / libc start & exit,0.76
-other,process lifecycle,exec/fork/exit/wait syscalls,0.45
-other,process lifecycle,mmap/mprotect for dynamic loading,0.06
-other,process lifecycle,page fault handling,2.84
-other,process lifecycle,python interpreter teardown,3.79
-other,scheduling/context switch,locks / GIL / sleeps,0.16
+other,other user-space,shell / glue / misc libc,0.75
+other,process lifecycle,dynamic linking / libc start & exit,1.11
+other,process lifecycle,exec/fork/exit/wait syscalls,0.73
+other,process lifecycle,mmap/mprotect for dynamic loading,0.08
+other,process lifecycle,page fault handling,3.61
+other,process lifecycle,python interpreter teardown,4.14
+other,scheduling/context switch,locks / GIL / sleeps,0.19
 other,scheduling/context switch,scheduler / futex,0.02
+other,serialization/parsing,python source compile / marshal (not under import),0.01
 other,unclassified,unresolved symbol,0.04
-other,virtualization-related,paravirt / KVM / virtio,0.12
-package install,allocation,kernel page/slab alloc,0.69
-package install,allocation,malloc / pymalloc / GC,19.07
-package install,allocation,mmap/brk/madvise (heap management),0.23
-package install,compression,zlib/lzma/bz2/zstd,1.97
+other,virtualization-related,paravirt / KVM / virtio,0.08
+package install,allocation,kernel page/slab alloc,0.40
+package install,allocation,malloc / pymalloc / GC,11.86
+package install,allocation,mmap/brk/madvise (heap management),0.22
+package install,compression,zlib/lzma/bz2/zstd,0.51
 package install,compression,zlib/lzma/bz2/zstd (stripped library),0.00
-package install,core logic,cli tool (git/grep/sed/...),0.01
+package install,core logic,cli tool (git/grep/sed/...),0.00
 package install,core logic,cli tool (stripped binary),0.00
-package install,core logic,python interpreter / extensions,27.46
-package install,filesystem metadata,path lookup / stat / open / readdir,4.77
+package install,core logic,compiler,33.86
+package install,core logic,compiler (stripped binary),21.32
+package install,core logic,python interpreter / extensions,15.59
+package install,filesystem metadata,path lookup / stat / open / readdir,1.07
 package install,hashing/crypto,kernel crc/hash,0.00
-package install,hashing/crypto,sha/md5/siphash,1.24
-package install,interpreter startup/imports,import machinery & module execution,9.67
-package install,interpreter startup/imports,source compile / unmarshal (under import),4.96
-package install,memory movement,kernel copy/zero,5.47
-package install,memory movement,libc mem*,2.11
-package install,other kernel,other kernel,1.49
-package install,other user-space,shell / glue (stripped binary),0.01
-package install,other user-space,shell / glue / misc libc,1.64
-package install,process lifecycle,dynamic linking / libc start & exit,0.48
-package install,process lifecycle,exec/fork/exit/wait syscalls,0.41
-package install,process lifecycle,mmap/mprotect for dynamic loading,0.04
-package install,process lifecycle,page fault handling,1.58
-package install,process lifecycle,python interpreter teardown,1.30
-package install,scheduling/context switch,locks / GIL / sleeps,0.29
-package install,scheduling/context switch,scheduler / futex,0.03
-package install,serialization/parsing,json/pickle/xml/struct,0.17
-package install,serialization/parsing,python source compile / marshal (not under import),14.71
-package install,unclassified,unresolved symbol,0.13
-package install,virtualization-related,paravirt / KVM / virtio,0.07
-search/read,allocation,kernel page/slab alloc,5.45
-search/read,allocation,malloc / pymalloc / GC,1.45
-search/read,allocation,mmap/brk/madvise (heap management),0.55
+package install,hashing/crypto,sha/md5/siphash,0.32
+package install,interpreter startup/imports,import machinery & module execution,2.09
+package install,interpreter startup/imports,source compile / unmarshal (under import),1.07
+package install,memory movement,kernel copy/zero,2.35
+package install,memory movement,libc mem*,1.46
+package install,other kernel,other kernel,0.48
+package install,other user-space,shell / glue (stripped binary),0.00
+package install,other user-space,shell / glue / misc libc,0.35
+package install,process lifecycle,dynamic linking / libc start & exit,0.16
+package install,process lifecycle,exec/fork/exit/wait syscalls,0.23
+package install,process lifecycle,mmap/mprotect for dynamic loading,0.02
+package install,process lifecycle,page fault handling,1.29
+package install,process lifecycle,python interpreter teardown,0.25
+package install,scheduling/context switch,locks / GIL / sleeps,0.10
+package install,scheduling/context switch,scheduler / futex,0.04
+package install,serialization/parsing,json/pickle/xml/struct,0.03
+package install,serialization/parsing,python source compile / marshal (not under import),3.83
+package install,unclassified,unresolved symbol,1.07
+package install,virtualization-related,paravirt / KVM / virtio,0.03
+search/read,allocation,kernel page/slab alloc,5.34
+search/read,allocation,malloc / pymalloc / GC,1.54
+search/read,allocation,mmap/brk/madvise (heap management),0.54
 search/read,core logic,cli tool (git/grep/sed/...),0.70
-search/read,core logic,cli tool (stripped binary),1.15
-search/read,filesystem metadata,path lookup / stat / open / readdir,5.17
-search/read,memory movement,kernel copy/zero,4.40
-search/read,memory movement,libc mem*,0.35
-search/read,other kernel,other kernel,3.12
-search/read,other user-space,shell / glue (stripped binary),1.27
-search/read,other user-space,shell / glue / misc libc,7.10
-search/read,process lifecycle,dynamic linking / libc start & exit,35.65
-search/read,process lifecycle,exec/fork/exit/wait syscalls,16.92
-search/read,process lifecycle,mmap/mprotect for dynamic loading,3.02
-search/read,process lifecycle,page fault handling,12.70
-search/read,scheduling/context switch,locks / GIL / sleeps,0.13
-search/read,scheduling/context switch,scheduler / futex,0.46
-search/read,unclassified,unresolved symbol,0.08
-search/read,virtualization-related,paravirt / KVM / virtio,0.33
-test run,allocation,kernel page/slab alloc,0.73
-test run,allocation,malloc / pymalloc / GC,22.30
-test run,allocation,mmap/brk/madvise (heap management),0.18
+search/read,core logic,cli tool (stripped binary),1.24
+search/read,filesystem metadata,path lookup / stat / open / readdir,4.97
+search/read,memory movement,kernel copy/zero,4.54
+search/read,memory movement,libc mem*,0.49
+search/read,other kernel,other kernel,3.01
+search/read,other user-space,shell / glue (stripped binary),1.61
+search/read,other user-space,shell / glue / misc libc,7.60
+search/read,process lifecycle,dynamic linking / libc start & exit,35.92
+search/read,process lifecycle,exec/fork/exit/wait syscalls,15.94
+search/read,process lifecycle,mmap/mprotect for dynamic loading,3.21
+search/read,process lifecycle,page fault handling,12.37
+search/read,scheduling/context switch,locks / GIL / sleeps,0.09
+search/read,scheduling/context switch,scheduler / futex,0.45
+search/read,unclassified,unresolved symbol,0.12
+search/read,virtualization-related,paravirt / KVM / virtio,0.31
+test run,allocation,kernel page/slab alloc,0.32
+test run,allocation,malloc / pymalloc / GC,13.50
+test run,allocation,mmap/brk/madvise (heap management),0.19
 test run,compression,zlib/lzma/bz2/zstd,0.00
-test run,compression,zlib/lzma/bz2/zstd (stripped library),0.00
-test run,core logic,cli tool (git/grep/sed/...),0.00
-test run,core logic,cli tool (stripped binary),0.01
-test run,core logic,python interpreter / extensions,30.36
-test run,filesystem metadata,path lookup / stat / open / readdir,2.21
+test run,compression,zlib/lzma/bz2/zstd (stripped library),0.02
+test run,core logic,cli tool (git/grep/sed/...),0.03
+test run,core logic,cli tool (stripped binary),0.03
+test run,core logic,python interpreter / extensions,57.29
+test run,filesystem metadata,path lookup / stat / open / readdir,1.01
 test run,hashing/crypto,kernel crc/hash,0.00
-test run,hashing/crypto,sha/md5/siphash,0.58
-test run,interpreter startup/imports,import machinery & module execution,19.51
-test run,interpreter startup/imports,source compile / unmarshal (under import),2.14
-test run,memory movement,kernel copy/zero,1.46
-test run,memory movement,libc mem*,1.41
-test run,other kernel,other kernel,0.83
+test run,hashing/crypto,sha/md5/siphash,0.31
+test run,interpreter startup/imports,import machinery & module execution,9.15
+test run,interpreter startup/imports,source compile / unmarshal (under import),0.83
+test run,memory movement,kernel copy/zero,0.82
+test run,memory movement,libc mem*,1.19
+test run,other kernel,other kernel,0.90
 test run,other user-space,shell / glue (stripped binary),0.00
-test run,other user-space,shell / glue / misc libc,9.86
-test run,process lifecycle,dynamic linking / libc start & exit,0.74
-test run,process lifecycle,exec/fork/exit/wait syscalls,0.60
-test run,process lifecycle,mmap/mprotect for dynamic loading,0.09
-test run,process lifecycle,page fault handling,2.52
-test run,process lifecycle,python interpreter teardown,2.29
-test run,scheduling/context switch,locks / GIL / sleeps,0.45
-test run,scheduling/context switch,scheduler / futex,0.07
-test run,serialization/parsing,json/pickle/xml/struct,0.01
-test run,serialization/parsing,python source compile / marshal (not under import),1.51
-test run,unclassified,unresolved symbol,0.06
-test run,virtualization-related,paravirt / KVM / virtio,0.06
+test run,other user-space,shell / glue / misc libc,2.59
+test run,process lifecycle,dynamic linking / libc start & exit,0.32
+test run,process lifecycle,exec/fork/exit/wait syscalls,0.26
+test run,process lifecycle,mmap/mprotect for dynamic loading,0.04
+test run,process lifecycle,page fault handling,0.99
+test run,process lifecycle,python interpreter teardown,0.91
+test run,scheduling/context switch,locks / GIL / sleeps,2.08
+test run,scheduling/context switch,scheduler / futex,1.49
+test run,serialization/parsing,json/pickle/xml/struct,0.00
+test run,serialization/parsing,python source compile / marshal (not under import),0.65
+test run,unclassified,unresolved symbol,5.06
+test run,virtualization-related,paravirt / KVM / virtio,0.03

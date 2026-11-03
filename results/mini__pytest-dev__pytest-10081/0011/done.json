@@ -1,0 +1,33 @@
+{
+ "task": "mini__pytest-dev__pytest-10081",
+ "seq": 11,
+ "phase": "solve",
+ "cls": "search/read",
+ "cmd": "sed -n '290,330p' src/_pytest/unittest.py",
+ "orig_rc": 0,
+ "orig_dur_s": 0.011142656,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 0.03183460235595703,
+   "rec_rc": 0,
+   "rec_wall_s": 1.3999168872833252
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 0.0526583194732666,
+   "rec_rc": 0,
+   "rec_wall_s": 1.302401065826416
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 0.0390622615814209,
+   "rec_rc": 0,
+   "rec_wall_s": 1.318002700805664
+  }
+ ],
+ "loop_iterations": 30
+}

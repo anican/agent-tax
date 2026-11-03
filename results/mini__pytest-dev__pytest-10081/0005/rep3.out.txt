@@ -1,0 +1,28 @@
+============================= test session starts ==============================
+platform linux -- Python 3.11.15, pytest-7.2.0.dev0, pluggy-1.7.0
+rootdir: /home/user/work/pytest-dev__pytest-10081/repo, configfile: pyproject.toml
+plugins: hypothesis-6.170.14
+collected 1 item
+
+test_repro_skip_class.py sE
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> traceback >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+self = <test_repro_skip_class.MyTestCase testMethod=test_one>
+
+    def tearDown(self):
+>       xxx
+E       NameError: name 'xxx' is not defined
+
+test_repro_skip_class.py:10: NameError
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> entering PDB >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+>>>>>>>>>>>>>>>>>> PDB post_mortem (IO-capturing turned off) >>>>>>>>>>>>>>>>>>>
+> /home/user/work/pytest-dev__pytest-10081/repo/test_repro_skip_class.py(10)tearDown()
+-> xxx
+(Pdb) 
+>>>>>>>>>>>>>>>>>>>>> PDB continue (IO-capturing resumed) >>>>>>>>>>>>>>>>>>>>>>
+                                                                         [100%]
+
+=========================== short test summary info ============================
+ERROR test_repro_skip_class.py::MyTestCase::test_one - NameError: name 'xxx' ...
+========================= 1 skipped, 1 error in 0.17s ==========================

@@ -1,0 +1,68 @@
+class TestCaseFunction(Function):
+    nofuncargs = True
+    _excinfo: Optional[List[_pytest._code.ExceptionInfo[BaseException]]] = None
+    _testcase: Optional["unittest.TestCase"] = None
+
+    def _getobj(self):
+        assert self.parent is not None
+        # Unlike a regular Function in a Class, where `item.obj` returns
+        # a *bound* method (attached to an instance), TestCaseFunction's
+        # `obj` returns an *unbound* method (not attached to an instance).
+        # This inconsistency is probably not desirable, but needs some
+        # consideration before changing.
+        return getattr(self.parent.obj, self.originalname)  # type: ignore[attr-defined]
+
+    def setup(self) -> None:
+        # A bound method to be called during teardown() if set (see 'runtest()').
+        self._explicit_tearDown: Optional[Callable[[], None]] = None
+        assert self.parent is not None
+        self._testcase = self.parent.obj(self.name)  # type: ignore[attr-defined]
+        self._obj = getattr(self._testcase, self.name)
+        if hasattr(self, "_request"):
+            self._request._fillfixtures()
+
+    def teardown(self) -> None:
+        if self._explicit_tearDown is not None:
+            self._explicit_tearDown()
+            self._explicit_tearDown = None
+        self._testcase = None
+        self._obj = None
+
+    def startTest(self, testcase: "unittest.TestCase") -> None:
+        pass
+
+    def _addexcinfo(self, rawexcinfo: "_SysExcInfoType") -> None:
+        # Unwrap potential exception info (see twisted trial support below).
+        rawexcinfo = getattr(rawexcinfo, "_rawexcinfo", rawexcinfo)
+        try:
+            excinfo = _pytest._code.ExceptionInfo[BaseException].from_exc_info(rawexcinfo)  # type: ignore[arg-type]
+            # Invoke the attributes to trigger storing the traceback
+            # trial causes some issue there.
+            excinfo.value
+            excinfo.traceback
+        except TypeError:
+            try:
+                try:
+                    values = traceback.format_exception(*rawexcinfo)
+                    values.insert(
+                        0,
+                        "NOTE: Incompatible Exception Representation, "
+                        "displaying natively:\n\n",
+                    )
+                    fail("".join(values), pytrace=False)
+                except (fail.Exception, KeyboardInterrupt):
+                    raise
+                except BaseException:
+                    fail(
+                        "ERROR: Unknown Incompatible Exception "
+                        "representation:\n%r" % (rawexcinfo,),
+                        pytrace=False,
+                    )
+            except KeyboardInterrupt:
+                raise
+            except fail.Exception:
+                excinfo = _pytest._code.ExceptionInfo.from_current()
+        self.__dict__.setdefault("_excinfo", []).append(excinfo)
+
+    def addError(
+        self, testcase: "unittest.TestCase", rawexcinfo: "_SysExcInfoType"

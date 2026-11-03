@@ -198,7 +198,7 @@ def main():
             sh(f"timeout -s KILL {TIMEOUT} bash -c {sq(replay_cmd(c))} > /dev/null 2>&1", cwd=cwd, env=env)
         for rep in range(1, a.reps + 1):
             # resume support: reuse runs that already completed (e.g. after the batch was killed)
-            if os.path.exists(f"{d}/rep{rep}.stat.csv") and os.path.exists(f"{d}/rep{rep}.time.txt"):
+            if all(os.path.exists(p) and os.path.getsize(p) > 0 for p in (f"{d}/rep{rep}.stat.csv", f"{d}/rep{rep}.time.txt")):
                 tt = open(f"{d}/rep{rep}.time.txt").read()
                 m = re.search(r"Exit status: (\d+)", tt); rc_s = int(m.group(1)) if m else None
                 m = re.search(r"Elapsed \(wall clock\) time \(h:mm:ss or m:ss\): ([\d:.]+)", tt)

@@ -1,7 +1,8 @@
 cls,"lifecycle (incl. page faults, ld.so, teardown)",under fs-metadata syscall,under import/startup,under page fault,under python compile,under python teardown
-search/read,80.91,5.68,0.00,18.04,0.00,0.00
-git,5.08,38.33,0.00,2.24,0.00,0.00
-package install,12.34,5.19,21.87,3.75,34.74,7.54
-test run,17.87,2.42,33.39,4.13,5.88,12.16
-other,23.29,1.77,79.34,4.49,0.88,17.41
-ALL,14.85,5.15,27.17,3.89,19.30,9.54
+search/read,80.36,5.42,0.00,17.79,0.00,0.00
+git,9.37,18.09,6.81,3.15,0.44,2.36
+package install,4.72,1.17,4.70,2.72,8.71,1.54
+build,2.25,0.15,0.37,1.90,0.09,0.03
+test run,7.45,1.11,15.27,1.85,2.79,4.91
+other,25.75,2.19,78.15,5.64,0.88,17.96
+ALL,4.37,0.90,5.01,2.30,4.68,1.58

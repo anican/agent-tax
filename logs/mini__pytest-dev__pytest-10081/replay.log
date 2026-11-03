@@ -11,3 +11,122 @@
     rep2: stat rc=0 0.03323078155517578 | record rc=0 1.2519099712371826
     rep3: stat rc=0 0.03927159309387207 | record rc=0 1.254072666168213
 [replay] mini__pytest-dev__pytest-10081 seq=4 class=test run orig=0.58s :: 'python -m pytest test_repro_skip_class.py -v'
+    rep1: stat rc=0 0.8146231174468994 | record rc=0 1.3542630672454834
+    rep2: stat rc=0 0.5390558242797852 | record rc=0 1.2529735565185547
+    rep3: stat rc=0 0.5366113185882568 | record rc=0 1.284696102142334
+[replay] mini__pytest-dev__pytest-10081 seq=5 class=test run orig=0.50s :: 'echo "c" | python -m pytest test_repro_skip_class.py --pdb'
+    rep1: stat rc=1 0.6417989730834961 | record rc=1 1.2746977806091309
+    rep2: stat rc=1 0.5954082012176514 | record rc=1 1.2654595375061035
+    rep3: stat rc=1 0.6771934032440186 | record rc=1 1.3432376384735107
+[replay] mini__pytest-dev__pytest-10081 seq=6 class=search/read orig=0.01s :: 'cat src/_pytest/unittest.py'
+    rep1: stat rc=0 0.04846930503845215 | record rc=0 1.288144826889038
+    rep2: stat rc=0 0.0491330623626709 | record rc=0 1.2416887283325195
+    rep3: stat rc=0 0.03427934646606445 | record rc=0 1.2411928176879883
+[replay] mini__pytest-dev__pytest-10081 seq=7 class=search/read orig=0.01s :: 'grep -n "_is_skipped" src/_pytest/unittest.py'
+    rep1: stat rc=0 0.03806781768798828 | record rc=0 1.3769421577453613
+    rep2: stat rc=0 0.038753509521484375 | record rc=0 1.2578363418579102
+    rep3: stat rc=0 0.03158736228942871 | record rc=0 1.288827657699585
+[replay] mini__pytest-dev__pytest-10081 seq=8 class=search/read orig=0.01s :: 'tail -5 src/_pytest/unittest.py'
+    rep1: stat rc=0 0.036580562591552734 | record rc=0 1.2476224899291992
+    rep2: stat rc=0 0.03790140151977539 | record rc=0 1.2865614891052246
+    rep3: stat rc=0 0.06154632568359375 | record rc=0 1.329463005065918
+[replay] mini__pytest-dev__pytest-10081 seq=9 class=search/read orig=0.01s :: 'grep -n "class TestCaseFunction" src/_pytest/unittest.py'
+    rep1: stat rc=0 0.2040424346923828 | record rc=0 1.3080863952636719
+    rep2: stat rc=0 0.03294229507446289 | record rc=0 1.2775070667266846
+    rep3: stat rc=0 0.04998326301574707 | record rc=0 1.2701542377471924
+[replay] mini__pytest-dev__pytest-10081 seq=10 class=search/read orig=0.02s :: "sed -n '183,250p' src/_pytest/unittest.py"
+    rep1: stat rc=0 0.03510117530822754 | record rc=0 1.2399773597717285
+    rep2: stat rc=0 0.03654599189758301 | record rc=0 1.2572104930877686
+    rep3: stat rc=0 0.05273032188415527 | record rc=0 1.3196110725402832
+[replay] mini__pytest-dev__pytest-10081 seq=11 class=search/read orig=0.01s :: "sed -n '290,330p' src/_pytest/unittest.py"
+    rep1: stat rc=0 0.03183460235595703 | record rc=0 1.3999168872833252
+    rep2: stat rc=0 0.0526583194732666 | record rc=0 1.302401065826416
+    rep3: stat rc=0 0.0390622615814209 | record rc=0 1.318002700805664
+[replay] mini__pytest-dev__pytest-10081 seq=12 class=search/read orig=0.01s :: "sed -i '319s/not _is_skipped(self.obj)/not (_is_skipped(self.obj) or _"
+    rep1: stat rc=0 0.0611114501953125 | record rc=0 1.2552871704101562
+    rep2: stat rc=0 0.04104757308959961 | record rc=0 1.273498773574829
+    rep3: stat rc=0 0.04790925979614258 | record rc=0 1.2408218383789062
+[replay] mini__pytest-dev__pytest-10081 seq=13 class=search/read orig=0.01s :: "sed -n '315,325p' src/_pytest/unittest.py"
+    rep1: stat rc=0 0.033677101135253906 | record rc=0 1.3123292922973633
+    rep2: stat rc=0 0.055944204330444336 | record rc=0 1.253495216369629
+    rep3: stat rc=0 0.03749680519104004 | record rc=0 1.2860608100891113
+[replay] mini__pytest-dev__pytest-10081 seq=14 class=test run orig=0.64s :: 'echo "c" | python -m pytest test_repro_skip_class.py --pdb'
+    rep1: stat rc=0 0.5976064205169678 | record rc=0 1.2525765895843506
+    rep2: stat rc=0 0.5679962635040283 | record rc=0 1.2765886783599854
+    rep3: stat rc=0 0.5452766418457031 | record rc=0 1.2786924839019775
+[replay] mini__pytest-dev__pytest-10081 seq=15 class=other orig=0.01s :: "cat <<'EOF' > test_method_skip.py\nimport unittest\n\nclass MyTestCase(un"
+    rep1: stat rc=0 0.032068729400634766 | record rc=0 1.262497901916504
+    rep2: stat rc=0 0.03702545166015625 | record rc=0 1.2477922439575195
+    rep3: stat rc=0 0.031018733978271484 | record rc=0 1.240964412689209
+[replay] mini__pytest-dev__pytest-10081 seq=16 class=test run orig=0.58s :: 'echo "c" | python -m pytest test_method_skip.py --pdb'
+    rep1: stat rc=0 0.5815634727478027 | record rc=0 1.2539896965026855
+    rep2: stat rc=0 0.7581899166107178 | record rc=0 1.3420937061309814
+    rep3: stat rc=0 0.5933990478515625 | record rc=0 1.2407824993133545
+[replay] mini__pytest-dev__pytest-10081 seq=17 class=other orig=0.01s :: "cat <<'EOF' > test_normal.py\nimport unittest\n\nclass MyTestCase(unittes"
+    rep1: stat rc=0 0.051961421966552734 | record rc=0 1.254359483718872
+    rep2: stat rc=0 0.046658992767333984 | record rc=0 1.331510305404663
+    rep3: stat rc=0 0.050904273986816406 | record rc=0 1.259772539138794
+[replay] mini__pytest-dev__pytest-10081 seq=18 class=test run orig=0.65s :: 'echo "c" | python -m pytest test_normal.py --pdb -v'
+    rep1: stat rc=0 0.5836174488067627 | record rc=0 1.2458436489105225
+    rep2: stat rc=0 0.7422473430633545 | record rc=0 1.260195255279541
+    rep3: stat rc=0 0.5628283023834229 | record rc=0 1.2591588497161865
+[replay] mini__pytest-dev__pytest-10081 seq=19 class=other orig=0.01s :: 'cat <<\'EOF\' > test_mixed_skip.py\nimport unittest\n\n@unittest.skip("clas'
+    rep1: stat rc=0 0.05450606346130371 | record rc=0 1.2471816539764404
+    rep2: stat rc=0 0.043871164321899414 | record rc=0 1.2444140911102295
+    rep3: stat rc=0 0.04098987579345703 | record rc=0 1.3155889511108398
+[replay] mini__pytest-dev__pytest-10081 seq=20 class=test run orig=0.67s :: 'echo "c" | python -m pytest test_mixed_skip.py --pdb -v'
+    rep1: stat rc=0 0.8020448684692383 | record rc=0 1.287217378616333
+    rep2: stat rc=0 0.5822968482971191 | record rc=0 1.2663922309875488
+    rep3: stat rc=0 0.7709298133850098 | record rc=0 1.287623405456543
+[replay] mini__pytest-dev__pytest-10081 seq=21 class=test run orig=5.38s :: 'python -m pytest testing/test_unittest.py -v --tb=short'
+    rep1: stat rc=0 4.769567012786865 | record rc=0 6.287499189376831
+    rep2: stat rc=0 4.709333658218384 | record rc=0 6.270016193389893
+    rep3: stat rc=0 4.681378602981567 | record rc=0 6.3342320919036865
+[replay] mini__pytest-dev__pytest-10081 seq=22 class=test run orig=4.63s :: 'python -m pytest testing/test_debugging.py -v --tb=short'
+    rep1: stat rc=0 4.224971294403076 | record rc=0 6.285905122756958
+    rep2: stat rc=0 4.8974809646606445 | record rc=0 6.25075364112854
+    rep3: stat rc=0 4.6374804973602295 | record rc=0 5.32371973991394
+[replay] mini__pytest-dev__pytest-10081 seq=23 class=other orig=0.01s :: 'rm test_repro_skip_class.py test_method_skip.py test_normal.py test_mi'
+    rep1: stat rc=0 0.046430349349975586 | record rc=0 1.3512938022613525
+    rep2: stat rc=0 0.048172712326049805 | record rc=0 1.2471365928649902
+    rep3: stat rc=0 0.06001687049865723 | record rc=0 1.3324499130249023
+[replay] mini__pytest-dev__pytest-10081 seq=24 class=git orig=0.02s :: 'echo MICRO_SWE_AGENT_FINAL_OUTPUT && git add -A && git diff --cached'
+    rep1: stat rc=0 0.0476527214050293 | record rc=0 1.268455982208252
+    rep2: stat rc=0 0.06918859481811523 | record rc=0 1.2638583183288574
+    rep3: stat rc=0 0.05536675453186035 | record rc=0 1.286747694015503
+[loop] mini__pytest-dev__pytest-10081 seq=1 :: 'ls -la'
+    loop1: rc=0 1.25s
+    loop2: rc=0 1.33s
+    loop3: rc=0 1.30s
+[loop] mini__pytest-dev__pytest-10081 seq=2 :: 'find src -type f -name "*.py" | head -20'
+    loop1: rc=0 1.30s
+    loop2: rc=0 1.27s
+    loop3: rc=0 1.28s
+[loop] mini__pytest-dev__pytest-10081 seq=6 :: 'cat src/_pytest/unittest.py'
+    loop1: rc=0 1.26s
+    loop2: rc=0 1.28s
+    loop3: rc=0 1.28s
+[loop] mini__pytest-dev__pytest-10081 seq=7 :: 'grep -n "_is_skipped" src/_pytest/unittest.py'
+    loop1: rc=0 1.26s
+    loop2: rc=0 1.27s
+    loop3: rc=0 1.31s
+[loop] mini__pytest-dev__pytest-10081 seq=8 :: 'tail -5 src/_pytest/unittest.py'
+    loop1: rc=0 1.32s
+    loop2: rc=0 1.26s
+    loop3: rc=0 1.30s
+[loop] mini__pytest-dev__pytest-10081 seq=9 :: 'grep -n "class TestCaseFunction" src/_pytest/unittest.py'
+    loop1: rc=0 1.33s
+    loop2: rc=0 1.26s
+    loop3: rc=0 1.25s
+[loop] mini__pytest-dev__pytest-10081 seq=10 :: "sed -n '183,250p' src/_pytest/unittest.py"
+    loop1: rc=0 1.26s
+    loop2: rc=0 1.29s
+    loop3: rc=0 1.27s
+[loop] mini__pytest-dev__pytest-10081 seq=11 :: "sed -n '290,330p' src/_pytest/unittest.py"
+    loop1: rc=0 1.25s
+    loop2: rc=0 1.24s
+    loop3: rc=0 1.28s
+[loop] mini__pytest-dev__pytest-10081 seq=13 :: "sed -n '315,325p' src/_pytest/unittest.py"
+    loop1: rc=0 1.29s
+    loop2: rc=0 1.26s
+    loop3: rc=0 1.34s

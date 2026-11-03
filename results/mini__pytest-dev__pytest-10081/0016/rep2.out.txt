@@ -1,0 +1,9 @@
+============================= test session starts ==============================
+platform linux -- Python 3.11.15, pytest-7.2.0.dev0, pluggy-1.7.0
+rootdir: /home/user/work/pytest-dev__pytest-10081/repo, configfile: pyproject.toml
+plugins: hypothesis-6.170.14
+collected 1 item
+
+test_method_skip.py s                                                    [100%]
+
+============================== 1 skipped in 0.25s ==============================

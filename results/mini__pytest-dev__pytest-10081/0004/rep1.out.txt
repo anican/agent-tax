@@ -1,0 +1,11 @@
+============================= test session starts ==============================
+platform linux -- Python 3.11.15, pytest-7.2.0.dev0, pluggy-1.7.0 -- /home/user/work/mini__pytest-dev__pytest-10081/venv/bin/python
+cachedir: .pytest_cache
+hypothesis profile 'default'
+rootdir: /home/user/work/pytest-dev__pytest-10081/repo, configfile: pyproject.toml
+plugins: hypothesis-6.170.14
+collecting ... collected 1 item
+
+test_repro_skip_class.py::MyTestCase::test_one SKIPPED (hello)           [100%]
+
+============================== 1 skipped in 0.21s ==============================

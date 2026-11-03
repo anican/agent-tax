@@ -88,6 +88,34 @@ def cpu_view(cat, leaf, incl, kth, groups):
     ax.set_title("CPU view: category shares of on-CPU time by command class (mean of 3 replays)")
     ax.legend(bbox_to_anchor=(1.01, 1), loc="upper left", fontsize=8)
     ax.set_ylim(0, 100); fig.tight_layout(); fig.savefig(f"{FIG}/cpu_category_shares.png", dpi=150); plt.close(fig)
+    # by phase (setup vs. episode) and per task (episode commands only)
+    for keys, fname in ((["phase"], "by_phase"), (["task"], "by_task_episode")):
+        src = cat if keys == ["phase"] else cat[cat.phase == "solve"]
+        mm, ss = shares_by(src, keys); mm = mm.fillna(0); ss = ss.reindex(mm.index).fillna(0)
+        cc = [c for c in CATS if c in mm.columns]
+        ll = ["| " + keys[0] + " | " + " | ".join(cc) + " |", "|---" * (len(cc) + 1) + "|"]
+        for idx in mm.index:
+            ll.append(f"| {idx} | " + " | ".join(f"{mm.loc[idx, c]:.1f} ± {ss.loc[idx, c]:.1f}" for c in cc) + " |")
+        open(f"{OUT}/cpu_category_shares_{fname}.md", "w").write("\n".join(ll) + "\n")
+        mm.to_csv(f"{OUT}/cpu_category_shares_{fname}.csv", float_format="%.2f")
+    # episode-only class table (setup commands excluded)
+    ep = cat[cat.phase == "solve"].copy(); ep["all"] = "ALL (episode cmds)"
+    m2, s2 = shares_by(ep, ["cls"]); ma, sa = shares_by(ep, ["all"])
+    m2 = pd.concat([m2.reindex([c for c in CLS_ORDER if c in m2.index]), ma]).fillna(0)
+    s2 = pd.concat([s2.reindex([c for c in CLS_ORDER if c in s2.index]), sa]).fillna(0)
+    cc = [c for c in CATS if c in m2.columns]
+    ll = ["| Class (episode commands only) | " + " | ".join(cc) + " |", "|---" * (len(cc) + 1) + "|"]
+    for idx in m2.index:
+        ll.append(f"| {idx} | " + " | ".join(f"{m2.loc[idx, c]:.1f} ± {s2.loc[idx, c]:.1f}" for c in cc) + " |")
+    open(f"{OUT}/cpu_category_shares_episode_only.md", "w").write("\n".join(ll) + "\n")
+    m2.to_csv(f"{OUT}/cpu_category_shares_episode_only.csv", float_format="%.2f")
+    fig, ax = plt.subplots(figsize=(11, 5.5)); bottom = np.zeros(len(m2))
+    for c in cc:
+        ax.bar(list(m2.index), m2[c].values, bottom=bottom, color=CAT_COLORS[c], label=c, edgecolor="white", linewidth=0.5); bottom += m2[c].values
+    ax.set_ylabel("% of sampled on-CPU time (cpu-clock timer samples)"); ax.set_ylim(0, 100)
+    ax.set_title("CPU view, episode commands only (setup/install excluded), mean of 3 replays")
+    ax.legend(bbox_to_anchor=(1.01, 1), loc="upper left", fontsize=8); fig.tight_layout()
+    fig.savefig(f"{FIG}/cpu_category_shares_episode_only.png", dpi=150); plt.close(fig)
     # sub-categories (all classes pooled)
     sub = cat.groupby(["cat", "sub", "rule"])["n"].sum() / cat["n"].sum() * 100
     sub.sort_values(ascending=False).to_frame("share_pct").to_csv(f"{OUT}/cpu_subcategory_shares.csv", float_format="%.2f")

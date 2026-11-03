@@ -282,3 +282,19 @@ corrections (marked **[correction]**).
   partial rep-3 recording was deleted, and the task was resumed after the
   70 s ext4 quiet period. No completed measurement was discarded or repeated.
 
+## D15. libgomp attribution (found while checking the unclassified bucket)
+
+- After all replays, 5% of test-run samples were `[unknown]` inside
+  `libgomp.so.1` (scikit-learn tests using OpenMP), plus 1.8% in
+  `__sched_yield`. libgomp's exported entry points resolve; its internal
+  functions (barrier waits, spin loops, team management) do not. Since the
+  parallel work itself executes in the calling extension's code (e.g. the
+  Cython `_middle_term_computer` kernels, which resolve and count as core
+  logic), unresolved time *inside* libgomp is thread orchestration
+  (spin-waiting at barriers, handing out work). Rule U0f maps it to
+  *scheduling/context switch*. This is a DSO-level attribution, consistent
+  with D10; it is reported explicitly in the H2 verdict.
+- The one scikit-learn `perf stat`/`time` repetition that the batch
+  interruption had left empty (seq 5, rep 3; D14) was re-measured; the
+  resume check now requires non-empty output files.
+

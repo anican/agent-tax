@@ -1,0 +1,32 @@
+{
+ "task": "mini__pytest-dev__pytest-10081",
+ "seq": 23,
+ "phase": "solve",
+ "cls": "other",
+ "cmd": "rm test_repro_skip_class.py test_method_skip.py test_normal.py test_mixed_skip.py",
+ "orig_rc": 0,
+ "orig_dur_s": 0.007892736,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 0.046430349349975586,
+   "rec_rc": 0,
+   "rec_wall_s": 1.3512938022613525
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 0.048172712326049805,
+   "rec_rc": 0,
+   "rec_wall_s": 1.2471365928649902
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 0.06001687049865723,
+   "rec_rc": 0,
+   "rec_wall_s": 1.3324499130249023
+  }
+ ]
+}

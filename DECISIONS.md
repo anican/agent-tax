@@ -74,3 +74,13 @@ corrections (marked **[correction]**).
   versions that support Python 3.11. SWE-bench's own harness uses other
   Python versions for some of these repos (often 3.9); this is a deviation.
 
+## D4. Pushing is blocked
+
+- `git push -u origin claude/environment-diagnostics-8tfnrb` fails with HTTP 403
+  ("Claude doesn't have GitHub access to anican/agent-tax"); creating the
+  branch through the GitHub API also fails (403 "Resource not accessible by
+  integration"). Read access works. The study continues with **local commits
+  after every major step**; every later step retries the push. If the
+  session container is reclaimed before access is fixed, unpushed results
+  are lost.
+

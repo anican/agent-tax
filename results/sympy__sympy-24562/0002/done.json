@@ -1,0 +1,32 @@
+{
+ "task": "sympy__sympy-24562",
+ "seq": 2,
+ "phase": "setup",
+ "cls": "package install",
+ "cmd": "/usr/bin/python3.11 -m venv venv",
+ "orig_rc": 0,
+ "orig_dur_s": 5.407963904,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 5.562770128250122,
+   "rec_rc": 0,
+   "rec_wall_s": 7.263389587402344
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 5.225394010543823,
+   "rec_rc": 0,
+   "rec_wall_s": 7.251406908035278
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 5.369020462036133,
+   "rec_rc": 0,
+   "rec_wall_s": 6.259838581085205
+  }
+ ]
+}

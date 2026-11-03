@@ -1,0 +1,2 @@
+sympy/core/tests/test_diff.py::test_diff_nth_derivative - Took 10.863 seconds
+ tests finished: 1910 passed, 76 skipped, 24 expected to fail, in 60.02 seconds 

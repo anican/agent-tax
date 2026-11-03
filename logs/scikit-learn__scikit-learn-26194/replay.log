@@ -1,0 +1,5 @@
+[replay] scikit-learn__scikit-learn-26194 seq=1 class=git orig=2.32s :: 'git init -q repo && cd repo && git remote add origin https://github.co'
+    rep1: stat rc=0 2.09s | record rc=0 3.27s
+    rep2: stat rc=0 2.32s | record rc=0 3.50s
+    rep3: stat rc=0 2.29s | record rc=0 3.35s
+[replay] scikit-learn__scikit-learn-26194 seq=2 class=package install orig=4.91s :: '/usr/bin/python3.11 -m venv venv'

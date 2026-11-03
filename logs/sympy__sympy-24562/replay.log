@@ -27,3 +27,10 @@
     rep2: stat rc=0 3.50s | record rc=0 5.27s
     rep3: stat rc=0 3.76s | record rc=0 4.29s
 [replay] sympy__sympy-24562 seq=8 class=test run orig=51.79s :: 'python bin/test sympy/core 2>&1 | tail -2'
+    rep1: stat rc=0 48.45s | record rc=0 55.32s
+    rep2: stat rc=0 61.66s | record rc=0 62.36s
+    rep3: stat rc=0 55.74s | record rc=0 58.34s
+[loop] sympy__sympy-24562 seq=6 :: 'sed -n 324,372p sympy/core/tests/test_numbers.py'
+    loop1: rc=0 1.28s
+    loop2: rc=0 1.36s
+    loop3: rc=0 1.25s

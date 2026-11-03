@@ -17,3 +17,4 @@
 [replay] scikit-learn__scikit-learn-26194 seq=5 class=package install orig=488.08s :: 'python -m pip install --no-build-isolation --no-deps -e . 2>&1 | tail '
     rep1: stat rc=0 513.65s | record rc=0 545.91s
     rep2: stat rc=0 548.32s | record rc=0 580.89s
+[replay] scikit-learn__scikit-learn-26194 seq=5 class=package install orig=488.08s :: 'python -m pip install --no-build-isolation --no-deps -e . 2>&1 | tail '

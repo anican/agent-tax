@@ -30,3 +30,5 @@
     rep2: stat rc=0 0.04100751876831055 | record rc=0 1.29026460647583
     rep3: stat rc=0 0.042711734771728516 | record rc=0 1.2656123638153076
 [replay] scikit-learn__scikit-learn-26194 seq=8 class=test run orig=4.06s :: 'python -m pytest -q sklearn/metrics/tests/test_ranking.py 2>&1 | tail '
+    rep1: stat rc=0 3.4682564735412598 | record rc=0 5.248739242553711
+    rep2: stat rc=0 3.4876668453216553 | record rc=0 4.251427173614502

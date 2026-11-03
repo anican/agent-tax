@@ -1,0 +1,15 @@
+
+    [0m[37m@wraps[39;49;00m(func)[90m[39;49;00m
+    [94mdef[39;49;00m[90m [39;49;00m[92minner[39;49;00m(*args, **kwds):[90m[39;49;00m
+        [94mwith[39;49;00m [96mself[39;49;00m._recreate_cm():[90m[39;49;00m
+>           [94mreturn[39;49;00m func(*args, **kwds)[90m[39;49;00m
+                   ^^^^^^^^^^^^^^^^^^^[90m[39;49;00m
+[1m[31mE           AssertionError: [0m
+[1m[31mE           Arrays are not almost equal to 6 decimals[0m
+[1m[31mE           [0m
+[1m[31mE           x and y +inf location mismatch:[0m
+[1m[31mE            x: array([inf, 1. , 0.7, 0. ])[0m
+[1m[31mE            y: array([2. , 1. , 0.7, 0. ])[0m
+
+[1m[31m/root/.local/share/uv/python/cpython-3.11.15-linux-x86_64-gnu/lib/python3.11/contextlib.py[0m:81: AssertionError
+[31m[31m[1m1 failed[0m, [32m203 passed[0m, [33m3 warnings[0m[31m in 2.15s[0m[0m

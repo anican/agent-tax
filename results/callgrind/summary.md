@@ -68,3 +68,16 @@
 | hashing/crypto | 2.1 | 0.5 | -1.7 |
 | process lifecycle | 0.2 | 1.8 | +1.6 |
 | other user-space | 0.3 | 0.9 | +0.5 |
+
+**sklearn_pytest_ranking** (`scikit-learn__scikit-learn-26194` seq 8, class test run; callgrind 8,183,188,574 Ir, perf 13565 user-space samples over 3 reps + looped profiles if any)
+
+| Category (user-space, leaf-only) | callgrind % of Ir | perf % of user samples | Δ (pp) |
+|---|---|---|---|
+| core logic | 78.1 | 65.7 | -12.4 |
+| allocation | 14.4 | 22.0 | +7.7 |
+| scheduling/context switch | 0.5 | 7.1 | +6.6 |
+| serialization/parsing | 3.7 | 1.5 | -2.2 |
+| memory movement | 1.6 | 1.2 | -0.5 |
+| process lifecycle | 0.7 | 1.0 | +0.3 |
+| other user-space | 0.2 | 0.9 | +0.7 |
+| hashing/crypto | 0.7 | 0.4 | -0.4 |

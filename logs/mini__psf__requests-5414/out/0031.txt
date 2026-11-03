@@ -1,0 +1,51 @@
+    15	
+    16	def request(method, url, **kwargs):
+    17	    """Constructs and sends a :class:`Request <Request>`.
+    18	
+    19	    :param method: method for the new :class:`Request` object: ``GET``, ``OPTIONS``, ``HEAD``, ``POST``, ``PUT``, ``PATCH``, or ``DELETE``.
+    20	    :param url: URL for the new :class:`Request` object.
+    21	    :param params: (optional) Dictionary, list of tuples or bytes to send
+    22	        in the query string for the :class:`Request`.
+    23	    :param data: (optional) Dictionary, list of tuples, bytes, or file-like
+    24	        object to send in the body of the :class:`Request`.
+    25	    :param json: (optional) A JSON serializable Python object to send in the body of the :class:`Request`.
+    26	    :param headers: (optional) Dictionary of HTTP Headers to send with the :class:`Request`.
+    27	    :param cookies: (optional) Dict or CookieJar object to send with the :class:`Request`.
+    28	    :param files: (optional) Dictionary of ``'name': file-like-objects`` (or ``{'name': file-tuple}``) for multipart encoding upload.
+    29	        ``file-tuple`` can be a 2-tuple ``('filename', fileobj)``, 3-tuple ``('filename', fileobj, 'content_type')``
+    30	        or a 4-tuple ``('filename', fileobj, 'content_type', custom_headers)``, where ``'content-type'`` is a string
+    31	        defining the content type of the given file and ``custom_headers`` a dict-like object containing additional headers
+    32	        to add for the file.
+    33	    :param auth: (optional) Auth tuple to enable Basic/Digest/Custom HTTP Auth.
+    34	    :param timeout: (optional) How many seconds to wait for the server to send data
+    35	        before giving up, as a float, or a :ref:`(connect timeout, read
+    36	        timeout) <timeouts>` tuple.
+    37	    :type timeout: float or tuple
+    38	    :param allow_redirects: (optional) Boolean. Enable/disable GET/OPTIONS/POST/PUT/PATCH/DELETE/HEAD redirection. Defaults to ``True``.
+    39	    :type allow_redirects: bool
+    40	    :param proxies: (optional) Dictionary mapping protocol to the URL of the proxy.
+    41	    :param verify: (optional) Either a boolean, in which case it controls whether we verify
+    42	            the server's TLS certificate, or a string, in which case it must be a path
+    43	            to a CA bundle to use. Defaults to ``True``.
+    44	    :param stream: (optional) if ``False``, the response content will be immediately downloaded.
+    45	    :param cert: (optional) if String, path to ssl client cert file (.pem). If Tuple, ('cert', 'key') pair.
+    46	    :return: :class:`Response <Response>` object
+    47	    :rtype: requests.Response
+    48	
+    49	    Usage::
+    50	
+    51	      >>> import requests
+    52	      >>> req = requests.request('GET', 'https://httpbin.org/get')
+    53	      >>> req
+    54	      <Response [200]>
+    55	    """
+    56	
+    57	    # By using the 'with' statement we are sure the session is closed, thus we
+    58	    # avoid leaving sockets open which can trigger a ResourceWarning in some
+    59	    # cases, and look like a memory leak in others.
+    60	    with sessions.Session() as session:
+    61	        return session.request(method=method, url=url, **kwargs)
+    62	
+    63	
+    64	def get(url, params=None, **kwargs):
+    65	    r"""Sends a GET request.

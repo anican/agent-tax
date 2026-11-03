@@ -1,0 +1,4 @@
+72:        skipped = _is_skipped(cls)
+149:        if _is_skipped(self):
+319:            if self.config.getoption("usepdb") and not _is_skipped(self.obj):
+412:def _is_skipped(obj) -> bool:

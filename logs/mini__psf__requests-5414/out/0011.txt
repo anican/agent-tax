@@ -1,0 +1,2 @@
+20:from urllib3.util import parse_url
+384:            scheme, auth, host, port, path, query, fragment = parse_url(url)

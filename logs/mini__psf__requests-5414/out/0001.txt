@@ -1,0 +1,25 @@
+total 156
+drwxr-xr-x 10 root root  4096 Nov  3 09:18 .
+drwxr-xr-x  5 root root  4096 Nov  3 12:01 ..
+-rw-r--r--  1 root root    32 Nov  3 09:17 .coveragerc
+drwxr-xr-x  8 root root  4096 Nov  3 12:05 .git
+drwxr-xr-x  4 root root  4096 Nov  3 09:17 .github
+-rw-r--r--  1 root root   321 Nov  3 09:17 .gitignore
+drwxr-xr-x  3 root root  4096 Nov  3 09:18 .pytest_cache
+-rw-r--r--  1 root root  7967 Nov  3 09:17 AUTHORS.rst
+-rw-r--r--  1 root root 52203 Nov  3 09:17 HISTORY.md
+-rw-r--r--  1 root root 10142 Nov  3 09:17 LICENSE
+-rw-r--r--  1 root root   105 Nov  3 09:17 MANIFEST.in
+-rw-r--r--  1 root root   819 Nov  3 09:17 Makefile
+-rw-r--r--  1 root root    38 Nov  3 09:17 NOTICE
+-rw-r--r--  1 root root  2924 Nov  3 09:17 README.md
+drwxr-xr-x  8 root root  4096 Nov  3 09:17 docs
+drwxr-xr-x  2 root root  4096 Nov  3 09:17 ext
+-rw-r--r--  1 root root   102 Nov  3 09:17 pytest.ini
+drwxr-xr-x  3 root root  4096 Nov  3 12:05 requests
+drwxr-xr-x  2 root root  4096 Nov  3 09:29 requests.egg-info
+-rw-r--r--  1 root root   119 Nov  3 09:17 requirements-dev.txt
+-rw-r--r--  1 root root    63 Nov  3 09:17 setup.cfg
+-rwxr-xr-x  1 root root  3569 Nov  3 09:17 setup.py
+drwxr-xr-x  4 root root  4096 Nov  3 12:05 tests
+-rw-r--r--  1 root root   269 Nov  3 09:17 tox.ini

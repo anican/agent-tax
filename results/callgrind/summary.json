@@ -278,5 +278,55 @@
     "perf_pct": 0.0
    }
   }
+ },
+ "sklearn_pytest_ranking": {
+  "task": "scikit-learn__scikit-learn-26194",
+  "seq": 8,
+  "cmd": "python -m pytest -q sklearn/metrics/tests/test_ranking.py 2>&1 | tail -15",
+  "cls": "test run",
+  "callgrind_Ir": 8183188574,
+  "perf_user_samples": 13565,
+  "shares": {
+   "core logic": {
+    "callgrind_pct": 78.09131058403983,
+    "perf_pct": 65.73534832288979
+   },
+   "allocation": {
+    "callgrind_pct": 14.351009504183521,
+    "perf_pct": 22.034647991153705
+   },
+   "scheduling/context switch": {
+    "callgrind_pct": 0.46312636764125,
+    "perf_pct": 7.0696645779579805
+   },
+   "serialization/parsing": {
+    "callgrind_pct": 3.7215623622264578,
+    "perf_pct": 1.5407298193881311
+   },
+   "memory movement": {
+    "callgrind_pct": 1.6234909143131278,
+    "perf_pct": 1.1573903427939551
+   },
+   "process lifecycle": {
+    "callgrind_pct": 0.6879391509913896,
+    "perf_pct": 1.0173239955768523
+   },
+   "other user-space": {
+    "callgrind_pct": 0.2367675121353008,
+    "perf_pct": 0.9141172134168817
+   },
+   "hashing/crypto": {
+    "callgrind_pct": 0.7232751080434774,
+    "perf_pct": 0.36859565057132326
+   },
+   "unclassified": {
+    "callgrind_pct": 0.10151217859494484,
+    "perf_pct": 0.16218208625138222
+   },
+   "compression": {
+    "callgrind_pct": 6.317830700402481e-06,
+    "perf_pct": 0.0
+   }
+  }
  }
 }

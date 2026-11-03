@@ -20,3 +20,19 @@
     rep3: stat rc=1 0.99s | record rc=1 1.24s
 [replay] sympy__sympy-24066 seq=6 class=other orig=0.89s :: 'python /tmp/repro_24066.py'
     rep1: stat rc=0 0.84s | record rc=0 2.29s
+    rep2: stat rc=0 0.85s | record rc=0 2.39s
+    rep3: stat rc=0 0.74s | record rc=0 1.28s
+[replay] sympy__sympy-24066 seq=7 class=search/read orig=0.02s :: 'grep -n "_collect_factor_and_dimension\\|^def test_issue_2" sympy/physi'
+    rep1: stat rc=0 0.06s | record rc=0 1.35s
+    rep2: stat rc=0 0.05s | record rc=0 1.25s
+    rep3: stat rc=0 0.05s | record rc=0 1.32s
+[replay] sympy__sympy-24066 seq=8 class=search/read orig=0.01s :: 'sed -n 528,545p sympy/physics/units/tests/test_quantities.py; sed -n 1'
+    rep1: stat rc=0 0.05s | record rc=0 1.27s
+    rep2: stat rc=0 0.05s | record rc=0 1.29s
+    rep3: stat rc=0 0.04s | record rc=0 1.35s
+[replay] sympy__sympy-24066 seq=9 class=test run orig=3.94s :: 'python -m pytest -q sympy/physics/units 2>&1 | tail -5'
+    rep1: stat rc=0 2.39s | record rc=0 3.31s
+    rep2: stat rc=0 2.78s | record rc=0 3.42s
+    rep3: stat rc=0 2.14s | record rc=0 3.30s
+[replay] sympy__sympy-24066 seq=10 class=test run orig=2.28s :: 'python bin/test sympy/physics/units 2>&1 | tail -6'
+    rep1: stat rc=0 2.33s | record rc=0 4.25s

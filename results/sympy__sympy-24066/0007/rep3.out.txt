@@ -1,0 +1,44 @@
+189:        SI._collect_factor_and_dimension(expr)
+341:    assert (3000, Dimension(1)) == SI._collect_factor_and_dimension(3000)
+342:    assert (1001, length) == SI._collect_factor_and_dimension(meter + km)
+343:    assert (2, length/time) == SI._collect_factor_and_dimension(
+347:    assert (x + y/100, length) == SI._collect_factor_and_dimension(
+355:    assert (1, volume/amount_of_substance) == SI._collect_factor_and_dimension(
+366:        SI._collect_factor_and_dimension(expr)
+370:        SI._collect_factor_and_dimension(expr)
+374:        SI._collect_factor_and_dimension(expr)
+377:        assert (3000, Dimension(1)) == Quantity._collect_factor_and_dimension(3000)
+387:        assert (0, length/time) == Quantity._collect_factor_and_dimension(expr)
+405:    assert SI._collect_factor_and_dimension(dl_dt) ==\
+406:        SI._collect_factor_and_dimension(l / t / t1) ==\
+507:def test_issue_22164():
+520:    SI._collect_factor_and_dimension(expr)
+523:def test_issue_22819():
+531:def test_issue_20288():
+541:    assert SI._collect_factor_and_dimension(expr) == (1 + E, Dimension(1))
+572 sympy/physics/units/tests/test_quantities.py
+    assert not second.is_prefixed
+    assert not volt.is_prefixed
+    assert not ohm.is_prefixed
+    assert centimeter.is_prefixed
+    assert kilometer.is_prefixed
+    assert kilogram.is_prefixed
+    assert pebibyte.is_prefixed
+
+def test_physics_constant():
+    from sympy.physics.units import definitions
+
+    for name in dir(definitions):
+        quantity = getattr(definitions, name)
+        if not isinstance(quantity, Quantity):
+            continue
+        if name.endswith('_constant'):
+            assert isinstance(quantity, PhysicalConstant), f"{quantity} must be PhysicalConstant, but is {type(quantity)}"
+            assert quantity.is_physical_constant, f"{name} is not marked as physics constant when it should be"
+
+    for const in [gravitational_constant, molar_gas_constant, vacuum_permittivity, speed_of_light, elementary_charge]:
+        assert isinstance(const, PhysicalConstant), f"{const} must be PhysicalConstant, but is {type(const)}"
+        assert const.is_physical_constant, f"{const} is not marked as physics constant when it should be"
+
+    assert not meter.is_physical_constant
+    assert not joule.is_physical_constant

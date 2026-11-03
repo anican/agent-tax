@@ -1,1 +1,65 @@
 [callgrind] grep_sed: 'grep -n "def reduce" -A 40 django/db/migrations/operations/fields.py | sed -n "1'
+   valgrind rc=0
+{
+"process lifecycle": {
+"callgrind_pct": 33.220139923906096,
+"perf_pct": 80.76923076923077
+},
+"other user-space": {
+"callgrind_pct": 46.24137378785758,
+"perf_pct": 7.6923076923076925
+},
+"allocation": {
+"callgrind_pct": 10.209568440507812,
+"perf_pct": 7.6923076923076925
+},
+"memory movement": {
+"callgrind_pct": 2.683486006887984,
+"perf_pct": 3.8461538461538463
+},
+"core logic": {
+"callgrind_pct": 6.2940941377106325,
+"perf_pct": 0.0
+},
+"unclassified": {
+"callgrind_pct": 1.307274225173895,
+"perf_pct": 0.0
+},
+"scheduling/context switch": {
+"callgrind_pct": 0.04406347795599712,
+"perf_pct": 0.0
+}
+}
+[callgrind] git_diff_status: 'git diff sympy/physics/units/unitsystem.py; git status --short'
+   valgrind rc=0
+{
+"core logic": {
+"callgrind_pct": 67.9137918350302,
+"perf_pct": 26.829268292682926
+},
+"process lifecycle": {
+"callgrind_pct": 5.986466513929357,
+"perf_pct": 43.90243902439025
+},
+"other user-space": {
+"callgrind_pct": 12.957511187672603,
+"perf_pct": 26.829268292682926
+},
+"allocation": {
+"callgrind_pct": 7.971542142550078,
+"perf_pct": 2.4390243902439024
+},
+"memory movement": {
+"callgrind_pct": 2.2529085952135177,
+"perf_pct": 0.0
+},
+"compression": {
+"callgrind_pct": 1.8978688399454398,
+"perf_pct": 0.0
+},
+"unclassified": {
+"callgrind_pct": 0.9804236271727016,
+"perf_pct": 0.0
+},
+"scheduling/contex
+[callgrind] flask_pytest_blueprints: 'python -m pytest -q tests/test_blueprints.py 2>&1 | tail -3'

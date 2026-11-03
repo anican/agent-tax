@@ -1,0 +1,7 @@
+[replay] psf__requests-5414 seq=1 class=git orig=0.92s :: 'git init -q repo && cd repo && git remote add origin https://github.co'
+    rep1: stat rc=0 0.85s | record rc=0 1.33s
+    rep2: stat rc=0 1.21s | record rc=0 2.33s
+    rep3: stat rc=0 0.95s | record rc=0 2.41s
+[replay] psf__requests-5414 seq=2 class=package install orig=5.63s :: '/usr/bin/python3.11 -m venv venv'
+    rep1: stat rc=0 5.89s | record rc=0 7.27s
+    rep2: stat rc=0 5.11s | record rc=0 6.26s

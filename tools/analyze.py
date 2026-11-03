@@ -227,10 +227,17 @@ def time_view():
         for c in cmds: r[f"tool:{classify(c['cmd'])}"] += c["dur_s"]
         r["tool_total_s"] = sum(c["dur_s"] for c in cmds)
         r["model_loop_s"] = r["episode_s"] - r["tool_total_s"] - r["snapshot_s"]
+        # agent actions: a command together with its own post-command snapshot, or an
+        # edit checkpoint (one extra tool call per edit). Gaps are measured between actions.
+        after = {s["reason"].split(":")[1]: s for s in snaps if s["reason"].startswith("after_cmd:")}
+        actions = [(c["start_ns"], after[str(c["seq"])]["end_ns"] if str(c["seq"]) in after else c["end_ns"]) for c in cmds]
+        actions += [(s["start_ns"], s["end_ns"]) for s in snaps if s["reason"] == "edit"]
         gaps = []; prev_end = t0
-        for e in sorted(cmds + snaps, key=lambda x: x["start_ns"]):
-            gaps.append((e["start_ns"] - prev_end) / 1e9); prev_end = max(prev_end, e["end_ns"])
+        for a0, a1 in sorted(actions):
+            gaps.append((a0 - prev_end) / 1e9); prev_end = max(prev_end, a1)
         gaps.append((t1 - prev_end) / 1e9)
+        r["n_gaps"] = len(gaps)
+        r["mean_gap_s"] = float(np.mean(gaps))
         r["median_gap_s"] = float(np.median(gaps)); r["max_gap_s"] = float(np.max(gaps))
         ev = json.load(open(f"{AT}/logs/{task}/eval.json")) if os.path.exists(f"{AT}/logs/{task}/eval.json") else {}
         r["resolved"] = ev.get("result", "unknown")

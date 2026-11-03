@@ -34,3 +34,19 @@
     rep1: stat rc=0 11.75s | record rc=0 13.50s
     rep2: stat rc=0 9.94s | record rc=0 13.30s
     rep3: stat rc=0 11.43s | record rc=0 13.28s
+[replay] django__django-16595 seq=1 class=git orig=3.31s :: 'git init -q repo && cd repo && git remote add origin https://github.co'
+    rep1: stat rc=0 5.87s | record rc=0 7.36s
+    rep2: stat rc=0 3.10s | record rc=0 4.38s
+    rep3: stat rc=0 3.40s | record rc=0 4.51s
+[replay] django__django-16595 seq=2 class=package install orig=6.73s :: '/usr/bin/python3.11 -m venv venv'
+    rep1: stat rc=0 4.98s | record rc=0 6.24s
+    rep2: stat rc=0 4.86s | record rc=0 6.28s
+    rep3: stat rc=0 4.80s | record rc=0 6.24s
+[replay] django__django-16595 seq=3 class=package install orig=47.76s :: 'python -m pip install -e . && python -m pip install -r tests/requireme'
+    rep1: stat rc=0 27.67s | record rc=0 29.30s
+    rep2: stat rc=0 27.36s | record rc=0 33.34s
+    rep3: stat rc=0 28.71s | record rc=0 34.28s
+[replay] django__django-16595 seq=1 class=git orig=3.31s :: 'git init -q repo && cd repo && git remote add origin https://github.co'
+    rep1: stat rc=0 4.07s | record rc=0 5.29s
+    rep2: stat rc=0 2.99s | record rc=0 3.44s
+    rep3: stat rc=0 2.50s | record rc=0 3.27s

@@ -1,29 +1,30 @@
 cat,sub,rule,share_pct
-core logic,python interpreter / extensions,U11,24.37
-allocation,malloc / pymalloc / GC,U2,16.97
-filesystem metadata,path lookup / stat / open / readdir,K11,12.70
-interpreter startup/imports,import machinery & module execution,U10,11.98
-unclassified,unresolved symbol,U0,8.54
-serialization/parsing,python source compile / marshal (not under import),U6b,5.38
-other user-space,shell / glue / misc libc,U14,4.86
-memory movement,kernel copy/zero,K1,2.50
-process lifecycle,page fault handling,K8,2.43
-memory movement,libc mem*,U1,1.62
-process lifecycle,python interpreter teardown,U8,1.47
-interpreter startup/imports,source compile / unmarshal (under import),U6a,1.24
-other kernel,other kernel,K12,1.22
-compression,zlib/lzma/bz2/zstd,U3,0.86
-allocation,kernel page/slab alloc,K2,0.73
-hashing/crypto,sha/md5/siphash,U4,0.63
-process lifecycle,dynamic linking / libc start & exit,U7,0.59
-core logic,cli tool (stripped binary),U0b,0.51
-process lifecycle,exec/fork/exit/wait syscalls,K7,0.47
-scheduling/context switch,locks / GIL / sleeps,U9,0.32
-allocation,mmap/brk/madvise (heap management),K10,0.18
-core logic,cli tool (git/grep/sed/...),U13,0.14
-virtualization-related,paravirt / KVM / virtio,K5,0.11
+core logic,python interpreter / extensions,U11,27.38
+allocation,malloc / pymalloc / GC,U2,20.10
+interpreter startup/imports,import machinery & module execution,U10,14.47
+serialization/parsing,python source compile / marshal (not under import),U6b,7.70
+other user-space,shell / glue / misc libc,U14,5.56
+filesystem metadata,path lookup / stat / open / readdir,K11,4.65
+memory movement,kernel copy/zero,K1,3.50
+interpreter startup/imports,source compile / unmarshal (under import),U6a,3.41
+process lifecycle,page fault handling,K8,2.09
+process lifecycle,python interpreter teardown,U8,1.75
+memory movement,libc mem*,U1,1.73
+other kernel,other kernel,K12,1.39
+compression,zlib/lzma/bz2/zstd,U3,1.09
+hashing/crypto,sha/md5/siphash,U4,0.87
+allocation,kernel page/slab alloc,K2,0.75
+process lifecycle,dynamic linking / libc start & exit,U7,0.66
+core logic,cli tool (stripped binary),U0b,0.58
+compression,zlib/lzma/bz2/zstd (stripped library),U0d,0.56
+process lifecycle,exec/fork/exit/wait syscalls,K7,0.53
+scheduling/context switch,locks / GIL / sleeps,U9,0.35
+allocation,mmap/brk/madvise (heap management),K10,0.20
+unclassified,unresolved symbol,U0,0.18
+core logic,cli tool (git/grep/sed/...),U13,0.16
 serialization/parsing,json/pickle/xml/struct,U5,0.08
-process lifecycle,mmap/mprotect for dynamic loading,K9,0.06
-scheduling/context switch,scheduler / futex,K6,0.06
+virtualization-related,paravirt / KVM / virtio,K5,0.08
+scheduling/context switch,scheduler / futex,K6,0.07
+process lifecycle,mmap/mprotect for dynamic loading,K9,0.07
 other user-space,shell / glue (stripped binary),U0a,0.01
 hashing/crypto,kernel crc/hash,K3,0.00

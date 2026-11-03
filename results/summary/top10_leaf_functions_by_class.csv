@@ -1,14 +1,14 @@
 cls,sym,dso,cat,share_pct
-git,lookup_bh_lru,[kernel.kallsyms],filesystem metadata,15.25
-git,recently_deleted,[kernel.kallsyms],filesystem metadata,14.45
-git,[unknown],git,core logic,7.99
-git,[unknown],libz.so.1.3,unclassified,7.35
-git,__brelse,[kernel.kallsyms],filesystem metadata,5.36
-git,ext4_get_group_desc,[kernel.kallsyms],filesystem metadata,4.09
-git,__find_get_block_slow,[kernel.kallsyms],filesystem metadata,2.31
-git,filemap_get_entry,[kernel.kallsyms],process lifecycle,2.30
-git,folio_mark_accessed,[kernel.kallsyms],filesystem metadata,2.15
-git,find_get_block_common,[kernel.kallsyms],filesystem metadata,2.07
+git,[unknown],git,core logic,14.33
+git,[unknown],libz.so.1.3,compression,14.13
+git,lookup_bh_lru,[kernel.kallsyms],filesystem metadata,6.81
+git,recently_deleted,[kernel.kallsyms],filesystem metadata,5.90
+git,memset_orig,[kernel.kallsyms],memory movement,2.72
+git,_raw_spin_unlock_irqrestore,[kernel.kallsyms],other kernel,2.70
+git,__brelse,[kernel.kallsyms],filesystem metadata,2.28
+git,ext4_get_group_desc,[kernel.kallsyms],filesystem metadata,1.95
+git,inflate,libz.so.1.3,compression,1.85
+git,adler32_z,libz.so.1.3,compression,1.65
 other,_PyEval_EvalFrameDefault,python3.11,interpreter startup/imports,17.80
 other,gc_collect_main,python3.11,allocation,11.65
 other,visit_decref,python3.11,allocation,4.59
@@ -19,16 +19,16 @@ other,visit_reachable,python3.11,allocation,2.88
 other,type_new,python3.11,interpreter startup/imports,2.61
 other,r_object,python3.11,interpreter startup/imports,2.16
 other,_PyObject_Free,python3.11,allocation,1.73
-package install,[unknown],python3.11,unclassified,14.88
-package install,_PyEval_EvalFrameDefault,python3.11,core logic,8.12
-package install,recently_deleted,[kernel.kallsyms],filesystem metadata,4.94
-package install,gc_collect_main,python3.11,allocation,4.27
-package install,_PyEval_EvalFrameDefault,python3.11,interpreter startup/imports,2.58
-package install,lookup_bh_lru,[kernel.kallsyms],filesystem metadata,2.43
-package install,rep_movs_alternative,[kernel.kallsyms],memory movement,2.35
-package install,_PyObject_Malloc,python3.11,allocation,1.84
-package install,visit_decref,python3.11,allocation,1.58
-package install,__memmove_evex_unaligned_erms,libc.so.6,memory movement,1.38
+package install,_PyEval_EvalFrameDefault,python3.11,core logic,9.20
+package install,gc_collect_main,python3.11,allocation,5.80
+package install,_PyEval_EvalFrameDefault,python3.11,interpreter startup/imports,3.12
+package install,rep_movs_alternative,[kernel.kallsyms],memory movement,3.02
+package install,_PyObject_Malloc,python3.11,allocation,2.78
+package install,visit_decref,python3.11,allocation,2.05
+package install,clear_page_erms,[kernel.kallsyms],memory movement,1.92
+package install,_PyObject_Free,python3.11,allocation,1.92
+package install,assemble,python3.11,serialization/parsing,1.67
+package install,inflate_fast,python3.11,compression,1.62
 search/read,intel_check_word.constprop.0,ld-linux-x86-64.so.2,process lifecycle,13.77
 search/read,handle_intel.constprop.0,ld-linux-x86-64.so.2,process lifecycle,4.84
 search/read,next_uptodate_folio,[kernel.kallsyms],process lifecycle,2.76
@@ -39,13 +39,13 @@ search/read,get_common_cache_info.constprop.0,ld-linux-x86-64.so.2,process lifec
 search/read,_raw_spin_unlock_irqrestore,[kernel.kallsyms],process lifecycle,2.24
 search/read,zap_present_ptes.constprop.0,[kernel.kallsyms],process lifecycle,2.07
 search/read,get_common_indices.constprop.0,ld-linux-x86-64.so.2,process lifecycle,2.03
-test run,_PyEval_EvalFrameDefault,python3.11,core logic,13.32
-test run,gc_collect_main,python3.11,allocation,7.23
+test run,_PyEval_EvalFrameDefault,python3.11,core logic,13.19
+test run,gc_collect_main,python3.11,allocation,7.26
 test run,_PyEval_EvalFrameDefault,python3.11,interpreter startup/imports,6.70
-test run,visit_decref,python3.11,allocation,3.00
-test run,_PyObject_Malloc,python3.11,allocation,2.81
-test run,visit_reachable,python3.11,allocation,2.28
+test run,visit_decref,python3.11,allocation,3.01
+test run,_PyObject_Malloc,python3.11,allocation,2.80
+test run,visit_reachable,python3.11,allocation,2.30
 test run,PyObject_GenericGetAttr,python3.11,core logic,1.75
-test run,PyUnicode_InternInPlace,python3.11,interpreter startup/imports,1.73
-test run,_PyObject_Free,python3.11,allocation,1.70
-test run,type_new,python3.11,interpreter startup/imports,1.60
+test run,PyUnicode_InternInPlace,python3.11,interpreter startup/imports,1.74
+test run,_PyObject_Free,python3.11,allocation,1.71
+test run,type_new,python3.11,interpreter startup/imports,1.59

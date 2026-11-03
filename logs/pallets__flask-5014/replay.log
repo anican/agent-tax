@@ -59,3 +59,6 @@
     rep2: stat rc=0 0.82s | record rc=0 1.25s
     rep3: stat rc=0 0.64s | record rc=0 1.39s
 [replay] pallets__flask-5014 seq=8 class=package install orig=21.00s :: 'python -m pip install -q "pytest<8" && python -m pytest -q tests/test_'
+    rep1: stat rc=0 2.31s | record rc=0 3.26s
+    rep2: stat rc=0 2.32s | record rc=0 3.30s
+    rep3: stat rc=0 2.69s | record rc=0 3.34s

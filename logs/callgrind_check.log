@@ -122,3 +122,4 @@
 "callgrind_pct": 0.042235792872814225,
 "perf_pct"
 [callgrind] sympy_pytest_quantities: 'python -m pytest -q sympy/physics/units/tests/test_quantities.py 2>&1 | tail -5'
+   valgrind rc=0

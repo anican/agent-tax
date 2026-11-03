@@ -104,15 +104,16 @@ def run_stat(cmd, cwd, env, d, rep):
            f"timeout -s KILL {TIMEOUT} bash -c {sq(cmd)} > {d}/rep{rep}.out.txt 2>&1", cwd=cwd, env=env)
     return p.returncode, time.time() - t0
 
-def run_record(cmd, cwd, env, d, rep):
-    data = f"{d}/rep{rep}.perf.data"; pidf = f"{d}/rep{rep}.root.pid"
+def run_record(cmd, cwd, env, d, rep, tag=None):
+    tag = tag or f"rep{rep}"
+    data = f"{d}/{tag}.perf.data"; pidf = f"{d}/{tag}.root.pid"
     t0 = time.time()
     p = sh(f"{PERF} record -z -q -o {data} -e cpu-clock -F 999 -a -g -- {AT}/tools/replay_exec.sh {pidf} {sq(cmd)} "
            f"> /dev/null 2>&1", cwd=cwd, env=env)
     wall = time.time() - t0
     root = open(pidf).read().strip()
     q = sh(f"{PERF} script -i {data} -F comm,pid,tid,cpu,time,ip,sym,dso --show-task-events 2>/dev/null | "
-           f"{ANA_PY} {AT}/tools/perfparse.py {root} {d}/rep{rep}.profile.json")
+           f"{ANA_PY} {AT}/tools/perfparse.py {root} {d}/{tag}.profile.json")
     os.remove(pidf)
     return p.returncode, wall
 

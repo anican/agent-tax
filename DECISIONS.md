@@ -157,3 +157,43 @@ corrections (marked **[correction]**).
   all results were deleted, and the replays were restarted with the fixed
   parser. From then on perf.data is kept so this cannot silently recur.
 
+## D8. Looped profiles for very short read-only commands
+
+- A ~10 ms `grep`/`sed`/`git diff` yields ~10 samples per replay at 999 Hz.
+  For solve-phase search/read and git commands that took < 1 s live and do
+  not modify state, 3 extra profiles of 30 back-to-back executions
+  (`for i in $(seq 30); do bash -c '<cmd>'; done`) are recorded
+  (`tools/replay_loop.py`). In the analysis every sample of such a command
+  is weighted by 1/31 (its 1 normal replay + 30 looped executions), so the
+  command still counts as **one execution** in time-weighted aggregates but
+  its category shares have much lower variance. Raw sample counts are
+  reported alongside.
+
+## D9. Taxonomy choices (details in TAXONOMY.md)
+
+- Attribution is **leaf-first**: the sampled leaf function decides the
+  category when it is unambiguous (memcpy → memory movement, malloc →
+  allocation, ...). Stack context is used only for generic leaves: an
+  interpreter leaf under an import frame → interpreter startup/imports; a
+  kernel leaf under an execve/clone/exit syscall or a page fault →
+  process lifecycle; under stat/open/getdents → filesystem metadata; under
+  futex → scheduling.
+- Consequently, `clear_page_erms` reached from a page fault counts as
+  *memory movement* (it is a memset of a fresh page) and page-allocator
+  leaves as *allocation*; the page-fault total regardless of leaf is
+  reported separately as an *inclusive* metric, and H4 is judged on both.
+- CPython's cyclic GC is counted under *allocation* (memory management).
+- CPython source compilation and `.pyc` unmarshalling count as
+  *interpreter startup/imports* when they happen under an import, and as
+  *serialization/parsing* otherwise.
+- Interpreter teardown (`Py_FinalizeEx` on the stack) counts as *process
+  lifecycle* (process exit).
+- *Core logic* is split into python (interpreter + extension modules
+  executing the program), compiler, and CLI tool (git/grep/sed's own code
+  and the libc string/regex routines they call). pip's resolver is Python
+  code and so counts as core/python inside the package-install class.
+- Two buckets were added beyond the requested list: **other user-space**
+  (identified code outside the taxonomy: the bash wrapper, the vDSO, misc
+  libc) and **other kernel** was split by syscall in an appendix table.
+  **unclassified** holds samples whose leaf symbol did not resolve.
+

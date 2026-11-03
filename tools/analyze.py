@@ -24,22 +24,26 @@ def load_profiles():
     cache = {}
     for done in sorted(glob.glob(f"{AT}/results/*/*/done.json")):
         meta = json.load(open(done)); d = os.path.dirname(done)
-        for r in meta["reps"]:
-            pf = f"{d}/rep{r['rep']}.profile.json"
+        for r, pf in [(r, f"{d}/{t}{r['rep']}.profile.json") for r in meta["reps"] for t in ("rep", "loop")]:
             if not os.path.exists(pf): continue
             prof = json.load(open(pf))
-            base = dict(task=meta["task"], seq=meta["seq"], phase=meta["phase"], cls=meta["cls"], rep=r["rep"])
+            # commands with looped profiles: weight every sample by 1/(1+ITER) so the
+            # command still counts as ONE execution (rep + ITER loop executions averaged)
+            has_loop = os.path.exists(f"{d}/loop{r['rep']}.profile.json")
+            w = 1.0 / (1 + meta.get("loop_iterations", 30)) if has_loop else 1.0
+            base = dict(task=meta["task"], seq=meta["seq"], phase=meta["phase"], cls=meta["cls"], rep=r["rep"],
+                        src="loop" if "/loop" in pf else "rep")
             groups_rows.append({**base, **{f"g_{k}": v for k, v in prof["groups"].items()}})
             for g, comm, sym, dso, sc, ctx, n in prof["samples"]:
                 key = (g, comm, sym, dso, sc, ctx)
                 if key not in cache: cache[key] = categorize(*key)
                 cat, sub, rid = cache[key]
                 if g == "cmd":
-                    rows.append({**base, "cat": cat, "sub": sub, "rule": rid, "n": n})
-                    leaf_rows.append({**base, "sym": sym, "dso": os.path.basename(dso), "cat": cat, "n": n})
+                    rows.append({**base, "cat": cat, "sub": sub, "rule": rid, "n": n * w, "raw": n})
+                    leaf_rows.append({**base, "sym": sym, "dso": os.path.basename(dso), "cat": cat, "n": n * w})
                     for f in inclusive_flags(sym, dso, sc, ctx):
-                        incl_rows.append({**base, "flag": f, "n": n})
-                    if sc: incl_rows.append({**base, "flag": f"syscall:{sc}", "n": n})
+                        incl_rows.append({**base, "flag": f, "n": n * w})
+                    if sc: incl_rows.append({**base, "flag": f"syscall:{sc}", "n": n * w})
                 else:
                     kth_rows.append({**base, "comm": re.sub(r"[/:]\d+.*", "", comm), "cat": cat, "sym": sym, "n": n})
     return (pd.DataFrame(rows), pd.DataFrame(leaf_rows), pd.DataFrame(incl_rows),
@@ -57,15 +61,15 @@ def cpu_view(cat, leaf, incl, kth, groups):
     m_cls, s_cls = shares_by(cat, ["cls"]); m_all, s_all = shares_by(cat, ["all"])
     m = pd.concat([m_cls.reindex([c for c in CLS_ORDER if c in m_cls.index]), m_all]).fillna(0)
     s = pd.concat([s_cls.reindex([c for c in CLS_ORDER if c in s_cls.index]), s_all]).fillna(0)
-    samples = pd.concat([cat.groupby(["cls", "rep"])["n"].sum().groupby("cls").mean(),
-                         pd.Series({"ALL": cat.groupby("rep")["n"].sum().mean()})])
+    samples = pd.concat([cat.groupby(["cls", "rep"])["raw"].sum().groupby("cls").mean(),
+                         pd.Series({"ALL": cat.groupby("rep")["raw"].sum().mean()})])
     ncmd = pd.concat([cat.groupby("cls")[["task", "seq"]].apply(lambda x: len(x.drop_duplicates())),
                       pd.Series({"ALL": len(cat[["task", "seq"]].drop_duplicates())})])
     m.to_csv(f"{OUT}/cpu_category_shares_mean.csv", float_format="%.2f")
     s.to_csv(f"{OUT}/cpu_category_shares_std.csv", float_format="%.2f")
     # markdown table: mean ± std
     cols = [c for c in CATS if c in m.columns]
-    lines = ["| Class | #cmds | samples/rep | " + " | ".join(cols) + " |", "|---" * (len(cols) + 3) + "|"]
+    lines = ["| Class | #cmds | raw samples/rep | " + " | ".join(cols) + " |", "|---" * (len(cols) + 3) + "|"]
     for idx in m.index:
         lines.append(f"| {idx} | {ncmd.get(idx, 0)} | {samples.get(idx, 0):.0f} | " +
                      " | ".join(f"{m.loc[idx, c]:.1f} ± {s.loc[idx, c]:.1f}" for c in cols) + " |")

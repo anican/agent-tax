@@ -3,3 +3,11 @@
     rep2: stat rc=0 0.87s | record rc=0 1.40s
     rep3: stat rc=0 0.82s | record rc=0 1.41s
 [replay] pallets__flask-5014 seq=2 class=package install orig=4.91s :: '/usr/bin/python3.11 -m venv venv'
+    rep1: stat rc=0 6.65s | record rc=0 8.37s
+    rep2: stat rc=0 7.07s | record rc=0 8.29s
+    rep3: stat rc=0 7.51s | record rc=0 9.34s
+[replay] pallets__flask-5014 seq=3 class=package install orig=8.82s :: 'python -m pip install -e . "werkzeug==2.3.7" pytest'
+    rep1: stat rc=0 9.81s | record rc=0 11.30s
+    rep2: stat rc=0 9.57s | record rc=0 10.37s
+    rep3: stat rc=0 8.50s | record rc=0 10.37s
+[replay] pallets__flask-5014 seq=4 class=search/read orig=0.01s :: 'grep -n "dotted\\|def __init__" src/flask/blueprints.py | head; grep -n'

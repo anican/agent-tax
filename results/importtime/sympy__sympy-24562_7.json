@@ -1,0 +1,27 @@
+{
+ "task": "sympy__sympy-24562",
+ "seq": 7,
+ "cls": "test run",
+ "cmd": "python -m pytest -q sympy/core/tests/test_numbers.py 2>&1 | tail -2",
+ "profiled_cmd": "python -m pytest -q sympy/core/tests/test_numbers.py",
+ "reps": [
+  {
+   "wall_s": 3.709848642349243,
+   "task_clock_s": 3.66688,
+   "top_level_import_s": 0.864526,
+   "n_top_level": 33
+  },
+  {
+   "wall_s": 3.719672679901123,
+   "task_clock_s": 3.69764,
+   "top_level_import_s": 1.01432,
+   "n_top_level": 33
+  },
+  {
+   "wall_s": 4.050407886505127,
+   "task_clock_s": 4.0286,
+   "top_level_import_s": 0.916381,
+   "n_top_level": 33
+  }
+ ]
+}

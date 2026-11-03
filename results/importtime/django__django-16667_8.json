@@ -1,0 +1,27 @@
+{
+ "task": "django__django-16667",
+ "seq": 8,
+ "cls": "test run",
+ "cmd": "cd tests && python runtests.py forms_tests.widget_tests.test_selectdatewidget forms_tests.field_tests.test_datefield 2>&",
+ "profiled_cmd": "cd tests && python runtests.py forms_tests.widget_tests.test_selectdatewidget forms_tests.field_tests.test_datefield",
+ "reps": [
+  {
+   "wall_s": 0.8751063346862793,
+   "task_clock_s": 0.89105,
+   "top_level_import_s": 0.43627,
+   "n_top_level": 63
+  },
+  {
+   "wall_s": 0.9344985485076904,
+   "task_clock_s": 0.98429,
+   "top_level_import_s": 0.424605,
+   "n_top_level": 63
+  },
+  {
+   "wall_s": 0.8395953178405762,
+   "task_clock_s": 0.8667699999999999,
+   "top_level_import_s": 0.374861,
+   "n_top_level": 63
+  }
+ ]
+}

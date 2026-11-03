@@ -1,0 +1,23 @@
+	Command being timed: "timeout -s KILL 600 bash -c cd tests && python runtests.py forms_tests.widget_tests.test_selectdatewidget forms_tests.field_tests.test_datefield 2>&1 | tail -4"
+	User time (seconds): 0.98
+	System time (seconds): 0.14
+	Percent of CPU this job got: 104%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:01.08
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 51060
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 26274
+	Voluntary context switches: 90
+	Involuntary context switches: 4
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 32
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

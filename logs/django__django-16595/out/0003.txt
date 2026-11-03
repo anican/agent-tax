@@ -1,0 +1,237 @@
+Obtaining file:///home/user/work/django__django-16595/repo
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Checking if build backend supports build_editable: started
+  Checking if build backend supports build_editable: finished with status 'done'
+  Getting requirements to build editable: started
+  Getting requirements to build editable: finished with status 'done'
+  Preparing editable metadata (pyproject.toml): started
+  Preparing editable metadata (pyproject.toml): finished with status 'done'
+Collecting asgiref>=3.6.0 (from Django==5.0.dev20230224080859)
+  Downloading asgiref-3.13.0-py3-none-any.whl.metadata (12 kB)
+Collecting sqlparse>=0.2.2 (from Django==5.0.dev20230224080859)
+  Downloading sqlparse-0.6.1-py3-none-any.whl.metadata (6.9 kB)
+Downloading asgiref-3.13.0-py3-none-any.whl (27 kB)
+Downloading sqlparse-0.6.1-py3-none-any.whl (51 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 51.2/51.2 kB 10.0 MB/s eta 0:00:00
+Building wheels for collected packages: Django
+  Building editable for Django (pyproject.toml): started
+  Building editable for Django (pyproject.toml): finished with status 'done'
+  Created wheel for Django: filename=django-5.0.dev20230224080859-0.editable-py3-none-any.whl size=27452 sha256=f937f06998a234bf5505bfde375c8203b6549ae1c85ea871b915de60641ff11a
+  Stored in directory: /tmp/pip-ephem-wheel-cache-c48n9mfd/wheels/40/df/fd/c18178bdcaf382edf6e3c4394dd2b0df6da3a66f74f7377704
+Successfully built Django
+Installing collected packages: sqlparse, asgiref, Django
+Successfully installed Django-5.0.dev20230224080859 asgiref-3.13.0 sqlparse-0.6.1
+
+[notice] A new release of pip is available: 24.0 -> 26.3
+[notice] To update, run: pip install --upgrade pip
+Ignoring colorama: markers 'sys_platform == "win32"' don't match your environment
+Collecting aiosmtpd (from -r tests/requirements/py3.txt (line 1))
+  Downloading aiosmtpd-1.4.6-py3-none-any.whl.metadata (6.6 kB)
+Requirement already satisfied: asgiref>=3.6.0 in /home/user/work/django__django-16595/venv/lib/python3.11/site-packages (from -r tests/requirements/py3.txt (line 2)) (3.13.0)
+Collecting argon2-cffi>=19.2.0 (from -r tests/requirements/py3.txt (line 3))
+  Downloading argon2_cffi-25.1.0-py3-none-any.whl.metadata (4.1 kB)
+Collecting bcrypt (from -r tests/requirements/py3.txt (line 4))
+  Downloading bcrypt-5.0.0-cp39-abi3-manylinux_2_34_x86_64.whl.metadata (10 kB)
+Collecting black (from -r tests/requirements/py3.txt (line 5))
+  Downloading black-26.10.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (108 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 108.9/108.9 kB 11.0 MB/s eta 0:00:00
+Collecting docutils (from -r tests/requirements/py3.txt (line 6))
+  Downloading docutils-0.23-py3-none-any.whl.metadata (15 kB)
+Collecting geoip2 (from -r tests/requirements/py3.txt (line 7))
+  Downloading geoip2-5.3.0-py3-none-any.whl.metadata (19 kB)
+Collecting jinja2>=2.11.0 (from -r tests/requirements/py3.txt (line 8))
+  Downloading jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+Collecting numpy (from -r tests/requirements/py3.txt (line 9))
+  Downloading numpy-2.4.6-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (6.6 kB)
+Collecting Pillow>=6.2.1 (from -r tests/requirements/py3.txt (line 10))
+  Downloading pillow-13.0.0-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (9.1 kB)
+Collecting pylibmc (from -r tests/requirements/py3.txt (line 12))
+  Downloading pylibmc-1.6.3-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.0 kB)
+Collecting pymemcache>=3.4.0 (from -r tests/requirements/py3.txt (line 13))
+  Downloading pymemcache-4.0.0-py2.py3-none-any.whl.metadata (14 kB)
+Collecting pywatchman (from -r tests/requirements/py3.txt (line 14))
+  Downloading pywatchman-4.0.0.tar.gz (40 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 40.9/40.9 kB 5.0 MB/s eta 0:00:00
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Collecting PyYAML (from -r tests/requirements/py3.txt (line 15))
+  Downloading pyyaml-6.0.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.4 kB)
+Collecting redis>=3.4.0 (from -r tests/requirements/py3.txt (line 16))
+  Downloading redis-8.1.0-py3-none-any.whl.metadata (16 kB)
+Collecting selenium (from -r tests/requirements/py3.txt (line 17))
+  Downloading selenium-4.52.0-py3-none-any.whl.metadata (7.5 kB)
+Requirement already satisfied: sqlparse>=0.3.1 in /home/user/work/django__django-16595/venv/lib/python3.11/site-packages (from -r tests/requirements/py3.txt (line 18)) (0.6.1)
+Collecting tblib>=1.5.0 (from -r tests/requirements/py3.txt (line 19))
+  Downloading tblib-3.2.2-py3-none-any.whl.metadata (27 kB)
+Collecting tzdata (from -r tests/requirements/py3.txt (line 20))
+  Using cached tzdata-2026.6-py2.py3-none-any.whl.metadata (1.4 kB)
+Collecting atpublic (from aiosmtpd->-r tests/requirements/py3.txt (line 1))
+  Downloading atpublic-9.0.0-py3-none-any.whl.metadata (2.6 kB)
+Collecting attrs (from aiosmtpd->-r tests/requirements/py3.txt (line 1))
+  Downloading attrs-26.1.0-py3-none-any.whl.metadata (8.8 kB)
+Collecting argon2-cffi-bindings (from argon2-cffi>=19.2.0->-r tests/requirements/py3.txt (line 3))
+  Downloading argon2_cffi_bindings-26.1.0-cp310-abi3-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl.metadata (7.5 kB)
+Collecting click>=8.0.0 (from black->-r tests/requirements/py3.txt (line 5))
+  Downloading click-8.5.0-py3-none-any.whl.metadata (2.6 kB)
+Collecting mypy-extensions>=0.4.3 (from black->-r tests/requirements/py3.txt (line 5))
+  Downloading mypy_extensions-1.1.0-py3-none-any.whl.metadata (1.1 kB)
+Collecting packaging>=22.0 (from black->-r tests/requirements/py3.txt (line 5))
+  Using cached packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+Collecting pathspec>=1.0.0 (from black->-r tests/requirements/py3.txt (line 5))
+  Downloading pathspec-1.1.1-py3-none-any.whl.metadata (14 kB)
+Collecting platformdirs>=2 (from black->-r tests/requirements/py3.txt (line 5))
+  Downloading platformdirs-4.14.3-py3-none-any.whl.metadata (5.4 kB)
+Collecting pytokens~=0.4.0 (from black->-r tests/requirements/py3.txt (line 5))
+  Downloading pytokens-0.4.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (3.8 kB)
+Collecting aiohttp<4.0.0,>=3.14.1 (from geoip2->-r tests/requirements/py3.txt (line 7))
+  Downloading aiohttp-3.14.5-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (8.3 kB)
+Collecting maxminddb<4.0.0,>=3.0.0 (from geoip2->-r tests/requirements/py3.txt (line 7))
+  Downloading maxminddb-3.2.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (5.6 kB)
+Collecting requests<3.0.0,>=2.24.0 (from geoip2->-r tests/requirements/py3.txt (line 7))
+  Using cached requests-2.34.2-py3-none-any.whl.metadata (4.8 kB)
+Collecting MarkupSafe>=2.0 (from jinja2>=2.11.0->-r tests/requirements/py3.txt (line 8))
+  Downloading markupsafe-3.0.4-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.7 kB)
+Collecting certifi>=2026.10.23 (from selenium->-r tests/requirements/py3.txt (line 17))
+  Downloading certifi-2026.10.23-py3-none-any.whl.metadata (2.5 kB)
+Collecting trio<1.0,>=0.31.0 (from selenium->-r tests/requirements/py3.txt (line 17))
+  Downloading trio-0.35.0-py3-none-any.whl.metadata (8.5 kB)
+Collecting trio-websocket<1.0,>=0.12.2 (from selenium->-r tests/requirements/py3.txt (line 17))
+  Downloading trio_websocket-0.12.2-py3-none-any.whl.metadata (5.1 kB)
+Collecting typing_extensions<5.0,>=4.15.0 (from selenium->-r tests/requirements/py3.txt (line 17))
+  Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting urllib3<3.0,>=2.6.3 (from urllib3[socks]<3.0,>=2.6.3->selenium->-r tests/requirements/py3.txt (line 17))
+  Downloading urllib3-2.8.0-py3-none-any.whl.metadata (7.4 kB)
+Collecting websocket-client<2.0,>=1.8.0 (from selenium->-r tests/requirements/py3.txt (line 17))
+  Downloading websocket_client-1.9.2-py3-none-any.whl.metadata (8.3 kB)
+Collecting aiohappyeyeballs>=2.5.0 (from aiohttp<4.0.0,>=3.14.1->geoip2->-r tests/requirements/py3.txt (line 7))
+  Downloading aiohappyeyeballs-2.7.1-py3-none-any.whl.metadata (5.9 kB)
+Collecting aiosignal>=1.4.0 (from aiohttp<4.0.0,>=3.14.1->geoip2->-r tests/requirements/py3.txt (line 7))
+  Downloading aiosignal-1.4.0-py3-none-any.whl.metadata (3.7 kB)
+Collecting frozenlist>=1.1.1 (from aiohttp<4.0.0,>=3.14.1->geoip2->-r tests/requirements/py3.txt (line 7))
+  Downloading frozenlist-1.8.0-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (20 kB)
+Collecting multidict<8.0,>=4.5 (from aiohttp<4.0.0,>=3.14.1->geoip2->-r tests/requirements/py3.txt (line 7))
+  Downloading multidict-7.2.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (6.1 kB)
+Collecting propcache>=0.2.0 (from aiohttp<4.0.0,>=3.14.1->geoip2->-r tests/requirements/py3.txt (line 7))
+  Downloading propcache-0.5.4-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (25 kB)
+Collecting yarl<2.0,>=1.25.1 (from aiohttp<4.0.0,>=3.14.1->geoip2->-r tests/requirements/py3.txt (line 7))
+  Downloading yarl-1.25.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (111 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 111.6/111.6 kB 14.9 MB/s eta 0:00:00
+Collecting charset_normalizer<4,>=2 (from requests<3.0.0,>=2.24.0->geoip2->-r tests/requirements/py3.txt (line 7))
+  Downloading charset_normalizer-3.5.2-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (46 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 46.4/46.4 kB 7.1 MB/s eta 0:00:00
+Collecting idna<4,>=2.5 (from requests<3.0.0,>=2.24.0->geoip2->-r tests/requirements/py3.txt (line 7))
+  Downloading idna-3.20-py3-none-any.whl.metadata (7.2 kB)
+Collecting sortedcontainers (from trio<1.0,>=0.31.0->selenium->-r tests/requirements/py3.txt (line 17))
+  Downloading sortedcontainers-2.4.0-py2.py3-none-any.whl.metadata (10 kB)
+Collecting outcome (from trio<1.0,>=0.31.0->selenium->-r tests/requirements/py3.txt (line 17))
+  Downloading outcome-1.3.0.post0-py2.py3-none-any.whl.metadata (2.6 kB)
+Collecting sniffio>=1.3.0 (from trio<1.0,>=0.31.0->selenium->-r tests/requirements/py3.txt (line 17))
+  Downloading sniffio-1.3.1-py3-none-any.whl.metadata (3.9 kB)
+Collecting wsproto>=0.14 (from trio-websocket<1.0,>=0.12.2->selenium->-r tests/requirements/py3.txt (line 17))
+  Downloading wsproto-1.3.2-py3-none-any.whl.metadata (5.2 kB)
+Collecting pysocks!=1.5.7,<2.0,>=1.5.6 (from urllib3[socks]<3.0,>=2.6.3->selenium->-r tests/requirements/py3.txt (line 17))
+  Downloading PySocks-1.7.1-py3-none-any.whl.metadata (13 kB)
+Collecting cffi>=1.0.1 (from argon2-cffi-bindings->argon2-cffi>=19.2.0->-r tests/requirements/py3.txt (line 3))
+  Downloading cffi-2.1.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.5 kB)
+Collecting pycparser (from cffi>=1.0.1->argon2-cffi-bindings->argon2-cffi>=19.2.0->-r tests/requirements/py3.txt (line 3))
+  Downloading pycparser-3.12-py3-none-any.whl.metadata (9.7 kB)
+Collecting h11<1,>=0.16.0 (from wsproto>=0.14->trio-websocket<1.0,>=0.12.2->selenium->-r tests/requirements/py3.txt (line 17))
+  Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+Downloading aiosmtpd-1.4.6-py3-none-any.whl (154 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 154.3/154.3 kB 13.0 MB/s eta 0:00:00
+Downloading argon2_cffi-25.1.0-py3-none-any.whl (14 kB)
+Downloading bcrypt-5.0.0-cp39-abi3-manylinux_2_34_x86_64.whl (278 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 278.2/278.2 kB 15.2 MB/s eta 0:00:00
+Downloading black-26.10.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (2.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.0/2.0 MB 11.9 MB/s eta 0:00:00
+Downloading docutils-0.23-py3-none-any.whl (634 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 634.7/634.7 kB 11.4 MB/s eta 0:00:00
+Downloading geoip2-5.3.0-py3-none-any.whl (29 kB)
+Downloading jinja2-3.1.6-py3-none-any.whl (134 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 134.9/134.9 kB 12.7 MB/s eta 0:00:00
+Downloading numpy-2.4.6-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (16.9 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.9/16.9 MB 12.1 MB/s eta 0:00:00
+Downloading pillow-13.0.0-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (7.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 7.1/7.1 MB 14.6 MB/s eta 0:00:00
+Downloading pylibmc-1.6.3-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB 12.5 MB/s eta 0:00:00
+Downloading pymemcache-4.0.0-py2.py3-none-any.whl (60 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 60.8/60.8 kB 9.6 MB/s eta 0:00:00
+Downloading pyyaml-6.0.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (806 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 806.6/806.6 kB 14.5 MB/s eta 0:00:00
+Downloading redis-8.1.0-py3-none-any.whl (560 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 560.6/560.6 kB 17.9 MB/s eta 0:00:00
+Downloading selenium-4.52.0-py3-none-any.whl (12.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.1/12.1 MB 14.4 MB/s eta 0:00:00
+Downloading tblib-3.2.2-py3-none-any.whl (12 kB)
+Using cached tzdata-2026.6-py2.py3-none-any.whl (348 kB)
+Downloading aiohttp-3.14.5-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (1.9 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.9/1.9 MB 15.3 MB/s eta 0:00:00
+Downloading attrs-26.1.0-py3-none-any.whl (67 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 67.5/67.5 kB 7.8 MB/s eta 0:00:00
+Downloading certifi-2026.10.23-py3-none-any.whl (135 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 135.1/135.1 kB 15.1 MB/s eta 0:00:00
+Downloading click-8.5.0-py3-none-any.whl (125 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 125.3/125.3 kB 19.2 MB/s eta 0:00:00
+Downloading markupsafe-3.0.4-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (22 kB)
+Downloading maxminddb-3.2.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (101 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 101.6/101.6 kB 12.9 MB/s eta 0:00:00
+Downloading mypy_extensions-1.1.0-py3-none-any.whl (5.0 kB)
+Using cached packaging-26.3-py3-none-any.whl (129 kB)
+Downloading pathspec-1.1.1-py3-none-any.whl (57 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 57.3/57.3 kB 9.5 MB/s eta 0:00:00
+Downloading platformdirs-4.14.3-py3-none-any.whl (35 kB)
+Downloading pytokens-0.4.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (260 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 260.8/260.8 kB 15.7 MB/s eta 0:00:00
+Using cached requests-2.34.2-py3-none-any.whl (73 kB)
+Downloading trio-0.35.0-py3-none-any.whl (513 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 513.2/513.2 kB 16.8 MB/s eta 0:00:00
+Downloading trio_websocket-0.12.2-py3-none-any.whl (21 kB)
+Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 45.6/45.6 kB 7.2 MB/s eta 0:00:00
+Downloading urllib3-2.8.0-py3-none-any.whl (135 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 135.7/135.7 kB 13.0 MB/s eta 0:00:00
+Downloading websocket_client-1.9.2-py3-none-any.whl (95 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 95.8/95.8 kB 17.3 MB/s eta 0:00:00
+Downloading argon2_cffi_bindings-26.1.0-cp310-abi3-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl (26 kB)
+Downloading atpublic-9.0.0-py3-none-any.whl (11 kB)
+Downloading aiohappyeyeballs-2.7.1-py3-none-any.whl (15 kB)
+Downloading aiosignal-1.4.0-py3-none-any.whl (7.5 kB)
+Downloading cffi-2.1.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (217 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 217.8/217.8 kB 16.2 MB/s eta 0:00:00
+Downloading charset_normalizer-3.5.2-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (269 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 270.0/270.0 kB 17.1 MB/s eta 0:00:00
+Downloading frozenlist-1.8.0-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (231 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 231.1/231.1 kB 17.3 MB/s eta 0:00:00
+Downloading idna-3.20-py3-none-any.whl (69 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 69.6/69.6 kB 14.0 MB/s eta 0:00:00
+Downloading multidict-7.2.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (510 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 510.1/510.1 kB 17.3 MB/s eta 0:00:00
+Downloading outcome-1.3.0.post0-py2.py3-none-any.whl (10 kB)
+Downloading propcache-0.5.4-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (235 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 235.4/235.4 kB 11.3 MB/s eta 0:00:00
+Downloading PySocks-1.7.1-py3-none-any.whl (16 kB)
+Downloading sniffio-1.3.1-py3-none-any.whl (10 kB)
+Downloading wsproto-1.3.2-py3-none-any.whl (24 kB)
+Downloading yarl-1.25.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (117 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 117.7/117.7 kB 15.1 MB/s eta 0:00:00
+Downloading sortedcontainers-2.4.0-py2.py3-none-any.whl (29 kB)
+Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+Downloading pycparser-3.12-py3-none-any.whl (62 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 62.6/62.6 kB 10.6 MB/s eta 0:00:00
+Building wheels for collected packages: pywatchman
+  Building wheel for pywatchman (pyproject.toml): started
+  Building wheel for pywatchman (pyproject.toml): finished with status 'done'
+  Created wheel for pywatchman: filename=pywatchman-4.0.0-cp311-cp311-linux_x86_64.whl size=79089 sha256=660c3bf3e96760e54813ee9e57600c3167545c4cfc33c80b29862d04dfb8ca52
+  Stored in directory: /root/.cache/pip/wheels/e6/df/7a/47d51312f66d984642cafe74f58048edc75faee0baf4858830
+Successfully built pywatchman
+Installing collected packages: sortedcontainers, websocket-client, urllib3, tzdata, typing_extensions, tblib, sniffio, redis, PyYAML, pywatchman, pytokens, pysocks, pymemcache, pylibmc, pycparser, propcache, platformdirs, Pillow, pathspec, packaging, numpy, mypy-extensions, multidict, maxminddb, MarkupSafe, idna, h11, frozenlist, docutils, click, charset_normalizer, certifi, bcrypt, attrs, atpublic, aiohappyeyeballs, yarl, wsproto, requests, outcome, jinja2, cffi, black, aiosmtpd, aiosignal, trio, argon2-cffi-bindings, aiohttp, trio-websocket, geoip2, argon2-cffi, selenium
+Successfully installed MarkupSafe-3.0.4 Pillow-13.0.0 PyYAML-6.0.3 aiohappyeyeballs-2.7.1 aiohttp-3.14.5 aiosignal-1.4.0 aiosmtpd-1.4.6 argon2-cffi-25.1.0 argon2-cffi-bindings-26.1.0 atpublic-9.0.0 attrs-26.1.0 bcrypt-5.0.0 black-26.10.1 certifi-2026.10.23 cffi-2.1.1 charset_normalizer-3.5.2 click-8.5.0 docutils-0.23 frozenlist-1.8.0 geoip2-5.3.0 h11-0.16.0 idna-3.20 jinja2-3.1.6 maxminddb-3.2.0 multidict-7.2.1 mypy-extensions-1.1.0 numpy-2.4.6 outcome-1.3.0.post0 packaging-26.3 pathspec-1.1.1 platformdirs-4.14.3 propcache-0.5.4 pycparser-3.12 pylibmc-1.6.3 pymemcache-4.0.0 pysocks-1.7.1 pytokens-0.4.1 pywatchman-4.0.0 redis-8.1.0 requests-2.34.2 selenium-4.52.0 sniffio-1.3.1 sortedcontainers-2.4.0 tblib-3.2.2 trio-0.35.0 trio-websocket-0.12.2 typing_extensions-4.16.0 tzdata-2026.6 urllib3-2.8.0 websocket-client-1.9.2 wsproto-1.3.2 yarl-1.25.1
+
+[notice] A new release of pip is available: 24.0 -> 26.3
+[notice] To update, run: pip install --upgrade pip

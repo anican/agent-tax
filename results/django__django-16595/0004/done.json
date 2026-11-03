@@ -1,0 +1,32 @@
+{
+ "task": "django__django-16595",
+ "seq": 4,
+ "phase": "solve",
+ "cls": "search/read",
+ "cmd": "grep -n \"def reduce\" -A 40 django/db/migrations/operations/fields.py | sed -n \"1,200p\"",
+ "orig_rc": 0,
+ "orig_dur_s": 0.012300032,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 0.037937164306640625,
+   "rec_rc": 0,
+   "rec_wall_s": 1.4250600337982178
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 0.049195051193237305,
+   "rec_rc": 0,
+   "rec_wall_s": 1.303908109664917
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 0.04627633094787598,
+   "rec_rc": 0,
+   "rec_wall_s": 1.2576637268066406
+  }
+ ]
+}

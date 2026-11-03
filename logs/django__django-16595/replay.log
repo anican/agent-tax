@@ -1,0 +1,21 @@
+[replay] django__django-16595 seq=1 class=git orig=3.31s :: 'git init -q repo && cd repo && git remote add origin https://github.co'
+    rep1: stat rc=0 6.01s | record rc=0 7.46s
+    rep2: stat rc=0 7.42s | record rc=0 9.34s
+    rep3: stat rc=0 6.98s | record rc=0 9.25s
+[replay] django__django-16595 seq=2 class=package install orig=6.73s :: '/usr/bin/python3.11 -m venv venv'
+    rep1: stat rc=0 5.92s | record rc=0 7.26s
+    rep2: stat rc=0 6.45s | record rc=0 8.35s
+    rep3: stat rc=0 7.19s | record rc=0 9.25s
+[replay] django__django-16595 seq=3 class=package install orig=47.76s :: 'python -m pip install -e . && python -m pip install -r tests/requireme'
+    rep1: stat rc=0 37.72s | record rc=0 39.30s
+    rep2: stat rc=0 36.30s | record rc=0 43.42s
+    rep3: stat rc=0 32.95s | record rc=0 38.42s
+[replay] django__django-16595 seq=4 class=search/read orig=0.01s :: 'grep -n "def reduce" -A 40 django/db/migrations/operations/fields.py |'
+    rep1: stat rc=0 0.04s | record rc=0 1.43s
+    rep2: stat rc=0 0.05s | record rc=0 1.30s
+    rep3: stat rc=0 0.05s | record rc=0 1.26s
+[replay] django__django-16595 seq=5 class=search/read orig=0.01s :: 'grep -n "def test_alter_field\\|def test_add_field_alter_field\\|def tes'
+    rep1: stat rc=0 0.04s | record rc=0 1.33s
+    rep2: stat rc=0 0.04s | record rc=0 1.26s
+    rep3: stat rc=0 0.04s | record rc=0 1.35s
+[replay] django__django-16595 seq=6 class=test run orig=1.59s :: 'cd tests && python runtests.py migrations.test_optimizer --verbosity 1'

@@ -36,3 +36,9 @@
     rep3: stat rc=0 2.14s | record rc=0 3.30s
 [replay] sympy__sympy-24066 seq=10 class=test run orig=2.28s :: 'python bin/test sympy/physics/units 2>&1 | tail -6'
     rep1: stat rc=0 2.33s | record rc=0 4.25s
+    rep2: stat rc=0 2.76s | record rc=0 3.27s
+    rep3: stat rc=0 2.49s | record rc=0 3.25s
+[replay] sympy__sympy-24066 seq=11 class=git orig=0.06s :: 'git diff sympy/physics/units/unitsystem.py; git status --short'
+    rep1: stat rc=0 0.07s | record rc=0 1.32s
+    rep2: stat rc=0 0.08s | record rc=0 1.27s
+    rep3: stat rc=0 0.07s | record rc=0 1.39s

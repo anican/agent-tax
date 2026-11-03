@@ -1,0 +1,1 @@
+f9fe062 Doc'd that Meta.indexes is preferred to Field.db_index.

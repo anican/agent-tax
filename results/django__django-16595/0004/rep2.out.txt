@@ -1,0 +1,187 @@
+69:    def reduce(self, operation, app_label):
+70-        return super().reduce(operation, app_label) or not operation.references_field(
+71-            self.model_name, self.name, app_label
+72-        )
+73-
+74-
+75-class AddField(FieldOperation):
+76-    """Add a field to a model."""
+77-
+78-    def __init__(self, model_name, name, field, preserve_default=True):
+79-        self.preserve_default = preserve_default
+80-        super().__init__(model_name, name, field)
+81-
+82-    def deconstruct(self):
+83-        kwargs = {
+84-            "model_name": self.model_name,
+85-            "name": self.name,
+86-            "field": self.field,
+87-        }
+88-        if self.preserve_default is not True:
+89-            kwargs["preserve_default"] = self.preserve_default
+90-        return (self.__class__.__name__, [], kwargs)
+91-
+92-    def state_forwards(self, app_label, state):
+93-        state.add_field(
+94-            app_label,
+95-            self.model_name_lower,
+96-            self.name,
+97-            self.field,
+98-            self.preserve_default,
+99-        )
+100-
+101-    def database_forwards(self, app_label, schema_editor, from_state, to_state):
+102-        to_model = to_state.apps.get_model(app_label, self.model_name)
+103-        if self.allow_migrate_model(schema_editor.connection.alias, to_model):
+104-            from_model = from_state.apps.get_model(app_label, self.model_name)
+105-            field = to_model._meta.get_field(self.name)
+106-            if not self.preserve_default:
+107-                field.default = self.field.default
+108-            schema_editor.add_field(
+109-                from_model,
+--
+129:    def reduce(self, operation, app_label):
+130-        if isinstance(operation, FieldOperation) and self.is_same_field_operation(
+131-            operation
+132-        ):
+133-            if isinstance(operation, AlterField):
+134-                return [
+135-                    AddField(
+136-                        model_name=self.model_name,
+137-                        name=operation.name,
+138-                        field=operation.field,
+139-                    ),
+140-                ]
+141-            elif isinstance(operation, RemoveField):
+142-                return []
+143-            elif isinstance(operation, RenameField):
+144-                return [
+145-                    AddField(
+146-                        model_name=self.model_name,
+147-                        name=operation.new_name,
+148-                        field=self.field,
+149-                    ),
+150-                ]
+151-        return super().reduce(operation, app_label)
+152-
+153-
+154-class RemoveField(FieldOperation):
+155-    """Remove a field from a model."""
+156-
+157-    def deconstruct(self):
+158-        kwargs = {
+159-            "model_name": self.model_name,
+160-            "name": self.name,
+161-        }
+162-        return (self.__class__.__name__, [], kwargs)
+163-
+164-    def state_forwards(self, app_label, state):
+165-        state.remove_field(app_label, self.model_name_lower, self.name)
+166-
+167-    def database_forwards(self, app_label, schema_editor, from_state, to_state):
+168-        from_model = from_state.apps.get_model(app_label, self.model_name)
+169-        if self.allow_migrate_model(schema_editor.connection.alias, from_model):
+--
+187:    def reduce(self, operation, app_label):
+188-        from .models import DeleteModel
+189-
+190-        if (
+191-            isinstance(operation, DeleteModel)
+192-            and operation.name_lower == self.model_name_lower
+193-        ):
+194-            return [operation]
+195-        return super().reduce(operation, app_label)
+196-
+197-
+198-class AlterField(FieldOperation):
+199-    """
+200-    Alter a field's database column (e.g. null, max_length) to the provided
+201-    new field.
+202-    """
+203-
+204-    def __init__(self, model_name, name, field, preserve_default=True):
+205-        self.preserve_default = preserve_default
+206-        super().__init__(model_name, name, field)
+207-
+208-    def deconstruct(self):
+209-        kwargs = {
+210-            "model_name": self.model_name,
+211-            "name": self.name,
+212-            "field": self.field,
+213-        }
+214-        if self.preserve_default is not True:
+215-            kwargs["preserve_default"] = self.preserve_default
+216-        return (self.__class__.__name__, [], kwargs)
+217-
+218-    def state_forwards(self, app_label, state):
+219-        state.alter_field(
+220-            app_label,
+221-            self.model_name_lower,
+222-            self.name,
+223-            self.field,
+224-            self.preserve_default,
+225-        )
+226-
+227-    def database_forwards(self, app_label, schema_editor, from_state, to_state):
+--
+249:    def reduce(self, operation, app_label):
+250-        if isinstance(operation, RemoveField) and self.is_same_field_operation(
+251-            operation
+252-        ):
+253-            return [operation]
+254-        elif (
+255-            isinstance(operation, RenameField)
+256-            and self.is_same_field_operation(operation)
+257-            and self.field.db_column is None
+258-        ):
+259-            return [
+260-                operation,
+261-                AlterField(
+262-                    model_name=self.model_name,
+263-                    name=operation.new_name,
+264-                    field=self.field,
+265-                ),
+266-            ]
+267-        return super().reduce(operation, app_label)
+268-
+269-
+270-class RenameField(FieldOperation):
+271-    """Rename a field on the model. Might affect db_column too."""
+272-
+273-    def __init__(self, model_name, old_name, new_name):
+274-        self.old_name = old_name
+275-        self.new_name = new_name
+276-        super().__init__(model_name, old_name)
+277-
+278-    @cached_property
+279-    def old_name_lower(self):
+280-        return self.old_name.lower()
+281-
+282-    @cached_property
+283-    def new_name_lower(self):
+284-        return self.new_name.lower()
+285-
+286-    def deconstruct(self):
+287-        kwargs = {
+288-            "model_name": self.model_name,
+289-            "old_name": self.old_name,
+--
+339:    def reduce(self, operation, app_label):
+340-        if (
+341-            isinstance(operation, RenameField)
+342-            and self.is_same_model_operation(operation)
+343-            and self.new_name_lower == operation.old_name_lower
+344-        ):
+345-            return [
+346-                RenameField(
+347-                    self.model_name,
+348-                    self.old_name,
+349-                    operation.new_name,
+350-                ),
+351-            ]
+352-        # Skip `FieldOperation.reduce` as we want to run `references_field`
+353-        # against self.old_name and self.new_name.
+354-        return super(FieldOperation, self).reduce(operation, app_label) or not (
+355-            operation.references_field(self.model_name, self.old_name, app_label)
+356-            or operation.references_field(self.model_name, self.new_name, app_label)
+357-        )

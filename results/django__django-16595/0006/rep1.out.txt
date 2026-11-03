@@ -1,0 +1,8 @@
+Testing against Django installed in '/home/user/work/django__django-16595/repo/django' with up to 4 processes
+Found 38 test(s).
+System check identified no issues (0 silenced).
+......................................
+----------------------------------------------------------------------
+Ran 38 tests in 0.018s
+
+OK

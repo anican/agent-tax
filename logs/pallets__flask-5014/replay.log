@@ -35,3 +35,6 @@
     rep2: stat rc=0 3.36s | record rc=0 4.25s
     rep3: stat rc=0 3.07s | record rc=0 4.25s
 [replay] pallets__flask-5014 seq=10 class=test run orig=3.40s :: 'git stash -q && python -m pytest -q tests 2>&1 | tail -1; git stash po'
+    rep1: stat rc=0 3.50s | record rc=0 5.27s
+    rep2: stat rc=0 3.75s | record rc=0 4.24s
+    rep3: stat rc=0 3.59s | record rc=0 5.33s

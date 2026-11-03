@@ -1,0 +1,22 @@
+[replay] sympy__sympy-24066 seq=1 class=git orig=2.53s :: 'git init -q repo && cd repo && git remote add origin https://github.co'
+    rep1: stat rc=0 3.05s | record rc=0 4.26s
+    rep2: stat rc=0 3.55s | record rc=0 4.47s
+    rep3: stat rc=0 3.48s | record rc=0 4.37s
+[replay] sympy__sympy-24066 seq=2 class=package install orig=4.87s :: '/usr/bin/python3.11 -m venv venv'
+    rep1: stat rc=0 6.88s | record rc=0 8.33s
+    rep2: stat rc=0 6.56s | record rc=0 7.28s
+    rep3: stat rc=0 5.76s | record rc=0 7.37s
+[replay] sympy__sympy-24066 seq=3 class=package install orig=7.94s :: 'python -m pip install -e . mpmath==1.3.0 pytest'
+    rep1: stat rc=0 7.45s | record rc=0 9.30s
+    rep2: stat rc=0 8.22s | record rc=0 10.32s
+    rep3: stat rc=0 9.75s | record rc=0 10.38s
+[replay] sympy__sympy-24066 seq=4 class=search/read orig=0.01s :: 'grep -n "def _collect_factor_and_dimension" -A 60 sympy/physics/units/'
+    rep1: stat rc=0 0.04s | record rc=0 1.24s
+    rep2: stat rc=0 0.06s | record rc=0 1.37s
+    rep3: stat rc=0 0.04s | record rc=0 1.24s
+[replay] sympy__sympy-24066 seq=5 class=other orig=3.02s :: 'cat > /tmp/repro_24066.py <<EOF\nfrom sympy import exp\nfrom sympy.physi'
+    rep1: stat rc=1 0.72s | record rc=1 2.25s
+    rep2: stat rc=1 0.77s | record rc=1 1.28s
+    rep3: stat rc=1 0.99s | record rc=1 1.24s
+[replay] sympy__sympy-24066 seq=6 class=other orig=0.89s :: 'python /tmp/repro_24066.py'
+    rep1: stat rc=0 0.84s | record rc=0 2.29s

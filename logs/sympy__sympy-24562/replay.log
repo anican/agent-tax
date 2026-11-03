@@ -24,3 +24,6 @@
     rep3: stat rc=0 0.05s | record rc=0 1.25s
 [replay] sympy__sympy-24562 seq=7 class=test run orig=6.93s :: 'python -m pytest -q sympy/core/tests/test_numbers.py 2>&1 | tail -2'
     rep1: stat rc=0 3.61s | record rc=0 4.27s
+    rep2: stat rc=0 3.50s | record rc=0 5.27s
+    rep3: stat rc=0 3.76s | record rc=0 4.29s
+[replay] sympy__sympy-24562 seq=8 class=test run orig=51.79s :: 'python bin/test sympy/core 2>&1 | tail -2'

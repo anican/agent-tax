@@ -65,7 +65,17 @@ def is_kernel(dso): return dso.startswith("[kernel") or dso == "[kernel.kallsyms
 # each: (rule_id, category, subcategory, scope, description, predicate(k))
 def _ctx(k): return set(k["ctx"].split("|")) if k["ctx"] else set()
 
+STRIPPED_SHELL = R(r"/(bash|sh|dash|timeout|tee|env|time|truncate|date|jq)$")
+STRIPPED_TOOL = R(r"/(git|git-[\w-]+|grep|rg|sed|cat|find|head|tail|wc|mawk|gawk|ls|sort|diff|cut|uniq|xargs|tr)$")
+STRIPPED_CC = R(r"/(cc1|cc1plus|as|ld|ld\.bfd|ld\.gold|collect2|lto1|clang[\w.+-]*)$")
+
 RULES = [
+ ("U0a", "other user-space", "shell / glue (stripped binary)", "user", "unresolved leaf inside a stripped shell/glue binary (bash, sh, timeout, tee, ...): the whole binary is shell glue",
+  lambda k: not k["kern"] and k["sym"].startswith("[unknown]") and STRIPPED_SHELL.search(k["dso"])),
+ ("U0b", "core logic", "cli tool (stripped binary)", "user", "unresolved leaf inside a stripped CLI tool binary (git, grep, sed, find, ...): the tool's own code",
+  lambda k: not k["kern"] and k["sym"].startswith("[unknown]") and STRIPPED_TOOL.search(k["dso"])),
+ ("U0c", "core logic", "compiler (stripped binary)", "user", "unresolved leaf inside a compiler/assembler/linker binary",
+  lambda k: not k["kern"] and k["sym"].startswith("[unknown]") and STRIPPED_CC.search(k["dso"])),
  ("U0", "unclassified", "unresolved symbol", "user", "leaf symbol unresolved (`[unknown]`) or DSO unknown",
   lambda k: not k["kern"] and (k["sym"].startswith("[unknown]") or k["dso"] in ("", "[unknown]"))),
  ("K1", "memory movement", "kernel copy/zero", "kernel", "kernel leaf: clear_page*, copy_page*, copy_user*, rep_movs/stos_alternative, mem{cpy,move,set}, copy_{to,from}_user, folio zeroing",

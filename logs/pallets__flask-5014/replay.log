@@ -11,3 +11,19 @@
     rep2: stat rc=0 9.57s | record rc=0 10.37s
     rep3: stat rc=0 8.50s | record rc=0 10.37s
 [replay] pallets__flask-5014 seq=4 class=search/read orig=0.01s :: 'grep -n "dotted\\|def __init__" src/flask/blueprints.py | head; grep -n'
+    rep1: stat rc=0 0.04s | record rc=0 1.34s
+    rep2: stat rc=0 0.04s | record rc=0 1.43s
+    rep3: stat rc=0 0.05s | record rc=0 1.40s
+[replay] pallets__flask-5014 seq=5 class=search/read orig=0.01s :: 'sed -n 172,205p src/flask/blueprints.py; sed -n 250,262p tests/test_bl'
+    rep1: stat rc=0 0.06s | record rc=0 1.26s
+    rep2: stat rc=0 0.05s | record rc=0 1.25s
+    rep3: stat rc=0 0.06s | record rc=0 1.25s
+[replay] pallets__flask-5014 seq=6 class=test run orig=1.51s :: 'python -m pytest -q tests/test_blueprints.py 2>&1 | tail -3'
+    rep1: stat rc=0 0.80s | record rc=0 1.25s
+    rep2: stat rc=0 0.91s | record rc=0 2.24s
+    rep3: stat rc=0 1.03s | record rc=0 1.25s
+[replay] pallets__flask-5014 seq=7 class=test run orig=0.69s :: 'python -m pytest -q -x tests/test_blueprints.py 2>&1 | grep -m3 -B2 -A'
+    rep1: stat rc=1 0.76s | record rc=1 1.41s
+    rep2: stat rc=1 0.84s | record rc=1 2.33s
+    rep3: stat rc=1 0.74s | record rc=1 1.34s
+[replay] pallets__flask-5014 seq=8 class=package install orig=21.00s :: 'python -m pip install -q "pytest<8" && python -m pytest -q tests/test_'

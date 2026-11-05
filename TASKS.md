@@ -47,3 +47,19 @@ django__django-16667 is unresolved: the hidden test expects
 on overflow; the agent's fix catches `OverflowError` but returns the raw
 values (`9223372036854775808-12-1`). The form still reports "Enter a valid
 date." instead of crashing, which is what the agent checked.
+
+## Extension (2026-11-05): fresh tasks solved with a different model (DECISIONS.md D18)
+
+Selected the same way as the original 8 (titles only, Python-3.11-capable
+repo versions), from tasks the agent had not seen in the original study.
+
+| # | Instance ID | Repo | Version | Difficulty |
+|---|---|---|---|---|
+| E1 | django__django-16569 | django/django | 5.0 | <15 min fix |
+| E2 | sympy__sympy-24539 | sympy/sympy | 1.12 | <15 min fix |
+| E3 | pytest-dev__pytest-10051 | pytest-dev/pytest | 7.2 | 15 min - 1 hour |
+
+### Extension results
+
+| Instance ID | Setup wall time | Setup issues | Episode wall time | Agent actions | Resolved (FAIL_TO_PASS) |
+|---|---|---|---|---|---|

@@ -363,3 +363,16 @@ corrections (marked **[correction]**).
 - Extension episodes were run with the same instrumentation and tool
   discipline as the original 8 (D1–D2), by the switched model (D18).
 
+## D20. Extension steps 4–5
+
+- Cold-cache experiment (`tools/coldcache.sh`): `echo 3 > drop_caches`
+  between warm and cold runs, 3 pairs per command, run alone on the VM.
+  It measures the page-cache part of sandbox recycling only, not a fresh
+  VM boot or a cold venv build.
+- Six more public mini-swe-agent trajectories (the 3 extension tasks plus
+  django-16595, sympy-24066, flask-5014, whose venvs were still available)
+  were reviewed command-by-command (all repo-local; test scripts touch no
+  network or system paths) and recorded/replayed exactly as in D13. The
+  mini-vs-own comparison therefore covers 8 task pairs; the 3 extension
+  pairs compare the public trajectory with the *second* model's episode.
+

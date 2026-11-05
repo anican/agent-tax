@@ -39,7 +39,35 @@ overheads in microservices and an analytical model for accelerating them).
 
 ## 3. Density (extension step 2)
 
-_Filled in from `results/density/` when the run completes._
+`tools/density.py`: N identical copies of a representative tool command
+started simultaneously on this 4-vCPU VM (1 thread per core, no SMT), N =
+1…32, 3 repetitions each; per-instance wall time, makespan, `/proc/stat`
+busy and steal. Full table: `results/density/summary.md`; figure:
+`figs/density.png`.
+
+| Workload (N=1 wall) | slowdown at N=4 | N=8 | N=16 | N=32 (ideal 8×) | aggregate throughput at saturation (ideal 4×) |
+|---|---|---|---|---|---|
+| django `runtests.py migrations.test_optimizer` (0.24 s) | 1.05× | 2.07× | 4.65× | 9.6× | 3.1–3.4× |
+| flask `pytest tests` (1.6 s) | 0.97× | 1.96× | 4.09× | 8.4× | 3.7–3.9× |
+| sympy `pytest sympy/physics/units` (1.05 s) | 1.01× | 1.91× | 4.19× | 9.0× | 3.5–3.8× |
+| `spawnbench 300 /bin/true` (0.27 s; exec-bound) | 0.89× | 1.64× | 3.70× | 7.6× | 4.0–4.3× |
+
+- **Tool-call latency is unaffected until the number of *simultaneously
+  executing* tool calls exceeds the vCPU count**, then degrades linearly
+  (≈ N/4). Steal stayed at 0–0.9% throughout, so the host did not take
+  CPU away from this VM even at 100% busy.
+- Python test runs saturate at 3.1–3.9× aggregate throughput instead of
+  4× (5–20% loss at N=32); the exec-bound workload reaches the ideal 4×, so
+  the CPUID VM exits do **not** serialize across vCPUs. The Python loss is
+  consistent with shared-cache/memory contention between interpreters, but
+  this VM has no counters to confirm that.
+- Combined with the time view (sandboxes ~11% busy on average, ~28% during
+  tool calls), the measurement says tool calls from several sandboxes can
+  share a core without visible latency cost as long as their *bursts* do not
+  coincide; the knee is at (concurrently running tool calls) = (cores), not at
+  (sandboxes) = (cores). This is the empirical basis for row 1's
+  "oversubscribe" opportunity; it does not measure memory or page-cache
+  pressure from many *resident* sandboxes.
 
 ## 4. What stays the same
 

@@ -559,6 +559,27 @@ Per class (all replayed commands): build 0.3%, git 0.0%, other 42.9%, package in
 8. **Small samples.** Few commands per class for some classes (build: 1
    command; other: 6). Sample counts are listed with every share.
 
+## Extension (2026-11-05, different model; DECISIONS.md D18)
+
+Two follow-up measurements in the same VM, plus the comparison document
+`AGENTIC_VS_TRADITIONAL.md` (patterns unique to agentic workloads vs.
+traditional services, with a SWOT-style summary).
+
+**Process-start cost decomposition** (`results/microbench/README.md`): CPU
+per fork+exec+exit, mean of 3 runs — no-libc binary 114 µs; static glibc
+binary 709 µs; dynamic glibc binary 811 µs; `/bin/true` 832 µs; `grep` on a
+1-line file 993 µs; `python -S -c pass` 6.4 ms; `python -c pass` 8.2 ms;
+`python -c "import json,re,os"` 14.8 ms. The ~595 µs that glibc adds even
+without a dynamic loader is the CPUID-driven cache probing (D16); the
+dynamic loader itself adds only ~100 µs. `GLIBC_TUNABLES` cache-size
+settings do not avoid it.
+
+**Sandbox density** (`results/density/summary.md`, `figs/density.png`): N
+concurrent copies of a tool command on 4 vCPUs. No measurable slowdown up
+to N = 4; linear ≈ N/4 beyond; Python test runs reach 3.1–3.9× aggregate
+throughput at saturation (ideal 4×), the exec-bound workload 4.0–4.3×;
+steal < 1%. The knee is at concurrently *executing* tool calls = cores.
+
 ## Reproducing / file map
 
 - `tools/run.sh`, `tools/snap.sh`, `tools/sample.sh`, `tools/episode.sh` —

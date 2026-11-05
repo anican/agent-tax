@@ -351,3 +351,15 @@ corrections (marked **[correction]**).
   (3) 2–3 fresh live episodes with the new model + replays. Results are
   committed and pushed after each step.
 
+## D19. Extension episodes: instrumentation note
+
+- In E1 (django__django-16569) the agent's first edit attempt was rejected
+  by its Edit tool (file not yet read), but the follow-up checkpoint
+  (`snap 6`, reason `edit`) was still taken, so E1's log contains one
+  edit checkpoint with no change (identical tree to snap 5). It is left in
+  the log; the time view counts it as one extra agent action (it is a real
+  tool call the agent made) and the CPU view is unaffected (replays
+  restore by tree, and no command sits between snaps 5 and 6).
+- Extension episodes were run with the same instrumentation and tool
+  discipline as the original 8 (D1–D2), by the switched model (D18).
+

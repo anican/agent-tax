@@ -20,6 +20,8 @@ CLS_ORDER = ["search/read", "git", "package install", "build", "test run", "othe
 
 # ------------------------------------------------------------------ CPU VIEW
 def is_mini(task): return task.startswith("mini__")
+EXT_TASKS = {"django__django-16569", "sympy__sympy-24539", "pytest-dev__pytest-10051"}   # extension episodes, different model (D18)
+def is_ext(task): return task in EXT_TASKS
 
 def load_profiles(mini=False):
     rows, leaf_rows, incl_rows, kth_rows, groups_rows = [], [], [], [], []
@@ -27,6 +29,7 @@ def load_profiles(mini=False):
     for done in sorted(glob.glob(f"{AT}/results/*/*/done.json")):
         meta = json.load(open(done)); d = os.path.dirname(done)
         if is_mini(meta["task"]) != mini: continue
+        if is_ext(meta["task"]) and not mini and not os.environ.get("AT_INCLUDE_EXT"): continue
         for r, pf in [(r, f"{d}/{t}{r['rep']}.profile.json") for r in meta["reps"] for t in ("rep", "loop")]:
             if not os.path.exists(pf): continue
             prof = json.load(open(pf))
@@ -198,7 +201,7 @@ def counters():
     rows = []
     for done in sorted(glob.glob(f"{AT}/results/*/*/done.json")):
         meta = json.load(open(done)); d = os.path.dirname(done)
-        if is_mini(meta["task"]): continue
+        if is_mini(meta["task"]) or is_ext(meta["task"]): continue
         for r in meta["reps"]:
             sp, tp = f"{d}/rep{r['rep']}.stat.csv", f"{d}/rep{r['rep']}.time.txt"
             if not (os.path.exists(sp) and os.path.exists(tp)): continue
@@ -274,21 +277,27 @@ def time_view():
         r["median_gap_s"] = float(np.median(gaps)); r["max_gap_s"] = float(np.max(gaps))
         ev = json.load(open(f"{AT}/logs/{task}/eval.json")) if os.path.exists(f"{AT}/logs/{task}/eval.json") else {}
         r["resolved"] = ev.get("result", "unknown")
+        r["set"] = "extension" if is_ext(task) else "original"
         rows.append(r); tl[task] = (t0, t1, cmds, snaps)
-    df = pd.DataFrame(rows)
-    if df.empty: return df
+    df_all = pd.DataFrame(rows)
+    if df_all.empty: return df_all
+    df_all.to_csv(f"{OUT}/time_view_per_task_all.csv", index=False, float_format="%.3f")
+    df_all[df_all.set == "extension"].to_csv(f"{OUT}/time_view_per_task_extension.csv", index=False, float_format="%.3f")
+    df = df_all[df_all.set == "original"].copy()
     df.to_csv(f"{OUT}/time_view_per_task.csv", index=False, float_format="%.3f")
     # stacked horizontal bars
     parts = ["model_loop_s"] + [f"tool:{c}" for c in CLS_ORDER] + ["snapshot_s"]
     colors = ["#BBBBBB", "#4C72B0", "#DD8452", "#C44E52", "#8172B3", "#55A868", "#937860", "#000000"]
     names = ["model + agent loop (gaps)"] + [f"tool: {c}" for c in CLS_ORDER] + ["instrumentation (snapshots)"]
-    fig, axes = plt.subplots(1, 2, figsize=(14, 0.6 * len(df) + 2))
+    dfp = pd.concat([df, df_all[df_all.set == "extension"]])
+    labels = [t + ("  [ext. model]" if s_ == "extension" else "") for t, s_ in zip(dfp.task, dfp.set)]
+    fig, axes = plt.subplots(1, 2, figsize=(14, 0.6 * len(dfp) + 2))
     for ax, norm in zip(axes, [False, True]):
-        left = np.zeros(len(df))
+        left = np.zeros(len(dfp))
         for p, col, nm in zip(parts, colors, names):
-            v = df[p].values.astype(float)
-            if norm: v = v / df["episode_s"].values * 100
-            ax.barh(df["task"], v, left=left, color=col, label=nm); left += v
+            v = dfp[p].values.astype(float)
+            if norm: v = v / dfp["episode_s"].values * 100
+            ax.barh(labels, v, left=left, color=col, label=nm); left += v
         ax.set_xlabel("% of episode wall-clock" if norm else "seconds of episode wall-clock")
         ax.invert_yaxis()
     axes[1].legend(bbox_to_anchor=(1.01, 1), loc="upper left", fontsize=8)

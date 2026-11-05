@@ -1,0 +1,4 @@
+Simple polynomial test:
+Original: x**2 + 1
+With custom symbol t: t**2 + 1
+Free symbols: ['t']

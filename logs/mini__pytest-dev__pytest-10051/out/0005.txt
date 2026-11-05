@@ -1,0 +1,4 @@
+331:class LogCaptureHandler(logging_StreamHandler):
+344:    def reset(self) -> None:
+780:    def reset(self) -> None:
+818:    def reset(self) -> None:

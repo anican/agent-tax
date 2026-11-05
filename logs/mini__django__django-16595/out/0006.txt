@@ -1,0 +1,14 @@
+Testing AlterField optimization...
+
+Test 1: Full optimization
+Original operations: 4
+Optimized operations: 1
+  0: <AddField  model_name='book', name='title', field=<django.db.models.fields.CharField>>
+
+Test 2: Only AlterField operations (the bug)
+Original operations: 3
+Optimized operations: 3
+  0: <AlterField  model_name='book', name='title', field=<django.db.models.fields.CharField>>
+  1: <AlterField  model_name='book', name='title', field=<django.db.models.fields.CharField>>
+  2: <AlterField  model_name='book', name='title', field=<django.db.models.fields.CharField>>
+✗ FAIL: Multiple AlterField operations were not reduced

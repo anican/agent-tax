@@ -1,0 +1,26 @@
+class LogCaptureHandler(logging_StreamHandler):
+    """A logging handler that stores log records and the log text."""
+
+    def __init__(self) -> None:
+        """Create a new log handler."""
+        super().__init__(StringIO())
+        self.records: List[logging.LogRecord] = []
+
+    def emit(self, record: logging.LogRecord) -> None:
+        """Keep the log records in a list in addition to the log text."""
+        self.records.append(record)
+        super().emit(record)
+
+    def reset(self) -> None:
+        self.records = []
+        self.stream = StringIO()
+
+    def handleError(self, record: logging.LogRecord) -> None:
+        if logging.raiseExceptions:
+            # Fail the test if the log message is bad (emit failed).
+            # The default behavior of logging is to print "Logging error"
+            # to stderr with the call stack and some extra details.
+            # pytest wants to make such mistakes visible during testing.
+            raise
+
+

@@ -330,8 +330,11 @@ def mini_comparison():
     m, *_ = load_profiles(mini=True)
     if not len(m): return None
     m["src"] = "mini-swe-agent (public trajectory)"; m["task"] = m["task"].str.replace("mini__", "")
-    o, *_ = load_profiles(mini=False)
-    o = o[(o.task.isin(m.task.unique())) & (o.phase == "solve")].copy(); o["src"] = "this study (Claude Code episode)"
+    os.environ["AT_INCLUDE_EXT"] = "1"
+    try: o, *_ = load_profiles(mini=False)
+    finally: os.environ.pop("AT_INCLUDE_EXT", None)
+    o = o[(o.task.isin(m.task.unique())) & (o.phase == "solve")].copy()
+    o["src"] = o.task.apply(lambda t: "this study (episode, 2nd model)" if is_ext(t) else "this study (episode)")
     both = pd.concat([m, o])
     t = both.groupby(["src", "task", "cls", "cat"])["n"].sum()
     t = (t / t.groupby(["src", "task", "cls"]).transform("sum") * 100).unstack("cat", fill_value=0)

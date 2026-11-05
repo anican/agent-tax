@@ -1,0 +1,32 @@
+{
+ "task": "mini__sympy__sympy-24066",
+ "seq": 28,
+ "phase": "solve",
+ "cls": "other",
+ "cmd": "cat <<'EOF' > test_edge_cases.py\nfrom sympy import exp, sin, cos, log, tan, sinh, cosh\nfrom sympy.physics import units\nfrom sympy.physics.units.systems.si import SI\n\nprint(\"Testing edge cases...\")\n\n# Test with multiple arguments (though most of these functions are single-argument)\nexpr = units.second / (units.ohm * units.farad)\n\n# Test nested functions\ntry:\n    nested = exp(sin(expr))\n    result = SI._collect_factor_and_dimension(nested)\n    print(f\"exp(sin({expr})): SUCCESS - Result dimension: {result[1]}\")\nexcept Exception as e:\n    print(f\"exp(sin({expr})): ERROR - {e}\")\n\n# Test with complex expressions\ntry:\n    complex_expr = exp(expr) * sin(expr) + cos(expr)\n    result = SI._collect_factor_and_dimension(complex_expr)\n    print(f\"exp({expr}) * sin({expr}) + cos({expr}): SUCCESS - Result dimension: {result[1]}\")\nexcept Exception as e:\n    print(f\"Complex expression: ERROR - {e}\")\n\n# Test hyperbolic functions\ntry:\n    hyp_expr = sinh(expr) + cosh(expr)\n    result = SI._collect_factor_and_dimension(hyp_expr)\n    print(f\"sinh({expr}) + cosh({expr}): SUCCESS - Result dimension: {result[1]}\")\nexcept Exception as e:\n    print(f\"Hyperbolic functions: ERROR - {e}\")\n\nprint(\"All edge case tests completed!\")\nEOF",
+ "orig_rc": 0,
+ "orig_dur_s": 0.004932608,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 0.02729201316833496,
+   "rec_rc": 0,
+   "rec_wall_s": 1.123934030532837
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 0.03737998008728027,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1188738346099854
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 0.022946834564208984,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1176950931549072
+  }
+ ]
+}

@@ -1,0 +1,32 @@
+{
+ "task": "mini__pytest-dev__pytest-10051",
+ "seq": 34,
+ "phase": "solve",
+ "cls": "search/read",
+ "cmd": "sed -i '441,449c\\\n    def clear(self) -> None:\\\n        \"\"\"Reset the list of log records and the captured log text.\"\"\"\\\n        old_records = self.handler.records\\\n        self.handler.reset()\\\n        # Update stash to point to the new records list after reset for the phase that was using the old records\\\n        for when, records in self._item.stash[caplog_records_key].items():\\\n            if records is old_records:\\\n                self._item.stash[caplog_records_key][when] = self.handler.records' ./src/_pytest/logging.py",
+ "orig_rc": 0,
+ "orig_dur_s": 0.004033536,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 0.026638031005859375,
+   "rec_rc": 0,
+   "rec_wall_s": 1.155519962310791
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 0.026873350143432617,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1405575275421143
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 0.022858381271362305,
+   "rec_rc": 0,
+   "rec_wall_s": 1.119377613067627
+  }
+ ]
+}

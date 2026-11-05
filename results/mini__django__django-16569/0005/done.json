@@ -1,0 +1,32 @@
+{
+ "task": "mini__django__django-16569",
+ "seq": 5,
+ "phase": "solve",
+ "cls": "other",
+ "cmd": "python reproduce_issue.py",
+ "orig_rc": 0,
+ "orig_dur_s": 0.219620096,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 0.18323612213134766,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1194102764129639
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 0.1893291473388672,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1361749172210693
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 0.22717761993408203,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1193594932556152
+  }
+ ]
+}

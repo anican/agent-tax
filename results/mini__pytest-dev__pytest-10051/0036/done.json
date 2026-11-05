@@ -1,0 +1,32 @@
+{
+ "task": "mini__pytest-dev__pytest-10051",
+ "seq": 36,
+ "phase": "solve",
+ "cls": "test run",
+ "cmd": "python -m pytest test_reproduce_issue.py -v",
+ "orig_rc": 0,
+ "orig_dur_s": 0.232353536,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 0.2964348793029785,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1195249557495117
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 0.2680642604827881,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1186668872833252
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 0.26187658309936523,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1426348686218262
+  }
+ ]
+}

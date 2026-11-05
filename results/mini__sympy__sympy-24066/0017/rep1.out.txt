@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/home/user/work/sympy__sympy-24066/repo/reproduce_issue.py", line 2, in <module>
+    from sympy.physics import units
+  File "/home/user/work/sympy__sympy-24066/repo/sympy/physics/__init__.py", line 5, in <module>
+    from . import units
+  File "/home/user/work/sympy__sympy-24066/repo/sympy/physics/units/__init__.py", line 32, in <module>
+    from .unitsystem import UnitSystem
+  File "/home/user/work/sympy__sympy-24066/repo/sympy/physics/units/unitsystem.py", line 210
+    raise ValueError(
+                    ^
+SyntaxError: '(' was never closed

@@ -1,0 +1,33 @@
+{
+ "task": "mini__sympy__sympy-24539",
+ "seq": 3,
+ "phase": "solve",
+ "cls": "search/read",
+ "cmd": "nl -ba sympy/polys/rings.py | sed -n '615,630p'",
+ "orig_rc": 0,
+ "orig_dur_s": 0.004583424,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 0.0437772274017334,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1185340881347656
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 0.024672269821166992,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1197733879089355
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 0.043901681900024414,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1227412223815918
+  }
+ ],
+ "loop_iterations": 30
+}

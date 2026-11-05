@@ -1,0 +1,32 @@
+{
+ "task": "mini__sympy__sympy-24066",
+ "seq": 24,
+ "phase": "solve",
+ "cls": "search/read",
+ "cmd": "sed -i '211s/f\"Dimension of \"{expr.args\\[i\\]}\" is {dim}, \"/f\"Dimension of '\"'\"'{expr.args[i]}'\"'\"' is {dim}, \"/' sympy/physics/units/unitsystem.py",
+ "orig_rc": 0,
+ "orig_dur_s": 0.004334848,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 0.02659153938293457,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1238715648651123
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 0.031255245208740234,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1484112739562988
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 0.026542186737060547,
+   "rec_rc": 0,
+   "rec_wall_s": 1.140794038772583
+  }
+ ]
+}

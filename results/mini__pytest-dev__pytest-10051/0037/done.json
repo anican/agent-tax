@@ -1,0 +1,32 @@
+{
+ "task": "mini__pytest-dev__pytest-10051",
+ "seq": 37,
+ "phase": "solve",
+ "cls": "test run",
+ "cmd": "python -m pytest test_edge_cases.py -v",
+ "orig_rc": 0,
+ "orig_dur_s": 0.226642944,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 0.26377296447753906,
+   "rec_rc": 0,
+   "rec_wall_s": 1.122532606124878
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 0.258831262588501,
+   "rec_rc": 0,
+   "rec_wall_s": 1.118781566619873
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 0.26898908615112305,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1384830474853516
+  }
+ ]
+}

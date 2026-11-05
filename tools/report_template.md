@@ -255,19 +255,25 @@ output capture swallowed the report; it was redone (D11).
 
 ### Public trajectories (optional step)
 
-Two bash-only mini-swe-agent trajectories (public SWE-bench submission
+Eight bash-only mini-swe-agent trajectories (public SWE-bench submission
 `bash-only/20250726_mini-v1.0.0_claude-sonnet-4-20250514`) for the same
-tasks were re-executed and profiled with the identical pipeline (D13).
-Episode commands only:
+tasks as this study's episodes (5 original + 3 extension) were re-executed
+command by command and profiled with the identical pipeline (D13, D20).
+Episode commands only; 234 trajectory commands vs 51 of ours:
 
 {{include:results/summary/mini_vs_own.md}}
 
-That agent issues 3–5× more commands, many of them tiny Python scripts and
-`sed -i` edits, so its CPU goes to interpreter startup/imports (29–39%),
-process lifecycle and allocation; this study's agent ran fewer, larger
-test commands, so more of its CPU is core interpreter work. The *mix* of
-orchestration categories (imports, allocation, lifecycle) is similar; the
-proportions depend strongly on how the agent batches work into commands.
+The public agent issues 2–7× more commands per task, most of them `sed -n`
+/ `nl` reads, `sed -i` edits and small ad-hoc Python scripts, and runs the
+repository's test suite on only 2 of 8 tasks (the two pytest tasks, which
+are the only ones where its core-logic share exceeds 5%). Its CPU is
+therefore dominated by **interpreter start-up/imports (26–54%)**,
+allocation/GC (18–29%) and process lifecycle (5–16%), with 1–9% in the
+CPUID-bound start-up code. This study's agent ran fewer, larger test
+commands, so 23–64% of its CPU is core interpreter work. The orchestration
+*categories* are the same across agents and across the two models used
+here; their *proportions* are set by how the agent batches work into
+commands and whether it runs real test suites.
 
 ## Hypothesis verdicts in detail
 

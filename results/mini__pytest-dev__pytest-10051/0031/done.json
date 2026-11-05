@@ -1,0 +1,32 @@
+{
+ "task": "mini__pytest-dev__pytest-10051",
+ "seq": 31,
+ "phase": "solve",
+ "cls": "test run",
+ "cmd": "cat <<'EOF' > test_edge_cases.py\nimport logging\nimport pytest\n\n@pytest.fixture\ndef setup_logging(caplog):\n    caplog.set_level(\"INFO\")\n    logging.info(\"setup_message\")\n    yield\n    logging.info(\"teardown_message\")\n\ndef test_clear_with_multiple_phases(caplog, setup_logging):\n    \"\"\"Test that clear works correctly when there are records from multiple phases.\"\"\"\n    # At this point we should have setup records\n    setup_records = caplog.get_records(\"setup\")\n    assert len(setup_records) == 1\n    assert setup_records[0].getMessage() == \"setup_message\"\n    \n    # Add a call record\n    logging.info(\"call_message\")\n    call_records = caplog.get_records(\"call\")\n    assert len(call_records) == 1\n    assert call_records[0].getMessage() == \"call_message\"\n    \n    # Current records should only show call records\n    assert len(caplog.records) == 1\n    assert caplog.records[0].getMessage() == \"call_message\"\n    \n    # Clear should only affect current phase records\n    caplog.clear()\n    \n    # After clear, call records should be empty but setup records should remain\n    assert len(caplog.get_records(\"call\")) == 0\n    assert len(caplog.records) == 0\n    assert len(caplog.get_records(\"setup\")) == 1  # Setup records should still be there\n    \n    # Add another call record after clear\n    logging.info(\"call_message_after_clear\")\n    assert len(caplog.get_records(\"call\")) == 1\n    assert caplog.get_records(\"call\")[0].getMessage() == \"call_message_after_clear\"\n    assert len(caplog.records) == 1\n    assert caplog.records[0].getMessage() == \"call_message_after_clear\"\n\nif __name__ == \"__main__\":\n    import pytest\n    pytest.main([__file__, \"-v\"])\nEOF",
+ "orig_rc": 0,
+ "orig_dur_s": 0.00389248,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 0.03643488883972168,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1196491718292236
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 0.04241228103637695,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1185665130615234
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 0.02378082275390625,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1249034404754639
+  }
+ ]
+}

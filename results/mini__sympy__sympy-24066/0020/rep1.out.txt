@@ -1,0 +1,6 @@
+                        raise ValueError(
+                            f"Dimension of "{expr.args[i]}" is {dim}, "
+                            f'Dimension of "{expr.args[i]}" is {dim}, '
+                # Return the function applied to factors with dimensionless result
+                return expr.func(*(f[0] for f in fds)), Dimension(1)
+            else:

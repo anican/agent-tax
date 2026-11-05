@@ -1,0 +1,55 @@
+============================= test session starts ==============================
+platform linux -- Python 3.11.15, pytest-7.2.0.dev0, pluggy-1.7.0 -- /home/user/work/mini__pytest-dev__pytest-10051/venv/bin/python
+cachedir: .pytest_cache
+hypothesis profile 'default'
+rootdir: /home/user/work/pytest-dev__pytest-10051/repo, configfile: pyproject.toml
+plugins: hypothesis-6.170.14
+collecting ... collected 1 item
+
+test_edge_cases.py::test_clear_with_multiple_phases FAILED               [100%]
+
+=================================== FAILURES ===================================
+_______________________ test_clear_with_multiple_phases ________________________
+
+caplog = <_pytest.logging.LogCaptureFixture object at 0x7f08af236a10>
+setup_logging = None
+
+    def test_clear_with_multiple_phases(caplog, setup_logging):
+        """Test that clear works correctly when there are records from multiple phases."""
+        # At this point we should have setup records
+        setup_records = caplog.get_records("setup")
+        assert len(setup_records) == 1
+        assert setup_records[0].getMessage() == "setup_message"
+    
+        # Add a call record
+        logging.info("call_message")
+        call_records = caplog.get_records("call")
+        assert len(call_records) == 1
+        assert call_records[0].getMessage() == "call_message"
+    
+        # Current records should only show call records
+        assert len(caplog.records) == 1
+        assert caplog.records[0].getMessage() == "call_message"
+    
+        # Clear should only affect current phase records
+        caplog.clear()
+    
+        # After clear, call records should be empty but setup records should remain
+        assert len(caplog.get_records("call")) == 0
+        assert len(caplog.records) == 0
+>       assert len(caplog.get_records("setup")) == 1  # Setup records should still be there
+E       AssertionError: assert 0 == 1
+E        +  where 0 = len([])
+E        +    where [] = <bound method LogCaptureFixture.get_records of <_pytest.logging.LogCaptureFixture object at 0x7f08af236a10>>('setup')
+E        +      where <bound method LogCaptureFixture.get_records of <_pytest.logging.LogCaptureFixture object at 0x7f08af236a10>> = <_pytest.logging.LogCaptureFixture object at 0x7f08af236a10>.get_records
+
+test_edge_cases.py:34: AssertionError
+------------------------------ Captured log setup ------------------------------
+INFO     root:test_edge_cases.py:7 setup_message
+------------------------------ Captured log call -------------------------------
+INFO     root:test_edge_cases.py:19 call_message
+---------------------------- Captured log teardown -----------------------------
+INFO     root:test_edge_cases.py:9 teardown_message
+=========================== short test summary info ============================
+FAILED test_edge_cases.py::test_clear_with_multiple_phases - AssertionError: ...
+============================== 1 failed in 0.09s ===============================

@@ -1,0 +1,32 @@
+{
+ "task": "mini__django__django-16595",
+ "seq": 19,
+ "phase": "solve",
+ "cls": "other",
+ "cmd": "python test_addfield_alterfield.py",
+ "orig_rc": 1,
+ "orig_dur_s": 0.17492864,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 1,
+   "stat_wall_s": 0.21145296096801758,
+   "rec_rc": 1,
+   "rec_wall_s": 1.1226141452789307
+  },
+  {
+   "rep": 2,
+   "stat_rc": 1,
+   "stat_wall_s": 0.20604848861694336,
+   "rec_rc": 1,
+   "rec_wall_s": 1.1277785301208496
+  },
+  {
+   "rep": 3,
+   "stat_rc": 1,
+   "stat_wall_s": 0.21112394332885742,
+   "rec_rc": 1,
+   "rec_wall_s": 1.1203861236572266
+  }
+ ]
+}

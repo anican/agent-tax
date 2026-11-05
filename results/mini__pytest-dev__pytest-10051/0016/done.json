@@ -1,0 +1,32 @@
+{
+ "task": "mini__pytest-dev__pytest-10051",
+ "seq": 16,
+ "phase": "solve",
+ "cls": "other",
+ "cmd": "cat <<'EOF' > test_comprehensive_caplog.py\nimport logging\n\ndef test_caplog_consistency_after_clear(caplog):\n    \"\"\"Test that caplog.get_records and caplog.records stay consistent after clear.\"\"\"\n    # Initially empty\n    assert caplog.get_records(\"call\") == caplog.records == []\n    \n    # Add a log record\n    logging.warning(\"test message 1\")\n    assert len(caplog.get_records(\"call\")) == 1\n    assert len(caplog.records) == 1\n    assert caplog.get_records(\"call\") == caplog.records\n    \n    # Clear and verify both are empty\n    caplog.clear()\n    assert caplog.get_records(\"call\") == caplog.records == []\n    \n    # Add another record after clear\n    logging.error(\"test message 2\")\n    assert len(caplog.get_records(\"call\")) == 1\n    assert len(caplog.records) == 1\n    assert caplog.get_records(\"call\") == caplog.records\n    assert caplog.records[0].getMessage() == \"test message 2\"\n\ndef test_multiple_clears(caplog):\n    \"\"\"Test multiple clear operations.\"\"\"\n    logging.info(\"message 1\")\n    assert len(caplog.records) == 1\n    \n    caplog.clear()\n    assert len(caplog.records) == 0\n    assert len(caplog.get_records(\"call\")) == 0\n    \n    logging.info(\"message 2\")\n    assert len(caplog.records) == 1\n    \n    caplog.clear()\n    assert len(caplog.records) == 0\n    assert len(caplog.get_records(\"call\")) == 0\n\ndef test_caplog_text_after_clear(caplog):\n    \"\"\"Test that caplog.text is also cleared properly.\"\"\"\n    logging.warning(\"test message\")\n    assert \"test message\" in caplog.text\n    assert len(caplog.records) == 1\n    \n    caplog.clear()\n    assert caplog.text == \"\"\n    assert len(caplog.records) == 0\n    assert len(caplog.get_records(\"call\")) == 0\n\nif __name__ == \"__main__\":\n    import pytest\n    pytest.main([__file__, \"-v\"])\nEOF",
+ "orig_rc": 0,
+ "orig_dur_s": 0.003931136,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 0.024592161178588867,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1385657787322998
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 0.03212571144104004,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1181964874267578
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 0.04533123970031738,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1603376865386963
+  }
+ ]
+}

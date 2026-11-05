@@ -1,0 +1,5 @@
+Testing edge cases...
+exp(sin(second/(farad*ohm))): SUCCESS - Result dimension: Dimension(1)
+exp(second/(farad*ohm)) * sin(second/(farad*ohm)) + cos(second/(farad*ohm)): SUCCESS - Result dimension: Dimension(1)
+sinh(second/(farad*ohm)) + cosh(second/(farad*ohm)): SUCCESS - Result dimension: Dimension(1)
+All edge case tests completed!

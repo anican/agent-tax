@@ -1,0 +1,16 @@
+   615	        else:
+   616	            return new_ring.from_dict(self, self.ring.domain)
+   617	
+   618	    def as_expr(self, *symbols):
+   619	        if symbols and len(symbols) != self.ring.ngens:
+   620	            raise ValueError("not enough symbols, expected %s got %s" % (self.ring.ngens, len(symbols)))
+   621	        elif not symbols:
+   622	            symbols = self.ring.symbols
+   623	
+   624	        return expr_from_dict(self.as_expr_dict(), *symbols)
+   625	
+   626	    def as_expr_dict(self):
+   627	        to_sympy = self.ring.domain.to_sympy
+   628	        return {monom: to_sympy(coeff) for monom, coeff in self.iterterms()}
+   629	
+   630	    def clear_denoms(self):

@@ -1,0 +1,32 @@
+{
+ "task": "mini__django__django-16595",
+ "seq": 18,
+ "phase": "solve",
+ "cls": "search/read",
+ "cmd": "cat <<'EOF' > test_addfield_alterfield.py\n#!/usr/bin/env python3\n\nimport sys\nimport os\n\n# Add Django to the path\nsys.path.insert(0, '.')\n\nimport django\nfrom django.conf import settings\n\n# Configure Django settings\nif not settings.configured:\n    settings.configure(\n        INSTALLED_APPS=[\n            'django.contrib.contenttypes',\n            'django.contrib.auth',\n        ],\n        DATABASES={\n            'default': {\n                'ENGINE': 'django.db.backends.sqlite3',\n                'NAME': ':memory:',\n            }\n        },\n        USE_TZ=True,\n    )\n\ndjango.setup()\n\nfrom django.db import models, migrations\nfrom django.db.migrations.optimizer import MigrationOptimizer\n\ndef test_addfield_alterfield_optimization():\n    print(\"Testing AddField + AlterField optimization...\")\n    \n    optimizer = MigrationOptimizer()\n    \n    # Test the original example from the PR\n    operations = [\n        migrations.AddField(\n            model_name=\"book\",\n            name=\"title\",\n            field=models.CharField(max_length=256, null=True),\n        ),\n        migrations.AlterField(\n            model_name=\"book\",\n            name=\"title\",\n            field=models.CharField(max_length=128, null=True),\n        ),\n        migrations.AlterField(\n            model_name=\"book\",\n            name=\"title\",\n            field=models.CharField(max_length=128, null=True, help_text=\"help\"),\n        ),\n        migrations.AlterField(\n            model_name=\"book\",\n            name=\"title\",\n            field=models.CharField(max_length=128, null=True, help_text=\"help\", default=None),\n        ),\n    ]\n    \n    result = optimizer.optimize(operations, \"books\")\n    print(f\"Original: {len(operations)} operations -> Optimized: {len(result)} operations\")\n    \n    # Should be reduced to just one AddField with the final field configuration\n    assert len(result) == 1, f\"Expected 1 operation, got {len(result)}\"\n    assert isinstance(result[0], migrations.AddField), f\"Expected AddField, got {type(result[0])}\"\n    \n    # Check that the final field has all the properties from the last AlterField\n    final_field = result[0].field\n    assert final_field.max_length == 128, f\"Expected max_length=128, got {final_field.max_length}\"\n    assert final_field.null == True, f\"Expected null=True, got {final_field.null}\"\n    assert final_field.help_text == \"help\", f\"Expected help_text='help', got {final_field.help_text}\"\n    assert final_field.default == None, f\"Expected default=None, got {final_field.default}\"\n    \n    print(\"\u2713 PASS: AddField + multiple AlterField correctly reduced to single AddField\")\n    return True\n\nif __name__ == \"__main__\":\n    success = test_addfield_alterfield_optimization()\n    sys.exit(0 if success else 1)\nEOF",
+ "orig_rc": 0,
+ "orig_dur_s": 0.004178176,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 0.03344273567199707,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1243343353271484
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 0.02433490753173828,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1229579448699951
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 0.03422975540161133,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1233751773834229
+  }
+ ]
+}

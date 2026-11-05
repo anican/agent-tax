@@ -1,0 +1,4 @@
+./src/_pytest/logging.py
+./testing/logging/test_formatter.py
+./testing/logging/test_fixture.py
+./testing/logging/test_reporting.py

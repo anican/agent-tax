@@ -1,0 +1,33 @@
+{
+ "task": "mini__pytest-dev__pytest-10051",
+ "seq": 23,
+ "phase": "solve",
+ "cls": "search/read",
+ "cmd": "sed -n '441,445p' ./src/_pytest/logging.py",
+ "orig_rc": 0,
+ "orig_dur_s": 0.004212736,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 0.031537532806396484,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1167051792144775
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 0.040177345275878906,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1221590042114258
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 0.03916668891906738,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1176998615264893
+  }
+ ],
+ "loop_iterations": 30
+}

@@ -1,0 +1,33 @@
+{
+ "task": "mini__pytest-dev__pytest-10051",
+ "seq": 5,
+ "phase": "solve",
+ "cls": "search/read",
+ "cmd": "grep -n \"class LogCaptureHandler\\|def reset\" ./src/_pytest/logging.py",
+ "orig_rc": 0,
+ "orig_dur_s": 0.00378368,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 0.021164417266845703,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1281752586364746
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 0.025386810302734375,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1181297302246094
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 0.02091813087463379,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1267268657684326
+  }
+ ],
+ "loop_iterations": 30
+}

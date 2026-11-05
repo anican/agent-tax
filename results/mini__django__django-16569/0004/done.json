@@ -1,0 +1,32 @@
+{
+ "task": "mini__django__django-16569",
+ "seq": 4,
+ "phase": "solve",
+ "cls": "search/read",
+ "cmd": "cat <<'EOF' > reproduce_issue.py\n#!/usr/bin/env python3\nimport os\nimport django\nfrom django import forms\n\nclass MyForm(forms.Form):\n    my_field = forms.CharField()\n\nif __name__ == \"__main__\":\n    settings_file = os.path.splitext(os.path.basename(__file__))[0]\n    django.conf.settings.configure(\n        DEBUG=True,\n        MIDDLEWARE_CLASSES=[],\n        ROOT_URLCONF=settings_file,\n    )\n    django.setup()\n    \n    MyFormSet = forms.formset_factory(\n        form=MyForm,\n        can_delete=True,\n        can_delete_extra=False,\n    )\n    my_formset = MyFormSet(\n        initial=None,\n    )\n    print(\"Trying to access empty_form...\")\n    try:\n        print(my_formset.empty_form)\n        print(\"SUCCESS: No error occurred\")\n    except Exception as e:\n        print(f\"ERROR: {type(e).__name__}: {e}\")\nEOF",
+ "orig_rc": 0,
+ "orig_dur_s": 0.004044288,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 0.03264594078063965,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1283934116363525
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 0.026926040649414062,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1257688999176025
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 0.025308847427368164,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1180124282836914
+  }
+ ]
+}

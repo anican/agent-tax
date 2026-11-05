@@ -1,0 +1,32 @@
+{
+ "task": "mini__sympy__sympy-24066",
+ "seq": 31,
+ "phase": "solve",
+ "cls": "other",
+ "cmd": "cat <<'EOF' > test_basic_functionality.py\nfrom sympy.physics import units\nfrom sympy.physics.units.systems.si import SI\n\nprint(\"Testing basic functionality is not broken...\")\n\n# Test basic unit operations\ntry:\n    # Multiplication\n    result1 = SI._collect_factor_and_dimension(units.meter * units.second)\n    print(f\"meter * second: SUCCESS - {result1[1]}\")\n    \n    # Division\n    result2 = SI._collect_factor_and_dimension(units.meter / units.second)\n    print(f\"meter / second: SUCCESS - {result2[1]}\")\n    \n    # Power\n    result3 = SI._collect_factor_and_dimension(units.meter**2)\n    print(f\"meter**2: SUCCESS - {result3[1]}\")\n    \n    # Addition of same dimensions\n    result4 = SI._collect_factor_and_dimension(units.meter + 2*units.meter)\n    print(f\"meter + 2*meter: SUCCESS - {result4[1]}\")\n    \n    print(\"All basic functionality tests passed!\")\n    \nexcept Exception as e:\n    print(f\"ERROR in basic functionality: {e}\")\nEOF",
+ "orig_rc": 0,
+ "orig_dur_s": 0.004076032,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 0.026745080947875977,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1382291316986084
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 0.026328563690185547,
+   "rec_rc": 0,
+   "rec_wall_s": 1.118746280670166
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 0.034393310546875,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1224191188812256
+  }
+ ]
+}

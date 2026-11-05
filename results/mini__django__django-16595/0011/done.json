@@ -1,0 +1,32 @@
+{
+ "task": "mini__django__django-16595",
+ "seq": 11,
+ "phase": "solve",
+ "cls": "search/read",
+ "cmd": "sed -i '92d' django/db/migrations/operations/fields.py",
+ "orig_rc": 0,
+ "orig_dur_s": 0.004036608,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 0.025300025939941406,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1230006217956543
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 0.0316464900970459,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1239514350891113
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 0.0380551815032959,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1213815212249756
+  }
+ ]
+}

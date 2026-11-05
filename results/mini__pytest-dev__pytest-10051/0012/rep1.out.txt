@@ -1,0 +1,4 @@
+    def reset(self) -> None:
+        self.records.clear()
+        self.stream = StringIO()
+        self.stream = StringIO()

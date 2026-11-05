@@ -1,0 +1,33 @@
+{
+ "task": "mini__sympy__sympy-24066",
+ "seq": 15,
+ "phase": "solve",
+ "cls": "search/read",
+ "cmd": "sed -n '190,220p' sympy/physics/units/unitsystem.py",
+ "orig_rc": 0,
+ "orig_dur_s": 0.004963584,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 0.04006791114807129,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1684257984161377
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 0.02747488021850586,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1287789344787598
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 0.032705068588256836,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1216845512390137
+  }
+ ],
+ "loop_iterations": 30
+}

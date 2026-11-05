@@ -1,0 +1,32 @@
+{
+ "task": "mini__sympy__sympy-24066",
+ "seq": 7,
+ "phase": "solve",
+ "cls": "other",
+ "cmd": "cd . && python reproduce_issue.py",
+ "orig_rc": 0,
+ "orig_dur_s": 0.423778304,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 0.3972036838531494,
+   "rec_rc": 0,
+   "rec_wall_s": 1.116938829421997
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 0.39836597442626953,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1296987533569336
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 0.3728940486907959,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1260082721710205
+  }
+ ]
+}

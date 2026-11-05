@@ -1,0 +1,41 @@
+   460	            )
+   461	
+   462	    def clean(self):
+   463	        """
+   464	        Hook for doing any extra formset-wide cleaning after Form.clean() has
+   465	        been called on every form. Any ValidationError raised by this method
+   466	        will not be associated with a particular form; it will be accessible
+   467	        via formset.non_form_errors()
+   468	        """
+   469	        pass
+   470	
+   471	    def has_changed(self):
+   472	        """Return True if data in any form differs from initial."""
+   473	        return any(form.has_changed() for form in self)
+   474	
+   475	    def add_fields(self, form, index):
+   476	        """A hook for adding extra fields on to each form instance."""
+   477	        initial_form_count = self.initial_form_count()
+   478	        if self.can_order:
+   479	            # Only pre-fill the ordering field for initial forms.
+   480	            if index is not None and index < initial_form_count:
+   481	                form.fields[ORDERING_FIELD_NAME] = IntegerField(
+   482	                    label=_("Order"),
+   483	                    initial=index + 1,
+   484	                    required=False,
+   485	                    widget=self.get_ordering_widget(),
+   486	                )
+   487	            else:
+   488	                form.fields[ORDERING_FIELD_NAME] = IntegerField(
+   489	                    label=_("Order"),
+   490	                    required=False,
+   491	                    widget=self.get_ordering_widget(),
+   492	                )
+   493	        if self.can_delete and (self.can_delete_extra or index < initial_form_count):
+   494	            form.fields[DELETION_FIELD_NAME] = BooleanField(
+   495	                label=_("Delete"),
+   496	                required=False,
+   497	                widget=self.get_deletion_widget(),
+   498	            )
+   499	
+   500	    def add_prefix(self, index):

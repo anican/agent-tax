@@ -1,0 +1,33 @@
+{
+ "task": "mini__sympy__sympy-24539",
+ "seq": 1,
+ "phase": "solve",
+ "cls": "search/read",
+ "cmd": "ls -la",
+ "orig_rc": 0,
+ "orig_dur_s": 0.004677376,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 0.028089284896850586,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1168735027313232
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 0.025355815887451172,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1142659187316895
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 0.022228717803955078,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1175072193145752
+  }
+ ],
+ "loop_iterations": 30
+}

@@ -1,0 +1,224 @@
+[replay] mini__pytest-dev__pytest-10051 seq=1 class=search/read orig=0.01s :: 'find . -name "*.py" | grep -E "(logging|caplog)" | head -20'
+    rep1: stat rc=0 0.022586345672607422 | record rc=0 1.120650291442871
+    rep2: stat rc=0 0.028540611267089844 | record rc=0 1.1244745254516602
+    rep3: stat rc=0 0.02794623374938965 | record rc=0 1.1180675029754639
+[replay] mini__pytest-dev__pytest-10051 seq=2 class=search/read orig=0.00s :: 'cat ./src/_pytest/logging.py'
+    rep1: stat rc=0 0.03390073776245117 | record rc=0 1.1223559379577637
+    rep2: stat rc=0 0.02541494369506836 | record rc=0 1.1186795234680176
+    rep3: stat rc=0 0.022183895111083984 | record rc=0 1.1246356964111328
+[replay] mini__pytest-dev__pytest-10051 seq=3 class=search/read orig=0.00s :: 'grep -n "class LogCaptureFixture\\|def clear\\|def get_records" ./src/_p'
+    rep1: stat rc=0 0.027497053146362305 | record rc=0 1.123361349105835
+    rep2: stat rc=0 0.02181410789489746 | record rc=0 1.1221339702606201
+    rep3: stat rc=0 0.024733304977416992 | record rc=0 1.1398963928222656
+[replay] mini__pytest-dev__pytest-10051 seq=4 class=search/read orig=0.00s :: "sed -n '358,460p' ./src/_pytest/logging.py"
+    rep1: stat rc=0 0.020243167877197266 | record rc=0 1.1385204792022705
+    rep2: stat rc=0 0.02918386459350586 | record rc=0 1.1256906986236572
+    rep3: stat rc=0 0.03234434127807617 | record rc=0 1.1267099380493164
+[replay] mini__pytest-dev__pytest-10051 seq=5 class=search/read orig=0.00s :: 'grep -n "class LogCaptureHandler\\|def reset" ./src/_pytest/logging.py'
+    rep1: stat rc=0 0.021164417266845703 | record rc=0 1.1281752586364746
+    rep2: stat rc=0 0.025386810302734375 | record rc=0 1.1181297302246094
+    rep3: stat rc=0 0.02091813087463379 | record rc=0 1.1267268657684326
+[replay] mini__pytest-dev__pytest-10051 seq=6 class=search/read orig=0.00s :: "sed -n '331,356p' ./src/_pytest/logging.py"
+    rep1: stat rc=0 0.034688711166381836 | record rc=0 1.122391939163208
+    rep2: stat rc=0 0.03441643714904785 | record rc=0 1.1247076988220215
+    rep3: stat rc=0 0.024196147918701172 | record rc=0 1.1241955757141113
+[replay] mini__pytest-dev__pytest-10051 seq=7 class=search/read orig=0.00s :: 'grep -n "def caplog\\|caplog_records_key" ./src/_pytest/logging.py'
+    rep1: stat rc=0 0.024400949478149414 | record rc=0 1.12190842628479
+    rep2: stat rc=0 0.03821158409118652 | record rc=0 1.1258058547973633
+    rep3: stat rc=0 0.03270769119262695 | record rc=0 1.1146314144134521
+[replay] mini__pytest-dev__pytest-10051 seq=8 class=search/read orig=0.00s :: "sed -n '690,710p' ./src/_pytest/logging.py"
+    rep1: stat rc=0 0.03992819786071777 | record rc=0 1.122279405593872
+    rep2: stat rc=0 0.02352738380432129 | record rc=0 1.1220040321350098
+    rep3: stat rc=0 0.02737259864807129 | record rc=0 1.1220848560333252
+[replay] mini__pytest-dev__pytest-10051 seq=9 class=other orig=0.00s :: "cat <<'EOF' > test_reproduce_issue.py\nimport logging\n\ndef test(caplog)"
+    rep1: stat rc=0 0.042681217193603516 | record rc=0 1.1251931190490723
+    rep2: stat rc=0 0.023343801498413086 | record rc=0 1.1198532581329346
+    rep3: stat rc=0 0.02967381477355957 | record rc=0 1.1239256858825684
+[replay] mini__pytest-dev__pytest-10051 seq=10 class=test run orig=0.29s :: 'python -m pytest test_reproduce_issue.py -v'
+    rep1: stat rc=1 0.2974698543548584 | record rc=1 1.1243808269500732
+    rep2: stat rc=1 0.27614569664001465 | record rc=1 1.1427619457244873
+    rep3: stat rc=1 0.2587924003601074 | record rc=1 1.1666245460510254
+[replay] mini__pytest-dev__pytest-10051 seq=11 class=search/read orig=0.00s :: "sed -i '344,345c\\\n    def reset(self) -> None:\\\n        self.records.c"
+    rep1: stat rc=0 0.04185795783996582 | record rc=0 1.1443254947662354
+    rep2: stat rc=0 0.0230710506439209 | record rc=0 1.1167399883270264
+    rep3: stat rc=0 0.03883075714111328 | record rc=0 1.1612582206726074
+[replay] mini__pytest-dev__pytest-10051 seq=12 class=search/read orig=0.00s :: "sed -n '344,347p' ./src/_pytest/logging.py"
+    rep1: stat rc=0 0.025197505950927734 | record rc=0 1.1301701068878174
+    rep2: stat rc=0 0.053856611251831055 | record rc=0 1.1156561374664307
+    rep3: stat rc=0 0.03759145736694336 | record rc=0 1.1168506145477295
+[replay] mini__pytest-dev__pytest-10051 seq=13 class=search/read orig=0.00s :: "sed -i '344,347c\\\n    def reset(self) -> None:\\\n        self.records.c"
+    rep1: stat rc=0 0.026869773864746094 | record rc=0 1.11619234085083
+    rep2: stat rc=0 0.030336618423461914 | record rc=0 1.122114658355713
+    rep3: stat rc=0 0.044997215270996094 | record rc=0 1.1245999336242676
+[replay] mini__pytest-dev__pytest-10051 seq=14 class=search/read orig=0.00s :: "sed -n '344,347p' ./src/_pytest/logging.py"
+    rep1: stat rc=0 0.04172539710998535 | record rc=0 1.1281073093414307
+    rep2: stat rc=0 0.03827810287475586 | record rc=0 1.1339387893676758
+    rep3: stat rc=0 0.03989887237548828 | record rc=0 1.1721165180206299
+[replay] mini__pytest-dev__pytest-10051 seq=15 class=test run orig=0.24s :: 'python -m pytest test_reproduce_issue.py -v'
+    rep1: stat rc=0 0.2633321285247803 | record rc=0 1.1167049407958984
+    rep2: stat rc=0 0.2569897174835205 | record rc=0 1.1179585456848145
+    rep3: stat rc=0 0.28510308265686035 | record rc=0 1.1201119422912598
+[replay] mini__pytest-dev__pytest-10051 seq=16 class=other orig=0.00s :: "cat <<'EOF' > test_comprehensive_caplog.py\nimport logging\n\ndef test_ca"
+    rep1: stat rc=0 0.024592161178588867 | record rc=0 1.1385657787322998
+    rep2: stat rc=0 0.03212571144104004 | record rc=0 1.1181964874267578
+    rep3: stat rc=0 0.04533123970031738 | record rc=0 1.1603376865386963
+[replay] mini__pytest-dev__pytest-10051 seq=17 class=test run orig=0.27s :: 'python -m pytest test_comprehensive_caplog.py -v'
+    rep1: stat rc=1 0.25177502632141113 | record rc=1 1.1189155578613281
+    rep2: stat rc=1 0.2906789779663086 | record rc=1 1.1178650856018066
+    rep3: stat rc=1 0.28748416900634766 | record rc=1 1.119215488433838
+[replay] mini__pytest-dev__pytest-10051 seq=18 class=test run orig=1.37s :: 'python -m pytest testing/logging/ -v --tb=short'
+    rep1: stat rc=1 1.5573196411132812 | record rc=1 2.1212258338928223
+    rep2: stat rc=1 1.4352061748504639 | record rc=1 2.122542142868042
+    rep3: stat rc=1 1.6426515579223633 | record rc=1 2.1197471618652344
+[replay] mini__pytest-dev__pytest-10051 seq=19 class=search/read orig=0.00s :: "sed -n '150,180p' testing/logging/test_fixture.py"
+    rep1: stat rc=0 0.027531147003173828 | record rc=0 1.119248628616333
+    rep2: stat rc=0 0.03394317626953125 | record rc=0 1.1192359924316406
+    rep3: stat rc=0 0.02457261085510254 | record rc=0 1.1201927661895752
+[replay] mini__pytest-dev__pytest-10051 seq=20 class=search/read orig=0.00s :: "sed -n '690,720p' ./src/_pytest/logging.py"
+    rep1: stat rc=0 0.0321199893951416 | record rc=0 1.122746229171753
+    rep2: stat rc=0 0.025918960571289062 | record rc=0 1.1210577487945557
+    rep3: stat rc=0 0.027703046798706055 | record rc=0 1.120974063873291
+[replay] mini__pytest-dev__pytest-10051 seq=21 class=search/read orig=0.00s :: "sed -i '344,346c\\\n    def reset(self) -> None:\\\n        self.records ="
+    rep1: stat rc=0 0.020137310028076172 | record rc=0 1.1205925941467285
+    rep2: stat rc=0 0.03909611701965332 | record rc=0 1.1148436069488525
+    rep3: stat rc=0 0.025449037551879883 | record rc=0 1.1149580478668213
+[replay] mini__pytest-dev__pytest-10051 seq=22 class=search/read orig=0.00s :: "sed -n '344,347p' ./src/_pytest/logging.py"
+    rep1: stat rc=0 0.04247403144836426 | record rc=0 1.1191959381103516
+    rep2: stat rc=0 0.031133651733398438 | record rc=0 1.1201598644256592
+    rep3: stat rc=0 0.032991886138916016 | record rc=0 1.1225395202636719
+[replay] mini__pytest-dev__pytest-10051 seq=23 class=search/read orig=0.00s :: "sed -n '441,445p' ./src/_pytest/logging.py"
+    rep1: stat rc=0 0.031537532806396484 | record rc=0 1.1167051792144775
+    rep2: stat rc=0 0.040177345275878906 | record rc=0 1.1221590042114258
+    rep3: stat rc=0 0.03916668891906738 | record rc=0 1.1176998615264893
+[replay] mini__pytest-dev__pytest-10051 seq=24 class=search/read orig=0.00s :: 'sed -i \'441,443c\\\n    def clear(self) -> None:\\\n        """Reset the l'
+    rep1: stat rc=0 0.02481818199157715 | record rc=0 1.1214463710784912
+    rep2: stat rc=0 0.033966779708862305 | record rc=0 1.1246013641357422
+    rep3: stat rc=0 0.0412905216217041 | record rc=0 1.1214089393615723
+[replay] mini__pytest-dev__pytest-10051 seq=25 class=search/read orig=0.01s :: "sed -n '441,448p' ./src/_pytest/logging.py"
+    rep1: stat rc=0 0.04066967964172363 | record rc=0 1.1152689456939697
+    rep2: stat rc=0 0.028203487396240234 | record rc=0 1.1210014820098877
+    rep3: stat rc=0 0.026765823364257812 | record rc=0 1.1174240112304688
+[replay] mini__pytest-dev__pytest-10051 seq=26 class=test run orig=0.24s :: 'python -m pytest test_reproduce_issue.py -v'
+    rep1: stat rc=0 0.2713930606842041 | record rc=0 1.1161699295043945
+    rep2: stat rc=0 0.25597453117370605 | record rc=0 1.1210730075836182
+    rep3: stat rc=0 0.3055539131164551 | record rc=0 1.1183807849884033
+[replay] mini__pytest-dev__pytest-10051 seq=27 class=test run orig=0.24s :: 'python -m pytest testing/logging/test_fixture.py::test_caplog_captures'
+    rep1: stat rc=0 0.2684922218322754 | record rc=0 1.1172757148742676
+    rep2: stat rc=0 0.2599616050720215 | record rc=0 1.1238412857055664
+    rep3: stat rc=0 0.24136638641357422 | record rc=0 1.117126226425171
+[replay] mini__pytest-dev__pytest-10051 seq=28 class=test run orig=1.39s :: 'python -m pytest testing/logging/ -v --tb=short'
+    rep1: stat rc=0 1.4095773696899414 | record rc=0 2.1176059246063232
+    rep2: stat rc=0 1.4096453189849854 | record rc=0 2.1150448322296143
+    rep3: stat rc=0 1.4238274097442627 | record rc=0 2.1188817024230957
+[replay] mini__pytest-dev__pytest-10051 seq=29 class=other orig=0.00s :: "cat <<'EOF' > test_comprehensive_caplog_fixed.py\nimport logging\n\ndef t"
+    rep1: stat rc=0 0.045160531997680664 | record rc=0 1.1342272758483887
+    rep2: stat rc=0 0.023266077041625977 | record rc=0 1.1189939975738525
+    rep3: stat rc=0 0.0524449348449707 | record rc=0 1.1183438301086426
+[replay] mini__pytest-dev__pytest-10051 seq=30 class=test run orig=0.25s :: 'python -m pytest test_comprehensive_caplog_fixed.py -v'
+    rep1: stat rc=0 0.2906310558319092 | record rc=0 1.1218249797821045
+    rep2: stat rc=0 0.2829413414001465 | record rc=0 1.1185264587402344
+    rep3: stat rc=0 0.25389766693115234 | record rc=0 1.1160657405853271
+[replay] mini__pytest-dev__pytest-10051 seq=31 class=test run orig=0.00s :: "cat <<'EOF' > test_edge_cases.py\nimport logging\nimport pytest\n\n@pytest"
+    rep1: stat rc=0 0.03643488883972168 | record rc=0 1.1196491718292236
+    rep2: stat rc=0 0.04241228103637695 | record rc=0 1.1185665130615234
+    rep3: stat rc=0 0.02378082275390625 | record rc=0 1.1249034404754639
+[replay] mini__pytest-dev__pytest-10051 seq=32 class=test run orig=0.24s :: 'python -m pytest test_edge_cases.py -v'
+    rep1: stat rc=1 0.2821688652038574 | record rc=1 1.124173641204834
+    rep2: stat rc=1 0.29587841033935547 | record rc=1 1.1237692832946777
+    rep3: stat rc=1 0.27441930770874023 | record rc=1 1.12723708152771
+[replay] mini__pytest-dev__pytest-10051 seq=33 class=search/read orig=0.00s :: 'sed -i \'441,446c\\\n    def clear(self) -> None:\\\n        """Reset the l'
+    rep1: stat rc=0 0.02649855613708496 | record rc=0 1.119417667388916
+    rep2: stat rc=0 0.05471944808959961 | record rc=0 1.119563102722168
+    rep3: stat rc=0 0.026692867279052734 | record rc=0 1.118859052658081
+[replay] mini__pytest-dev__pytest-10051 seq=34 class=search/read orig=0.00s :: 'sed -i \'441,449c\\\n    def clear(self) -> None:\\\n        """Reset the l'
+    rep1: stat rc=0 0.026638031005859375 | record rc=0 1.155519962310791
+    rep2: stat rc=0 0.026873350143432617 | record rc=0 1.1405575275421143
+    rep3: stat rc=0 0.022858381271362305 | record rc=0 1.119377613067627
+[replay] mini__pytest-dev__pytest-10051 seq=35 class=search/read orig=0.00s :: "sed -n '441,450p' ./src/_pytest/logging.py"
+    rep1: stat rc=0 0.04934215545654297 | record rc=0 1.1173877716064453
+    rep2: stat rc=0 0.03417372703552246 | record rc=0 1.1202995777130127
+    rep3: stat rc=0 0.03603625297546387 | record rc=0 1.1156303882598877
+[replay] mini__pytest-dev__pytest-10051 seq=36 class=test run orig=0.23s :: 'python -m pytest test_reproduce_issue.py -v'
+    rep1: stat rc=0 0.2964348793029785 | record rc=0 1.1195249557495117
+    rep2: stat rc=0 0.2680642604827881 | record rc=0 1.1186668872833252
+    rep3: stat rc=0 0.26187658309936523 | record rc=0 1.1426348686218262
+[replay] mini__pytest-dev__pytest-10051 seq=37 class=test run orig=0.23s :: 'python -m pytest test_edge_cases.py -v'
+    rep1: stat rc=0 0.26377296447753906 | record rc=0 1.122532606124878
+    rep2: stat rc=0 0.258831262588501 | record rc=0 1.118781566619873
+    rep3: stat rc=0 0.26898908615112305 | record rc=0 1.1384830474853516
+[replay] mini__pytest-dev__pytest-10051 seq=38 class=test run orig=1.36s :: 'python -m pytest testing/logging/ -v --tb=short'
+    rep1: stat rc=0 1.4818990230560303 | record rc=0 2.1190431118011475
+    rep2: stat rc=0 1.603616714477539 | record rc=0 2.1222076416015625
+    rep3: stat rc=0 1.5197770595550537 | record rc=0 2.1243600845336914
+[replay] mini__pytest-dev__pytest-10051 seq=39 class=test run orig=0.22s :: 'python -m pytest test_comprehensive_caplog_fixed.py -v'
+    rep1: stat rc=0 0.2760021686553955 | record rc=0 1.1373744010925293
+    rep2: stat rc=0 0.27646851539611816 | record rc=0 1.1256775856018066
+    rep3: stat rc=0 0.2628164291381836 | record rc=0 1.1238226890563965
+[replay] mini__pytest-dev__pytest-10051 seq=40 class=git orig=0.01s :: 'rm test_reproduce_issue.py test_comprehensive_caplog_fixed.py test_edg'
+    rep1: stat rc=0 0.0363161563873291 | record rc=0 1.1233670711517334
+    rep2: stat rc=0 0.034925222396850586 | record rc=0 1.139760971069336
+    rep3: stat rc=0 0.041655778884887695 | record rc=0 1.1222314834594727
+[loop] mini__pytest-dev__pytest-10051 seq=1 :: 'find . -name "*.py" | grep -E "(logging|caplog)" | head -20'
+    loop1: rc=0 1.13s
+    loop2: rc=0 1.12s
+    loop3: rc=0 1.12s
+[loop] mini__pytest-dev__pytest-10051 seq=2 :: 'cat ./src/_pytest/logging.py'
+    loop1: rc=0 1.13s
+    loop2: rc=0 1.12s
+    loop3: rc=0 1.13s
+[loop] mini__pytest-dev__pytest-10051 seq=3 :: 'grep -n "class LogCaptureFixture\\|def clear\\|def get_records" ./src/_p'
+    loop1: rc=0 1.13s
+    loop2: rc=0 1.12s
+    loop3: rc=0 1.13s
+[loop] mini__pytest-dev__pytest-10051 seq=4 :: "sed -n '358,460p' ./src/_pytest/logging.py"
+    loop1: rc=0 1.12s
+    loop2: rc=0 1.12s
+    loop3: rc=0 1.12s
+[loop] mini__pytest-dev__pytest-10051 seq=5 :: 'grep -n "class LogCaptureHandler\\|def reset" ./src/_pytest/logging.py'
+    loop1: rc=0 1.12s
+    loop2: rc=0 1.12s
+    loop3: rc=0 1.12s
+[loop] mini__pytest-dev__pytest-10051 seq=6 :: "sed -n '331,356p' ./src/_pytest/logging.py"
+    loop1: rc=0 1.12s
+    loop2: rc=0 1.12s
+    loop3: rc=0 1.12s
+[loop] mini__pytest-dev__pytest-10051 seq=7 :: 'grep -n "def caplog\\|caplog_records_key" ./src/_pytest/logging.py'
+    loop1: rc=0 1.12s
+    loop2: rc=0 1.12s
+    loop3: rc=0 1.12s
+[loop] mini__pytest-dev__pytest-10051 seq=8 :: "sed -n '690,710p' ./src/_pytest/logging.py"
+    loop1: rc=0 1.12s
+    loop2: rc=0 1.12s
+    loop3: rc=0 1.13s
+[loop] mini__pytest-dev__pytest-10051 seq=12 :: "sed -n '344,347p' ./src/_pytest/logging.py"
+    loop1: rc=0 1.12s
+    loop2: rc=0 1.12s
+    loop3: rc=0 1.12s
+[loop] mini__pytest-dev__pytest-10051 seq=14 :: "sed -n '344,347p' ./src/_pytest/logging.py"
+    loop1: rc=0 1.12s
+    loop2: rc=0 1.12s
+    loop3: rc=0 1.12s
+[loop] mini__pytest-dev__pytest-10051 seq=19 :: "sed -n '150,180p' testing/logging/test_fixture.py"
+    loop1: rc=0 1.12s
+    loop2: rc=0 1.12s
+    loop3: rc=0 1.12s
+[loop] mini__pytest-dev__pytest-10051 seq=20 :: "sed -n '690,720p' ./src/_pytest/logging.py"
+    loop1: rc=0 1.12s
+    loop2: rc=0 1.12s
+    loop3: rc=0 1.12s
+[loop] mini__pytest-dev__pytest-10051 seq=22 :: "sed -n '344,347p' ./src/_pytest/logging.py"
+    loop1: rc=0 1.12s
+    loop2: rc=0 1.12s
+    loop3: rc=0 1.12s
+[loop] mini__pytest-dev__pytest-10051 seq=23 :: "sed -n '441,445p' ./src/_pytest/logging.py"
+    loop1: rc=0 1.12s
+    loop2: rc=0 1.12s
+    loop3: rc=0 1.12s
+[loop] mini__pytest-dev__pytest-10051 seq=25 :: "sed -n '441,448p' ./src/_pytest/logging.py"
+    loop1: rc=0 1.12s
+    loop2: rc=0 1.13s
+    loop3: rc=0 1.12s
+[loop] mini__pytest-dev__pytest-10051 seq=35 :: "sed -n '441,450p' ./src/_pytest/logging.py"
+    loop1: rc=0 1.12s
+    loop2: rc=0 1.12s
+    loop3: rc=0 1.12s

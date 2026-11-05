@@ -1,0 +1,32 @@
+{
+ "task": "mini__sympy__sympy-24539",
+ "seq": 6,
+ "phase": "solve",
+ "cls": "search/read",
+ "cmd": "sed -i '622s/else:/elif not symbols:/' sympy/polys/rings.py",
+ "orig_rc": 0,
+ "orig_dur_s": 0.00399104,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 0.029639482498168945,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1267337799072266
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 0.031067848205566406,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1167409420013428
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 0.0346980094909668,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1219279766082764
+  }
+ ]
+}

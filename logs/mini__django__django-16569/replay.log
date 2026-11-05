@@ -3,3 +3,66 @@
     rep2: stat rc=0 0.049237728118896484 | record rc=0 1.115663766860962
     rep3: stat rc=0 0.051424503326416016 | record rc=0 1.122753381729126
 [replay] mini__django__django-16569 seq=2 class=search/read orig=0.00s :: "nl -ba ./django/forms/formsets.py | sed -n '485,500p'"
+    rep1: stat rc=0 0.028040647506713867 | record rc=0 1.122631549835205
+    rep2: stat rc=0 0.04592585563659668 | record rc=0 1.1234161853790283
+    rep3: stat rc=0 0.022975444793701172 | record rc=0 1.1214838027954102
+[replay] mini__django__django-16569 seq=3 class=search/read orig=0.00s :: "nl -ba ./django/forms/formsets.py | sed -n '460,500p'"
+    rep1: stat rc=0 0.026356935501098633 | record rc=0 1.1208083629608154
+    rep2: stat rc=0 0.025763988494873047 | record rc=0 1.1160242557525635
+    rep3: stat rc=0 0.037703514099121094 | record rc=0 1.1242468357086182
+[replay] mini__django__django-16569 seq=4 class=search/read orig=0.00s :: "cat <<'EOF' > reproduce_issue.py\n#!/usr/bin/env python3\nimport os\nimpo"
+    rep1: stat rc=0 0.03264594078063965 | record rc=0 1.1283934116363525
+    rep2: stat rc=0 0.026926040649414062 | record rc=0 1.1257688999176025
+    rep3: stat rc=0 0.025308847427368164 | record rc=0 1.1180124282836914
+[replay] mini__django__django-16569 seq=5 class=other orig=0.22s :: 'python reproduce_issue.py'
+    rep1: stat rc=0 0.18323612213134766 | record rc=0 1.1194102764129639
+    rep2: stat rc=0 0.1893291473388672 | record rc=0 1.1361749172210693
+    rep3: stat rc=0 0.22717761993408203 | record rc=0 1.1193594932556152
+[replay] mini__django__django-16569 seq=6 class=search/read orig=0.00s :: "sed -i '493s/if self.can_delete and (self.can_delete_extra or index < "
+    rep1: stat rc=0 0.036252498626708984 | record rc=0 1.1227083206176758
+    rep2: stat rc=0 0.02648019790649414 | record rc=0 1.122344970703125
+    rep3: stat rc=0 0.026003122329711914 | record rc=0 1.117408037185669
+[replay] mini__django__django-16569 seq=7 class=search/read orig=0.00s :: "nl -ba ./django/forms/formsets.py | sed -n '490,495p'"
+    rep1: stat rc=0 0.029279470443725586 | record rc=0 1.1239089965820312
+    rep2: stat rc=0 0.025245189666748047 | record rc=0 1.1184415817260742
+    rep3: stat rc=0 0.0322568416595459 | record rc=0 1.1195733547210693
+[replay] mini__django__django-16569 seq=8 class=other orig=0.17s :: 'python reproduce_issue.py'
+    rep1: stat rc=0 0.18689608573913574 | record rc=0 1.1183667182922363
+    rep2: stat rc=0 0.1918034553527832 | record rc=0 1.1223509311676025
+    rep3: stat rc=0 0.19899272918701172 | record rc=0 1.1284143924713135
+[replay] mini__django__django-16569 seq=9 class=search/read orig=0.00s :: "cat <<'EOF' > test_comprehensive.py\n#!/usr/bin/env python3\nimport os\ni"
+    rep1: stat rc=0 0.027858257293701172 | record rc=0 1.1230478286743164
+    rep2: stat rc=0 0.026016712188720703 | record rc=0 1.1245718002319336
+    rep3: stat rc=0 0.027204036712646484 | record rc=0 1.1208550930023193
+[replay] mini__django__django-16569 seq=10 class=other orig=0.16s :: 'python test_comprehensive.py'
+    rep1: stat rc=0 0.17499279975891113 | record rc=0 1.1195855140686035
+    rep2: stat rc=0 0.1905350685119629 | record rc=0 1.1189954280853271
+    rep3: stat rc=0 0.2048792839050293 | record rc=0 1.1191761493682861
+[replay] mini__django__django-16569 seq=11 class=search/read orig=0.00s :: "nl -ba ./django/forms/formsets.py | sed -n '478,495p'"
+    rep1: stat rc=0 0.03144431114196777 | record rc=0 1.1168835163116455
+    rep2: stat rc=0 0.023206710815429688 | record rc=0 1.1181252002716064
+    rep3: stat rc=0 0.025110721588134766 | record rc=0 1.117461919784546
+[replay] mini__django__django-16569 seq=12 class=git orig=0.03s :: 'rm reproduce_issue.py test_comprehensive.py && echo MICRO_SWE_AGENT_FI'
+    rep1: stat rc=0 0.053433895111083984 | record rc=0 1.1223115921020508
+    rep2: stat rc=0 0.06891536712646484 | record rc=0 1.1158971786499023
+    rep3: stat rc=0 0.07019853591918945 | record rc=0 1.1187679767608643
+[loop] mini__django__django-16569 seq=1 :: 'find . -name "formsets.py" -type f | head -10'
+    loop1: rc=0 1.11s
+    loop2: rc=0 1.12s
+    loop3: rc=0 1.12s
+[loop] mini__django__django-16569 seq=2 :: "nl -ba ./django/forms/formsets.py | sed -n '485,500p'"
+    loop1: rc=0 1.12s
+    loop2: rc=0 1.12s
+    loop3: rc=0 1.12s
+[loop] mini__django__django-16569 seq=3 :: "nl -ba ./django/forms/formsets.py | sed -n '460,500p'"
+    loop1: rc=0 1.12s
+    loop2: rc=0 1.12s
+    loop3: rc=0 1.12s
+[loop] mini__django__django-16569 seq=7 :: "nl -ba ./django/forms/formsets.py | sed -n '490,495p'"
+    loop1: rc=0 1.12s
+    loop2: rc=0 1.12s
+    loop3: rc=0 1.12s
+[loop] mini__django__django-16569 seq=11 :: "nl -ba ./django/forms/formsets.py | sed -n '478,495p'"
+    loop1: rc=0 1.12s
+    loop2: rc=0 1.12s
+    loop3: rc=0 1.12s

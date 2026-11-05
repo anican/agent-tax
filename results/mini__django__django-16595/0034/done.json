@@ -1,0 +1,32 @@
+{
+ "task": "mini__django__django-16595",
+ "seq": 34,
+ "phase": "solve",
+ "cls": "other",
+ "cmd": "cat <<'EOF' > temp_alter_field_reduce.py\n    def reduce(self, operation, app_label):\n        if isinstance(operation, RemoveField) and self.is_same_field_operation(\n            operation\n        ):\n            return [operation]\n        elif (\n            isinstance(operation, RenameField)\n            and self.is_same_field_operation(operation)\n            and self.field.db_column is None\n        ):\n            return [\n                operation,\n                AlterField(\n                    model_name=self.model_name,\n                    name=operation.new_name,\n                    field=self.field,\n                ),\n            ]\n        elif isinstance(operation, AlterField) and self.is_same_field_operation(\n            operation\n        ):\n            return [operation]\n        return super().reduce(operation, app_label)\nEOF",
+ "orig_rc": 0,
+ "orig_dur_s": 0.00402048,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 0.04436540603637695,
+   "rec_rc": 0,
+   "rec_wall_s": 1.12107515335083
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 0.03075695037841797,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1504883766174316
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 0.03515052795410156,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1212151050567627
+  }
+ ]
+}

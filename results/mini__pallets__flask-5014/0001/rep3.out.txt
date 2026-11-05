@@ -1,0 +1,24 @@
+total 160
+drwxr-xr-x 10 root root  4096 Nov  5 05:17 .
+drwxr-xr-x  5 root root  4096 Nov  5 04:50 ..
+-rw-r--r--  1 root root   217 Nov  3 07:49 .editorconfig
+-rw-r--r--  1 root root   544 Nov  3 07:49 .flake8
+drwxr-xr-x  8 root root  4096 Nov  5 05:31 .git
+drwxr-xr-x  4 root root  4096 Nov  3 07:49 .github
+-rw-r--r--  1 root root   207 Nov  3 07:49 .gitignore
+-rw-r--r--  1 root root  1026 Nov  3 07:49 .pre-commit-config.yaml
+-rw-r--r--  1 root root   209 Nov  3 07:49 .readthedocs.yaml
+-rw-r--r--  1 root root 65888 Nov  3 07:49 CHANGES.rst
+-rw-r--r--  1 root root  3358 Nov  3 07:49 CODE_OF_CONDUCT.md
+-rw-r--r--  1 root root  6685 Nov  3 07:49 CONTRIBUTING.rst
+-rw-r--r--  1 root root  1475 Nov  3 07:49 LICENSE.rst
+-rw-r--r--  1 root root   206 Nov  3 07:49 MANIFEST.in
+-rw-r--r--  1 root root  2158 Nov  3 07:49 README.rst
+drwxr-xr-x  2 root root  4096 Nov  3 07:49 artwork
+drwxr-xr-x  6 root root  4096 Nov  3 07:49 docs
+drwxr-xr-x  5 root root  4096 Nov  3 07:49 examples
+-rw-r--r--  1 root root  2556 Nov  3 07:49 pyproject.toml
+drwxr-xr-x  2 root root  4096 Nov  3 07:49 requirements
+drwxr-xr-x  4 root root  4096 Nov  5 04:50 src
+drwxr-xr-x  7 root root  4096 Nov  5 05:17 tests
+-rw-r--r--  1 root root  1281 Nov  3 07:49 tox.ini

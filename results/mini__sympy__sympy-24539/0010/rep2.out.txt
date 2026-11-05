@@ -1,0 +1,4 @@
+Original polynomial: 3*x**2*y - x*y*z + 7*z**3 + 1
+Expected result with U,V,W symbols: 3*U**2*V - U*V*W + 7*W**3 + 1
+Actual result: 3*u**2*v - u*v*w + 7*w**3 + 1
+Are they equal? False

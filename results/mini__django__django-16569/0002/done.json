@@ -1,0 +1,33 @@
+{
+ "task": "mini__django__django-16569",
+ "seq": 2,
+ "phase": "solve",
+ "cls": "search/read",
+ "cmd": "nl -ba ./django/forms/formsets.py | sed -n '485,500p'",
+ "orig_rc": 0,
+ "orig_dur_s": 0.004598528,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 0.028040647506713867,
+   "rec_rc": 0,
+   "rec_wall_s": 1.122631549835205
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 0.04592585563659668,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1234161853790283
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 0.022975444793701172,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1214838027954102
+  }
+ ],
+ "loop_iterations": 30
+}

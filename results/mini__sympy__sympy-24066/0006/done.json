@@ -1,0 +1,32 @@
+{
+ "task": "mini__sympy__sympy-24066",
+ "seq": 6,
+ "phase": "solve",
+ "cls": "other",
+ "cmd": "cat <<'EOF' > reproduce_issue.py\nfrom sympy import exp\nfrom sympy.physics import units\nfrom sympy.physics.units.systems.si import SI\n\nprint(\"Testing the issue...\")\n\nexpr = units.second / (units.ohm * units.farad)\ndim = SI._collect_factor_and_dimension(expr)[1]\n\nprint(f\"Expression: {expr}\")\nprint(f\"Dimension: {dim}\")\nprint(f\"Is dimensionless: {SI.get_dimension_system().is_dimensionless(dim)}\")\n\nprint(\"\\nTesting buggy expression...\")\nbuggy_expr = 100 + exp(expr)\nprint(f\"Buggy expression: {buggy_expr}\")\n\ntry:\n    result = SI._collect_factor_and_dimension(buggy_expr)\n    print(f\"Result: {result}\")\nexcept Exception as e:\n    print(f\"Error: {e}\")\nEOF",
+ "orig_rc": 0,
+ "orig_dur_s": 0.003863552,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 0.026361942291259766,
+   "rec_rc": 0,
+   "rec_wall_s": 1.124089241027832
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 0.02280902862548828,
+   "rec_rc": 0,
+   "rec_wall_s": 1.118551254272461
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 0.02165389060974121,
+   "rec_rc": 0,
+   "rec_wall_s": 1.118553876876831
+  }
+ ]
+}

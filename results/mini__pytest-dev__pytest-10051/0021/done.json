@@ -1,0 +1,32 @@
+{
+ "task": "mini__pytest-dev__pytest-10051",
+ "seq": 21,
+ "phase": "solve",
+ "cls": "search/read",
+ "cmd": "sed -i '344,346c\\\n    def reset(self) -> None:\\\n        self.records = []\\\n        self.stream = StringIO()' ./src/_pytest/logging.py",
+ "orig_rc": 0,
+ "orig_dur_s": 0.004025856,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 0.020137310028076172,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1205925941467285
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 0.03909611701965332,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1148436069488525
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 0.025449037551879883,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1149580478668213
+  }
+ ]
+}

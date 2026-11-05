@@ -1,0 +1,10 @@
+    def clear(self) -> None:
+        """Reset the list of log records and the captured log text."""
+        old_records = self.handler.records
+        self.handler.reset()
+        # Update stash to point to the new records list after reset for the phase that was using the old records
+        for when, records in self._item.stash[caplog_records_key].items():
+            if records is old_records:
+                self._item.stash[caplog_records_key][when] = self.handler.records
+
+    def set_level(self, level: Union[int, str], logger: Optional[str] = None) -> None:

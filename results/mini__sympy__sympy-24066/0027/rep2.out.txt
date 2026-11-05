@@ -1,0 +1,16 @@
+Testing comprehensive mathematical functions...
+Base expression: second/(farad*ohm)
+Is dimensionless: True
+exp(second/(farad*ohm)) + 100: SUCCESS - Result dimension: Dimension(1)
+sin(second/(farad*ohm)) + 100: SUCCESS - Result dimension: Dimension(1)
+cos(second/(farad*ohm)) + 100: SUCCESS - Result dimension: Dimension(1)
+log(second/(farad*ohm)) + 100: SUCCESS - Result dimension: Dimension(1)
+
+Testing with dimensional expression: meter
+exp(meter): EXPECTED ERROR - Dimension of 'meter' is Dimension(length, L), but it should be Dimension(1)
+sin(meter): EXPECTED ERROR - Dimension of 'meter' is Dimension(length, L), but it should be Dimension(1)
+cos(meter): EXPECTED ERROR - Dimension of 'meter' is Dimension(length, L), but it should be Dimension(1)
+log(meter): EXPECTED ERROR - Dimension of 'meter' is Dimension(length, L), but it should be Dimension(1)
+
+Testing sqrt with dimensional argument:
+sqrt(meter**2): SUCCESS - Result dimension: Dimension(length, L)

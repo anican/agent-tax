@@ -1,0 +1,16 @@
+                ),
+            ]
+        elif isinstance(operation, AlterField) and self.is_same_field_operation(
+            operation
+        ):
+            return [operation]
+        return super().reduce(operation, app_label)
+
+
+class AddField(FieldOperation):
+    """Add a field to a model."""
+
+    def __init__(self, model_name, name, field, preserve_default=True):
+        self.preserve_default = preserve_default
+        super().__init__(model_name, name, field)
+

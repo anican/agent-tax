@@ -1,0 +1,103 @@
+class LogCaptureFixture:
+    """Provides access and control of log capturing."""
+
+    def __init__(self, item: nodes.Node, *, _ispytest: bool = False) -> None:
+        check_ispytest(_ispytest)
+        self._item = item
+        self._initial_handler_level: Optional[int] = None
+        # Dict of log name -> log level.
+        self._initial_logger_levels: Dict[Optional[str], int] = {}
+
+    def _finalize(self) -> None:
+        """Finalize the fixture.
+
+        This restores the log levels changed by :meth:`set_level`.
+        """
+        # Restore log levels.
+        if self._initial_handler_level is not None:
+            self.handler.setLevel(self._initial_handler_level)
+        for logger_name, level in self._initial_logger_levels.items():
+            logger = logging.getLogger(logger_name)
+            logger.setLevel(level)
+
+    @property
+    def handler(self) -> LogCaptureHandler:
+        """Get the logging handler used by the fixture.
+
+        :rtype: LogCaptureHandler
+        """
+        return self._item.stash[caplog_handler_key]
+
+    def get_records(self, when: str) -> List[logging.LogRecord]:
+        """Get the logging records for one of the possible test phases.
+
+        :param str when:
+            Which test phase to obtain the records from. Valid values are: "setup", "call" and "teardown".
+
+        :returns: The list of captured records at the given stage.
+        :rtype: List[logging.LogRecord]
+
+        .. versionadded:: 3.4
+        """
+        return self._item.stash[caplog_records_key].get(when, [])
+
+    @property
+    def text(self) -> str:
+        """The formatted log text."""
+        return _remove_ansi_escape_sequences(self.handler.stream.getvalue())
+
+    @property
+    def records(self) -> List[logging.LogRecord]:
+        """The list of log records."""
+        return self.handler.records
+
+    @property
+    def record_tuples(self) -> List[Tuple[str, int, str]]:
+        """A list of a stripped down version of log records intended
+        for use in assertion comparison.
+
+        The format of the tuple is:
+
+            (logger_name, log_level, message)
+        """
+        return [(r.name, r.levelno, r.getMessage()) for r in self.records]
+
+    @property
+    def messages(self) -> List[str]:
+        """A list of format-interpolated log messages.
+
+        Unlike 'records', which contains the format string and parameters for
+        interpolation, log messages in this list are all interpolated.
+
+        Unlike 'text', which contains the output from the handler, log
+        messages in this list are unadorned with levels, timestamps, etc,
+        making exact comparisons more reliable.
+
+        Note that traceback or stack info (from :func:`logging.exception` or
+        the `exc_info` or `stack_info` arguments to the logging functions) is
+        not included, as this is added by the formatter in the handler.
+
+        .. versionadded:: 3.7
+        """
+        return [r.getMessage() for r in self.records]
+
+    def clear(self) -> None:
+        """Reset the list of log records and the captured log text."""
+        self.handler.reset()
+
+    def set_level(self, level: Union[int, str], logger: Optional[str] = None) -> None:
+        """Set the level of a logger for the duration of a test.
+
+        .. versionchanged:: 3.4
+            The levels of the loggers changed by this function will be
+            restored to their initial values at the end of the test.
+
+        :param int level: The level.
+        :param str logger: The logger to update. If not given, the root logger.
+        """
+        logger_obj = logging.getLogger(logger)
+        # Save the original log-level to restore it during teardown.
+        self._initial_logger_levels.setdefault(logger, logger_obj.level)
+        logger_obj.setLevel(level)
+        if self._initial_handler_level is None:
+            self._initial_handler_level = self.handler.level

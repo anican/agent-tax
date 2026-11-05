@@ -1,0 +1,32 @@
+{
+ "task": "mini__django__django-16595",
+ "seq": 28,
+ "phase": "solve",
+ "cls": "search/read",
+ "cmd": "sed -i '265i\\        elif isinstance(operation, AlterField) and self.is_same_field_operation(\\\n            operation\\\n        ):\\\n            return [operation]' django/db/migrations/operations/fields.py",
+ "orig_rc": 0,
+ "orig_dur_s": 0.003969536,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 0.026681184768676758,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1237118244171143
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 0.05833029747009277,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1256868839263916
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 0.035207271575927734,
+   "rec_rc": 0,
+   "rec_wall_s": 1.117739200592041
+  }
+ ]
+}

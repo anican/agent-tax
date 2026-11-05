@@ -1,0 +1,55 @@
+	Command being timed: "timeout -s KILL 600 bash -c cat <<'EOF' > reproduce_issue.py
+#!/usr/bin/env python3
+import os
+import django
+from django import forms
+
+class MyForm(forms.Form):
+    my_field = forms.CharField()
+
+if __name__ == "__main__":
+    settings_file = os.path.splitext(os.path.basename(__file__))[0]
+    django.conf.settings.configure(
+        DEBUG=True,
+        MIDDLEWARE_CLASSES=[],
+        ROOT_URLCONF=settings_file,
+    )
+    django.setup()
+    
+    MyFormSet = forms.formset_factory(
+        form=MyForm,
+        can_delete=True,
+        can_delete_extra=False,
+    )
+    my_formset = MyFormSet(
+        initial=None,
+    )
+    print("Trying to access empty_form...")
+    try:
+        print(my_formset.empty_form)
+        print("SUCCESS: No error occurred")
+    except Exception as e:
+        print(f"ERROR: {type(e).__name__}: {e}")
+EOF"
+	User time (seconds): 0.00
+	System time (seconds): 0.00
+	Percent of CPU this job got: 100%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.00
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 3312
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 408
+	Voluntary context switches: 5
+	Involuntary context switches: 0
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 8
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

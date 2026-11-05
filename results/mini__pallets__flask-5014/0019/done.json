@@ -1,0 +1,32 @@
+{
+ "task": "mini__pallets__flask-5014",
+ "seq": 19,
+ "phase": "solve",
+ "cls": "search/read",
+ "cmd": "cat > test_edge_cases.py << 'EOF'\n#!/usr/bin/env python3\n\nimport sys\nimport os\n\n# Add the src directory to the path so we can import flask\nsys.path.insert(0, os.path.join(os.path.dirname(__file__), 'src'))\n\nfrom flask import Blueprint\n\ndef test_whitespace_only_name():\n    \"\"\"Test that creating a Blueprint with whitespace-only name raises ValueError\"\"\"\n    test_cases = [\" \", \"  \", \"\\t\", \"\\n\", \" \\t \\n \"]\n    \n    for name in test_cases:\n        try:\n            bp = Blueprint(name, __name__)\n            print(f\"ERROR: Blueprint with whitespace-only name '{repr(name)}' was created - this should not happen!\")\n            return False\n        except ValueError as e:\n            if \"Blueprint name cannot be empty\" in str(e):\n                print(f\"SUCCESS: Blueprint with whitespace-only name '{repr(name)}' correctly raised ValueError\")\n            else:\n                print(f\"ERROR: ValueError raised but with wrong message for '{repr(name)}':\", str(e))\n                return False\n        except Exception as e:\n            print(f\"ERROR: Unexpected exception raised for '{repr(name)}':\", type(e).__name__, str(e))\n            return False\n    \n    return True\n\ndef test_none_name():\n    \"\"\"Test that creating a Blueprint with None name raises appropriate error\"\"\"\n    try:\n        bp = Blueprint(None, __name__)\n        print(\"ERROR: Blueprint with None name was created - this should not happen!\")\n        return False\n    except (ValueError, TypeError) as e:\n        print(\"SUCCESS: Blueprint with None name correctly raised exception:\", type(e).__name__, str(e))\n        return True\n    except Exception as e:\n        print(\"ERROR: Unexpected exception raised:\", type(e).__name__, str(e))\n        return False\n\nif __name__ == \"__main__\":\n    print(\"Testing Blueprint edge cases...\")\n    \n    tests = [\n        test_whitespace_only_name,\n        test_none_name\n    ]\n    \n    results = []\n    for test in tests:\n        print(f\"\\nRunning {test.__name__}...\")\n        results.append(test())\n    \n    print(f\"\\nResults: {sum(results)}/{len(results)} tests passed\")\n    \n    if all(results):\n        print(\"All edge case tests passed!\")\n        sys.exit(0)\n    else:\n        print(\"Some edge case tests failed!\")\n        sys.exit(1)\nEOF",
+ "orig_rc": 0,
+ "orig_dur_s": 0.004248832,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 0.02834296226501465,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1267361640930176
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 0.04450535774230957,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1180250644683838
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 0.02622675895690918,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1531713008880615
+  }
+ ]
+}

@@ -1,0 +1,6 @@
+   490	                    required=False,
+   491	                    widget=self.get_ordering_widget(),
+   492	                )
+   493	        if self.can_delete and (self.can_delete_extra or (index is not None and index < initial_form_count)):
+   494	            form.fields[DELETION_FIELD_NAME] = BooleanField(
+   495	                label=_("Delete"),

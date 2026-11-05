@@ -1,0 +1,65 @@
+	Command being timed: "timeout -s KILL 600 bash -c cat <<'EOF' > test_comprehensive.py
+from sympy import exp, sin, cos, log, sqrt
+from sympy.physics import units
+from sympy.physics.units.systems.si import SI
+
+print("Testing comprehensive mathematical functions...")
+
+# Test expression that should be dimensionless
+expr = units.second / (units.ohm * units.farad)
+dim = SI._collect_factor_and_dimension(expr)[1]
+print(f"Base expression: {expr}")
+print(f"Is dimensionless: {SI.get_dimension_system().is_dimensionless(dim)}")
+
+# Test various mathematical functions
+test_functions = [exp, sin, cos, log]
+for func in test_functions:
+    try:
+        test_expr = 100 + func(expr)
+        result = SI._collect_factor_and_dimension(test_expr)
+        print(f"{func.__name__}({expr}) + 100: SUCCESS - Result dimension: {result[1]}")
+    except Exception as e:
+        print(f"{func.__name__}({expr}) + 100: ERROR - {e}")
+
+# Test with dimensional expression (should fail)
+dimensional_expr = units.meter
+print(f"\nTesting with dimensional expression: {dimensional_expr}")
+for func in test_functions:
+    try:
+        test_expr = func(dimensional_expr)
+        result = SI._collect_factor_and_dimension(test_expr)
+        print(f"{func.__name__}({dimensional_expr}): UNEXPECTED SUCCESS - {result}")
+    except Exception as e:
+        print(f"{func.__name__}({dimensional_expr}): EXPECTED ERROR - {e}")
+
+# Test sqrt (should work with dimensional arguments)
+print(f"\nTesting sqrt with dimensional argument:")
+try:
+    sqrt_expr = sqrt(units.meter**2)
+    result = SI._collect_factor_and_dimension(sqrt_expr)
+    print(f"sqrt({units.meter**2}): SUCCESS - Result dimension: {result[1]}")
+except Exception as e:
+    print(f"sqrt({units.meter**2}): ERROR - {e}")
+EOF"
+	User time (seconds): 0.00
+	System time (seconds): 0.00
+	Percent of CPU this job got: 100%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.00
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 3404
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 410
+	Voluntary context switches: 5
+	Involuntary context switches: 0
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 8
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

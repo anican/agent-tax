@@ -1,0 +1,248 @@
+[replay] mini__django__django-16595 seq=1 class=search/read orig=0.01s :: 'find . -type f -name "*.py" | grep -E "(migrat|optim)" | head -20'
+    rep1: stat rc=0 0.03522229194641113 | record rc=0 1.1180615425109863
+    rep2: stat rc=0 0.037821292877197266 | record rc=0 1.1223938465118408
+    rep3: stat rc=0 0.027557373046875 | record rc=0 1.1177277565002441
+[replay] mini__django__django-16595 seq=2 class=search/read orig=0.00s :: 'cat django/db/migrations/optimizer.py'
+    rep1: stat rc=0 0.02090740203857422 | record rc=0 1.1234467029571533
+    rep2: stat rc=0 0.033102989196777344 | record rc=0 1.118056058883667
+    rep3: stat rc=0 0.03221845626831055 | record rc=0 1.1461915969848633
+[replay] mini__django__django-16595 seq=3 class=search/read orig=0.00s :: 'cat django/db/migrations/operations/fields.py'
+    rep1: stat rc=0 0.03409528732299805 | record rc=0 1.1183366775512695
+    rep2: stat rc=0 0.02103734016418457 | record rc=0 1.1173124313354492
+    rep3: stat rc=0 0.022585630416870117 | record rc=0 1.1182291507720947
+[replay] mini__django__django-16595 seq=4 class=search/read orig=0.00s :: "sed -n '/class AlterField/,/class RenameField/p' django/db/migrations/"
+    rep1: stat rc=0 0.039595842361450195 | record rc=0 1.1167888641357422
+    rep2: stat rc=0 0.02195906639099121 | record rc=0 1.1176753044128418
+    rep3: stat rc=0 0.03131723403930664 | record rc=0 1.1184396743774414
+[replay] mini__django__django-16595 seq=5 class=search/read orig=0.00s :: "cat <<'EOF' > test_alter_field_optimization.py\n#!/usr/bin/env python3\n"
+    rep1: stat rc=0 0.03436875343322754 | record rc=0 1.1185696125030518
+    rep2: stat rc=0 0.04277300834655762 | record rc=0 1.116201639175415
+    rep3: stat rc=0 0.03513932228088379 | record rc=0 1.1203312873840332
+[replay] mini__django__django-16595 seq=6 class=other orig=0.20s :: 'python test_alter_field_optimization.py'
+    rep1: stat rc=1 0.20182013511657715 | record rc=1 1.1236772537231445
+    rep2: stat rc=1 0.20629382133483887 | record rc=1 1.1217851638793945
+    rep3: stat rc=1 0.23301005363464355 | record rc=1 1.1257455348968506
+[replay] mini__django__django-16595 seq=7 class=search/read orig=0.00s :: "sed -i '/def reduce(self, operation, app_label):/,/return super().redu"
+    rep1: stat rc=0 0.023226022720336914 | record rc=0 1.1221752166748047
+    rep2: stat rc=0 0.04597187042236328 | record rc=0 1.1225779056549072
+    rep3: stat rc=0 0.03362679481506348 | record rc=0 1.1234102249145508
+[replay] mini__django__django-16595 seq=8 class=search/read orig=0.00s :: "sed -n '/class AlterField/,/class RenameField/p' django/db/migrations/"
+    rep1: stat rc=0 0.022469520568847656 | record rc=0 1.1149330139160156
+    rep2: stat rc=0 0.04654216766357422 | record rc=0 1.1234159469604492
+    rep3: stat rc=0 0.03723406791687012 | record rc=0 1.1247525215148926
+[replay] mini__django__django-16595 seq=9 class=other orig=0.16s :: 'python test_alter_field_optimization.py'
+    rep1: stat rc=1 0.1861255168914795 | record rc=1 1.122495412826538
+    rep2: stat rc=1 0.19246482849121094 | record rc=1 1.1173427104949951
+    rep3: stat rc=1 0.21300196647644043 | record rc=1 1.1177778244018555
+[replay] mini__django__django-16595 seq=10 class=search/read orig=0.00s :: "sed -n '85,100p' django/db/migrations/operations/fields.py"
+    rep1: stat rc=0 0.023215055465698242 | record rc=0 1.1230015754699707
+    rep2: stat rc=0 0.03670215606689453 | record rc=0 1.1219992637634277
+    rep3: stat rc=0 0.0338594913482666 | record rc=0 1.1218574047088623
+[replay] mini__django__django-16595 seq=11 class=search/read orig=0.00s :: "sed -i '92d' django/db/migrations/operations/fields.py"
+    rep1: stat rc=0 0.025300025939941406 | record rc=0 1.1230006217956543
+    rep2: stat rc=0 0.0316464900970459 | record rc=0 1.1239514350891113
+    rep3: stat rc=0 0.0380551815032959 | record rc=0 1.1213815212249756
+[replay] mini__django__django-16595 seq=12 class=search/read orig=0.00s :: "sed -n '85,100p' django/db/migrations/operations/fields.py"
+    rep1: stat rc=0 0.03824806213378906 | record rc=0 1.1206343173980713
+    rep2: stat rc=0 0.028821945190429688 | record rc=0 1.119415521621704
+    rep3: stat rc=0 0.022625446319580078 | record rc=0 1.1220810413360596
+[replay] mini__django__django-16595 seq=13 class=search/read orig=0.00s :: "sed -i '92d' django/db/migrations/operations/fields.py"
+    rep1: stat rc=0 0.028556108474731445 | record rc=0 1.1216156482696533
+    rep2: stat rc=0 0.03674578666687012 | record rc=0 1.1212806701660156
+    rep3: stat rc=0 0.029751300811767578 | record rc=0 1.1222071647644043
+[replay] mini__django__django-16595 seq=14 class=search/read orig=0.00s :: "sed -n '85,100p' django/db/migrations/operations/fields.py"
+    rep1: stat rc=0 0.023810863494873047 | record rc=0 1.1219534873962402
+    rep2: stat rc=0 0.046271562576293945 | record rc=0 1.1264419555664062
+    rep3: stat rc=0 0.04297685623168945 | record rc=0 1.1228163242340088
+[replay] mini__django__django-16595 seq=15 class=other orig=0.18s :: 'python test_alter_field_optimization.py'
+    rep1: stat rc=0 0.18801617622375488 | record rc=0 1.1182942390441895
+    rep2: stat rc=0 0.23423051834106445 | record rc=0 1.1215548515319824
+    rep3: stat rc=0 0.20978212356567383 | record rc=0 1.1220324039459229
+[replay] mini__django__django-16595 seq=16 class=search/read orig=0.00s :: "cat <<'EOF' > test_comprehensive_alter_field.py\n#!/usr/bin/env python3"
+    rep1: stat rc=0 0.02515387535095215 | record rc=0 1.1241819858551025
+    rep2: stat rc=0 0.021920442581176758 | record rc=0 1.1276800632476807
+    rep3: stat rc=0 0.0593724250793457 | record rc=0 1.163935661315918
+[replay] mini__django__django-16595 seq=17 class=other orig=0.18s :: 'python test_comprehensive_alter_field.py'
+    rep1: stat rc=0 0.20863604545593262 | record rc=0 1.1170027256011963
+    rep2: stat rc=0 0.22365164756774902 | record rc=0 1.1439964771270752
+    rep3: stat rc=0 0.21689367294311523 | record rc=0 1.1215765476226807
+[replay] mini__django__django-16595 seq=18 class=search/read orig=0.00s :: "cat <<'EOF' > test_addfield_alterfield.py\n#!/usr/bin/env python3\n\nimpo"
+    rep1: stat rc=0 0.03344273567199707 | record rc=0 1.1243343353271484
+    rep2: stat rc=0 0.02433490753173828 | record rc=0 1.1229579448699951
+    rep3: stat rc=0 0.03422975540161133 | record rc=0 1.1233751773834229
+[replay] mini__django__django-16595 seq=19 class=other orig=0.17s :: 'python test_addfield_alterfield.py'
+    rep1: stat rc=1 0.21145296096801758 | record rc=1 1.1226141452789307
+    rep2: stat rc=1 0.20604848861694336 | record rc=1 1.1277785301208496
+    rep3: stat rc=1 0.21112394332885742 | record rc=1 1.1203861236572266
+[replay] mini__django__django-16595 seq=20 class=search/read orig=0.01s :: "sed -n '/class AddField/,/class RemoveField/p' django/db/migrations/op"
+    rep1: stat rc=0 0.02907252311706543 | record rc=0 1.120610237121582
+    rep2: stat rc=0 0.03125286102294922 | record rc=0 1.122140884399414
+    rep3: stat rc=0 0.034174203872680664 | record rc=0 1.1308927536010742
+[replay] mini__django__django-16595 seq=21 class=search/read orig=0.00s :: "sed -n '/class AlterField/,/class RenameField/p' django/db/migrations/"
+    rep1: stat rc=0 0.02238607406616211 | record rc=0 1.124222993850708
+    rep2: stat rc=0 0.02341008186340332 | record rc=0 1.1214971542358398
+    rep3: stat rc=0 0.042876243591308594 | record rc=0 1.1250793933868408
+[replay] mini__django__django-16595 seq=22 class=git orig=0.00s :: 'git log --oneline -1'
+    rep1: stat rc=0 0.023722171783447266 | record rc=0 1.1216082572937012
+    rep2: stat rc=0 0.04195880889892578 | record rc=0 1.1225295066833496
+    rep3: stat rc=0 0.04066205024719238 | record rc=0 1.1179168224334717
+[replay] mini__django__django-16595 seq=23 class=git orig=0.01s :: 'git diff django/db/migrations/operations/fields.py'
+    rep1: stat rc=0 0.024990320205688477 | record rc=0 1.1195507049560547
+    rep2: stat rc=0 0.027791738510131836 | record rc=0 1.117368221282959
+    rep3: stat rc=0 0.031164884567260742 | record rc=0 1.1297476291656494
+[replay] mini__django__django-16595 seq=24 class=git orig=0.01s :: 'git checkout -- django/db/migrations/operations/fields.py'
+    rep1: stat rc=0 0.05556750297546387 | record rc=0 1.174649953842163
+    rep2: stat rc=0 0.033349037170410156 | record rc=0 1.1190769672393799
+    rep3: stat rc=0 0.038729190826416016 | record rc=0 1.1199419498443604
+[replay] mini__django__django-16595 seq=25 class=search/read orig=0.00s :: 'grep -n "class AlterField" django/db/migrations/operations/fields.py'
+    rep1: stat rc=0 0.024563312530517578 | record rc=0 1.119619607925415
+    rep2: stat rc=0 0.022006511688232422 | record rc=0 1.1224675178527832
+    rep3: stat rc=0 0.029392480850219727 | record rc=0 1.1185293197631836
+[replay] mini__django__django-16595 seq=26 class=search/read orig=0.00s :: "sed -n '198,/^class /p' django/db/migrations/operations/fields.py | gr"
+    rep1: stat rc=0 0.04025912284851074 | record rc=0 1.1187937259674072
+    rep2: stat rc=0 0.025725603103637695 | record rc=0 1.1215500831604004
+    rep3: stat rc=0 0.022215843200683594 | record rc=0 1.119490146636963
+[replay] mini__django__django-16595 seq=27 class=search/read orig=0.00s :: "sed -n '249,270p' django/db/migrations/operations/fields.py"
+    rep1: stat rc=0 0.047023773193359375 | record rc=0 1.1182513236999512
+    rep2: stat rc=0 0.025872230529785156 | record rc=0 1.1172266006469727
+    rep3: stat rc=0 0.04045820236206055 | record rc=0 1.1197431087493896
+[replay] mini__django__django-16595 seq=28 class=search/read orig=0.00s :: "sed -i '265i\\        elif isinstance(operation, AlterField) and self.i"
+    rep1: stat rc=0 0.026681184768676758 | record rc=0 1.1237118244171143
+    rep2: stat rc=0 0.05833029747009277 | record rc=0 1.1256868839263916
+    rep3: stat rc=0 0.035207271575927734 | record rc=0 1.117739200592041
+[replay] mini__django__django-16595 seq=29 class=search/read orig=0.00s :: "sed -n '249,275p' django/db/migrations/operations/fields.py"
+    rep1: stat rc=0 0.0223085880279541 | record rc=0 1.1176292896270752
+    rep2: stat rc=0 0.03511357307434082 | record rc=0 1.1189026832580566
+    rep3: stat rc=0 0.03129696846008301 | record rc=0 1.1186802387237549
+[replay] mini__django__django-16595 seq=30 class=git orig=0.01s :: 'git checkout -- django/db/migrations/operations/fields.py'
+    rep1: stat rc=0 0.030519485473632812 | record rc=0 1.1180686950683594
+    rep2: stat rc=0 0.03117227554321289 | record rc=0 1.117640495300293
+    rep3: stat rc=0 0.03732466697692871 | record rc=0 1.1197848320007324
+[replay] mini__django__django-16595 seq=31 class=search/read orig=0.00s :: "sed -n '249,270p' django/db/migrations/operations/fields.py"
+    rep1: stat rc=0 0.0398406982421875 | record rc=0 1.1180717945098877
+    rep2: stat rc=0 0.044439077377319336 | record rc=0 1.1752700805664062
+    rep3: stat rc=0 0.030107498168945312 | record rc=0 1.1307973861694336
+[replay] mini__django__django-16595 seq=32 class=search/read orig=0.00s :: "sed -i '265i\\        elif isinstance(operation, AlterField) and self.i"
+    rep1: stat rc=0 0.02264857292175293 | record rc=0 1.1235859394073486
+    rep2: stat rc=0 0.02396702766418457 | record rc=0 1.125011682510376
+    rep3: stat rc=0 0.04046368598937988 | record rc=0 1.1263363361358643
+[replay] mini__django__django-16595 seq=33 class=search/read orig=0.00s :: "sed -n '249,275p' django/db/migrations/operations/fields.py"
+    rep1: stat rc=0 0.039403676986694336 | record rc=0 1.1181209087371826
+    rep2: stat rc=0 0.03226613998413086 | record rc=0 1.1190037727355957
+    rep3: stat rc=0 0.043515682220458984 | record rc=0 1.1409237384796143
+[replay] mini__django__django-16595 seq=34 class=other orig=0.00s :: "cat <<'EOF' > temp_alter_field_reduce.py\n    def reduce(self, operatio"
+    rep1: stat rc=0 0.04436540603637695 | record rc=0 1.12107515335083
+    rep2: stat rc=0 0.03075695037841797 | record rc=0 1.1504883766174316
+    rep3: stat rc=0 0.03515052795410156 | record rc=0 1.1212151050567627
+[replay] mini__django__django-16595 seq=35 class=git orig=0.01s :: "git checkout -- django/db/migrations/operations/fields.py && awk '\n/^c"
+    rep1: stat rc=0 0.04781460762023926 | record rc=0 1.1224474906921387
+    rep2: stat rc=0 0.032109737396240234 | record rc=0 1.1319465637207031
+    rep3: stat rc=0 0.036580801010131836 | record rc=0 1.138939619064331
+[replay] mini__django__django-16595 seq=36 class=search/read orig=0.00s :: "sed -n '249,275p' django/db/migrations/operations/fields.py"
+    rep1: stat rc=0 0.021830320358276367 | record rc=0 1.128598690032959
+    rep2: stat rc=0 0.05614876747131348 | record rc=0 1.1248865127563477
+    rep3: stat rc=0 0.03323960304260254 | record rc=0 1.1166961193084717
+[replay] mini__django__django-16595 seq=37 class=other orig=0.19s :: 'python test_alter_field_optimization.py'
+    rep1: stat rc=0 0.2196664810180664 | record rc=0 1.1498339176177979
+    rep2: stat rc=0 0.20233821868896484 | record rc=0 1.12284255027771
+    rep3: stat rc=0 0.20187950134277344 | record rc=0 1.1257166862487793
+[replay] mini__django__django-16595 seq=38 class=other orig=0.18s :: 'python test_comprehensive_alter_field.py'
+    rep1: stat rc=0 0.2402963638305664 | record rc=0 1.1224141120910645
+    rep2: stat rc=0 0.20882964134216309 | record rc=0 1.1183769702911377
+    rep3: stat rc=0 0.207014799118042 | record rc=0 1.12333083152771
+[replay] mini__django__django-16595 seq=39 class=other orig=0.18s :: 'python test_addfield_alterfield.py'
+    rep1: stat rc=0 0.19779634475708008 | record rc=0 1.1250712871551514
+    rep2: stat rc=0 0.20077800750732422 | record rc=0 1.1276872158050537
+    rep3: stat rc=0 0.20983505249023438 | record rc=0 1.1200883388519287
+[replay] mini__django__django-16595 seq=40 class=other orig=0.03s :: 'python -m py_compile django/db/migrations/operations/fields.py'
+    rep1: stat rc=0 0.056510210037231445 | record rc=0 1.1224806308746338
+    rep2: stat rc=0 0.059049129486083984 | record rc=0 1.1257784366607666
+    rep3: stat rc=0 0.06406402587890625 | record rc=0 1.1216387748718262
+[replay] mini__django__django-16595 seq=41 class=git orig=0.01s :: 'git diff django/db/migrations/operations/fields.py'
+    rep1: stat rc=0 0.02954411506652832 | record rc=0 1.1493864059448242
+    rep2: stat rc=0 0.031400203704833984 | record rc=0 1.1213436126708984
+    rep3: stat rc=0 0.0265042781829834 | record rc=0 1.1221544742584229
+[replay] mini__django__django-16595 seq=42 class=git orig=0.03s :: 'echo MICRO_SWE_AGENT_FINAL_OUTPUT && git add -A && git diff --cached'
+    rep1: stat rc=0 0.04864215850830078 | record rc=0 1.1203711032867432
+    rep2: stat rc=0 0.05388379096984863 | record rc=0 1.1219532489776611
+    rep3: stat rc=0 0.0663299560546875 | record rc=0 1.1258814334869385
+[loop] mini__django__django-16595 seq=1 :: 'find . -type f -name "*.py" | grep -E "(migrat|optim)" | head -20'
+    loop1: rc=0 1.12s
+    loop2: rc=0 1.12s
+    loop3: rc=0 1.12s
+[loop] mini__django__django-16595 seq=2 :: 'cat django/db/migrations/optimizer.py'
+    loop1: rc=0 1.12s
+    loop2: rc=0 1.12s
+    loop3: rc=0 1.12s
+[loop] mini__django__django-16595 seq=3 :: 'cat django/db/migrations/operations/fields.py'
+    loop1: rc=0 1.12s
+    loop2: rc=0 1.12s
+    loop3: rc=0 1.13s
+[loop] mini__django__django-16595 seq=4 :: "sed -n '/class AlterField/,/class RenameField/p' django/db/migrations/"
+    loop1: rc=0 1.12s
+    loop2: rc=0 1.12s
+    loop3: rc=0 1.13s
+[loop] mini__django__django-16595 seq=8 :: "sed -n '/class AlterField/,/class RenameField/p' django/db/migrations/"
+    loop1: rc=0 1.13s
+    loop2: rc=0 1.15s
+    loop3: rc=0 1.12s
+[loop] mini__django__django-16595 seq=10 :: "sed -n '85,100p' django/db/migrations/operations/fields.py"
+    loop1: rc=0 1.12s
+    loop2: rc=0 1.12s
+    loop3: rc=0 1.12s
+[loop] mini__django__django-16595 seq=12 :: "sed -n '85,100p' django/db/migrations/operations/fields.py"
+    loop1: rc=0 1.12s
+    loop2: rc=0 1.12s
+    loop3: rc=0 1.13s
+[loop] mini__django__django-16595 seq=14 :: "sed -n '85,100p' django/db/migrations/operations/fields.py"
+    loop1: rc=0 1.12s
+    loop2: rc=0 1.14s
+    loop3: rc=0 1.12s
+[loop] mini__django__django-16595 seq=20 :: "sed -n '/class AddField/,/class RemoveField/p' django/db/migrations/op"
+    loop1: rc=0 1.13s
+    loop2: rc=0 1.16s
+    loop3: rc=0 1.12s
+[loop] mini__django__django-16595 seq=21 :: "sed -n '/class AlterField/,/class RenameField/p' django/db/migrations/"
+    loop1: rc=0 1.12s
+    loop2: rc=0 1.12s
+    loop3: rc=0 1.12s
+[loop] mini__django__django-16595 seq=22 :: 'git log --oneline -1'
+    loop1: rc=0 1.12s
+    loop2: rc=0 1.11s
+    loop3: rc=0 1.12s
+[loop] mini__django__django-16595 seq=23 :: 'git diff django/db/migrations/operations/fields.py'
+    loop1: rc=0 1.12s
+    loop2: rc=0 1.12s
+    loop3: rc=0 1.12s
+[loop] mini__django__django-16595 seq=25 :: 'grep -n "class AlterField" django/db/migrations/operations/fields.py'
+    loop1: rc=0 1.12s
+    loop2: rc=0 1.12s
+    loop3: rc=0 1.12s
+[loop] mini__django__django-16595 seq=26 :: "sed -n '198,/^class /p' django/db/migrations/operations/fields.py | gr"
+    loop1: rc=0 1.12s
+    loop2: rc=0 1.12s
+    loop3: rc=0 1.12s
+[loop] mini__django__django-16595 seq=27 :: "sed -n '249,270p' django/db/migrations/operations/fields.py"
+    loop1: rc=0 1.12s
+    loop2: rc=0 1.12s
+    loop3: rc=0 1.12s
+[loop] mini__django__django-16595 seq=29 :: "sed -n '249,275p' django/db/migrations/operations/fields.py"
+    loop1: rc=0 1.13s
+    loop2: rc=0 1.12s
+    loop3: rc=0 1.12s
+[loop] mini__django__django-16595 seq=31 :: "sed -n '249,270p' django/db/migrations/operations/fields.py"
+    loop1: rc=0 1.14s
+    loop2: rc=0 1.12s
+    loop3: rc=0 1.12s
+[loop] mini__django__django-16595 seq=33 :: "sed -n '249,275p' django/db/migrations/operations/fields.py"
+    loop1: rc=0 1.12s
+    loop2: rc=0 1.12s
+    loop3: rc=0 1.12s
+[loop] mini__django__django-16595 seq=36 :: "sed -n '249,275p' django/db/migrations/operations/fields.py"
+    loop1: rc=0 1.12s
+    loop2: rc=0 1.12s
+    loop3: rc=0 1.12s
+[loop] mini__django__django-16595 seq=41 :: 'git diff django/db/migrations/operations/fields.py'
+    loop1: rc=0 1.12s
+    loop2: rc=0 1.12s
+    loop3: rc=0 1.12s

@@ -1,0 +1,32 @@
+{
+ "task": "mini__sympy__sympy-24066",
+ "seq": 26,
+ "phase": "solve",
+ "cls": "other",
+ "cmd": "cat <<'EOF' > test_comprehensive.py\nfrom sympy import exp, sin, cos, log, sqrt\nfrom sympy.physics import units\nfrom sympy.physics.units.systems.si import SI\n\nprint(\"Testing comprehensive mathematical functions...\")\n\n# Test expression that should be dimensionless\nexpr = units.second / (units.ohm * units.farad)\ndim = SI._collect_factor_and_dimension(expr)[1]\nprint(f\"Base expression: {expr}\")\nprint(f\"Is dimensionless: {SI.get_dimension_system().is_dimensionless(dim)}\")\n\n# Test various mathematical functions\ntest_functions = [exp, sin, cos, log]\nfor func in test_functions:\n    try:\n        test_expr = 100 + func(expr)\n        result = SI._collect_factor_and_dimension(test_expr)\n        print(f\"{func.__name__}({expr}) + 100: SUCCESS - Result dimension: {result[1]}\")\n    except Exception as e:\n        print(f\"{func.__name__}({expr}) + 100: ERROR - {e}\")\n\n# Test with dimensional expression (should fail)\ndimensional_expr = units.meter\nprint(f\"\\nTesting with dimensional expression: {dimensional_expr}\")\nfor func in test_functions:\n    try:\n        test_expr = func(dimensional_expr)\n        result = SI._collect_factor_and_dimension(test_expr)\n        print(f\"{func.__name__}({dimensional_expr}): UNEXPECTED SUCCESS - {result}\")\n    except Exception as e:\n        print(f\"{func.__name__}({dimensional_expr}): EXPECTED ERROR - {e}\")\n\n# Test sqrt (should work with dimensional arguments)\nprint(f\"\\nTesting sqrt with dimensional argument:\")\ntry:\n    sqrt_expr = sqrt(units.meter**2)\n    result = SI._collect_factor_and_dimension(sqrt_expr)\n    print(f\"sqrt({units.meter**2}): SUCCESS - Result dimension: {result[1]}\")\nexcept Exception as e:\n    print(f\"sqrt({units.meter**2}): ERROR - {e}\")\nEOF",
+ "orig_rc": 0,
+ "orig_dur_s": 0.004706304,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 0.021648645401000977,
+   "rec_rc": 0,
+   "rec_wall_s": 1.122783899307251
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 0.032855987548828125,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1383230686187744
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 0.029974699020385742,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1225576400756836
+  }
+ ]
+}

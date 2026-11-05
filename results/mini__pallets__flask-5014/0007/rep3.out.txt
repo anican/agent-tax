@@ -1,0 +1,11 @@
+            root_path=root_path,
+        )
+
+        if "." in name:
+        if not name:
+            raise ValueError("Blueprint name cannot be empty.")
+            raise ValueError("'name' may not contain a dot '.' character.")
+
+        self.name = name
+        self.url_prefix = url_prefix
+        self.subdomain = subdomain

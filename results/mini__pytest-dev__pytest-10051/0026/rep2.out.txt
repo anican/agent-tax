@@ -1,0 +1,11 @@
+============================= test session starts ==============================
+platform linux -- Python 3.11.15, pytest-7.2.0.dev0, pluggy-1.7.0 -- /home/user/work/mini__pytest-dev__pytest-10051/venv/bin/python
+cachedir: .pytest_cache
+hypothesis profile 'default'
+rootdir: /home/user/work/pytest-dev__pytest-10051/repo, configfile: pyproject.toml
+plugins: hypothesis-6.170.14
+collecting ... collected 1 item
+
+test_reproduce_issue.py::test PASSED                                     [100%]
+
+============================== 1 passed in 0.08s ===============================

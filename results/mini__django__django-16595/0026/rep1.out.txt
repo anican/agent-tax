@@ -1,0 +1,1 @@
+52:    def reduce(self, operation, app_label):

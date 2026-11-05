@@ -1,0 +1,10 @@
+Testing AddField + AlterField optimization...
+Original: 4 operations -> Optimized: 1 operations
+Traceback (most recent call last):
+  File "/home/user/work/django__django-16595/repo/test_addfield_alterfield.py", line 80, in <module>
+    success = test_addfield_alterfield_optimization()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/work/django__django-16595/repo/test_addfield_alterfield.py", line 67, in test_addfield_alterfield_optimization
+    assert isinstance(result[0], migrations.AddField), f"Expected AddField, got {type(result[0])}"
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Expected AddField, got <class 'django.db.migrations.operations.fields.AlterField'>

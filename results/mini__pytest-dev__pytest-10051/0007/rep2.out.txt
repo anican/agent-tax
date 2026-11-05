@@ -1,0 +1,6 @@
+48:caplog_records_key = StashKey[Dict[str, List[logging.LogRecord]]]()
+399:        return self._item.stash[caplog_records_key].get(when, [])
+487:def caplog(request: FixtureRequest) -> Generator[LogCaptureFixture, None, None]:
+699:            item.stash[caplog_records_key][when] = caplog_handler.records
+712:        item.stash[caplog_records_key] = empty
+726:        del item.stash[caplog_records_key]

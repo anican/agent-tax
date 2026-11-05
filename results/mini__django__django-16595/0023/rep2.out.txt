@@ -1,0 +1,148 @@
+diff --git a/django/db/migrations/operations/fields.py b/django/db/migrations/operations/fields.py
+index cd3aab4..85a17e9 100644
+--- a/django/db/migrations/operations/fields.py
++++ b/django/db/migrations/operations/fields.py
+@@ -67,9 +67,28 @@ class FieldOperation(Operation):
+         )
+ 
+     def reduce(self, operation, app_label):
+-        return super().reduce(operation, app_label) or not operation.references_field(
+-            self.model_name, self.name, app_label
+-        )
++        if isinstance(operation, RemoveField) and self.is_same_field_operation(
++            operation
++        ):
++            return [operation]
++        elif (
++            isinstance(operation, RenameField)
++            and self.is_same_field_operation(operation)
++            and self.field.db_column is None
++        ):
++            return [
++                operation,
++                AlterField(
++                    model_name=self.model_name,
++                    name=operation.new_name,
++                    field=self.field,
++                ),
++            ]
++        elif isinstance(operation, AlterField) and self.is_same_field_operation(
++            operation
++        ):
++            return [operation]
++        return super().reduce(operation, app_label)
+ 
+ 
+ class AddField(FieldOperation):
+@@ -127,27 +146,27 @@ class AddField(FieldOperation):
+         return "%s_%s" % (self.model_name_lower, self.name_lower)
+ 
+     def reduce(self, operation, app_label):
+-        if isinstance(operation, FieldOperation) and self.is_same_field_operation(
++        if isinstance(operation, RemoveField) and self.is_same_field_operation(
+             operation
+         ):
+-            if isinstance(operation, AlterField):
+-                return [
+-                    AddField(
+-                        model_name=self.model_name,
+-                        name=operation.name,
+-                        field=operation.field,
+-                    ),
+-                ]
+-            elif isinstance(operation, RemoveField):
+-                return []
+-            elif isinstance(operation, RenameField):
+-                return [
+-                    AddField(
+-                        model_name=self.model_name,
+-                        name=operation.new_name,
+-                        field=self.field,
+-                    ),
+-                ]
++            return [operation]
++        elif (
++            isinstance(operation, RenameField)
++            and self.is_same_field_operation(operation)
++            and self.field.db_column is None
++        ):
++            return [
++                operation,
++                AlterField(
++                    model_name=self.model_name,
++                    name=operation.new_name,
++                    field=self.field,
++                ),
++            ]
++        elif isinstance(operation, AlterField) and self.is_same_field_operation(
++            operation
++        ):
++            return [operation]
+         return super().reduce(operation, app_label)
+ 
+ 
+@@ -185,11 +204,25 @@ class RemoveField(FieldOperation):
+         return "remove_%s_%s" % (self.model_name_lower, self.name_lower)
+ 
+     def reduce(self, operation, app_label):
+-        from .models import DeleteModel
+-
+-        if (
+-            isinstance(operation, DeleteModel)
+-            and operation.name_lower == self.model_name_lower
++        if isinstance(operation, RemoveField) and self.is_same_field_operation(
++            operation
++        ):
++            return [operation]
++        elif (
++            isinstance(operation, RenameField)
++            and self.is_same_field_operation(operation)
++            and self.field.db_column is None
++        ):
++            return [
++                operation,
++                AlterField(
++                    model_name=self.model_name,
++                    name=operation.new_name,
++                    field=self.field,
++                ),
++            ]
++        elif isinstance(operation, AlterField) and self.is_same_field_operation(
++            operation
+         ):
+             return [operation]
+         return super().reduce(operation, app_label)
+@@ -264,6 +297,10 @@ class AlterField(FieldOperation):
+                     field=self.field,
+                 ),
+             ]
++        elif isinstance(operation, AlterField) and self.is_same_field_operation(
++            operation
++        ):
++            return [operation]
+         return super().reduce(operation, app_label)
+ 
+ 
+@@ -336,22 +373,3 @@ class RenameField(FieldOperation):
+             name.lower() == self.old_name_lower or name.lower() == self.new_name_lower
+         )
+ 
+-    def reduce(self, operation, app_label):
+-        if (
+-            isinstance(operation, RenameField)
+-            and self.is_same_model_operation(operation)
+-            and self.new_name_lower == operation.old_name_lower
+-        ):
+-            return [
+-                RenameField(
+-                    self.model_name,
+-                    self.old_name,
+-                    operation.new_name,
+-                ),
+-            ]
+-        # Skip `FieldOperation.reduce` as we want to run `references_field`
+-        # against self.old_name and self.new_name.
+-        return super(FieldOperation, self).reduce(operation, app_label) or not (
+-            operation.references_field(self.model_name, self.old_name, app_label)
+-            or operation.references_field(self.model_name, self.new_name, app_label)
+-        )

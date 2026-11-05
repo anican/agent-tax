@@ -1,0 +1,32 @@
+{
+ "task": "mini__pytest-dev__pytest-10051",
+ "seq": 9,
+ "phase": "solve",
+ "cls": "other",
+ "cmd": "cat <<'EOF' > test_reproduce_issue.py\nimport logging\n\ndef test(caplog) -> None:\n    def verify_consistency() -> None:\n        assert caplog.get_records(\"call\") == caplog.records\n\n    verify_consistency()\n    logging.warning(\"test\")\n    verify_consistency()\n    caplog.clear()\n    verify_consistency()  # fails: assert [<LogRecord: ...y, 8, \"test\">] == []\n\nif __name__ == \"__main__\":\n    import pytest\n    pytest.main([__file__, \"-v\"])\nEOF",
+ "orig_rc": 0,
+ "orig_dur_s": 0.003888128,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 0.042681217193603516,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1251931190490723
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 0.023343801498413086,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1198532581329346
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 0.02967381477355957,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1239256858825684
+  }
+ ]
+}

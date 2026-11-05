@@ -1,0 +1,6 @@
+sympy/physics
+sympy/physics/units
+sympy/physics/units/tests/test_unitsystem.py
+sympy/physics/units/tests/__pycache__/test_unitsystem.cpython-311-pytest-9.2.0.pyc
+sympy/physics/units/__pycache__/unitsystem.cpython-311.pyc
+sympy/physics/units/unitsystem.py

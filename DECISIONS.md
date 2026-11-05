@@ -385,3 +385,10 @@ corrections (marked **[correction]**).
   `results/microbench/README.md`; they do not change any original verdict,
   they quantify the mitigation named in AGENTIC_VS_TRADITIONAL.md row 3.
 
+## D22. Warm-interpreter experiment
+
+- Bounds the saving of a warm-interpreter mechanism by re-running
+  `pytest.main()` in one process; this is an upper-bound measurement, not a
+  proposed implementation (state leaks between runs are visible in the
+  data). Run alone on the VM with a warm page cache, 5 iterations per mode.
+

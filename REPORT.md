@@ -600,6 +600,13 @@ between runs adds 0.1–0.2 s of wall time (10–60%) and 6–32% CPU per test
 command, from ~170–210 major faults — the per-command price of sandbox
 recycling.
 
+**Warm-interpreter ceiling** (`results/warminterp/summary.md`): running the
+same pytest target 5× inside one already-started interpreter instead of 5
+fresh processes cuts steady-state wall time per invocation by 22% (pytest's
+own suite), 52% (sympy) and 63% (flask), and total CPU by 15–49%; in-place
+re-runs are not safe (sympy passes 70 fresh vs 67 warm), so the saving is
+only reachable by forking from a warmed state.
+
 **Sandbox density** (`results/density/summary.md`, `figs/density.png`): N
 concurrent copies of a tool command on 4 vCPUs. No measurable slowdown up
 to N = 4; linear ≈ N/4 beyond; Python test runs reach 3.1–3.9× aggregate

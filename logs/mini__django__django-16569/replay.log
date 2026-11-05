@@ -1,0 +1,5 @@
+[replay] mini__django__django-16569 seq=1 class=search/read orig=0.02s :: 'find . -name "formsets.py" -type f | head -10'
+    rep1: stat rc=0 0.04573702812194824 | record rc=0 1.1188313961029053
+    rep2: stat rc=0 0.049237728118896484 | record rc=0 1.115663766860962
+    rep3: stat rc=0 0.051424503326416016 | record rc=0 1.122753381729126
+[replay] mini__django__django-16569 seq=2 class=search/read orig=0.00s :: "nl -ba ./django/forms/formsets.py | sed -n '485,500p'"

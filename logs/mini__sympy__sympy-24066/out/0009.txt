@@ -1,0 +1,9 @@
+152:    def _collect_factor_and_dimension(self, expr):
+163:                arg_factor, arg_dim = self._collect_factor_and_dimension(arg)
+168:            factor, dim = self._collect_factor_and_dimension(expr.base)
+169:            exp_factor, exp_dim = self._collect_factor_and_dimension(expr.exp)
+174:            factor, dim = self._collect_factor_and_dimension(expr.args[0])
+177:                    self._collect_factor_and_dimension(addend)
+186:            factor, dim = self._collect_factor_and_dimension(expr.args[0])
+188:                ifactor, idim = self._collect_factor_and_dimension(independent)
+193:            fds = [self._collect_factor_and_dimension(

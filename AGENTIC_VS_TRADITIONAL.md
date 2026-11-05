@@ -71,6 +71,14 @@ busy and steal. Full table: `results/density/summary.md`; figure:
 
 ## 4. What stays the same
 
+- **The CPU-view mix is a property of the toolchain, not of the model.**
+  Replaying the second model's 16 episode commands gives core 55.4%,
+  allocation 17.9%, imports 13.8%, process lifecycle 4.9% vs 56.1 / 14.3 /
+  10.6 / 2.6% for the original 55 commands (`results/summary/extension_cpu_view.md`);
+  the only large difference (scheduling 0.3% vs 8.5%) is the original
+  study's OpenMP-heavy scikit-learn task. What the model changes is the
+  *time view* (row 1) and the command mix (row 11), not what a given
+  command costs.
 - Allocation/GC as a top tax category (row 5).
 - Kernel page-fault and memory-zeroing costs scale with process creation,
   as in any fork-heavy workload.

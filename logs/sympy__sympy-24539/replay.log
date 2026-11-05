@@ -26,3 +26,11 @@
     rep1: stat rc=0 0.2937781810760498 | record rc=0 1.1184828281402588
     rep2: stat rc=0 0.3058147430419922 | record rc=0 1.118605375289917
     rep3: stat rc=0 0.31333065032958984 | record rc=0 1.127897024154663
+[loop] sympy__sympy-24539 seq=4 :: 'sed -n 612,630p sympy/polys/rings.py; grep -n "def as_expr" sympy/poly'
+    loop1: rc=0 1.15s
+    loop2: rc=0 1.12s
+    loop3: rc=0 1.12s
+[loop] sympy__sympy-24539 seq=5 :: 'sed -n 334,342p sympy/polys/fields.py; sed -n 252,272p sympy/polys/tes'
+    loop1: rc=0 1.13s
+    loop2: rc=0 1.12s
+    loop3: rc=0 1.12s

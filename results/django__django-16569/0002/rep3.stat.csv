@@ -1,0 +1,8 @@
+# started on Thu Nov  5 05:09:36 2026
+
+2345.59,msec,task-clock,2345592787,100.00,0.997,CPUs utilized
+86,,context-switches,2345592787,100.00,36.665,/sec
+7,,cpu-migrations,2345592787,100.00,2.984,/sec
+51563,,page-faults,2345592787,100.00,21.983,K/sec
+51563,,minor-faults,2345592787,100.00,21.983,K/sec
+0,,major-faults,2345592787,100.00,0.000,/sec

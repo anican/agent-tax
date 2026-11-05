@@ -1,0 +1,6 @@
+443:    def clear(self) -> None:
+444-        """Reset the list of log records and the captured log text."""
+445-        self.handler.reset()
+446-
+699:            caplog_handler.reset()
+700:            report_handler.reset()

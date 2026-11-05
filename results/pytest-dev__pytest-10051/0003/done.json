@@ -1,0 +1,32 @@
+{
+ "task": "pytest-dev__pytest-10051",
+ "seq": 3,
+ "phase": "setup",
+ "cls": "package install",
+ "cmd": "SETUPTOOLS_SCM_PRETEND_VERSION=7.2.0.dev0 python -m pip install -e \".[testing]\"",
+ "orig_rc": 0,
+ "orig_dur_s": 6.19849984,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 6.946527719497681,
+   "rec_rc": 0,
+   "rec_wall_s": 7.1289167404174805
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 6.655962705612183,
+   "rec_rc": 0,
+   "rec_wall_s": 7.130253553390503
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 6.599819183349609,
+   "rec_rc": 0,
+   "rec_wall_s": 7.12929630279541
+  }
+ ]
+}

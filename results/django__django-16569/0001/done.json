@@ -1,0 +1,32 @@
+{
+ "task": "django__django-16569",
+ "seq": 1,
+ "phase": "setup",
+ "cls": "git",
+ "cmd": "git init -q repo && cd repo && git remote add origin https://github.com/django/django && git fetch -q --depth 1 origin 278881e37619278789942513916acafaa88d26f3 && git checkout -q FETCH_HEAD && git log --oneline -1",
+ "orig_rc": 0,
+ "orig_dur_s": 2.674404352,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 3.4000115394592285,
+   "rec_rc": 0,
+   "rec_wall_s": 4.124616384506226
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 2.8806629180908203,
+   "rec_rc": 0,
+   "rec_wall_s": 3.129143476486206
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 2.177222728729248,
+   "rec_rc": 0,
+   "rec_wall_s": 3.125216484069824
+  }
+ ]
+}

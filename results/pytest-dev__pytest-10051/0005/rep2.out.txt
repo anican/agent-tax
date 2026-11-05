@@ -1,0 +1,31 @@
+144:def test_clear(caplog):
+145-    caplog.set_level(logging.INFO)
+146-    logger.info("bū")
+147-    assert len(caplog.records)
+148-    assert caplog.text
+149-    caplog.clear()
+150-    assert not len(caplog.records)
+151-    assert not caplog.text
+152-
+153-
+154-@pytest.fixture
+155-def logging_during_setup_and_teardown(caplog):
+156-    caplog.set_level("INFO")
+157-    logger.info("a_setup_log")
+158-    yield
+--
+163:def test_caplog_captures_for_all_stages(caplog, logging_during_setup_and_teardown):
+164-    assert not caplog.records
+165-    assert not caplog.get_records("call")
+166-    logger.info("a_call_log")
+167-    assert [x.message for x in caplog.get_records("call")] == ["a_call_log"]
+168-
+169-    assert [x.message for x in caplog.get_records("setup")] == ["a_setup_log"]
+170-
+171-    # This reaches into private API, don't use this type of thing in real tests!
+172-    assert set(caplog._item.stash[caplog_records_key]) == {"setup", "call"}
+173-
+174-
+175-def test_ini_controls_global_log_level(pytester: Pytester) -> None:
+176-    pytester.makepyfile(
+177-        """

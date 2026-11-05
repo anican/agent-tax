@@ -1,0 +1,21 @@
+1459:    def test_can_delete_extra_formset_forms(self):
+1470:            can_delete_extra=False,
+1795:    def test_empty_forms_are_unbound(self):
+1796-        data = {
+1797-            "form-TOTAL_FORMS": "1",
+1798-            "form-INITIAL_FORMS": "0",
+--
+1818:    def test_empty_formset_is_valid(self):
+1819-        """An empty formset still calls clean()"""
+1820-
+1821-        class EmptyFsetWontValidate(BaseFormSet):
+--
+1843:    def test_empty_formset_media(self):
+1844-        """Media is available on empty formset."""
+1845-
+1846-        class MediaForm(Form):
+--
+1852:    def test_empty_formset_is_multipart(self):
+1853-        """is_multipart() works with an empty formset."""
+1854-
+1855-        class FileForm(Form):

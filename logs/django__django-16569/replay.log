@@ -1,0 +1,44 @@
+[replay] django__django-16569 seq=1 class=git orig=2.67s :: 'git init -q repo && cd repo && git remote add origin https://github.co'
+    rep1: stat rc=0 3.4000115394592285 | record rc=0 4.124616384506226
+    rep2: stat rc=0 2.8806629180908203 | record rc=0 3.129143476486206
+    rep3: stat rc=0 2.177222728729248 | record rc=0 3.125216484069824
+[replay] django__django-16569 seq=2 class=package install orig=2.40s :: '/usr/bin/python3.11 -m venv venv'
+    rep1: stat rc=0 2.421875 | record rc=0 3.12117600440979
+    rep2: stat rc=0 2.384983777999878 | record rc=0 3.1216037273406982
+    rep3: stat rc=0 2.372812271118164 | record rc=0 3.1256463527679443
+[replay] django__django-16569 seq=3 class=package install orig=13.66s :: 'python -m pip install -e . && python -m pip install -r tests/requireme'
+    rep1: stat rc=0 13.796927213668823 | record rc=0 15.140925407409668
+    rep2: stat rc=0 11.993876695632935 | record rc=0 15.136809587478638
+    rep3: stat rc=0 12.127408981323242 | record rc=0 15.140443563461304
+[replay] django__django-16569 seq=4 class=search/read orig=0.00s :: 'grep -n "def add_fields" -A 32 django/forms/formsets.py'
+    rep1: stat rc=0 0.02308034896850586 | record rc=0 1.114945411682129
+    rep2: stat rc=0 0.026570558547973633 | record rc=0 1.117522954940796
+    rep3: stat rc=0 0.03327035903930664 | record rc=0 1.1254634857177734
+[replay] django__django-16569 seq=5 class=search/read orig=0.01s :: 'grep -n "can_delete_extra" tests/forms_tests/tests/test_formsets.py | '
+    rep1: stat rc=0 0.039783477783203125 | record rc=0 1.1369831562042236
+    rep2: stat rc=0 0.028814077377319336 | record rc=0 1.1207098960876465
+    rep3: stat rc=0 0.0258791446685791 | record rc=0 1.1161940097808838
+[replay] django__django-16569 seq=6 class=search/read orig=0.00s :: 'sed -n 1459,1500p tests/forms_tests/tests/test_formsets.py'
+    rep1: stat rc=0 0.025280475616455078 | record rc=0 1.1248829364776611
+    rep2: stat rc=0 0.03896927833557129 | record rc=0 1.119335651397705
+    rep3: stat rc=0 0.03590536117553711 | record rc=0 1.1163721084594727
+[replay] django__django-16569 seq=7 class=test run orig=1.12s :: 'cd tests && python runtests.py forms_tests.tests.test_formsets --paral'
+    rep1: stat rc=0 0.7532501220703125 | record rc=0 1.1222021579742432
+    rep2: stat rc=0 0.7226827144622803 | record rc=0 1.1261241436004639
+    rep3: stat rc=0 0.7122561931610107 | record rc=0 1.1251640319824219
+[replay] django__django-16569 seq=8 class=test run orig=2.38s :: 'git stash push -q django/forms/formsets.py && (cd tests && python runt'
+    rep1: stat rc=0 2.2331273555755615 | record rc=0 3.1211390495300293
+    rep2: stat rc=0 2.2742674350738525 | record rc=0 3.1243808269500732
+    rep3: stat rc=0 2.2582883834838867 | record rc=0 3.127755880355835
+[loop] django__django-16569 seq=4 :: 'grep -n "def add_fields" -A 32 django/forms/formsets.py'
+    loop1: rc=0 1.12s
+    loop2: rc=0 1.12s
+    loop3: rc=0 1.12s
+[loop] django__django-16569 seq=5 :: 'grep -n "can_delete_extra" tests/forms_tests/tests/test_formsets.py | '
+    loop1: rc=0 1.12s
+    loop2: rc=0 1.12s
+    loop3: rc=0 1.15s
+[loop] django__django-16569 seq=6 :: 'sed -n 1459,1500p tests/forms_tests/tests/test_formsets.py'
+    loop1: rc=0 1.12s
+    loop2: rc=0 1.12s
+    loop3: rc=0 1.12s

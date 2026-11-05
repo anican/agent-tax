@@ -1,0 +1,32 @@
+{
+ "task": "pytest-dev__pytest-10051",
+ "seq": 1,
+ "phase": "setup",
+ "cls": "test run",
+ "cmd": "git init -q repo && cd repo && git remote add origin https://github.com/pytest-dev/pytest && git fetch -q --depth 1 origin aa55975c7d3f6c9f6d7f68accc41bb7cadf0eb9a && git checkout -q FETCH_HEAD && git log --oneline -1",
+ "orig_rc": 0,
+ "orig_dur_s": 0.806582784,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 0.7728033065795898,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1234967708587646
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 0.8113646507263184,
+   "rec_rc": 0,
+   "rec_wall_s": 2.1285641193389893
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 0.8905618190765381,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1246473789215088
+  }
+ ]
+}

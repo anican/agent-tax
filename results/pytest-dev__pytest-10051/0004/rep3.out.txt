@@ -1,0 +1,51 @@
+344:    def reset(self) -> None:
+345-        self.records = []
+346-        self.stream = StringIO()
+347-
+348-    def handleError(self, record: logging.LogRecord) -> None:
+--
+780:    def reset(self) -> None:
+781-        """Reset the handler; should be called before the start of each test."""
+782-        self._first_record_emitted = False
+783-
+784-    def set_when(self, when: Optional[str]) -> None:
+--
+818:    def reset(self) -> None:
+819-        pass
+820-
+821-    def set_when(self, when: str) -> None:
+822-        pass
+48:caplog_records_key = StashKey[Dict[str, List[logging.LogRecord]]]()
+49-
+50-
+51-def _remove_ansi_escape_sequences(text: str) -> str:
+--
+388:    def get_records(self, when: str) -> List[logging.LogRecord]:
+389-        """Get the logging records for one of the possible test phases.
+390-
+391-        :param str when:
+--
+399:        return self._item.stash[caplog_records_key].get(when, [])
+400-
+401-    @property
+402-    def text(self) -> str:
+--
+407:    def records(self) -> List[logging.LogRecord]:
+408-        """The list of log records."""
+409-        return self.handler.records
+410-
+--
+699:            item.stash[caplog_records_key][when] = caplog_handler.records
+700-            item.stash[caplog_handler_key] = caplog_handler
+701-
+702-            yield
+--
+712:        item.stash[caplog_records_key] = empty
+713-        yield from self._runtest_for(item, "setup")
+714-
+715-    @hookimpl(hookwrapper=True)
+--
+726:        del item.stash[caplog_records_key]
+727-        del item.stash[caplog_handler_key]
+728-
+729-    @hookimpl

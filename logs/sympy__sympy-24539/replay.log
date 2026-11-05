@@ -15,3 +15,14 @@
     rep2: stat rc=0 0.02902817726135254 | record rc=0 1.1227519512176514
     rep3: stat rc=0 0.028596878051757812 | record rc=0 1.123504877090454
 [replay] sympy__sympy-24539 seq=5 class=search/read orig=0.01s :: 'sed -n 334,342p sympy/polys/fields.py; sed -n 252,272p sympy/polys/tes'
+    rep1: stat rc=0 0.03427839279174805 | record rc=0 1.1224620342254639
+    rep2: stat rc=0 0.028751134872436523 | record rc=0 1.1240651607513428
+    rep3: stat rc=0 0.04777336120605469 | record rc=0 1.124859094619751
+[replay] sympy__sympy-24539 seq=6 class=test run orig=2.11s :: 'python -m pytest -q -p no:cacheprovider sympy/polys/tests/test_rings.p'
+    rep1: stat rc=0 0.8434779644012451 | record rc=0 1.1230878829956055
+    rep2: stat rc=0 0.867865800857544 | record rc=0 1.1235806941986084
+    rep3: stat rc=0 0.814140796661377 | record rc=0 1.1187434196472168
+[replay] sympy__sympy-24539 seq=7 class=other orig=0.26s :: 'python -c "\nfrom sympy import ring, ZZ, symbols\nR, x, y, z = ring(\\"x,'
+    rep1: stat rc=0 0.2937781810760498 | record rc=0 1.1184828281402588
+    rep2: stat rc=0 0.3058147430419922 | record rc=0 1.118605375289917
+    rep3: stat rc=0 0.31333065032958984 | record rc=0 1.127897024154663

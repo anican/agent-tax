@@ -1,0 +1,29 @@
+	Command being timed: "timeout -s KILL 600 bash -c python -c "
+from sympy import ring, ZZ, symbols
+R, x, y, z = ring(\"x,y,z\", ZZ)
+f = 3*x**2*y - x*y*z + 7*z**3 + 1
+U, V, W = symbols(\"u,v,w\")
+print(f.as_expr(U, V, W)); print(f.as_expr())
+"; grep -rn "\.as_expr(" sympy/polys/*.py | grep -v "as_expr()" | head -5"
+	User time (seconds): 0.22
+	System time (seconds): 0.03
+	Percent of CPU this job got: 101%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.25
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 52916
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 11927
+	Voluntary context switches: 13
+	Involuntary context switches: 1
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 8
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

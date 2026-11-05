@@ -1,0 +1,30 @@
+    def as_expr(self, *symbols):
+        return self.numer.as_expr(*symbols)/self.denom.as_expr(*symbols)
+
+    def __eq__(f, g):
+        if isinstance(g, FracElement) and f.field == g.field:
+            return f.numer == g.numer and f.denom == g.denom
+        else:
+            return f.numer == g and f.denom == f.field.ring.one
+
+def test_PolyElement_as_expr():
+    R, x, y, z = ring("x,y,z", ZZ)
+    f = 3*x**2*y - x*y*z + 7*z**3 + 1
+
+    X, Y, Z = R.symbols
+    g = 3*X**2*Y - X*Y*Z + 7*Z**3 + 1
+
+    assert f != g
+    assert f.as_expr() == g
+
+    X, Y, Z = symbols("x,y,z")
+    g = 3*X**2*Y - X*Y*Z + 7*Z**3 + 1
+
+    assert f != g
+    assert f.as_expr(X, Y, Z) == g
+
+    raises(ValueError, lambda: f.as_expr(X))
+
+    R, = ring("", ZZ)
+    assert R(3).as_expr() == 3
+

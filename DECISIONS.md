@@ -335,3 +335,19 @@ corrections (marked **[correction]**).
   configured and the last-served model, i.e. no model switch or fallback
   was recorded during the study.
 
+## D18. Extension run (2026-11-05): model switch and scope
+
+- The original study (D0) ran entirely on one model. For this extension the
+  session's model was switched by the user to a different one (reported in
+  chat, not written here, per the session's rules); effort level is still
+  `high` and the permission mode is still `auto`. Any new live episodes
+  therefore measure a **different model's** model/loop time and are kept
+  separate from the original 8 (task IDs listed in TASKS.md under
+  "Extension"); CPU-view replays are model-independent and are pooled only
+  where the report says so.
+- Time budget: ~3 hours. Plan, in order: (1) process-start cost
+  decomposition and the `GLIBC_TUNABLES` mitigation test; (2) a density
+  experiment (concurrent replays of representative test commands);
+  (3) 2–3 fresh live episodes with the new model + replays. Results are
+  committed and pushed after each step.
+

@@ -1,0 +1,15 @@
+    11.31%  spawnbench     [kernel.kallsyms]     [k] _raw_spin_unlock_irqrestore
+    10.12%  spawnbench     [kernel.kallsyms]     [k] finish_task_switch.isra.0
+     7.14%  spawnbench     [kernel.kallsyms]     [k] copy_page_range
+     5.95%  spawnbench     [kernel.kallsyms]     [k] __vma_start_write
+     5.36%  spawnbench     [kernel.kallsyms]     [k] page_counter_charge
+     4.17%  spawnbench     [kernel.kallsyms]     [k] _raw_spin_unlock_irq
+     2.98%  spawnbench     [kernel.kallsyms]     [k] _raw_spin_lock
+     2.38%  spawnbench     [kernel.kallsyms]     [k] anon_vma_clone
+     1.79%  empty_dynamic  [kernel.kallsyms]     [k] next_uptodate_folio
+     1.79%  spawnbench     [kernel.kallsyms]     [k] __memcg_slab_post_alloc_hook
+     1.79%  spawnbench     [kernel.kallsyms]     [k] _raw_write_unlock_irq
+     1.79%  spawnbench     [kernel.kallsyms]     [k] dup_mmap
+     1.79%  spawnbench     [kernel.kallsyms]     [k] exc_page_fault
+     1.19%  empty_dynamic  [kernel.kallsyms]     [k] filemap_map_pages
+     1.19%  empty_dynamic  [kernel.kallsyms]     [k] folio_add_file_rmap_ptes

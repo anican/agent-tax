@@ -1,0 +1,15 @@
+    14.53%  spawnbench  [kernel.kallsyms]  [k] _raw_spin_unlock_irqrestore
+    11.97%  spawnbench  [kernel.kallsyms]  [k] finish_task_switch.isra.0
+    10.26%  spawnbench  [kernel.kallsyms]  [k] page_counter_charge
+     5.13%  spawnbench  [kernel.kallsyms]  [k] __vma_start_write
+     5.13%  spawnbench  [kernel.kallsyms]  [k] copy_page_range
+     4.27%  spawnbench  [kernel.kallsyms]  [k] __memcg_slab_post_alloc_hook
+     2.56%  spawnbench  [kernel.kallsyms]  [k] __do_wait
+     2.56%  spawnbench  [kernel.kallsyms]  [k] _raw_spin_unlock_irq
+     2.56%  spawnbench  [kernel.kallsyms]  [k] _raw_write_unlock_irq
+     2.56%  spawnbench  [kernel.kallsyms]  [k] dup_mmap
+     1.71%  spawnbench  [kernel.kallsyms]  [k] __rcu_read_unlock
+     1.71%  spawnbench  [kernel.kallsyms]  [k] _raw_spin_lock
+     1.71%  spawnbench  [kernel.kallsyms]  [k] anon_vma_clone
+     1.71%  spawnbench  [kernel.kallsyms]  [k] copy_creds
+     1.71%  spawnbench  libc.so.6          [.] __run_postfork_handlers

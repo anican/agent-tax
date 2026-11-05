@@ -396,6 +396,20 @@ to N = 4; linear ≈ N/4 beyond; Python test runs reach 3.1–3.9× aggregate
 throughput at saturation (ideal 4×), the exec-bound workload 4.0–4.3×;
 steal < 1%. The knee is at concurrently *executing* tool calls = cores.
 
+**Three fresh episodes with a different model** (E1 django-16569, E2
+sympy-24539, E3 pytest-10051; TASKS.md "Extension"): all resolved; episode
+wall-clock 43–86 s; model/loop share **94.7%** summed (94–95% per task) vs
+58.7% in the original 8, because the agent ran only narrow test selections
+(2.4–3.8 s of tool time per episode); median gap between agent actions
+5.6–7.5 s vs 3.8–4.6 s originally (`results/summary/time_view_per_task_extension.csv`,
+`figs/time_breakdown.png` bottom rows). H1 holds for both models; the
+model/loop share is governed by the agent's test-scope decisions
+(AGENTIC_VS_TRADITIONAL.md row 11), not by the sandbox. CPU-view replays
+of these 23 commands are in `results/<task>/` and summarized below once
+complete.
+
+{{include:results/summary/extension_cpu_view.md}}
+
 ## Reproducing / file map
 
 - `tools/run.sh`, `tools/snap.sh`, `tools/sample.sh`, `tools/episode.sh` —

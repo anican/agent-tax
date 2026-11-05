@@ -1,0 +1,38 @@
+Obtaining file:///home/user/work/sympy__sympy-24539/repo
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Checking if build backend supports build_editable: started
+  Checking if build backend supports build_editable: finished with status 'done'
+  Getting requirements to build editable: started
+  Getting requirements to build editable: finished with status 'done'
+  Preparing editable metadata (pyproject.toml): started
+  Preparing editable metadata (pyproject.toml): finished with status 'done'
+Collecting mpmath==1.3.0
+  Using cached mpmath-1.3.0-py3-none-any.whl.metadata (8.6 kB)
+Collecting pytest
+  Using cached pytest-9.2.0-py3-none-any.whl.metadata (7.9 kB)
+Collecting iniconfig>=2 (from pytest)
+  Using cached iniconfig-2.3.1-py3-none-any.whl.metadata (2.8 kB)
+Collecting packaging>=24 (from pytest)
+  Using cached packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+Collecting pluggy<2,>=1.6 (from pytest)
+  Using cached pluggy-1.7.0-py3-none-any.whl.metadata (5.0 kB)
+Collecting pygments>=2.15 (from pytest)
+  Using cached pygments-2.21.0-py3-none-any.whl.metadata (2.5 kB)
+Using cached mpmath-1.3.0-py3-none-any.whl (536 kB)
+Using cached pytest-9.2.0-py3-none-any.whl (411 kB)
+Using cached iniconfig-2.3.1-py3-none-any.whl (7.6 kB)
+Using cached packaging-26.3-py3-none-any.whl (129 kB)
+Using cached pluggy-1.7.0-py3-none-any.whl (27 kB)
+Using cached pygments-2.21.0-py3-none-any.whl (1.3 MB)
+Building wheels for collected packages: sympy
+  Building editable for sympy (pyproject.toml): started
+  Building editable for sympy (pyproject.toml): finished with status 'done'
+  Created wheel for sympy: filename=sympy-1.12.dev0-0.editable-py3-none-any.whl size=30596 sha256=0b82cb186f086c04b4ee899a8ee2f7ec326133a14f03c3a6f0cfc7c13e18521d
+  Stored in directory: /tmp/pip-ephem-wheel-cache-xpb1zsr6/wheels/ae/37/d3/75e2e6824b4a2b6001db0b47885672d132b9500ab94c421124
+Successfully built sympy
+Installing collected packages: mpmath, sympy, pygments, pluggy, packaging, iniconfig, pytest
+Successfully installed iniconfig-2.3.1 mpmath-1.3.0 packaging-26.3 pluggy-1.7.0 pygments-2.21.0 pytest-9.2.0 sympy-1.12.dev0
+
+[notice] A new release of pip is available: 24.0 -> 26.3
+[notice] To update, run: pip install --upgrade pip

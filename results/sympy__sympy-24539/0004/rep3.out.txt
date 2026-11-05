@@ -1,0 +1,25 @@
+        elif self.ring.symbols != new_ring.symbols:
+            terms = list(zip(*_dict_reorder(self, self.ring.symbols, new_ring.symbols)))
+            return new_ring.from_terms(terms, self.ring.domain)
+        else:
+            return new_ring.from_dict(self, self.ring.domain)
+
+    def as_expr(self, *symbols):
+        if symbols and len(symbols) != self.ring.ngens:
+            raise ValueError("not enough symbols, expected %s got %s" % (self.ring.ngens, len(symbols)))
+        else:
+            symbols = self.ring.symbols
+
+        return expr_from_dict(self.as_expr_dict(), *symbols)
+
+    def as_expr_dict(self):
+        to_sympy = self.ring.domain.to_sympy
+        return {monom: to_sympy(coeff) for monom, coeff in self.iterterms()}
+
+    def clear_denoms(self):
+334:    def as_expr(self, *symbols):
+252:def test_PolyElement_as_expr():
+260:    assert f.as_expr() == g
+266:    assert f.as_expr(X, Y, Z) == g
+268:    raises(ValueError, lambda: f.as_expr(X))
+271:    assert R(3).as_expr() == 3

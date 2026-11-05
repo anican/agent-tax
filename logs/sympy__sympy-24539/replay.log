@@ -7,3 +7,11 @@
     rep2: stat rc=0 2.376793384552002 | record rc=0 3.1176271438598633
     rep3: stat rc=0 2.327901601791382 | record rc=0 3.1185343265533447
 [replay] sympy__sympy-24539 seq=3 class=package install orig=3.55s :: 'python -m pip install -e . mpmath==1.3.0 pytest'
+    rep1: stat rc=0 3.6501100063323975 | record rc=0 5.123619556427002
+    rep2: stat rc=0 3.536797046661377 | record rc=0 4.1320271492004395
+    rep3: stat rc=0 3.7165374755859375 | record rc=0 4.134348630905151
+[replay] sympy__sympy-24539 seq=4 class=search/read orig=0.01s :: 'sed -n 612,630p sympy/polys/rings.py; grep -n "def as_expr" sympy/poly'
+    rep1: stat rc=0 0.029187679290771484 | record rc=0 1.124091386795044
+    rep2: stat rc=0 0.02902817726135254 | record rc=0 1.1227519512176514
+    rep3: stat rc=0 0.028596878051757812 | record rc=0 1.123504877090454
+[replay] sympy__sympy-24539 seq=5 class=search/read orig=0.01s :: 'sed -n 334,342p sympy/polys/fields.py; sed -n 252,272p sympy/polys/tes'

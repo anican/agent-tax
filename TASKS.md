@@ -63,3 +63,8 @@ repo versions), from tasks the agent had not seen in the original study.
 
 | Instance ID | Setup wall time | Setup issues | Episode wall time | Agent actions | Resolved (FAIL_TO_PASS) |
 |---|---|---|---|---|---|
+| django__django-16569 | 19 s | none (one no-change edit checkpoint, D19) | 66 s | 5 cmds + 3 edits | resolved (2 FAIL_TO_PASS test(s)) |
+| sympy__sympy-24539 | 8 s | none | 43 s | 4 cmds + 2 edits | resolved (1 FAIL_TO_PASS test(s)) |
+| pytest-dev__pytest-10051 | 9 s | `SETUPTOOLS_SCM_PRETEND_VERSION` needed; first fix attempt broke `test_caplog_captures_for_all_stages`, revised within the episode | 86 s | 7 cmds + 3 edits | resolved (1 FAIL_TO_PASS test(s)) |
+
+All three resolved. Model/loop share of episode wall-clock: 94.7% summed (per task 94%, 94%, 95%); median gap between agent actions 5.6–7.5 s (original study: 3.8–4.6 s). Tool time was small in all three because the agent ran narrow test selections (2.4–3.8 s per episode).

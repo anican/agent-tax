@@ -32,3 +32,12 @@ python_import_json,3,300,15154.9,14797.66
 grep_small,1,1000,1109.7,1009.580
 grep_small,2,1000,1079.1,983.6300
 grep_small,3,1000,1078.4,986.0800
+static_musl,1,2000,191.4,165.2700
+static_musl,2,2000,167.1,141.3350
+static_musl,3,2000,169.2,143.2350
+dynamic_musl,1,2000,236.3,196.3650
+dynamic_musl,2,2000,242.2,202.0800
+dynamic_musl,3,2000,228.9,193.2150
+static_glibc_recheck,1,2000,776.2,714.2100
+static_glibc_recheck,2,2000,790.3,726.9300
+static_glibc_recheck,3,2000,796.8,731.8450

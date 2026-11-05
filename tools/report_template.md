@@ -394,7 +394,15 @@ binary 709 µs; dynamic glibc binary 811 µs; `/bin/true` 832 µs; `grep` on a
 `python -c "import json,re,os"` 14.8 ms. The ~595 µs that glibc adds even
 without a dynamic loader is the CPUID-driven cache probing (D16); the
 dynamic loader itself adds only ~100 µs. `GLIBC_TUNABLES` cache-size
-settings do not avoid it.
+settings do not avoid it. The same program linked against **musl** (no
+start-up cache probing) spawns in 150 µs static / 197 µs dynamic — 4.1–4.8×
+cheaper than glibc in the same session, within 35–80 µs of the no-libc
+floor, with no CPUID-bound functions in its profile.
+
+**Cold page cache** (`results/coldcache/summary.md`): dropping caches
+between runs adds 0.1–0.2 s of wall time (10–60%) and 6–32% CPU per test
+command, from ~170–210 major faults — the per-command price of sandbox
+recycling.
 
 **Sandbox density** (`results/density/summary.md`, `figs/density.png`): N
 concurrent copies of a tool command on 4 vCPUs. No measurable slowdown up

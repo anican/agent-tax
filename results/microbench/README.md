@@ -7,18 +7,21 @@ the launcher, CPU time from `perf stat -e task-clock` on the launcher
 Raw: `spawn_cost.csv`; profiles of the three C variants: `spawn_profile_*.txt`;
 CPUID cost: `cpuid_cost.txt` (~11 µs per CPUID, leaves 0/2/4).
 
-| Target | What runs | wall µs/spawn | CPU µs/spawn | Δ CPU vs previous row |
-|---|---|---|---|---|
-| nolibc | no libc, no ld.so (`exit` syscall only) | 137 ± 5 | 114 ± 3 |  |
-| static_glibc | `int main(){return 0;}`, static glibc (no ld.so) | 768 ± 8 | 709 ± 8 | +595 |
-| dynamic_glibc | same, dynamically linked (ld.so + libc.so) | 884 ± 23 | 811 ± 21 | +102 |
-| dynamic_glibc_tunables | dynamic, with `GLIBC_TUNABLES` cache sizes set | 870 ± 11 | 799 ± 11 | -12 |
-| bin_true | `/bin/true` | 909 ± 13 | 832 ± 11 | +33 |
-| grep_small | `grep -q main` on a 1-line file | 1089 ± 18 | 993 ± 14 | +161 |
-| python_S_c_pass | `python -S -c pass` (no site) | 8788 ± 3875 | 6434 ± 235 | +5441 |
-| python_I_c_pass | `python -I -c pass` (isolated, site on) | 8576 ± 316 | 8119 ± 33 | +1685 |
-| python_c_pass | `python -c pass` | 8441 ± 132 | 8173 ± 122 | +54 |
-| python_import_json | `python -c "import json,re,os"` | 16113 ± 1418 | 14848 ± 204 | +6675 |
+| Target | What runs | wall µs/spawn | CPU µs/spawn |
+|---|---|---|---|
+| nolibc | no libc, no ld.so (`exit` syscall only) | 137 ± 5 | 114 ± 3 |
+| static_musl | `int main(){return 0;}`, **musl** static (no cache probing at start-up) | 176 ± 13 | 150 ± 13 |
+| dynamic_musl | same, musl dynamic (musl ld.so) | 236 ± 7 | 197 ± 4 |
+| static_glibc | same, **glibc** static (no ld.so) | 768 ± 8 | 709 ± 8 |
+| static_glibc_recheck | glibc static, re-measured in the musl session (control) | 788 ± 11 | 724 ± 9 |
+| dynamic_glibc | glibc dynamic (ld.so + libc.so) | 884 ± 23 | 811 ± 21 |
+| dynamic_glibc_tunables | glibc dynamic, `GLIBC_TUNABLES` cache sizes set | 870 ± 11 | 799 ± 11 |
+| bin_true | `/bin/true` | 909 ± 13 | 832 ± 11 |
+| grep_small | `grep -q main` on a 1-line file | 1089 ± 18 | 993 ± 14 |
+| python_S_c_pass | `python -S -c pass` (no site) | 8788 ± 3875 | 6434 ± 235 |
+| python_I_c_pass | `python -I -c pass` (isolated, site on) | 8576 ± 316 | 8119 ± 33 |
+| python_c_pass | `python -c pass` | 8441 ± 132 | 8173 ± 122 |
+| python_import_json | `python -c "import json,re,os"` | 16113 ± 1418 | 14848 ± 204 |
 
 What it says:
 
@@ -34,8 +37,16 @@ What it says:
   only ~100 µs more on top.
 - `GLIBC_TUNABLES` cache-size settings do **not** avoid the detection (glibc
   2.39 runs `handle_intel` unconditionally and applies tunables afterwards):
-  no measurable change. Avoiding it would need a glibc change (or a libc that
-  does not probe caches at start-up, e.g. musl) — not tested here.
+  no measurable change.
+- **musl confirms the mechanism and the fix.** The same empty program linked
+  against musl (which does not probe cache sizes at start-up) spawns in
+  ~150 µs CPU static / ~197 µs dynamic, vs ~724 µs / ~811 µs for glibc
+  measured in the same session: **4.1–4.8× cheaper per exec**, within 30–80 µs
+  of the no-libc kernel floor. Its spawn profile
+  (`spawn_profile_empty_musl_static.txt`) contains only kernel fork/exec
+  work — no CPUID-bound functions. So in this guest a libc without start-up
+  cache probing (or a glibc that caches/skips it) removes ~570 µs from every
+  process start.
 - A bare CPython start (`-S -c pass`) costs ~6.3 ms of CPU; `site` adds
   ~1.8 ms; importing `json, re, os` on top adds ~6.6 ms. For comparison,
   the whole live `grep`/`sed` commands of the agent episodes took ~12 ms wall

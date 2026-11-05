@@ -376,3 +376,12 @@ corrections (marked **[correction]**).
   mini-vs-own comparison therefore covers 8 task pairs; the 3 extension
   pairs compare the public trajectory with the *second* model's episode.
 
+## D21. musl control for the CPUID finding
+
+- `musl-tools` was installed from the Ubuntu archive (the only package
+  installed during the study) to test whether a libc without start-up cache
+  probing avoids the per-exec cost. glibc static was re-measured in the same
+  session as a control (724 µs vs 709 µs earlier). Results in
+  `results/microbench/README.md`; they do not change any original verdict,
+  they quantify the mitigation named in AGENTIC_VS_TRADITIONAL.md row 3.
+

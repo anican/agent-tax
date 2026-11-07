@@ -1,0 +1,32 @@
+{
+ "task": "mini__django__django-16595",
+ "seq": 15,
+ "phase": "solve",
+ "cls": "other",
+ "cmd": "python test_alter_field_optimization.py",
+ "orig_rc": 0,
+ "orig_dur_s": 0.176799232,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 0.18801617622375488,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1182942390441895
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 0.23423051834106445,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1215548515319824
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 0.20978212356567383,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1220324039459229
+  }
+ ]
+}

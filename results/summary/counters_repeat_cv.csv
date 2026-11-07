@@ -1,0 +1,82 @@
+task,seq,cls,task_clock_cv_pct
+django__django-16595,1,git,40.55
+django__django-16595,2,package install,1.95
+django__django-16595,3,package install,2.80
+django__django-16595,4,search/read,18.24
+django__django-16595,5,search/read,19.23
+django__django-16595,6,test run,11.85
+django__django-16595,7,test run,2.86
+django__django-16595,8,git,17.17
+django__django-16595,9,test run,5.35
+django__django-16667,1,git,16.92
+django__django-16667,2,package install,12.09
+django__django-16667,3,package install,7.58
+django__django-16667,4,search/read,10.34
+django__django-16667,5,search/read,38.77
+django__django-16667,6,search/read,50.78
+django__django-16667,7,search/read,8.57
+django__django-16667,8,test run,22.18
+django__django-16667,9,test run,8.24
+pallets__flask-5014,1,git,2.18
+pallets__flask-5014,2,package install,6.16
+pallets__flask-5014,3,package install,9.34
+pallets__flask-5014,4,search/read,9.02
+pallets__flask-5014,5,search/read,18.98
+pallets__flask-5014,6,test run,16.86
+pallets__flask-5014,7,test run,15.89
+pallets__flask-5014,8,package install,9.31
+pallets__flask-5014,9,test run,7.43
+pallets__flask-5014,10,test run,3.57
+psf__requests-5414,1,git,10.53
+psf__requests-5414,2,package install,8.01
+psf__requests-5414,3,package install,7.81
+psf__requests-5414,4,search/read,5.90
+psf__requests-5414,5,search/read,10.25
+psf__requests-5414,6,other,10.05
+psf__requests-5414,7,search/read,13.69
+psf__requests-5414,8,search/read,12.51
+psf__requests-5414,9,test run,3.34
+psf__requests-5414,10,test run,6.48
+psf__requests-5414,11,test run,3.98
+pytest-dev__pytest-10081,1,test run,21.14
+pytest-dev__pytest-10081,2,package install,3.54
+pytest-dev__pytest-10081,3,package install,4.35
+pytest-dev__pytest-10081,4,search/read,10.67
+pytest-dev__pytest-10081,5,search/read,13.46
+pytest-dev__pytest-10081,6,search/read,32.20
+pytest-dev__pytest-10081,7,search/read,4.20
+pytest-dev__pytest-10081,8,test run,1.21
+pytest-dev__pytest-10081,9,test run,4.34
+scikit-learn__scikit-learn-26194,1,git,7.51
+scikit-learn__scikit-learn-26194,2,package install,5.87
+scikit-learn__scikit-learn-26194,3,package install,7.31
+scikit-learn__scikit-learn-26194,4,build,3.70
+scikit-learn__scikit-learn-26194,5,package install,3.36
+scikit-learn__scikit-learn-26194,6,search/read,0.72
+scikit-learn__scikit-learn-26194,7,search/read,16.45
+scikit-learn__scikit-learn-26194,8,test run,14.94
+scikit-learn__scikit-learn-26194,9,test run,2.38
+scikit-learn__scikit-learn-26194,10,search/read,11.94
+scikit-learn__scikit-learn-26194,11,test run,2.35
+scikit-learn__scikit-learn-26194,12,test run,3.42
+scikit-learn__scikit-learn-26194,13,test run,2.30
+scikit-learn__scikit-learn-26194,14,other,3.50
+sympy__sympy-24066,1,git,2.26
+sympy__sympy-24066,2,package install,6.05
+sympy__sympy-24066,3,package install,7.43
+sympy__sympy-24066,4,search/read,17.11
+sympy__sympy-24066,5,other,18.78
+sympy__sympy-24066,6,other,8.29
+sympy__sympy-24066,7,search/read,12.21
+sympy__sympy-24066,8,search/read,2.30
+sympy__sympy-24066,9,test run,13.83
+sympy__sympy-24066,10,test run,8.74
+sympy__sympy-24066,11,git,9.84
+sympy__sympy-24562,1,git,10.22
+sympy__sympy-24562,2,package install,3.82
+sympy__sympy-24562,3,package install,4.76
+sympy__sympy-24562,4,other,2.37
+sympy__sympy-24562,5,other,1.75
+sympy__sympy-24562,6,search/read,5.47
+sympy__sympy-24562,7,test run,3.62
+sympy__sympy-24562,8,test run,11.98

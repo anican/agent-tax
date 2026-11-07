@@ -1,0 +1,101 @@
+	Command being timed: "timeout -s KILL 600 bash -c cat > test_blueprint_validation.py << 'EOF'
+#!/usr/bin/env python3
+
+import sys
+import os
+
+# Add the src directory to the path so we can import flask
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'src'))
+
+from flask import Blueprint
+
+def test_empty_name_validation():
+    """Test that creating a Blueprint with an empty name raises ValueError"""
+    try:
+        # This should raise a ValueError
+        bp = Blueprint("", __name__)
+        print("ERROR: Blueprint with empty name was created successfully - this should not happen!")
+        return False
+    except ValueError as e:
+        if "Blueprint name cannot be empty" in str(e):
+            print("SUCCESS: Blueprint with empty name correctly raised ValueError:", str(e))
+            return True
+        else:
+            print("ERROR: ValueError raised but with wrong message:", str(e))
+            return False
+    except Exception as e:
+        print("ERROR: Unexpected exception raised:", type(e).__name__, str(e))
+        return False
+
+def test_normal_name_still_works():
+    """Test that creating a Blueprint with a normal name still works"""
+    try:
+        bp = Blueprint("test_blueprint", __name__)
+        print("SUCCESS: Blueprint with normal name created successfully")
+        return True
+    except Exception as e:
+        print("ERROR: Blueprint with normal name failed:", type(e).__name__, str(e))
+        return False
+
+def test_dot_validation_still_works():
+    """Test that the existing dot validation still works"""
+    try:
+        bp = Blueprint("test.blueprint", __name__)
+        print("ERROR: Blueprint with dot in name was created - this should not happen!")
+        return False
+    except ValueError as e:
+        if "may not contain a dot" in str(e):
+            print("SUCCESS: Blueprint with dot in name correctly raised ValueError:", str(e))
+            return True
+        else:
+            print("ERROR: ValueError raised but with wrong message:", str(e))
+            return False
+    except Exception as e:
+        print("ERROR: Unexpected exception raised:", type(e).__name__, str(e))
+        return False
+
+if __name__ == "__main__":
+    print("Testing Blueprint name validation...")
+    
+    tests = [
+        test_empty_name_validation,
+        test_normal_name_still_works,
+        test_dot_validation_still_works
+    ]
+    
+    results = []
+    for test in tests:
+        print(f"\nRunning {test.__name__}...")
+        results.append(test())
+    
+    print(f"\nResults: {sum(results)}/{len(results)} tests passed")
+    
+    if all(results):
+        print("All tests passed!")
+        sys.exit(0)
+    else:
+        print("Some tests failed!")
+        sys.exit(1)
+EOF"
+	User time (seconds): 0.00
+	System time (seconds): 0.00
+	Percent of CPU this job got: 75%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.00
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 3312
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 416
+	Voluntary context switches: 5
+	Involuntary context switches: 2
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 8
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

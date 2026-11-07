@@ -1,0 +1,112 @@
+	Command being timed: "timeout -s KILL 600 bash -c cat <<'EOF' > test_alter_field_optimization.py
+#!/usr/bin/env python3
+
+import sys
+import os
+
+# Add Django to the path
+sys.path.insert(0, '.')
+
+import django
+from django.conf import settings
+
+# Configure Django settings
+if not settings.configured:
+    settings.configure(
+        INSTALLED_APPS=[
+            'django.contrib.contenttypes',
+            'django.contrib.auth',
+        ],
+        DATABASES={
+            'default': {
+                'ENGINE': 'django.db.backends.sqlite3',
+                'NAME': ':memory:',
+            }
+        },
+        USE_TZ=True,
+    )
+
+django.setup()
+
+from django.db import models, migrations
+from django.db.migrations.optimizer import MigrationOptimizer
+
+# Test the issue described in the PR
+def test_alter_field_optimization():
+    print("Testing AlterField optimization...")
+    
+    operations = [
+        migrations.AddField(
+            model_name="book",
+            name="title",
+            field=models.CharField(max_length=256, null=True),
+        ),
+        migrations.AlterField(
+            model_name="book",
+            name="title",
+            field=models.CharField(max_length=128, null=True),
+        ),
+        migrations.AlterField(
+            model_name="book",
+            name="title",
+            field=models.CharField(max_length=128, null=True, help_text="help"),
+        ),
+        migrations.AlterField(
+            model_name="book",
+            name="title",
+            field=models.CharField(max_length=128, null=True, help_text="help", default=None),
+        ),
+    ]
+    
+    optimizer = MigrationOptimizer()
+    
+    # Test 1: Full optimization (should work - reduces to just AddField with final field)
+    print("\nTest 1: Full optimization")
+    result1 = optimizer.optimize(operations, "books")
+    print(f"Original operations: {len(operations)}")
+    print(f"Optimized operations: {len(result1)}")
+    for i, op in enumerate(result1):
+        print(f"  {i}: {op}")
+    
+    # Test 2: Only AlterField operations (this is the bug - should reduce to just the last one)
+    print("\nTest 2: Only AlterField operations (the bug)")
+    result2 = optimizer.optimize(operations[1:], "books")
+    print(f"Original operations: {len(operations[1:])}")
+    print(f"Optimized operations: {len(result2)}")
+    for i, op in enumerate(result2):
+        print(f"  {i}: {op}")
+    
+    # Expected: should be just 1 operation (the last AlterField)
+    if len(result2) == 1:
+        print("✓ PASS: Multiple AlterField operations were correctly reduced to one")
+    else:
+        print("✗ FAIL: Multiple AlterField operations were not reduced")
+    
+    return len(result2) == 1
+
+if __name__ == "__main__":
+    success = test_alter_field_optimization()
+    sys.exit(0 if success else 1)
+EOF"
+	User time (seconds): 0.00
+	System time (seconds): 0.00
+	Percent of CPU this job got: 100%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.00
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 3376
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 412
+	Voluntary context switches: 5
+	Involuntary context switches: 0
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 8
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

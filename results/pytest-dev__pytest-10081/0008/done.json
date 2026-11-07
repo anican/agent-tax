@@ -1,0 +1,32 @@
+{
+ "task": "pytest-dev__pytest-10081",
+ "seq": 8,
+ "phase": "solve",
+ "cls": "test run",
+ "cmd": "python -m pytest -q testing/test_unittest.py -k pdb 2>&1 | tail -3",
+ "orig_rc": 0,
+ "orig_dur_s": 2.107848192,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 1.0497276782989502,
+   "rec_rc": 0,
+   "rec_wall_s": 2.2641496658325195
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 1.0494015216827393,
+   "rec_rc": 0,
+   "rec_wall_s": 2.3111484050750732
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 1.0569169521331787,
+   "rec_rc": 0,
+   "rec_wall_s": 2.2557766437530518
+  }
+ ]
+}

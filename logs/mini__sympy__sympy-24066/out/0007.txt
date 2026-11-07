@@ -1,0 +1,8 @@
+Testing the issue...
+Expression: second/(farad*ohm)
+Dimension: Dimension(time/(capacitance*impedance))
+Is dimensionless: True
+
+Testing buggy expression...
+Buggy expression: exp(second/(farad*ohm)) + 100
+Error: Dimension of "exp(second/(farad*ohm))" is Dimension(time/(capacitance*impedance)), but it should be Dimension(1)

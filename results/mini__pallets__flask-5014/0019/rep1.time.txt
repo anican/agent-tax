@@ -1,0 +1,89 @@
+	Command being timed: "timeout -s KILL 600 bash -c cat > test_edge_cases.py << 'EOF'
+#!/usr/bin/env python3
+
+import sys
+import os
+
+# Add the src directory to the path so we can import flask
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'src'))
+
+from flask import Blueprint
+
+def test_whitespace_only_name():
+    """Test that creating a Blueprint with whitespace-only name raises ValueError"""
+    test_cases = [" ", "  ", "\t", "\n", " \t \n "]
+    
+    for name in test_cases:
+        try:
+            bp = Blueprint(name, __name__)
+            print(f"ERROR: Blueprint with whitespace-only name '{repr(name)}' was created - this should not happen!")
+            return False
+        except ValueError as e:
+            if "Blueprint name cannot be empty" in str(e):
+                print(f"SUCCESS: Blueprint with whitespace-only name '{repr(name)}' correctly raised ValueError")
+            else:
+                print(f"ERROR: ValueError raised but with wrong message for '{repr(name)}':", str(e))
+                return False
+        except Exception as e:
+            print(f"ERROR: Unexpected exception raised for '{repr(name)}':", type(e).__name__, str(e))
+            return False
+    
+    return True
+
+def test_none_name():
+    """Test that creating a Blueprint with None name raises appropriate error"""
+    try:
+        bp = Blueprint(None, __name__)
+        print("ERROR: Blueprint with None name was created - this should not happen!")
+        return False
+    except (ValueError, TypeError) as e:
+        print("SUCCESS: Blueprint with None name correctly raised exception:", type(e).__name__, str(e))
+        return True
+    except Exception as e:
+        print("ERROR: Unexpected exception raised:", type(e).__name__, str(e))
+        return False
+
+if __name__ == "__main__":
+    print("Testing Blueprint edge cases...")
+    
+    tests = [
+        test_whitespace_only_name,
+        test_none_name
+    ]
+    
+    results = []
+    for test in tests:
+        print(f"\nRunning {test.__name__}...")
+        results.append(test())
+    
+    print(f"\nResults: {sum(results)}/{len(results)} tests passed")
+    
+    if all(results):
+        print("All edge case tests passed!")
+        sys.exit(0)
+    else:
+        print("Some edge case tests failed!")
+        sys.exit(1)
+EOF"
+	User time (seconds): 0.00
+	System time (seconds): 0.00
+	Percent of CPU this job got: 75%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.00
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 3380
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 415
+	Voluntary context switches: 5
+	Involuntary context switches: 0
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 8
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

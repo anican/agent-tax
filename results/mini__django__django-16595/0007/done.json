@@ -1,0 +1,32 @@
+{
+ "task": "mini__django__django-16595",
+ "seq": 7,
+ "phase": "solve",
+ "cls": "search/read",
+ "cmd": "sed -i '/def reduce(self, operation, app_label):/,/return super().reduce(operation, app_label)/c\\\n    def reduce(self, operation, app_label):\\\n        if isinstance(operation, RemoveField) and self.is_same_field_operation(\\\n            operation\\\n        ):\\\n            return [operation]\\\n        elif (\\\n            isinstance(operation, RenameField)\\\n            and self.is_same_field_operation(operation)\\\n            and self.field.db_column is None\\\n        ):\\\n            return [\\\n                operation,\\\n                AlterField(\\\n                    model_name=self.model_name,\\\n                    name=operation.new_name,\\\n                    field=self.field,\\\n                ),\\\n            ]\\\n        elif isinstance(operation, AlterField) and self.is_same_field_operation(\\\n            operation\\\n        ):\\\n            return [operation]\\\n        return super().reduce(operation, app_label)' django/db/migrations/operations/fields.py",
+ "orig_rc": 0,
+ "orig_dur_s": 0.00430848,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 0.023226022720336914,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1221752166748047
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 0.04597187042236328,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1225779056549072
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 0.03362679481506348,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1234102249145508
+  }
+ ]
+}

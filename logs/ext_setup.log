@@ -1,0 +1,338 @@
++ T=django__django-16569
++ W=/home/user/work/django__django-16569
+++ jq -r .base_commit /home/user/work/django__django-16569/meta.json
++ B=278881e37619278789942513916acafaa88d26f3
++ tools/run.sh django__django-16569 -p setup -C /home/user/work/django__django-16569 -- 'git init -q repo && cd repo && git remote add origin https://github.com/django/django && git fetch -q --depth 1 origin 278881e37619278789942513916acafaa88d26f3 && git checkout -q FETCH_HEAD && git log --oneline -1'
+278881e Fixed #34346 -- Ordered selected expressions by position.
+[run.sh] seq=1 rc=0 dur=2674ms
++ tools/run.sh django__django-16569 -p setup -C /home/user/work/django__django-16569 -- '/usr/bin/python3.11 -m venv venv'
+[run.sh] seq=2 rc=0 dur=2404ms
++ tools/run.sh django__django-16569 -p setup -- 'python -m pip install -e . && python -m pip install -r tests/requirements/py3.txt'
+Obtaining file:///home/user/work/django__django-16569/repo
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Checking if build backend supports build_editable: started
+  Checking if build backend supports build_editable: finished with status 'done'
+  Getting requirements to build editable: started
+  Getting requirements to build editable: finished with status 'done'
+  Preparing editable metadata (pyproject.toml): started
+  Preparing editable metadata (pyproject.toml): finished with status 'done'
+Collecting asgiref>=3.6.0 (from Django==5.0.dev20230220045425)
+  Using cached asgiref-3.13.0-py3-none-any.whl.metadata (12 kB)
+Collecting sqlparse>=0.2.2 (from Django==5.0.dev20230220045425)
+  Using cached sqlparse-0.6.1-py3-none-any.whl.metadata (6.9 kB)
+Using cached asgiref-3.13.0-py3-none-any.whl (27 kB)
+Using cached sqlparse-0.6.1-py3-none-any.whl (51 kB)
+Building wheels for collected packages: Django
+  Building editable for Django (pyproject.toml): started
+  Building editable for Django (pyproject.toml): finished with status 'done'
+  Created wheel for Django: filename=django-5.0.dev20230220045425-0.editable-py3-none-any.whl size=27452 sha256=61a2fe69f4e1fa12592ab6c392d8b3abc14a97f9765b3b9fe4a4a1c06119dec0
+  Stored in directory: /tmp/pip-ephem-wheel-cache-k9rxi6iu/wheels/f5/42/b6/7d7a3699b32e50200cd87995af9873a44ea1618eb3d7c2d188
+Successfully built Django
+Installing collected packages: sqlparse, asgiref, Django
+Successfully installed Django-5.0.dev20230220045425 asgiref-3.13.0 sqlparse-0.6.1
+
+[notice] A new release of pip is available: 24.0 -> 26.3
+[notice] To update, run: pip install --upgrade pip
+Ignoring colorama: markers 'sys_platform == "win32"' don't match your environment
+Collecting aiosmtpd (from -r tests/requirements/py3.txt (line 1))
+  Using cached aiosmtpd-1.4.6-py3-none-any.whl.metadata (6.6 kB)
+Requirement already satisfied: asgiref>=3.6.0 in /home/user/work/django__django-16569/venv/lib/python3.11/site-packages (from -r tests/requirements/py3.txt (line 2)) (3.13.0)
+Collecting argon2-cffi>=19.2.0 (from -r tests/requirements/py3.txt (line 3))
+  Using cached argon2_cffi-25.1.0-py3-none-any.whl.metadata (4.1 kB)
+Collecting bcrypt (from -r tests/requirements/py3.txt (line 4))
+  Using cached bcrypt-5.0.0-cp39-abi3-manylinux_2_34_x86_64.whl.metadata (10 kB)
+Collecting black (from -r tests/requirements/py3.txt (line 5))
+  Using cached black-26.10.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (108 kB)
+Collecting docutils (from -r tests/requirements/py3.txt (line 6))
+  Using cached docutils-0.23-py3-none-any.whl.metadata (15 kB)
+Collecting geoip2 (from -r tests/requirements/py3.txt (line 7))
+  Using cached geoip2-5.3.0-py3-none-any.whl.metadata (19 kB)
+Collecting jinja2>=2.11.0 (from -r tests/requirements/py3.txt (line 8))
+  Using cached jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+Collecting numpy (from -r tests/requirements/py3.txt (line 9))
+  Using cached numpy-2.4.6-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (6.6 kB)
+Collecting Pillow>=6.2.1 (from -r tests/requirements/py3.txt (line 10))
+  Using cached pillow-13.0.0-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (9.1 kB)
+Collecting pylibmc (from -r tests/requirements/py3.txt (line 12))
+  Using cached pylibmc-1.6.3-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.0 kB)
+Collecting pymemcache>=3.4.0 (from -r tests/requirements/py3.txt (line 13))
+  Using cached pymemcache-4.0.0-py2.py3-none-any.whl.metadata (14 kB)
+Collecting pywatchman (from -r tests/requirements/py3.txt (line 14))
+  Using cached pywatchman-4.0.0-cp311-cp311-linux_x86_64.whl
+Collecting PyYAML (from -r tests/requirements/py3.txt (line 15))
+  Using cached pyyaml-6.0.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.4 kB)
+Collecting redis>=3.4.0 (from -r tests/requirements/py3.txt (line 16))
+  Using cached redis-8.1.0-py3-none-any.whl.metadata (16 kB)
+Collecting selenium (from -r tests/requirements/py3.txt (line 17))
+  Using cached selenium-4.52.0-py3-none-any.whl.metadata (7.5 kB)
+Requirement already satisfied: sqlparse>=0.3.1 in /home/user/work/django__django-16569/venv/lib/python3.11/site-packages (from -r tests/requirements/py3.txt (line 18)) (0.6.1)
+Collecting tblib>=1.5.0 (from -r tests/requirements/py3.txt (line 19))
+  Using cached tblib-3.2.2-py3-none-any.whl.metadata (27 kB)
+Collecting tzdata (from -r tests/requirements/py3.txt (line 20))
+  Using cached tzdata-2026.6-py2.py3-none-any.whl.metadata (1.4 kB)
+Collecting atpublic (from aiosmtpd->-r tests/requirements/py3.txt (line 1))
+  Using cached atpublic-9.0.0-py3-none-any.whl.metadata (2.6 kB)
+Collecting attrs (from aiosmtpd->-r tests/requirements/py3.txt (line 1))
+  Using cached attrs-26.1.0-py3-none-any.whl.metadata (8.8 kB)
+Collecting argon2-cffi-bindings (from argon2-cffi>=19.2.0->-r tests/requirements/py3.txt (line 3))
+  Using cached argon2_cffi_bindings-26.1.0-cp310-abi3-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl.metadata (7.5 kB)
+Collecting click>=8.0.0 (from black->-r tests/requirements/py3.txt (line 5))
+  Using cached click-8.5.0-py3-none-any.whl.metadata (2.6 kB)
+Collecting mypy-extensions>=0.4.3 (from black->-r tests/requirements/py3.txt (line 5))
+  Using cached mypy_extensions-1.2.0-py3-none-any.whl.metadata (1.1 kB)
+Collecting packaging>=22.0 (from black->-r tests/requirements/py3.txt (line 5))
+  Using cached packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+Collecting pathspec>=1.0.0 (from black->-r tests/requirements/py3.txt (line 5))
+  Using cached pathspec-1.1.1-py3-none-any.whl.metadata (14 kB)
+Collecting platformdirs>=2 (from black->-r tests/requirements/py3.txt (line 5))
+  Using cached platformdirs-4.14.5-py3-none-any.whl.metadata (5.7 kB)
+Collecting pytokens~=0.4.0 (from black->-r tests/requirements/py3.txt (line 5))
+  Using cached pytokens-0.4.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (3.8 kB)
+Collecting aiohttp<4.0.0,>=3.14.1 (from geoip2->-r tests/requirements/py3.txt (line 7))
+  Using cached aiohttp-3.14.5-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (8.3 kB)
+Collecting maxminddb<4.0.0,>=3.0.0 (from geoip2->-r tests/requirements/py3.txt (line 7))
+  Using cached maxminddb-3.2.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (5.6 kB)
+Collecting requests<3.0.0,>=2.24.0 (from geoip2->-r tests/requirements/py3.txt (line 7))
+  Using cached requests-2.34.2-py3-none-any.whl.metadata (4.8 kB)
+Collecting MarkupSafe>=2.0 (from jinja2>=2.11.0->-r tests/requirements/py3.txt (line 8))
+  Using cached markupsafe-3.0.4-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.7 kB)
+Collecting certifi>=2026.10.23 (from selenium->-r tests/requirements/py3.txt (line 17))
+  Using cached certifi-2026.10.23-py3-none-any.whl.metadata (2.5 kB)
+Collecting trio<1.0,>=0.31.0 (from selenium->-r tests/requirements/py3.txt (line 17))
+  Using cached trio-0.35.0-py3-none-any.whl.metadata (8.5 kB)
+Collecting trio-websocket<1.0,>=0.12.2 (from selenium->-r tests/requirements/py3.txt (line 17))
+  Using cached trio_websocket-0.12.2-py3-none-any.whl.metadata (5.1 kB)
+Collecting typing_extensions<5.0,>=4.15.0 (from selenium->-r tests/requirements/py3.txt (line 17))
+  Using cached typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting urllib3<3.0,>=2.6.3 (from urllib3[socks]<3.0,>=2.6.3->selenium->-r tests/requirements/py3.txt (line 17))
+  Using cached urllib3-2.8.0-py3-none-any.whl.metadata (7.4 kB)
+Collecting websocket-client<2.0,>=1.8.0 (from selenium->-r tests/requirements/py3.txt (line 17))
+  Using cached websocket_client-1.9.2-py3-none-any.whl.metadata (8.3 kB)
+Collecting aiohappyeyeballs>=2.5.0 (from aiohttp<4.0.0,>=3.14.1->geoip2->-r tests/requirements/py3.txt (line 7))
+  Using cached aiohappyeyeballs-2.7.1-py3-none-any.whl.metadata (5.9 kB)
+Collecting aiosignal>=1.4.0 (from aiohttp<4.0.0,>=3.14.1->geoip2->-r tests/requirements/py3.txt (line 7))
+  Using cached aiosignal-1.4.0-py3-none-any.whl.metadata (3.7 kB)
+Collecting frozenlist>=1.1.1 (from aiohttp<4.0.0,>=3.14.1->geoip2->-r tests/requirements/py3.txt (line 7))
+  Using cached frozenlist-1.8.0-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (20 kB)
+Collecting multidict<8.0,>=4.5 (from aiohttp<4.0.0,>=3.14.1->geoip2->-r tests/requirements/py3.txt (line 7))
+  Using cached multidict-7.2.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (6.1 kB)
+Collecting propcache>=0.2.0 (from aiohttp<4.0.0,>=3.14.1->geoip2->-r tests/requirements/py3.txt (line 7))
+  Using cached propcache-0.5.4-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (25 kB)
+Collecting yarl<2.0,>=1.25.1 (from aiohttp<4.0.0,>=3.14.1->geoip2->-r tests/requirements/py3.txt (line 7))
+  Using cached yarl-1.25.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (111 kB)
+Collecting charset_normalizer<4,>=2 (from requests<3.0.0,>=2.24.0->geoip2->-r tests/requirements/py3.txt (line 7))
+  Using cached charset_normalizer-3.5.2-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (46 kB)
+Collecting idna<4,>=2.5 (from requests<3.0.0,>=2.24.0->geoip2->-r tests/requirements/py3.txt (line 7))
+  Using cached idna-3.20-py3-none-any.whl.metadata (7.2 kB)
+Collecting sortedcontainers (from trio<1.0,>=0.31.0->selenium->-r tests/requirements/py3.txt (line 17))
+  Using cached sortedcontainers-2.4.0-py2.py3-none-any.whl.metadata (10 kB)
+Collecting outcome (from trio<1.0,>=0.31.0->selenium->-r tests/requirements/py3.txt (line 17))
+  Using cached outcome-1.3.0.post0-py2.py3-none-any.whl.metadata (2.6 kB)
+Collecting sniffio>=1.3.0 (from trio<1.0,>=0.31.0->selenium->-r tests/requirements/py3.txt (line 17))
+  Using cached sniffio-1.3.1-py3-none-any.whl.metadata (3.9 kB)
+Collecting wsproto>=0.14 (from trio-websocket<1.0,>=0.12.2->selenium->-r tests/requirements/py3.txt (line 17))
+  Using cached wsproto-1.3.2-py3-none-any.whl.metadata (5.2 kB)
+Collecting pysocks!=1.5.7,<2.0,>=1.5.6 (from urllib3[socks]<3.0,>=2.6.3->selenium->-r tests/requirements/py3.txt (line 17))
+  Using cached PySocks-1.7.1-py3-none-any.whl.metadata (13 kB)
+Collecting cffi>=1.0.1 (from argon2-cffi-bindings->argon2-cffi>=19.2.0->-r tests/requirements/py3.txt (line 3))
+  Using cached cffi-2.1.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.5 kB)
+Collecting pycparser (from cffi>=1.0.1->argon2-cffi-bindings->argon2-cffi>=19.2.0->-r tests/requirements/py3.txt (line 3))
+  Using cached pycparser-3.12-py3-none-any.whl.metadata (9.7 kB)
+Collecting h11<1,>=0.16.0 (from wsproto>=0.14->trio-websocket<1.0,>=0.12.2->selenium->-r tests/requirements/py3.txt (line 17))
+  Using cached h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+Using cached aiosmtpd-1.4.6-py3-none-any.whl (154 kB)
+Using cached argon2_cffi-25.1.0-py3-none-any.whl (14 kB)
+Using cached bcrypt-5.0.0-cp39-abi3-manylinux_2_34_x86_64.whl (278 kB)
+Using cached black-26.10.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (2.0 MB)
+Using cached docutils-0.23-py3-none-any.whl (634 kB)
+Using cached geoip2-5.3.0-py3-none-any.whl (29 kB)
+Using cached jinja2-3.1.6-py3-none-any.whl (134 kB)
+Using cached numpy-2.4.6-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (16.9 MB)
+Using cached pillow-13.0.0-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (7.1 MB)
+Using cached pylibmc-1.6.3-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.2 MB)
+Using cached pymemcache-4.0.0-py2.py3-none-any.whl (60 kB)
+Using cached pyyaml-6.0.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (806 kB)
+Using cached redis-8.1.0-py3-none-any.whl (560 kB)
+Using cached selenium-4.52.0-py3-none-any.whl (12.1 MB)
+Using cached tblib-3.2.2-py3-none-any.whl (12 kB)
+Using cached tzdata-2026.6-py2.py3-none-any.whl (348 kB)
+Using cached aiohttp-3.14.5-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (1.9 MB)
+Using cached attrs-26.1.0-py3-none-any.whl (67 kB)
+Using cached certifi-2026.10.23-py3-none-any.whl (135 kB)
+Using cached click-8.5.0-py3-none-any.whl (125 kB)
+Using cached markupsafe-3.0.4-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (22 kB)
+Using cached maxminddb-3.2.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (101 kB)
+Using cached mypy_extensions-1.2.0-py3-none-any.whl (5.1 kB)
+Using cached packaging-26.3-py3-none-any.whl (129 kB)
+Using cached pathspec-1.1.1-py3-none-any.whl (57 kB)
+Using cached platformdirs-4.14.5-py3-none-any.whl (35 kB)
+Using cached pytokens-0.4.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (260 kB)
+Using cached requests-2.34.2-py3-none-any.whl (73 kB)
+Using cached trio-0.35.0-py3-none-any.whl (513 kB)
+Using cached trio_websocket-0.12.2-py3-none-any.whl (21 kB)
+Using cached typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+Using cached urllib3-2.8.0-py3-none-any.whl (135 kB)
+Using cached websocket_client-1.9.2-py3-none-any.whl (95 kB)
+Using cached argon2_cffi_bindings-26.1.0-cp310-abi3-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl (26 kB)
+Using cached atpublic-9.0.0-py3-none-any.whl (11 kB)
+Using cached aiohappyeyeballs-2.7.1-py3-none-any.whl (15 kB)
+Using cached aiosignal-1.4.0-py3-none-any.whl (7.5 kB)
+Using cached cffi-2.1.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (217 kB)
+Using cached charset_normalizer-3.5.2-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (269 kB)
+Using cached frozenlist-1.8.0-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (231 kB)
+Using cached idna-3.20-py3-none-any.whl (69 kB)
+Using cached multidict-7.2.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (510 kB)
+Using cached outcome-1.3.0.post0-py2.py3-none-any.whl (10 kB)
+Using cached propcache-0.5.4-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (235 kB)
+Using cached PySocks-1.7.1-py3-none-any.whl (16 kB)
+Using cached sniffio-1.3.1-py3-none-any.whl (10 kB)
+Using cached wsproto-1.3.2-py3-none-any.whl (24 kB)
+Using cached yarl-1.25.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (117 kB)
+Using cached sortedcontainers-2.4.0-py2.py3-none-any.whl (29 kB)
+Using cached h11-0.16.0-py3-none-any.whl (37 kB)
+Using cached pycparser-3.12-py3-none-any.whl (62 kB)
+Installing collected packages: sortedcontainers, websocket-client, urllib3, tzdata, typing_extensions, tblib, sniffio, redis, PyYAML, pywatchman, pytokens, pysocks, pymemcache, pylibmc, pycparser, propcache, platformdirs, Pillow, pathspec, packaging, numpy, mypy-extensions, multidict, maxminddb, MarkupSafe, idna, h11, frozenlist, docutils, click, charset_normalizer, certifi, bcrypt, attrs, atpublic, aiohappyeyeballs, yarl, wsproto, requests, outcome, jinja2, cffi, black, aiosmtpd, aiosignal, trio, argon2-cffi-bindings, aiohttp, trio-websocket, geoip2, argon2-cffi, selenium
+Successfully installed MarkupSafe-3.0.4 Pillow-13.0.0 PyYAML-6.0.3 aiohappyeyeballs-2.7.1 aiohttp-3.14.5 aiosignal-1.4.0 aiosmtpd-1.4.6 argon2-cffi-25.1.0 argon2-cffi-bindings-26.1.0 atpublic-9.0.0 attrs-26.1.0 bcrypt-5.0.0 black-26.10.1 certifi-2026.10.23 cffi-2.1.1 charset_normalizer-3.5.2 click-8.5.0 docutils-0.23 frozenlist-1.8.0 geoip2-5.3.0 h11-0.16.0 idna-3.20 jinja2-3.1.6 maxminddb-3.2.0 multidict-7.2.1 mypy-extensions-1.2.0 numpy-2.4.6 outcome-1.3.0.post0 packaging-26.3 pathspec-1.1.1 platformdirs-4.14.5 propcache-0.5.4 pycparser-3.12 pylibmc-1.6.3 pymemcache-4.0.0 pysocks-1.7.1 pytokens-0.4.1 pywatchman-4.0.0 redis-8.1.0 requests-2.34.2 selenium-4.52.0 sniffio-1.3.1 sortedcontainers-2.4.0 tblib-3.2.2 trio-0.35.0 trio-websocket-0.12.2 typing_extensions-4.16.0 tzdata-2026.6 urllib3-2.8.0 websocket-client-1.9.2 wsproto-1.3.2 yarl-1.25.1
+
+[notice] A new release of pip is available: 24.0 -> 26.3
+[notice] To update, run: pip install --upgrade pip
+[run.sh] seq=3 rc=0 dur=13656ms
++ T=sympy__sympy-24539
++ W=/home/user/work/sympy__sympy-24539
+++ jq -r .base_commit /home/user/work/sympy__sympy-24539/meta.json
++ B=193e3825645d93c73e31cdceb6d742cc6919624d
++ tools/run.sh sympy__sympy-24539 -p setup -C /home/user/work/sympy__sympy-24539 -- 'git init -q repo && cd repo && git remote add origin https://github.com/sympy/sympy && git fetch -q --depth 1 origin 193e3825645d93c73e31cdceb6d742cc6919624d && git checkout -q FETCH_HEAD && git log --oneline -1'
+193e382 Merge pull request #24168 from sylee957/check
+[run.sh] seq=1 rc=0 dur=1941ms
++ tools/run.sh sympy__sympy-24539 -p setup -C /home/user/work/sympy__sympy-24539 -- '/usr/bin/python3.11 -m venv venv'
+[run.sh] seq=2 rc=0 dur=2334ms
++ tools/run.sh sympy__sympy-24539 -p setup -- 'python -m pip install -e . mpmath==1.3.0 pytest'
+Obtaining file:///home/user/work/sympy__sympy-24539/repo
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Checking if build backend supports build_editable: started
+  Checking if build backend supports build_editable: finished with status 'done'
+  Getting requirements to build editable: started
+  Getting requirements to build editable: finished with status 'done'
+  Preparing editable metadata (pyproject.toml): started
+  Preparing editable metadata (pyproject.toml): finished with status 'done'
+Collecting mpmath==1.3.0
+  Using cached mpmath-1.3.0-py3-none-any.whl.metadata (8.6 kB)
+Collecting pytest
+  Using cached pytest-9.2.0-py3-none-any.whl.metadata (7.9 kB)
+Collecting iniconfig>=2 (from pytest)
+  Using cached iniconfig-2.3.1-py3-none-any.whl.metadata (2.8 kB)
+Collecting packaging>=24 (from pytest)
+  Using cached packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+Collecting pluggy<2,>=1.6 (from pytest)
+  Using cached pluggy-1.7.0-py3-none-any.whl.metadata (5.0 kB)
+Collecting pygments>=2.15 (from pytest)
+  Using cached pygments-2.21.0-py3-none-any.whl.metadata (2.5 kB)
+Using cached mpmath-1.3.0-py3-none-any.whl (536 kB)
+Using cached pytest-9.2.0-py3-none-any.whl (411 kB)
+Using cached iniconfig-2.3.1-py3-none-any.whl (7.6 kB)
+Using cached packaging-26.3-py3-none-any.whl (129 kB)
+Using cached pluggy-1.7.0-py3-none-any.whl (27 kB)
+Using cached pygments-2.21.0-py3-none-any.whl (1.3 MB)
+Building wheels for collected packages: sympy
+  Building editable for sympy (pyproject.toml): started
+  Building editable for sympy (pyproject.toml): finished with status 'done'
+  Created wheel for sympy: filename=sympy-1.12.dev0-0.editable-py3-none-any.whl size=30596 sha256=f33445ac5cce37209f24ef1922c2750ed4eeefe11a01928a82dc990b94e304fc
+  Stored in directory: /tmp/pip-ephem-wheel-cache-57zqp23z/wheels/ae/37/d3/75e2e6824b4a2b6001db0b47885672d132b9500ab94c421124
+Successfully built sympy
+Installing collected packages: mpmath, sympy, pygments, pluggy, packaging, iniconfig, pytest
+Successfully installed iniconfig-2.3.1 mpmath-1.3.0 packaging-26.3 pluggy-1.7.0 pygments-2.21.0 pytest-9.2.0 sympy-1.12.dev0
+
+[notice] A new release of pip is available: 24.0 -> 26.3
+[notice] To update, run: pip install --upgrade pip
+[run.sh] seq=3 rc=0 dur=3548ms
++ T=pytest-dev__pytest-10051
++ W=/home/user/work/pytest-dev__pytest-10051
+++ jq -r .base_commit /home/user/work/pytest-dev__pytest-10051/meta.json
++ B=aa55975c7d3f6c9f6d7f68accc41bb7cadf0eb9a
++ tools/run.sh pytest-dev__pytest-10051 -p setup -C /home/user/work/pytest-dev__pytest-10051 -- 'git init -q repo && cd repo && git remote add origin https://github.com/pytest-dev/pytest && git fetch -q --depth 1 origin aa55975c7d3f6c9f6d7f68accc41bb7cadf0eb9a && git checkout -q FETCH_HEAD && git log --oneline -1'
+aa55975 Doc: Clear mailbox before deleting the user (#10068)
+[run.sh] seq=1 rc=0 dur=806ms
++ tools/run.sh pytest-dev__pytest-10051 -p setup -C /home/user/work/pytest-dev__pytest-10051 -- '/usr/bin/python3.11 -m venv venv'
+[run.sh] seq=2 rc=0 dur=2301ms
++ tools/run.sh pytest-dev__pytest-10051 -p setup -- 'SETUPTOOLS_SCM_PRETEND_VERSION=7.2.0.dev0 python -m pip install -e ".[testing]"'
+Obtaining file:///home/user/work/pytest-dev__pytest-10051/repo
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Checking if build backend supports build_editable: started
+  Checking if build backend supports build_editable: finished with status 'done'
+  Getting requirements to build editable: started
+  Getting requirements to build editable: finished with status 'done'
+  Preparing editable metadata (pyproject.toml): started
+  Preparing editable metadata (pyproject.toml): finished with status 'done'
+Collecting attrs>=19.2.0 (from pytest==7.2.0.dev0)
+  Using cached attrs-26.1.0-py3-none-any.whl.metadata (8.8 kB)
+Collecting iniconfig (from pytest==7.2.0.dev0)
+  Using cached iniconfig-2.3.1-py3-none-any.whl.metadata (2.8 kB)
+Collecting packaging (from pytest==7.2.0.dev0)
+  Using cached packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+Collecting pluggy<2.0,>=0.12 (from pytest==7.2.0.dev0)
+  Using cached pluggy-1.7.0-py3-none-any.whl.metadata (5.0 kB)
+Collecting py>=1.8.2 (from pytest==7.2.0.dev0)
+  Using cached py-1.11.0-py2.py3-none-any.whl.metadata (2.8 kB)
+Collecting argcomplete (from pytest==7.2.0.dev0)
+  Using cached argcomplete-3.7.2-py3-none-any.whl.metadata (16 kB)
+Collecting hypothesis>=3.56 (from pytest==7.2.0.dev0)
+  Using cached hypothesis-6.170.14-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (5.6 kB)
+Collecting mock (from pytest==7.2.0.dev0)
+  Using cached mock-5.2.0-py3-none-any.whl.metadata (3.1 kB)
+Collecting nose (from pytest==7.2.0.dev0)
+  Using cached nose-1.3.7-py3-none-any.whl.metadata (1.7 kB)
+Collecting pygments>=2.7.2 (from pytest==7.2.0.dev0)
+  Using cached pygments-2.21.0-py3-none-any.whl.metadata (2.5 kB)
+Collecting requests (from pytest==7.2.0.dev0)
+  Using cached requests-2.34.2-py3-none-any.whl.metadata (4.8 kB)
+Collecting xmlschema (from pytest==7.2.0.dev0)
+  Using cached xmlschema-4.3.2-py3-none-any.whl.metadata (8.0 kB)
+Collecting sortedcontainers<3.0.0,>=2.1.0 (from hypothesis>=3.56->pytest==7.2.0.dev0)
+  Using cached sortedcontainers-2.4.0-py2.py3-none-any.whl.metadata (10 kB)
+Collecting charset_normalizer<4,>=2 (from requests->pytest==7.2.0.dev0)
+  Using cached charset_normalizer-3.5.2-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (46 kB)
+Collecting idna<4,>=2.5 (from requests->pytest==7.2.0.dev0)
+  Using cached idna-3.20-py3-none-any.whl.metadata (7.2 kB)
+Collecting urllib3<3,>=1.26 (from requests->pytest==7.2.0.dev0)
+  Using cached urllib3-2.8.0-py3-none-any.whl.metadata (7.4 kB)
+Collecting certifi>=2023.5.7 (from requests->pytest==7.2.0.dev0)
+  Using cached certifi-2026.10.23-py3-none-any.whl.metadata (2.5 kB)
+Collecting elementpath<6.0.0,>=5.1.3 (from xmlschema->pytest==7.2.0.dev0)
+  Using cached elementpath-5.1.4-py3-none-any.whl.metadata (6.9 kB)
+Using cached attrs-26.1.0-py3-none-any.whl (67 kB)
+Using cached hypothesis-6.170.14-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (1.2 MB)
+Using cached pluggy-1.7.0-py3-none-any.whl (27 kB)
+Using cached py-1.11.0-py2.py3-none-any.whl (98 kB)
+Using cached pygments-2.21.0-py3-none-any.whl (1.3 MB)
+Using cached argcomplete-3.7.2-py3-none-any.whl (43 kB)
+Using cached iniconfig-2.3.1-py3-none-any.whl (7.6 kB)
+Using cached mock-5.2.0-py3-none-any.whl (31 kB)
+Using cached nose-1.3.7-py3-none-any.whl (154 kB)
+Using cached packaging-26.3-py3-none-any.whl (129 kB)
+Using cached requests-2.34.2-py3-none-any.whl (73 kB)
+Using cached xmlschema-4.3.2-py3-none-any.whl (504 kB)
+Using cached certifi-2026.10.23-py3-none-any.whl (135 kB)
+Using cached charset_normalizer-3.5.2-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (269 kB)
+Using cached elementpath-5.1.4-py3-none-any.whl (261 kB)
+Using cached idna-3.20-py3-none-any.whl (69 kB)
+Using cached sortedcontainers-2.4.0-py2.py3-none-any.whl (29 kB)
+Using cached urllib3-2.8.0-py3-none-any.whl (135 kB)
+Checking if build backend supports build_editable: started
+Checking if build backend supports build_editable: finished with status 'done'
+Building wheels for collected packages: pytest
+  Building editable for pytest (pyproject.toml): started
+  Building editable for pytest (pyproject.toml): finished with status 'done'
+  Created wheel for pytest: filename=pytest-7.2.0.dev0-0.editable-py3-none-any.whl size=5070 sha256=837ab3ff958bf153122be5107330e36b1be643fded8b1be094567ee290b6e9d0
+  Stored in directory: /tmp/pip-ephem-wheel-cache-yr_eobwj/wheels/28/e9/e5/7fa3c2562d59d62db854e43d49e8c7bc82899b8eabfb09904b
+Successfully built pytest
+Installing collected packages: sortedcontainers, nose, urllib3, pygments, py, pluggy, packaging, mock, iniconfig, idna, hypothesis, elementpath, charset_normalizer, certifi, attrs, argcomplete, xmlschema, requests, pytest
+Successfully installed argcomplete-3.7.2 attrs-26.1.0 certifi-2026.10.23 charset_normalizer-3.5.2 elementpath-5.1.4 hypothesis-6.170.14 idna-3.20 iniconfig-2.3.1 mock-5.2.0 nose-1.3.7 packaging-26.3 pluggy-1.7.0 py-1.11.0 pygments-2.21.0 pytest-7.2.0.dev0 requests-2.34.2 sortedcontainers-2.4.0 urllib3-2.8.0 xmlschema-4.3.2
+
+[notice] A new release of pip is available: 24.0 -> 26.3
+[notice] To update, run: pip install --upgrade pip
+[run.sh] seq=3 rc=0 dur=6198ms
++ echo SETUP_DONE
+SETUP_DONE

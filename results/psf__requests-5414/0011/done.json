@@ -1,0 +1,32 @@
+{
+ "task": "psf__requests-5414",
+ "seq": 11,
+ "phase": "solve",
+ "cls": "test run",
+ "cmd": "git stash -q && timeout 600 python -m pytest -q tests/test_requests.py 2>&1 | tail -1; git stash pop -q; timeout 600 python -m pytest -q tests/test_requests.py 2>&1 | tail -1",
+ "orig_rc": 0,
+ "orig_dur_s": 69.184386048,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 69.02087140083313,
+   "rec_rc": 0,
+   "rec_wall_s": 72.30531239509583
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 70.21051144599915,
+   "rec_rc": 0,
+   "rec_wall_s": 70.4107756614685
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 69.86881184577942,
+   "rec_rc": 0,
+   "rec_wall_s": 70.35682201385498
+  }
+ ]
+}

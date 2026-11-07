@@ -1,0 +1,7 @@
+Testing Blueprint whitespace edge cases...
+INFO: Blueprint with name '' valid_name '' was created successfully
+      Blueprint.name = '' valid_name ''
+INFO: Blueprint with name ''  valid_name  '' was created successfully
+      Blueprint.name = ''  valid_name  ''
+INFO: Blueprint with name ''\tvalid_name\n'' was created successfully
+      Blueprint.name = ''\tvalid_name\n''

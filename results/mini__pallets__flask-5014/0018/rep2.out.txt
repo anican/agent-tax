@@ -1,0 +1,13 @@
+Testing Blueprint name validation...
+
+Running test_empty_name_validation...
+SUCCESS: Blueprint with empty name correctly raised ValueError: Blueprint name cannot be empty.
+
+Running test_normal_name_still_works...
+SUCCESS: Blueprint with normal name created successfully
+
+Running test_dot_validation_still_works...
+SUCCESS: Blueprint with dot in name correctly raised ValueError: 'name' may not contain a dot '.' character.
+
+Results: 3/3 tests passed
+All tests passed!

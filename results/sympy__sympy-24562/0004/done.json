@@ -1,0 +1,32 @@
+{
+ "task": "sympy__sympy-24562",
+ "seq": 4,
+ "phase": "solve",
+ "cls": "other",
+ "cmd": "python -c \"from sympy import Rational; print(Rational(\\\"0.5\\\", \\\"100\\\"), Rational(0.5, 100))\"; grep -n \"def __new__(cls, p, q=None, gcd=None)\" -A 70 sympy/core/numbers.py | sed -n 1,75p",
+ "orig_rc": 0,
+ "orig_dur_s": 2.05278976,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 0.5888285636901855,
+   "rec_rc": 0,
+   "rec_wall_s": 1.263918399810791
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 0.5884089469909668,
+   "rec_rc": 0,
+   "rec_wall_s": 1.2469482421875
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 0.5736281871795654,
+   "rec_rc": 0,
+   "rec_wall_s": 1.2798540592193604
+  }
+ ]
+}

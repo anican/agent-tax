@@ -1,0 +1,33 @@
+{
+ "task": "mini__django__django-16595",
+ "seq": 23,
+ "phase": "solve",
+ "cls": "git",
+ "cmd": "git diff django/db/migrations/operations/fields.py",
+ "orig_rc": 0,
+ "orig_dur_s": 0.006478336,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 0.024990320205688477,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1195507049560547
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 0.027791738510131836,
+   "rec_rc": 0,
+   "rec_wall_s": 1.117368221282959
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 0.031164884567260742,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1297476291656494
+  }
+ ],
+ "loop_iterations": 30
+}

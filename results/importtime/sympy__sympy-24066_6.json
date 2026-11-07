@@ -1,0 +1,27 @@
+{
+ "task": "sympy__sympy-24066",
+ "seq": 6,
+ "cls": "other",
+ "cmd": "python /tmp/repro_24066.py",
+ "profiled_cmd": "python /tmp/repro_24066.py",
+ "reps": [
+  {
+   "wall_s": 0.7199482917785645,
+   "task_clock_s": 0.7024600000000001,
+   "top_level_import_s": 0.552608,
+   "n_top_level": 10
+  },
+  {
+   "wall_s": 0.7438135147094727,
+   "task_clock_s": 0.72288,
+   "top_level_import_s": 0.561548,
+   "n_top_level": 10
+  },
+  {
+   "wall_s": 0.7263412475585938,
+   "task_clock_s": 0.70689,
+   "top_level_import_s": 0.561183,
+   "n_top_level": 10
+  }
+ ]
+}

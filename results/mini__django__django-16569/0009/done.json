@@ -1,0 +1,32 @@
+{
+ "task": "mini__django__django-16569",
+ "seq": 9,
+ "phase": "solve",
+ "cls": "search/read",
+ "cmd": "cat <<'EOF' > test_comprehensive.py\n#!/usr/bin/env python3\nimport os\nimport django\nfrom django import forms\n\nclass MyForm(forms.Form):\n    my_field = forms.CharField()\n\nif __name__ == \"__main__\":\n    settings_file = os.path.splitext(os.path.basename(__file__))[0]\n    django.conf.settings.configure(\n        DEBUG=True,\n        MIDDLEWARE_CLASSES=[],\n        ROOT_URLCONF=settings_file,\n    )\n    django.setup()\n    \n    print(\"Testing various formset configurations...\")\n    \n    # Test 1: Original failing case\n    print(\"\\n1. Testing can_delete=True, can_delete_extra=False:\")\n    MyFormSet1 = forms.formset_factory(\n        form=MyForm,\n        can_delete=True,\n        can_delete_extra=False,\n    )\n    my_formset1 = MyFormSet1(initial=None)\n    try:\n        empty_form1 = my_formset1.empty_form\n        print(\"   SUCCESS: empty_form accessed without error\")\n    except Exception as e:\n        print(f\"   ERROR: {type(e).__name__}: {e}\")\n    \n    # Test 2: can_delete_extra=True (should work regardless)\n    print(\"\\n2. Testing can_delete=True, can_delete_extra=True:\")\n    MyFormSet2 = forms.formset_factory(\n        form=MyForm,\n        can_delete=True,\n        can_delete_extra=True,\n    )\n    my_formset2 = MyFormSet2(initial=None)\n    try:\n        empty_form2 = my_formset2.empty_form\n        print(\"   SUCCESS: empty_form accessed without error\")\n    except Exception as e:\n        print(f\"   ERROR: {type(e).__name__}: {e}\")\n    \n    # Test 3: can_delete=False (should work regardless)\n    print(\"\\n3. Testing can_delete=False:\")\n    MyFormSet3 = forms.formset_factory(\n        form=MyForm,\n        can_delete=False,\n    )\n    my_formset3 = MyFormSet3(initial=None)\n    try:\n        empty_form3 = my_formset3.empty_form\n        print(\"   SUCCESS: empty_form accessed without error\")\n    except Exception as e:\n        print(f\"   ERROR: {type(e).__name__}: {e}\")\n    \n    # Test 4: Test with actual data and valid index\n    print(\"\\n4. Testing with actual data and valid index:\")\n    MyFormSet4 = forms.formset_factory(\n        form=MyForm,\n        can_delete=True,\n        can_delete_extra=False,\n    )\n    my_formset4 = MyFormSet4(initial=[{'my_field': 'test'}])\n    try:\n        # This should work with a valid index\n        form = my_formset4.forms[0]\n        print(\"   SUCCESS: Regular form access works\")\n        print(f\"   Form has deletion field: {'DELETE' in form.fields}\")\n    except Exception as e:\n        print(f\"   ERROR: {type(e).__name__}: {e}\")\n    \n    print(\"\\nAll tests completed!\")\nEOF",
+ "orig_rc": 0,
+ "orig_dur_s": 0.003994112,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 0.027858257293701172,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1230478286743164
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 0.026016712188720703,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1245718002319336
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 0.027204036712646484,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1208550930023193
+  }
+ ]
+}

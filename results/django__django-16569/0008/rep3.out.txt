@@ -1,0 +1,5 @@
+TypeError: '<' not supported between instances of 'NoneType' and 'int'
+Ran 1 test in 0.001s
+FAILED (errors=1)
+Ran 1111 tests in 1.312s
+OK (skipped=14)

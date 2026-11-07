@@ -1,0 +1,27 @@
+{
+ "task": "pallets__flask-5014",
+ "seq": 6,
+ "cls": "test run",
+ "cmd": "python -m pytest -q tests/test_blueprints.py 2>&1 | tail -3",
+ "profiled_cmd": "python -m pytest -q tests/test_blueprints.py",
+ "reps": [
+  {
+   "wall_s": 1.0408225059509277,
+   "task_clock_s": 1.02311,
+   "top_level_import_s": 0.332463,
+   "n_top_level": 20
+  },
+  {
+   "wall_s": 1.1482396125793457,
+   "task_clock_s": 1.1304100000000001,
+   "top_level_import_s": 0.348752,
+   "n_top_level": 20
+  },
+  {
+   "wall_s": 1.0294508934020996,
+   "task_clock_s": 1.01066,
+   "top_level_import_s": 0.345168,
+   "n_top_level": 20
+  }
+ ]
+}

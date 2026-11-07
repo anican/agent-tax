@@ -1,0 +1,92 @@
+MICRO_SWE_AGENT_FINAL_OUTPUT
+diff --git a/comprehensive_test.py b/comprehensive_test.py
+new file mode 100644
+index 0000000..6b6f818
+--- /dev/null
++++ b/comprehensive_test.py
+@@ -0,0 +1,35 @@
++from sympy import ring, ZZ, symbols
++
++# Test the fix
++R, x, y, z = ring("x,y,z", ZZ)
++f = 3*x**2*y - x*y*z + 7*z**3 + 1
++
++print("=== Testing PolyElement.as_expr() fix ===")
++print("Original polynomial:", f)
++
++# Test 1: Using custom symbols (the main fix)
++U, V, W = symbols("u,v,w")
++result_with_symbols = f.as_expr(U, V, W)
++print("Test 1 - With custom symbols u,v,w:", result_with_symbols)
++
++# Test 2: Using no symbols (should use default ring symbols)
++result_no_symbols = f.as_expr()
++print("Test 2 - With no symbols (default):", result_no_symbols)
++
++# Test 3: Verify the symbols are actually different
++print("Test 3 - Are results different?", result_with_symbols != result_no_symbols)
++
++# Test 4: Test error case (wrong number of symbols)
++try:
++    A, B = symbols("a,b")
++    f.as_expr(A, B)  # Should raise error - only 2 symbols for 3-variable polynomial
++    print("Test 4 - ERROR: Should have raised ValueError")
++except ValueError as e:
++    print("Test 4 - Correctly raised ValueError:", str(e))
++
++# Test 5: Verify the symbols are correctly substituted
++print("Test 5 - Symbol verification:")
++print("  Default symbols in result:", [str(s) for s in result_no_symbols.free_symbols])
++print("  Custom symbols in result:", [str(s) for s in result_with_symbols.free_symbols])
++
++print("=== All tests completed ===")
+diff --git a/simple_test.py b/simple_test.py
+new file mode 100644
+index 0000000..e49dbdf
+--- /dev/null
++++ b/simple_test.py
+@@ -0,0 +1,14 @@
++from sympy import ring, ZZ, symbols
++
++# Test with a simple polynomial
++R, x = ring("x", ZZ)
++f = x**2 + 1
++
++print("Simple polynomial test:")
++print("Original:", f)
++
++# Test with custom symbol
++t = symbols("t")
++result = f.as_expr(t)
++print("With custom symbol t:", result)
++print("Free symbols:", [str(s) for s in result.free_symbols])
+diff --git a/sympy/polys/rings.py b/sympy/polys/rings.py
+index 12bd2fc..be6e35d 100644
+--- a/sympy/polys/rings.py
++++ b/sympy/polys/rings.py
+@@ -618,7 +618,7 @@ def set_ring(self, new_ring):
+     def as_expr(self, *symbols):
+         if symbols and len(symbols) != self.ring.ngens:
+             raise ValueError("not enough symbols, expected %s got %s" % (self.ring.ngens, len(symbols)))
+-        else:
++        elif not symbols:
+             symbols = self.ring.symbols
+ 
+         return expr_from_dict(self.as_expr_dict(), *symbols)
+diff --git a/test_issue.py b/test_issue.py
+new file mode 100644
+index 0000000..7c387be
+--- /dev/null
++++ b/test_issue.py
+@@ -0,0 +1,11 @@
++from sympy import ring, ZZ, symbols
++
++# Reproduce the issue
++R, x, y, z = ring("x,y,z", ZZ)
++f = 3*x**2*y - x*y*z + 7*z**3 + 1
++U, V, W = symbols("u,v,w")
++
++print("Original polynomial:", f)
++print("Expected result with U,V,W symbols:", "3*U**2*V - U*V*W + 7*W**3 + 1")
++print("Actual result:", f.as_expr(U, V, W))
++print("Are they equal?", str(f.as_expr(U, V, W)) == "3*U**2*V - U*V*W + 7*W**3 + 1")

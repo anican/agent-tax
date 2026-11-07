@@ -1,0 +1,32 @@
+{
+ "task": "mini__pallets__flask-5014",
+ "seq": 15,
+ "phase": "solve",
+ "cls": "git",
+ "cmd": "git checkout -- src/flask/blueprints.py && sed -i '193,196c\\        if not name:\\\n            raise ValueError(\"Blueprint name cannot be empty.\")\\\n\\\n        if \".\" in name:\\\n            raise ValueError(\"'\\''name'\\'' may not contain a dot '\\''.'\\'' character.\")\\\n\\\n        self.name = name' src/flask/blueprints.py",
+ "orig_rc": 0,
+ "orig_dur_s": 0.007872256,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 0.032105207443237305,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1334054470062256
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 0.023295879364013672,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1233313083648682
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 0.025235652923583984,
+   "rec_rc": 0,
+   "rec_wall_s": 1.123236894607544
+  }
+ ]
+}

@@ -1,0 +1,32 @@
+{
+ "task": "pallets__flask-5014",
+ "seq": 1,
+ "phase": "setup",
+ "cls": "git",
+ "cmd": "git init -q repo && cd repo && git remote add origin https://github.com/pallets/flask && git fetch -q --depth 1 origin 7ee9ceb71e868944a46e1ff00b506772a53a4f1d && git checkout -q FETCH_HEAD && git log --oneline -1",
+ "orig_rc": 0,
+ "orig_dur_s": 1.171108096,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 1.1578528881072998,
+   "rec_rc": 0,
+   "rec_wall_s": 1.2546756267547607
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 1.1595549583435059,
+   "rec_rc": 0,
+   "rec_wall_s": 1.2752699851989746
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 0.9554572105407715,
+   "rec_rc": 0,
+   "rec_wall_s": 1.2533271312713623
+  }
+ ]
+}

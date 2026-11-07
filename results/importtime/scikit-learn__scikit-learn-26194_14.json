@@ -1,0 +1,27 @@
+{
+ "task": "scikit-learn__scikit-learn-26194",
+ "seq": 14,
+ "cls": "git",
+ "cmd": "python -c \"\nimport numpy as np\nfrom sklearn import metrics\ny = np.array([1, 1, 2, 2]); scores = np.array([0.1, 0.4, 0.35",
+ "profiled_cmd": "python -c \"\nimport numpy as np\nfrom sklearn import metrics\ny = np.array([1, 1, 2, 2]); scores = np.array([0.1, 0.4, 0.35, 0.8])\nprint(repr(metrics.roc_curve(y, scores, pos_label=2)[2]))\n\"; git diff --stat",
+ "reps": [
+  {
+   "wall_s": 0.9526021480560303,
+   "task_clock_s": 1.4815099999999999,
+   "top_level_import_s": 0.723146,
+   "n_top_level": 10
+  },
+  {
+   "wall_s": 0.8898575305938721,
+   "task_clock_s": 1.43248,
+   "top_level_import_s": 0.660822,
+   "n_top_level": 10
+  },
+  {
+   "wall_s": 0.8397986888885498,
+   "task_clock_s": 1.3854300000000002,
+   "top_level_import_s": 0.62182,
+   "n_top_level": 10
+  }
+ ]
+}

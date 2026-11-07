@@ -1,0 +1,36 @@
+[replay] sympy__sympy-24562 seq=1 class=git orig=2.24s :: 'git init -q repo && cd repo && git remote add origin https://github.co'
+    rep1: stat rc=0 2.43s | record rc=0 3.34s
+    rep2: stat rc=0 2.33s | record rc=0 3.31s
+    rep3: stat rc=0 2.23s | record rc=0 3.25s
+[replay] sympy__sympy-24562 seq=2 class=package install orig=5.41s :: '/usr/bin/python3.11 -m venv venv'
+    rep1: stat rc=0 5.56s | record rc=0 7.26s
+    rep2: stat rc=0 5.23s | record rc=0 7.25s
+    rep3: stat rc=0 5.37s | record rc=0 6.26s
+[replay] sympy__sympy-24562 seq=3 class=package install orig=7.74s :: 'python -m pip install -e . mpmath==1.3.0 pytest'
+    rep1: stat rc=0 8.59s | record rc=0 9.27s
+    rep2: stat rc=0 7.63s | record rc=0 8.25s
+    rep3: stat rc=0 7.74s | record rc=0 10.27s
+[replay] sympy__sympy-24562 seq=4 class=other orig=2.05s :: 'python -c "from sympy import Rational; print(Rational(\\"0.5\\", \\"100\\"'
+    rep1: stat rc=0 0.59s | record rc=0 1.26s
+    rep2: stat rc=0 0.59s | record rc=0 1.25s
+    rep3: stat rc=0 0.57s | record rc=0 1.28s
+[replay] sympy__sympy-24562 seq=5 class=other orig=0.91s :: 'python -c "\nfrom sympy import Rational\nprint(Rational(\\"0.5\\", \\"100\\"'
+    rep1: stat rc=0 0.66s | record rc=0 1.25s
+    rep2: stat rc=0 0.67s | record rc=0 1.29s
+    rep3: stat rc=0 0.66s | record rc=0 1.27s
+[replay] sympy__sympy-24562 seq=6 class=search/read orig=0.01s :: 'sed -n 324,372p sympy/core/tests/test_numbers.py'
+    rep1: stat rc=0 0.04s | record rc=0 1.26s
+    rep2: stat rc=0 0.05s | record rc=0 1.25s
+    rep3: stat rc=0 0.05s | record rc=0 1.25s
+[replay] sympy__sympy-24562 seq=7 class=test run orig=6.93s :: 'python -m pytest -q sympy/core/tests/test_numbers.py 2>&1 | tail -2'
+    rep1: stat rc=0 3.61s | record rc=0 4.27s
+    rep2: stat rc=0 3.50s | record rc=0 5.27s
+    rep3: stat rc=0 3.76s | record rc=0 4.29s
+[replay] sympy__sympy-24562 seq=8 class=test run orig=51.79s :: 'python bin/test sympy/core 2>&1 | tail -2'
+    rep1: stat rc=0 48.45s | record rc=0 55.32s
+    rep2: stat rc=0 61.66s | record rc=0 62.36s
+    rep3: stat rc=0 55.74s | record rc=0 58.34s
+[loop] sympy__sympy-24562 seq=6 :: 'sed -n 324,372p sympy/core/tests/test_numbers.py'
+    loop1: rc=0 1.28s
+    loop2: rc=0 1.36s
+    loop3: rc=0 1.25s

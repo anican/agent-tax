@@ -1,0 +1,16 @@
+Final comprehensive test for UnicodeError -> InvalidURL fix
+============================================================
+
+Test 1: Direct URL preparation with problematic URLs
+  http://.example.com: SUCCESS (URL prepared: http://.example.com/)
+  http://..example.com: SUCCESS (URL prepared: http://..example.com/)
+  http://example..com: SUCCESS (URL prepared: http://example..com/)
+
+Test 2: Simulating UnicodeError from parse_url
+  SUCCESS: UnicodeError converted to InvalidURL: encoding with 'idna' codec failed (UnicodeError: label empty or too long)
+
+Test 3: Simulating UnicodeError from requote_uri
+  SUCCESS: UnicodeError converted to InvalidURL: URL has an invalid label.
+
+============================================================
+All tests completed. The fix successfully converts UnicodeError to InvalidURL.

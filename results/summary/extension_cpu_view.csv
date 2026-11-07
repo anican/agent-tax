@@ -1,0 +1,9 @@
+,allocation,compression,core logic,filesystem metadata,hashing/crypto,interpreter startup/imports,memory movement,other kernel,other user-space,process lifecycle,scheduling/context switch,serialization/parsing,unclassified,virtualization-related
+extension (new model),17.90,0.02,55.37,2.81,0.37,13.76,1.72,1.14,0.55,4.92,0.30,0.50,0.00,0.65
+original (8 episodes),14.35,0.00,56.13,1.01,0.32,10.64,2.04,0.91,2.57,2.60,8.52,0.69,0.06,0.16
+django__django-16569,17.41,0.02,64.38,1.03,0.25,6.94,1.87,1.07,0.55,5.16,0.37,0.50,0.00,0.46
+pytest-dev__pytest-10051,16.51,0.01,49.76,6.15,0.42,19.13,1.40,1.26,0.50,3.46,0.21,0.39,0.00,0.79
+sympy__sympy-24539,24.98,0.00,25.92,1.51,0.80,32.42,1.95,1.12,0.65,8.30,0.24,0.89,0.00,1.22
+other,26.60,0.00,1.58,1.50,0.98,51.19,2.75,1.24,0.70,11.24,0.25,0.10,0.00,1.86
+search/read,6.45,0.00,2.30,2.95,0.00,0.00,1.83,5.27,8.16,34.54,0.35,0.00,0.06,38.09
+test run,17.70,0.02,57.08,2.85,0.35,12.75,1.69,1.12,0.51,4.63,0.31,0.52,0.00,0.47

@@ -1,0 +1,75 @@
+[replay] scikit-learn__scikit-learn-26194 seq=1 class=git orig=2.32s :: 'git init -q repo && cd repo && git remote add origin https://github.co'
+    rep1: stat rc=0 2.09s | record rc=0 3.27s
+    rep2: stat rc=0 2.32s | record rc=0 3.50s
+    rep3: stat rc=0 2.29s | record rc=0 3.35s
+[replay] scikit-learn__scikit-learn-26194 seq=2 class=package install orig=4.91s :: '/usr/bin/python3.11 -m venv venv'
+    rep1: stat rc=0 7.07s | record rc=0 8.30s
+    rep2: stat rc=0 6.35s | record rc=0 8.32s
+    rep3: stat rc=0 7.06s | record rc=0 9.39s
+[replay] scikit-learn__scikit-learn-26194 seq=3 class=package install orig=27.46s :: 'python -m pip install "numpy<2" "scipy<1.12" "cython<3" "setuptools<70'
+    rep1: stat rc=0 24.14s | record rc=0 32.28s
+    rep2: stat rc=0 27.11s | record rc=0 31.29s
+    rep3: stat rc=0 27.29s | record rc=0 32.35s
+[replay] scikit-learn__scikit-learn-26194 seq=4 class=build orig=153.94s :: 'python setup.py build_ext --inplace -j 4 > /tmp/sk_build.log 2>&1; rc='
+    rep1: stat rc=0 162.30s | record rc=0 163.45s
+    rep2: stat rc=0 152.05s | record rc=0 160.44s
+    rep3: stat rc=0 157.20s | record rc=0 172.53s
+[replay] scikit-learn__scikit-learn-26194 seq=5 class=package install orig=488.08s :: 'python -m pip install --no-build-isolation --no-deps -e . 2>&1 | tail '
+    rep1: stat rc=0 513.65s | record rc=0 545.91s
+    rep2: stat rc=0 548.32s | record rc=0 580.89s
+[replay] scikit-learn__scikit-learn-26194 seq=5 class=package install orig=488.08s :: 'python -m pip install --no-build-isolation --no-deps -e . 2>&1 | tail '
+    rep1: stat rc=0 513.61 | record rc=None None
+    rep2: stat rc=0 548.28 | record rc=None None
+    rep3: stat rc=None None | record rc=0 541.8569571971893
+[replay] scikit-learn__scikit-learn-26194 seq=6 class=search/read orig=0.01s :: 'sed -n 1060,1110p sklearn/metrics/_ranking.py'
+    rep1: stat rc=0 0.03629326820373535 | record rc=0 1.261113166809082
+    rep2: stat rc=0 0.03906702995300293 | record rc=0 1.2423231601715088
+    rep3: stat rc=0 0.04945206642150879 | record rc=0 1.3841207027435303
+[replay] scikit-learn__scikit-learn-26194 seq=7 class=search/read orig=0.01s :: 'grep -n "max(y_score) + 1\\|arbitrarily set" -B2 -A2 sklearn/metrics/_r'
+    rep1: stat rc=0 0.040773630142211914 | record rc=0 1.244739294052124
+    rep2: stat rc=0 0.04100751876831055 | record rc=0 1.29026460647583
+    rep3: stat rc=0 0.042711734771728516 | record rc=0 1.2656123638153076
+[replay] scikit-learn__scikit-learn-26194 seq=8 class=test run orig=4.06s :: 'python -m pytest -q sklearn/metrics/tests/test_ranking.py 2>&1 | tail '
+    rep1: stat rc=0 3.4682564735412598 | record rc=0 5.248739242553711
+    rep2: stat rc=0 3.4876668453216553 | record rc=0 4.251427173614502
+    rep3: stat rc=0 4.656160116195679 | record rc=0 6.364484786987305
+[replay] scikit-learn__scikit-learn-26194 seq=9 class=test run orig=3.32s :: 'python -m pytest -q -p no:cacheprovider --color=no sklearn/metrics/tes'
+    rep1: stat rc=0 3.690345287322998 | record rc=0 5.256211519241333
+    rep2: stat rc=0 3.7836103439331055 | record rc=0 5.267308473587036
+    rep3: stat rc=0 3.890941619873047 | record rc=0 5.26812744140625
+[replay] scikit-learn__scikit-learn-26194 seq=10 class=search/read orig=0.01s :: 'sed -n 405,440p sklearn/metrics/tests/test_ranking.py'
+    rep1: stat rc=0 0.039946556091308594 | record rc=0 1.2493462562561035
+    rep2: stat rc=0 0.04147934913635254 | record rc=0 1.2770013809204102
+    rep3: stat rc=0 0.044332265853881836 | record rc=0 1.2427103519439697
+[replay] scikit-learn__scikit-learn-26194 seq=11 class=test run orig=3.67s :: 'python -m pytest -q -p no:cacheprovider --color=no sklearn/metrics/tes'
+    rep1: stat rc=0 3.8575873374938965 | record rc=0 5.256170749664307
+    rep2: stat rc=0 3.651609182357788 | record rc=0 5.2516725063323975
+    rep3: stat rc=0 3.6843183040618896 | record rc=0 4.293465852737427
+[replay] scikit-learn__scikit-learn-26194 seq=12 class=test run orig=67.24s :: 'grep -rn "roc_curve(" --include=*.py sklearn | grep -v "tests/" | grep'
+    rep1: stat rc=0 62.02980923652649 | record rc=0 67.4010112285614
+    rep2: stat rc=0 66.60143184661865 | record rc=0 68.34097218513489
+    rep3: stat rc=0 63.477097272872925 | record rc=0 71.3827714920044
+[replay] scikit-learn__scikit-learn-26194 seq=13 class=test run orig=1.28s :: 'sed -n 1050,1060p sklearn/metrics/_ranking.py; python -m pytest -q -p '
+    rep1: stat rc=0 1.602750539779663 | record rc=0 2.247577428817749
+    rep2: stat rc=0 1.571578025817871 | record rc=0 2.288530111312866
+    rep3: stat rc=0 1.486076831817627 | record rc=0 2.273317575454712
+[replay] scikit-learn__scikit-learn-26194 seq=14 class=git orig=1.08s :: 'python -c "\nimport numpy as np\nfrom sklearn import metrics\ny = np.arra'
+    rep1: stat rc=0 0.9546701908111572 | record rc=0 2.3178749084472656
+    rep2: stat rc=0 0.9108724594116211 | record rc=0 2.323411703109741
+    rep3: stat rc=0 0.8528385162353516 | record rc=0 2.2882189750671387
+[loop] scikit-learn__scikit-learn-26194 seq=6 :: 'sed -n 1060,1110p sklearn/metrics/_ranking.py'
+    loop1: rc=0 1.29s
+    loop2: rc=0 1.24s
+    loop3: rc=0 1.30s
+[loop] scikit-learn__scikit-learn-26194 seq=7 :: 'grep -n "max(y_score) + 1\\|arbitrarily set" -B2 -A2 sklearn/metrics/_r'
+    loop1: rc=0 1.26s
+    loop2: rc=0 1.28s
+    loop3: rc=0 1.31s
+[loop] scikit-learn__scikit-learn-26194 seq=10 :: 'sed -n 405,440p sklearn/metrics/tests/test_ranking.py'
+    loop1: rc=0 1.25s
+    loop2: rc=0 1.25s
+    loop3: rc=0 1.29s
+[replay] scikit-learn__scikit-learn-26194 seq=5 class=package install orig=488.08s :: 'python -m pip install --no-build-isolation --no-deps -e . 2>&1 | tail '
+    rep1: stat rc=0 513.61 | record rc=None None
+    rep2: stat rc=0 548.28 | record rc=None None
+    rep3: stat rc=0 533.9065096378326 | record rc=None None

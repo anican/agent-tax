@@ -1,0 +1,12 @@
+    25.38%  spawnbench  [kernel.kallsyms]  [k] _raw_spin_unlock_irqrestore
+    10.77%  spawnbench  [kernel.kallsyms]  [k] finish_task_switch.isra.0
+     9.23%  spawnbench  [kernel.kallsyms]  [k] page_counter_charge
+     6.15%  spawnbench  [kernel.kallsyms]  [k] __vma_start_write
+     3.08%  spawnbench  [kernel.kallsyms]  [k] _raw_spin_unlock_irq
+     2.31%  spawnbench  [kernel.kallsyms]  [k] _raw_spin_lock
+     2.31%  spawnbench  [kernel.kallsyms]  [k] anon_vma_clone
+     2.31%  spawnbench  [kernel.kallsyms]  [k] copy_page_range
+     2.31%  spawnbench  [kernel.kallsyms]  [k] exc_page_fault
+     1.54%  spawnbench  [kernel.kallsyms]  [k] __get_vm_area_node
+     1.54%  spawnbench  [kernel.kallsyms]  [k] __kmem_cache_alloc_bulk
+     1.54%  spawnbench  [kernel.kallsyms]  [k] __memcg_slab_post_alloc_hook

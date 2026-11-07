@@ -1,0 +1,6 @@
+..                                                                          [OK]
+sympy/physics/units/tests/test_unit_system_cgs_gauss.py[2] ..               [OK]
+sympy/physics/units/tests/test_unitsystem.py[8] ........                    [OK]
+sympy/physics/units/tests/test_util.py[10] ..........                       [OK]
+
+======== tests finished: 71 passed, 1 expected to fail, in 1.16 seconds ========

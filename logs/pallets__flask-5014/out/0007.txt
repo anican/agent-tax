@@ -1,0 +1,9 @@
+            (os.environ, "WERKZEUG_RUN_MAIN", monkeypatch.notset),
+        )
+E       AttributeError: module '_pytest.monkeypatch' has no attribute 'notset'
+
+tests/conftest.py:21: AttributeError
+=========================== short test summary info ============================
+ERROR tests/test_blueprints.py::test_blueprint_specific_error_handling - Attr...
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+1 error in 0.08s

@@ -1,0 +1,181 @@
+[callgrind] grep_sed: 'grep -n "def reduce" -A 40 django/db/migrations/operations/fields.py | sed -n "1'
+   valgrind rc=0
+{
+"process lifecycle": {
+"callgrind_pct": 33.220139923906096,
+"perf_pct": 80.76923076923077
+},
+"other user-space": {
+"callgrind_pct": 46.24137378785758,
+"perf_pct": 7.6923076923076925
+},
+"allocation": {
+"callgrind_pct": 10.209568440507812,
+"perf_pct": 7.6923076923076925
+},
+"memory movement": {
+"callgrind_pct": 2.683486006887984,
+"perf_pct": 3.8461538461538463
+},
+"core logic": {
+"callgrind_pct": 6.2940941377106325,
+"perf_pct": 0.0
+},
+"unclassified": {
+"callgrind_pct": 1.307274225173895,
+"perf_pct": 0.0
+},
+"scheduling/context switch": {
+"callgrind_pct": 0.04406347795599712,
+"perf_pct": 0.0
+}
+}
+[callgrind] git_diff_status: 'git diff sympy/physics/units/unitsystem.py; git status --short'
+   valgrind rc=0
+{
+"core logic": {
+"callgrind_pct": 67.9137918350302,
+"perf_pct": 26.829268292682926
+},
+"process lifecycle": {
+"callgrind_pct": 5.986466513929357,
+"perf_pct": 43.90243902439025
+},
+"other user-space": {
+"callgrind_pct": 12.957511187672603,
+"perf_pct": 26.829268292682926
+},
+"allocation": {
+"callgrind_pct": 7.971542142550078,
+"perf_pct": 2.4390243902439024
+},
+"memory movement": {
+"callgrind_pct": 2.2529085952135177,
+"perf_pct": 0.0
+},
+"compression": {
+"callgrind_pct": 1.8978688399454398,
+"perf_pct": 0.0
+},
+"unclassified": {
+"callgrind_pct": 0.9804236271727016,
+"perf_pct": 0.0
+},
+"scheduling/contex
+[callgrind] flask_pytest_blueprints: 'python -m pytest -q tests/test_blueprints.py 2>&1 | tail -3'
+   valgrind rc=0
+{
+"other user-space": {
+"callgrind_pct": 72.41286287288551,
+"perf_pct": 1.048584411045089
+},
+"core logic": {
+"callgrind_pct": 0.00706747103464897,
+"perf_pct": 59.07025515554002
+},
+"allocation": {
+"callgrind_pct": 15.93312643663727,
+"perf_pct": 30.6186648025166
+},
+"serialization/parsing": {
+"callgrind_pct": 8.087000585124956,
+"perf_pct": 6.011883956658511
+},
+"memory movement": {
+"callgrind_pct": 1.7573517073458462,
+"perf_pct": 1.4330653617616218
+},
+"hashing/crypto": {
+"callgrind_pct": 1.4078348509952758,
+"perf_pct": 0.6291506466270534
+},
+"process lifecycle": {
+"callgrind_pct": 0.059528898338847
+[callgrind] sympy_repro_script: 'python /tmp/repro_24066.py'
+   valgrind rc=0
+{
+"other user-space": {
+"callgrind_pct": 76.53108780616452,
+"perf_pct": 0.6899195093905711
+},
+"core logic": {
+"callgrind_pct": 0.0,
+"perf_pct": 61.47949405902645
+},
+"allocation": {
+"callgrind_pct": 15.162760376949524,
+"perf_pct": 31.429666538903795
+},
+"serialization/parsing": {
+"callgrind_pct": 4.853034356798318,
+"perf_pct": 2.721349175929475
+},
+"memory movement": {
+"callgrind_pct": 1.87377707907276,
+"perf_pct": 1.6864699118436182
+},
+"hashing/crypto": {
+"callgrind_pct": 1.314608434421557,
+"perf_pct": 0.7665772326561902
+},
+"process lifecycle": {
+"callgrind_pct": 0.042235792872814225,
+"perf_pct"
+[callgrind] sympy_pytest_quantities: 'python -m pytest -q sympy/physics/units/tests/test_quantities.py 2>&1 | tail -5'
+   valgrind rc=0
+{
+"other user-space": {
+"callgrind_pct": 77.90860467959115,
+"perf_pct": 0.7148377125193199
+},
+"core logic": {
+"callgrind_pct": 7.417304573352411e-05,
+"perf_pct": 60.239567233384854
+},
+"allocation": {
+"callgrind_pct": 14.822339536248434,
+"perf_pct": 33.82921174652241
+},
+"serialization/parsing": {
+"callgrind_pct": 3.939346105150826,
+"perf_pct": 2.6854714064914993
+},
+"memory movement": {
+"callgrind_pct": 1.7623533259512496,
+"perf_pct": 1.294435857805255
+},
+"hashing/crypto": {
+"callgrind_pct": 1.2765012744911428,
+"perf_pct": 0.6568778979907264
+},
+"scheduling/context switch": {
+"callgrind_pct": 0.1
+[callgrind] django_runtests_optimizer: 'cd tests && python runtests.py migrations.test_optimizer --verbosity 1 2>&1 | ta'
+   valgrind rc=0
+{
+"other user-space": {
+"callgrind_pct": 66.09727617114287,
+"perf_pct": 0.8802816901408451
+},
+"allocation": {
+"callgrind_pct": 19.787538204365994,
+"perf_pct": 38.20422535211268
+},
+"core logic": {
+"callgrind_pct": 0.02589746233881711,
+"perf_pct": 52.582159624413144
+},
+"serialization/parsing": {
+"callgrind_pct": 9.132339872889554,
+"perf_pct": 3.9906103286384975
+},
+"memory movement": {
+"callgrind_pct": 2.1238023974949947,
+"perf_pct": 1.6431924882629108
+},
+"hashing/crypto": {
+"callgrind_pct": 2.1367193212831346,
+"perf_pct": 0.4694835680751174
+},
+"process lifecycle": {
+"callgrind_pct": 0.2161659923

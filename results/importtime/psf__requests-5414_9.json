@@ -1,0 +1,27 @@
+{
+ "task": "psf__requests-5414",
+ "seq": 9,
+ "cls": "test run",
+ "cmd": "python -m pytest -q tests/test_requests.py -k \"invalid_url\" 2>&1 | tail -3",
+ "profiled_cmd": "python -m pytest -q tests/test_requests.py -k \"invalid_url\"",
+ "reps": [
+  {
+   "wall_s": 0.8505754470825195,
+   "task_clock_s": 0.8121900000000001,
+   "top_level_import_s": 0.420775,
+   "n_top_level": 27
+  },
+  {
+   "wall_s": 0.8770308494567871,
+   "task_clock_s": 0.85509,
+   "top_level_import_s": 0.449609,
+   "n_top_level": 27
+  },
+  {
+   "wall_s": 0.8838670253753662,
+   "task_clock_s": 0.86587,
+   "top_level_import_s": 0.466979,
+   "n_top_level": 27
+  }
+ ]
+}

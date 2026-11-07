@@ -1,0 +1,32 @@
+{
+ "task": "django__django-16595",
+ "seq": 2,
+ "phase": "setup",
+ "cls": "package install",
+ "cmd": "/usr/bin/python3.11 -m venv venv",
+ "orig_rc": 0,
+ "orig_dur_s": 6.731068672,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 4.977026700973511,
+   "rec_rc": 0,
+   "rec_wall_s": 6.244337320327759
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 4.85718560218811,
+   "rec_rc": 0,
+   "rec_wall_s": 6.2805235385894775
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 4.797245264053345,
+   "rec_rc": 0,
+   "rec_wall_s": 6.242345333099365
+  }
+ ]
+}

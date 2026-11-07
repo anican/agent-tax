@@ -1,0 +1,27 @@
+{
+ "task": "sympy__sympy-24066",
+ "seq": 9,
+ "cls": "test run",
+ "cmd": "python -m pytest -q sympy/physics/units 2>&1 | tail -5",
+ "profiled_cmd": "python -m pytest -q sympy/physics/units",
+ "reps": [
+  {
+   "wall_s": 2.3458476066589355,
+   "task_clock_s": 2.32239,
+   "top_level_import_s": 0.905327,
+   "n_top_level": 32
+  },
+  {
+   "wall_s": 2.2408087253570557,
+   "task_clock_s": 2.21809,
+   "top_level_import_s": 0.77672,
+   "n_top_level": 32
+  },
+  {
+   "wall_s": 2.3083508014678955,
+   "task_clock_s": 2.28926,
+   "top_level_import_s": 0.793422,
+   "n_top_level": 32
+  }
+ ]
+}

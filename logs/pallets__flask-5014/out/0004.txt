@@ -1,0 +1,8 @@
+39:    def __init__(
+172:    def __init__(
+257:            The ``name`` option can be used to change the (pre-dotted)
+287:            Nested blueprints are registered with their dotted name.
+292:            The ``name`` option can be used to change the (pre-dotted)
+254:def test_dotted_name_not_allowed(app, client):
+259:def test_dotted_names_from_app(app, client):
+322:def test_route_decorator_custom_endpoint_with_dots(app, client):

@@ -1,0 +1,27 @@
+{
+ "task": "scikit-learn__scikit-learn-26194",
+ "seq": 8,
+ "cls": "test run",
+ "cmd": "python -m pytest -q sklearn/metrics/tests/test_ranking.py 2>&1 | tail -15",
+ "profiled_cmd": "python -m pytest -q sklearn/metrics/tests/test_ranking.py",
+ "reps": [
+  {
+   "wall_s": 3.6354000568389893,
+   "task_clock_s": 4.17625,
+   "top_level_import_s": 0.906842,
+   "n_top_level": 43
+  },
+  {
+   "wall_s": 3.793093681335449,
+   "task_clock_s": 4.325189999999999,
+   "top_level_import_s": 1.086567,
+   "n_top_level": 43
+  },
+  {
+   "wall_s": 3.764225482940674,
+   "task_clock_s": 4.30384,
+   "top_level_import_s": 0.914564,
+   "n_top_level": 43
+  }
+ ]
+}

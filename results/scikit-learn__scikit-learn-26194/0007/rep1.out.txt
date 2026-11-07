@@ -1,0 +1,5 @@
+1020-        Decreasing thresholds on the decision function used to compute
+1021-        fpr and tpr. `thresholds[0]` represents no instances being predicted
+1022:        and is arbitrarily set to `max(y_score) + 1`.
+1023-
+1024-    See Also

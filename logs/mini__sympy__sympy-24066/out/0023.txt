@@ -1,0 +1,11 @@
+                for i, (factor, dim) in enumerate(fds):
+                    if not self.get_dimension_system().is_dimensionless(dim):
+                        raise ValueError(
+                            f"Dimension of "{expr.args[i]}" is {dim}, "
+                            f"but it should be Dimension(1)")
+                return expr.func(*(f[0] for f in fds)), Dimension(1)
+            else:
+                # For other functions, use the original behavior
+                return (expr.func(*(f[0] for f in fds)),
+                        *(d[1] for d in fds))
+        elif isinstance(expr, Dimension):

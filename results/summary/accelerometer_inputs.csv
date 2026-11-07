@@ -1,0 +1,8 @@
+,compression,hashing/crypto,memory movement
+search/read,0.000,0.000,5.030
+git,22.290,0.004,5.756
+package install,0.508,0.324,3.804
+build,0.000,0.031,1.793
+test run,0.020,0.308,2.004
+other,0.007,0.625,3.151
+ALL,0.356,0.218,2.820

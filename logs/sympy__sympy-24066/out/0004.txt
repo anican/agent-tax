@@ -1,0 +1,55 @@
+152:    def _collect_factor_and_dimension(self, expr):
+153-        """
+154-        Return tuple with scale factor expression and dimension expression.
+155-        """
+156-        from sympy.physics.units import Quantity
+157-        if isinstance(expr, Quantity):
+158-            return expr.scale_factor, expr.dimension
+159-        elif isinstance(expr, Mul):
+160-            factor = 1
+161-            dimension = Dimension(1)
+162-            for arg in expr.args:
+163-                arg_factor, arg_dim = self._collect_factor_and_dimension(arg)
+164-                factor *= arg_factor
+165-                dimension *= arg_dim
+166-            return factor, dimension
+167-        elif isinstance(expr, Pow):
+168-            factor, dim = self._collect_factor_and_dimension(expr.base)
+169-            exp_factor, exp_dim = self._collect_factor_and_dimension(expr.exp)
+170-            if self.get_dimension_system().is_dimensionless(exp_dim):
+171-                exp_dim = 1
+172-            return factor ** exp_factor, dim ** (exp_factor * exp_dim)
+173-        elif isinstance(expr, Add):
+174-            factor, dim = self._collect_factor_and_dimension(expr.args[0])
+175-            for addend in expr.args[1:]:
+176-                addend_factor, addend_dim = \
+177-                    self._collect_factor_and_dimension(addend)
+178-                if dim != addend_dim:
+179-                    raise ValueError(
+180-                        'Dimension of "{}" is {}, '
+181-                        'but it should be {}'.format(
+182-                            addend, addend_dim, dim))
+183-                factor += addend_factor
+184-            return factor, dim
+185-        elif isinstance(expr, Derivative):
+186-            factor, dim = self._collect_factor_and_dimension(expr.args[0])
+187-            for independent, count in expr.variable_count:
+188-                ifactor, idim = self._collect_factor_and_dimension(independent)
+189-                factor /= ifactor**count
+190-                dim /= idim**count
+191-            return factor, dim
+192-        elif isinstance(expr, Function):
+193-            fds = [self._collect_factor_and_dimension(
+194-                arg) for arg in expr.args]
+195-            return (expr.func(*(f[0] for f in fds)),
+196-                    *(d[1] for d in fds))
+197-        elif isinstance(expr, Dimension):
+198-            return S.One, expr
+199-        else:
+200-            return expr, Dimension(1)
+201-
+202-    def get_units_non_prefixed(self) -> tSet[Quantity]:
+203-        """
+204-        Return the units of the system that do not have a prefix.
+205-        """
+206-        return set(filter(lambda u: not u.is_prefixed and not u.is_physical_constant, self._units))

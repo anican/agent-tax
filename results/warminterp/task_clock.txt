@@ -1,0 +1,3 @@
+pytest total task-clock ms: fresh x5 = 6854.46, warm x5 (one process) = 5860.24
+sympy total task-clock ms: fresh x5 = 5149.52, warm x5 (one process) = 3001.72
+flask total task-clock ms: fresh x5 = 1977.91, warm x5 (one process) = 1004.10

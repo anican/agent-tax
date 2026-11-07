@@ -1,0 +1,2 @@
+FAILED testing/logging/test_fixture.py::test_caplog_captures_for_all_stages
+1 failed, 59 passed in 1.59s

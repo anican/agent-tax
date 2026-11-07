@@ -1,0 +1,2 @@
+tests/forms_tests/widget_tests/test_selectdatewidget.py:522:        # Even with an invalid date, the widget should reflect the entered
+tests/forms_tests/widget_tests/test_selectdatewidget.py:603:    def test_value_from_datadict(self):

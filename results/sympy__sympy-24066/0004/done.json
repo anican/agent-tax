@@ -1,0 +1,33 @@
+{
+ "task": "sympy__sympy-24066",
+ "seq": 4,
+ "phase": "solve",
+ "cls": "search/read",
+ "cmd": "grep -n \"def _collect_factor_and_dimension\" -A 60 sympy/physics/units/unitsystem.py",
+ "orig_rc": 0,
+ "orig_dur_s": 0.008389632,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 0.04247260093688965,
+   "rec_rc": 0,
+   "rec_wall_s": 1.2368786334991455
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 0.06179451942443848,
+   "rec_rc": 0,
+   "rec_wall_s": 1.36952805519104
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 0.04220247268676758,
+   "rec_rc": 0,
+   "rec_wall_s": 1.2413947582244873
+  }
+ ],
+ "loop_iterations": 30
+}

@@ -1,0 +1,78 @@
+	Command being timed: "timeout -s KILL 600 bash -c cat <<'EOF' > test_comprehensive_caplog.py
+import logging
+
+def test_caplog_consistency_after_clear(caplog):
+    """Test that caplog.get_records and caplog.records stay consistent after clear."""
+    # Initially empty
+    assert caplog.get_records("call") == caplog.records == []
+    
+    # Add a log record
+    logging.warning("test message 1")
+    assert len(caplog.get_records("call")) == 1
+    assert len(caplog.records) == 1
+    assert caplog.get_records("call") == caplog.records
+    
+    # Clear and verify both are empty
+    caplog.clear()
+    assert caplog.get_records("call") == caplog.records == []
+    
+    # Add another record after clear
+    logging.error("test message 2")
+    assert len(caplog.get_records("call")) == 1
+    assert len(caplog.records) == 1
+    assert caplog.get_records("call") == caplog.records
+    assert caplog.records[0].getMessage() == "test message 2"
+
+def test_multiple_clears(caplog):
+    """Test multiple clear operations."""
+    logging.info("message 1")
+    assert len(caplog.records) == 1
+    
+    caplog.clear()
+    assert len(caplog.records) == 0
+    assert len(caplog.get_records("call")) == 0
+    
+    logging.info("message 2")
+    assert len(caplog.records) == 1
+    
+    caplog.clear()
+    assert len(caplog.records) == 0
+    assert len(caplog.get_records("call")) == 0
+
+def test_caplog_text_after_clear(caplog):
+    """Test that caplog.text is also cleared properly."""
+    logging.warning("test message")
+    assert "test message" in caplog.text
+    assert len(caplog.records) == 1
+    
+    caplog.clear()
+    assert caplog.text == ""
+    assert len(caplog.records) == 0
+    assert len(caplog.get_records("call")) == 0
+
+if __name__ == "__main__":
+    import pytest
+    pytest.main([__file__, "-v"])
+EOF"
+	User time (seconds): 0.00
+	System time (seconds): 0.00
+	Percent of CPU this job got: 100%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.00
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 3380
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 415
+	Voluntary context switches: 5
+	Involuntary context switches: 0
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 8
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

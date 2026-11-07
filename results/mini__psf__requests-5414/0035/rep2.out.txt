@@ -1,0 +1,2 @@
+Testing the requote_uri UnicodeError fix
+  SUCCESS: Caught InvalidURL as expected: URL has an invalid label.

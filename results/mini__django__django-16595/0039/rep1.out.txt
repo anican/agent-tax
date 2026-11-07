@@ -1,0 +1,3 @@
+Testing AddField + AlterField optimization...
+Original: 4 operations -> Optimized: 1 operations
+✓ PASS: AddField + multiple AlterField correctly reduced to single AddField

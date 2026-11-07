@@ -1,0 +1,24 @@
+Testing against Django installed in '/home/user/work/django__django-16667/repo/django'
+Importing application forms_tests
+Found 2 test(s).
+Skipping setup of unused database(s): default, other.
+System check identified no issues (0 silenced).
+test_form_field (forms_tests.field_tests.test_datefield.DateFieldTest.test_form_field) ... ok
+test_value_from_datadict (forms_tests.widget_tests.test_selectdatewidget.SelectDateWidgetTest.test_value_from_datadict) ... 
+  test_value_from_datadict (forms_tests.widget_tests.test_selectdatewidget.SelectDateWidgetTest.test_value_from_datadict) (values=('9223372036854775808', '12', '1')) ... FAIL
+
+======================================================================
+FAIL: test_value_from_datadict (forms_tests.widget_tests.test_selectdatewidget.SelectDateWidgetTest.test_value_from_datadict) (values=('9223372036854775808', '12', '1'))
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/work/django__django-16667/repo/tests/forms_tests/widget_tests/test_selectdatewidget.py", line 622, in test_value_from_datadict
+    self.assertEqual(
+AssertionError: '9223372036854775808-12-1' != '0-0-0'
+- 9223372036854775808-12-1
++ 0-0-0
+
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.020s
+
+FAILED (failures=1)

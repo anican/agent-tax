@@ -1,0 +1,31 @@
+                dim /= idim**count
+            return factor, dim
+        elif isinstance(expr, Function):
+            fds = [self._collect_factor_and_dimension(
+                arg) for arg in expr.args]
+            # For mathematical functions like exp, sin, cos, log, etc.,
+            # arguments should be dimensionless and result should be dimensionless
+            from sympy.functions.elementary.exponential import exp, log
+            from sympy.functions.elementary.trigonometric import sin, cos, tan, cot, sec, csc
+            from sympy.functions.elementary.hyperbolic import sinh, cosh, tanh, coth, sech, csch
+            from sympy.functions.elementary.miscellaneous import sqrt
+            
+            # Check if this is a mathematical function that requires dimensionless arguments
+            mathematical_functions = (exp, log, sin, cos, tan, cot, sec, csc, 
+                                    sinh, cosh, tanh, coth, sech, csch)
+            
+            if isinstance(expr, mathematical_functions):
+                # Check that all arguments are dimensionless
+                for i, (factor, dim) in enumerate(fds):
+                    if not self.get_dimension_system().is_dimensionless(dim):
+                        raise ValueError(
+                            f"Dimension of "{expr.args[i]}" is {dim}, "
+                            f"but it should be Dimension(1)")
+                # Return the function applied to factors with dimensionless result
+                return expr.func(*(f[0] for f in fds)), Dimension(1)
+            else:
+                # For other functions, use the original behavior
+                return (expr.func(*(f[0] for f in fds)),
+                        *(d[1] for d in fds))
+        elif isinstance(expr, Dimension):
+            return S.One, expr

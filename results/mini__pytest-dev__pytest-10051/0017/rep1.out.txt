@@ -1,0 +1,29 @@
+============================= test session starts ==============================
+platform linux -- Python 3.11.15, pytest-7.2.0.dev0, pluggy-1.7.0 -- /home/user/work/mini__pytest-dev__pytest-10051/venv/bin/python
+cachedir: .pytest_cache
+hypothesis profile 'default'
+rootdir: /home/user/work/pytest-dev__pytest-10051/repo, configfile: pyproject.toml
+plugins: hypothesis-6.170.14
+collecting ... collected 3 items
+
+test_comprehensive_caplog.py::test_caplog_consistency_after_clear PASSED [ 33%]
+test_comprehensive_caplog.py::test_multiple_clears FAILED                [ 66%]
+test_comprehensive_caplog.py::test_caplog_text_after_clear PASSED        [100%]
+
+=================================== FAILURES ===================================
+_____________________________ test_multiple_clears _____________________________
+
+caplog = <_pytest.logging.LogCaptureFixture object at 0x7fc4bc96c4d0>
+
+    def test_multiple_clears(caplog):
+        """Test multiple clear operations."""
+        logging.info("message 1")
+>       assert len(caplog.records) == 1
+E       assert 0 == 1
+E        +  where 0 = len([])
+E        +    where [] = <_pytest.logging.LogCaptureFixture object at 0x7fc4bc96c4d0>.records
+
+test_comprehensive_caplog.py:28: AssertionError
+=========================== short test summary info ============================
+FAILED test_comprehensive_caplog.py::test_multiple_clears - assert 0 == 1
+========================= 1 failed, 2 passed in 0.08s ==========================

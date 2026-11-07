@@ -1,0 +1,32 @@
+{
+ "task": "mini__pytest-dev__pytest-10051",
+ "seq": 30,
+ "phase": "solve",
+ "cls": "test run",
+ "cmd": "python -m pytest test_comprehensive_caplog_fixed.py -v",
+ "orig_rc": 0,
+ "orig_dur_s": 0.249479424,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 0.2906310558319092,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1218249797821045
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 0.2829413414001465,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1185264587402344
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 0.25389766693115234,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1160657405853271
+  }
+ ]
+}

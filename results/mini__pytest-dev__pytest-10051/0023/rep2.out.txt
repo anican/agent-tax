@@ -1,0 +1,5 @@
+    def clear(self) -> None:
+        """Reset the list of log records and the captured log text."""
+        self.handler.reset()
+
+    def set_level(self, level: Union[int, str], logger: Optional[str] = None) -> None:

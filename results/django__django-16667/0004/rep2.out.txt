@@ -1,0 +1,23 @@
+1150-        y = data.get(self.year_field % name)
+1151-        m = data.get(self.month_field % name)
+1152-        d = data.get(self.day_field % name)
+1153-        if y == m == d == "":
+1154-            return None
+1155-        if y is not None and m is not None and d is not None:
+1156-            input_format = get_format("DATE_INPUT_FORMATS")[0]
+1157-            input_format = formats.sanitize_strftime_format(input_format)
+1158-            try:
+1159-                date_value = datetime.date(int(y), int(m), int(d))
+1160-            except ValueError:
+1161-                # Return pseudo-ISO dates with zeros for any unselected values,
+1162-                # e.g. '2017-0-23'.
+1163-                return "%s-%s-%s" % (y or 0, m or 0, d or 0)
+1164-            return date_value.strftime(input_format)
+1165-        return data.get(name)
+1166-
+1167-    def value_omitted_from_data(self, data, files, name):
+1168-        return not any(
+1169-            ("{}_{}".format(name, interval) in data)
+1170-            for interval in ("year", "month", "day")
+1171-        )
+1010:class SelectDateWidget(Widget):

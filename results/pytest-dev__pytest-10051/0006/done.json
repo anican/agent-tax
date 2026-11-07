@@ -1,0 +1,32 @@
+{
+ "task": "pytest-dev__pytest-10051",
+ "seq": 6,
+ "phase": "solve",
+ "cls": "test run",
+ "cmd": "python -m pytest -q -p no:cacheprovider testing/logging 2>&1 | tail -2",
+ "orig_rc": 0,
+ "orig_dur_s": 1.889156352,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 1.4964449405670166,
+   "rec_rc": 0,
+   "rec_wall_s": 2.1186444759368896
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 1.4493026733398438,
+   "rec_rc": 0,
+   "rec_wall_s": 2.125361204147339
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 1.4381968975067139,
+   "rec_rc": 0,
+   "rec_wall_s": 2.117832660675049
+  }
+ ]
+}

@@ -1,0 +1,21 @@
+   390	            error = error.format(to_native_string(url, 'utf8'))
+   391	
+   392	            raise MissingSchema(error)
+   393	
+   394	        if not host:
+   395	            raise InvalidURL("Invalid URL %r: No host supplied" % url)
+   396	
+   397	        # In general, we want to try IDNA encoding the hostname if the string contains
+   398	        # non-ASCII characters. This allows users to automatically get the correct IDNA
+   399	        # behaviour. For strings containing only ASCII characters, we need to also verify
+   400	        # it doesn't start with a wildcard (*), before allowing the unencoded hostname.
+   401	        if not unicode_is_ascii(host):
+   402	            try:
+   403	                host = self._get_idna_encoded_host(host)
+   404	            except UnicodeError:
+   405	                raise InvalidURL('URL has an invalid label.')
+   406	        elif host.startswith(u'*'):
+   407	            raise InvalidURL('URL has an invalid label.')
+   408	
+   409	        # Carefully reconstruct the network location
+   410	        netloc = auth or ''

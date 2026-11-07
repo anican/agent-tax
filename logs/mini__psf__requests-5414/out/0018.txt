@@ -1,0 +1,86 @@
+   360	    def prepare_url(self, url, params):
+   361	        """Prepares the given HTTP URL."""
+   362	        #: Accept objects that have string representations.
+   363	        #: We're unable to blindly call unicode/str functions
+   364	        #: as this will include the bytestring indicator (b'')
+   365	        #: on python 3.x.
+   366	        #: https://github.com/psf/requests/pull/2238
+   367	        if isinstance(url, bytes):
+   368	            url = url.decode('utf8')
+   369	        else:
+   370	            url = unicode(url) if is_py2 else str(url)
+   371	
+   372	        # Remove leading whitespaces from url
+   373	        url = url.lstrip()
+   374	
+   375	        # Don't do any URL preparation for non-HTTP schemes like `mailto`,
+   376	        # `data` etc to work around exceptions from `url_parse`, which
+   377	        # handles RFC 3986 only.
+   378	        if ':' in url and not url.lower().startswith('http'):
+   379	            self.url = url
+   380	            return
+   381	
+   382	        # Support for unicode domain names and paths.
+   383	        try:
+   384	            scheme, auth, host, port, path, query, fragment = parse_url(url)
+   385	        except LocationParseError as e:
+   386	            raise InvalidURL(*e.args)
+   387	
+   388	        if not scheme:
+   389	            error = ("Invalid URL {0!r}: No schema supplied. Perhaps you meant http://{0}?")
+   390	            error = error.format(to_native_string(url, 'utf8'))
+   391	
+   392	            raise MissingSchema(error)
+   393	
+   394	        if not host:
+   395	            raise InvalidURL("Invalid URL %r: No host supplied" % url)
+   396	
+   397	        # In general, we want to try IDNA encoding the hostname if the string contains
+   398	        # non-ASCII characters. This allows users to automatically get the correct IDNA
+   399	        # behaviour. For strings containing only ASCII characters, we need to also verify
+   400	        # it doesn't start with a wildcard (*), before allowing the unencoded hostname.
+   401	        if not unicode_is_ascii(host):
+   402	            try:
+   403	                host = self._get_idna_encoded_host(host)
+   404	            except UnicodeError:
+   405	                raise InvalidURL('URL has an invalid label.')
+   406	        elif host.startswith(u'*'):
+   407	            raise InvalidURL('URL has an invalid label.')
+   408	
+   409	        # Carefully reconstruct the network location
+   410	        netloc = auth or ''
+   411	        if netloc:
+   412	            netloc += '@'
+   413	        netloc += host
+   414	        if port:
+   415	            netloc += ':' + str(port)
+   416	
+   417	        # Bare domains aren't valid URLs.
+   418	        if not path:
+   419	            path = '/'
+   420	
+   421	        if is_py2:
+   422	            if isinstance(scheme, str):
+   423	                scheme = scheme.encode('utf-8')
+   424	            if isinstance(netloc, str):
+   425	                netloc = netloc.encode('utf-8')
+   426	            if isinstance(path, str):
+   427	                path = path.encode('utf-8')
+   428	            if isinstance(query, str):
+   429	                query = query.encode('utf-8')
+   430	            if isinstance(fragment, str):
+   431	                fragment = fragment.encode('utf-8')
+   432	
+   433	        if isinstance(params, (str, bytes)):
+   434	            params = to_native_string(params)
+   435	
+   436	        enc_params = self._encode_params(params)
+   437	        if enc_params:
+   438	            if query:
+   439	                query = '%s&%s' % (query, enc_params)
+   440	            else:
+   441	                query = enc_params
+   442	
+   443	        url = requote_uri(urlunparse([scheme, netloc, path, None, query, fragment]))
+   444	        self.url = url
+   445	

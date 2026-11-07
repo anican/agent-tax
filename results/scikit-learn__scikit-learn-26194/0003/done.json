@@ -1,0 +1,32 @@
+{
+ "task": "scikit-learn__scikit-learn-26194",
+ "seq": 3,
+ "phase": "setup",
+ "cls": "package install",
+ "cmd": "python -m pip install \"numpy<2\" \"scipy<1.12\" \"cython<3\" \"setuptools<70\" wheel joblib threadpoolctl pytest pandas",
+ "orig_rc": 0,
+ "orig_dur_s": 27.457891328,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 24.141531944274902,
+   "rec_rc": 0,
+   "rec_wall_s": 32.278627157211304
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 27.10726261138916,
+   "rec_rc": 0,
+   "rec_wall_s": 31.286183834075928
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 27.28944730758667,
+   "rec_rc": 0,
+   "rec_wall_s": 32.34936237335205
+  }
+ ]
+}

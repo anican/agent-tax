@@ -1,0 +1,18 @@
+   478	        if self.can_order:
+   479	            # Only pre-fill the ordering field for initial forms.
+   480	            if index is not None and index < initial_form_count:
+   481	                form.fields[ORDERING_FIELD_NAME] = IntegerField(
+   482	                    label=_("Order"),
+   483	                    initial=index + 1,
+   484	                    required=False,
+   485	                    widget=self.get_ordering_widget(),
+   486	                )
+   487	            else:
+   488	                form.fields[ORDERING_FIELD_NAME] = IntegerField(
+   489	                    label=_("Order"),
+   490	                    required=False,
+   491	                    widget=self.get_ordering_widget(),
+   492	                )
+   493	        if self.can_delete and (self.can_delete_extra or (index is not None and index < initial_form_count)):
+   494	            form.fields[DELETION_FIELD_NAME] = BooleanField(
+   495	                label=_("Delete"),

@@ -1,0 +1,27 @@
+{
+ "task": "django__django-16595",
+ "seq": 9,
+ "cls": "test run",
+ "cmd": "cd tests && python runtests.py migrations --parallel 4 2>&1 | grep -E \"^(Ran|OK|FAILED|ERROR|FAIL:)\"",
+ "profiled_cmd": "cd tests && python runtests.py migrations --parallel 4",
+ "reps": [
+  {
+   "wall_s": 10.96645212173462,
+   "task_clock_s": 19.14662,
+   "top_level_import_s": 0.392609,
+   "n_top_level": 154
+  },
+  {
+   "wall_s": 10.59508752822876,
+   "task_clock_s": 19.673099999999998,
+   "top_level_import_s": 0.387426,
+   "n_top_level": 154
+  },
+  {
+   "wall_s": 10.272173404693604,
+   "task_clock_s": 18.31282,
+   "top_level_import_s": 0.497331,
+   "n_top_level": 154
+  }
+ ]
+}

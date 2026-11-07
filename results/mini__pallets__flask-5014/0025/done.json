@@ -1,0 +1,32 @@
+{
+ "task": "mini__pallets__flask-5014",
+ "seq": 25,
+ "phase": "solve",
+ "cls": "search/read",
+ "cmd": "cat > test_whitespace_edge.py << 'EOF'\n#!/usr/bin/env python3\n\nimport sys\nimport os\n\n# Add the src directory to the path so we can import flask\nsys.path.insert(0, os.path.join(os.path.dirname(__file__), 'src'))\n\nfrom flask import Blueprint\n\ndef test_name_with_whitespace_around_valid_content():\n    \"\"\"Test that names with whitespace around valid content are rejected\"\"\"\n    test_cases = [\" valid_name \", \"  valid_name  \", \"\\tvalid_name\\n\"]\n    \n    for name in test_cases:\n        try:\n            bp = Blueprint(name, __name__)\n            # If we get here, the blueprint was created successfully\n            # This means the name was accepted, which might be okay\n            print(f\"INFO: Blueprint with name '{repr(name)}' was created successfully\")\n            print(f\"      Blueprint.name = '{repr(bp.name)}'\")\n        except ValueError as e:\n            print(f\"INFO: Blueprint with name '{repr(name)}' was rejected:\", str(e))\n        except Exception as e:\n            print(f\"ERROR: Unexpected exception for '{repr(name)}':\", type(e).__name__, str(e))\n            return False\n    \n    return True\n\nif __name__ == \"__main__\":\n    print(\"Testing Blueprint whitespace edge cases...\")\n    test_name_with_whitespace_around_valid_content()\nEOF",
+ "orig_rc": 0,
+ "orig_dur_s": 0.00421504,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 0.029849767684936523,
+   "rec_rc": 0,
+   "rec_wall_s": 1.117530107498169
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 0.03757166862487793,
+   "rec_rc": 0,
+   "rec_wall_s": 1.124725341796875
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 0.025138139724731445,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1235017776489258
+  }
+ ]
+}

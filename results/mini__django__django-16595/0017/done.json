@@ -1,0 +1,32 @@
+{
+ "task": "mini__django__django-16595",
+ "seq": 17,
+ "phase": "solve",
+ "cls": "other",
+ "cmd": "python test_comprehensive_alter_field.py",
+ "orig_rc": 0,
+ "orig_dur_s": 0.175352832,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 0.20863604545593262,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1170027256011963
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 0.22365164756774902,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1439964771270752
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 0.21689367294311523,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1215765476226807
+  }
+ ]
+}

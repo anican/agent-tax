@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/tmp/repro_24066.py", line 9, in <module>
+    print(SI._collect_factor_and_dimension(buggy_expr))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/work/sympy__sympy-24066/repo/sympy/physics/units/unitsystem.py", line 179, in _collect_factor_and_dimension
+    raise ValueError(
+ValueError: Dimension of "exp(second/(farad*ohm))" is Dimension(time/(capacitance*impedance)), but it should be Dimension(1)

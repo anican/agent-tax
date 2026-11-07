@@ -1,0 +1,27 @@
+{
+ "task": "django__django-16595",
+ "seq": 6,
+ "cls": "test run",
+ "cmd": "cd tests && python runtests.py migrations.test_optimizer --verbosity 1 2>&1 | tail -15",
+ "profiled_cmd": "cd tests && python runtests.py migrations.test_optimizer --verbosity 1",
+ "reps": [
+  {
+   "wall_s": 0.7588868141174316,
+   "task_clock_s": 0.72348,
+   "top_level_import_s": 0.480254,
+   "n_top_level": 52
+  },
+  {
+   "wall_s": 0.5726046562194824,
+   "task_clock_s": 0.55023,
+   "top_level_import_s": 0.316628,
+   "n_top_level": 52
+  },
+  {
+   "wall_s": 0.5862727165222168,
+   "task_clock_s": 0.56697,
+   "top_level_import_s": 0.340931,
+   "n_top_level": 52
+  }
+ ]
+}

@@ -1,0 +1,185 @@
+MICRO_SWE_AGENT_FINAL_OUTPUT
+diff --git a/reproduce_issue.py b/reproduce_issue.py
+new file mode 100644
+index 0000000..7f53819
+--- /dev/null
++++ b/reproduce_issue.py
+@@ -0,0 +1,22 @@
++from sympy import exp
++from sympy.physics import units
++from sympy.physics.units.systems.si import SI
++
++print("Testing the issue...")
++
++expr = units.second / (units.ohm * units.farad)
++dim = SI._collect_factor_and_dimension(expr)[1]
++
++print(f"Expression: {expr}")
++print(f"Dimension: {dim}")
++print(f"Is dimensionless: {SI.get_dimension_system().is_dimensionless(dim)}")
++
++print("\nTesting buggy expression...")
++buggy_expr = 100 + exp(expr)
++print(f"Buggy expression: {buggy_expr}")
++
++try:
++    result = SI._collect_factor_and_dimension(buggy_expr)
++    print(f"Result: {result}")
++except Exception as e:
++    print(f"Error: {e}")
+diff --git a/sympy/physics/units/unitsystem.py b/sympy/physics/units/unitsystem.py
+index 3daf84c..b0f5452 100644
+--- a/sympy/physics/units/unitsystem.py
++++ b/sympy/physics/units/unitsystem.py
+@@ -192,8 +192,29 @@ def _collect_factor_and_dimension(self, expr):
+         elif isinstance(expr, Function):
+             fds = [self._collect_factor_and_dimension(
+                 arg) for arg in expr.args]
+-            return (expr.func(*(f[0] for f in fds)),
+-                    *(d[1] for d in fds))
++            # For mathematical functions like exp, sin, cos, log, etc.,
++            # arguments should be dimensionless and result should be dimensionless
++            from sympy.functions.elementary.exponential import exp, log
++            from sympy.functions.elementary.trigonometric import sin, cos, tan, cot, sec, csc
++            from sympy.functions.elementary.hyperbolic import sinh, cosh, tanh, coth, sech, csch
++            from sympy.functions.elementary.miscellaneous import sqrt
++            
++            # Check if this is a mathematical function that requires dimensionless arguments
++            mathematical_functions = (exp, log, sin, cos, tan, cot, sec, csc, 
++                                    sinh, cosh, tanh, coth, sech, csch)
++            
++            if isinstance(expr, mathematical_functions):
++                # Check that all arguments are dimensionless
++                for i, (factor, dim) in enumerate(fds):
++                    if not self.get_dimension_system().is_dimensionless(dim):
++                        raise ValueError(
++                            f"Dimension of '{expr.args[i]}' is {dim}, "
++                            f"but it should be Dimension(1)")
++                return expr.func(*(f[0] for f in fds)), Dimension(1)
++            else:
++                # For other functions, use the original behavior
++                return (expr.func(*(f[0] for f in fds)),
++                        *(d[1] for d in fds))
+         elif isinstance(expr, Dimension):
+             return S.One, expr
+         else:
+diff --git a/test_basic_functionality.py b/test_basic_functionality.py
+new file mode 100644
+index 0000000..2df6695
+--- /dev/null
++++ b/test_basic_functionality.py
+@@ -0,0 +1,27 @@
++from sympy.physics import units
++from sympy.physics.units.systems.si import SI
++
++print("Testing basic functionality is not broken...")
++
++# Test basic unit operations
++try:
++    # Multiplication
++    result1 = SI._collect_factor_and_dimension(units.meter * units.second)
++    print(f"meter * second: SUCCESS - {result1[1]}")
++    
++    # Division
++    result2 = SI._collect_factor_and_dimension(units.meter / units.second)
++    print(f"meter / second: SUCCESS - {result2[1]}")
++    
++    # Power
++    result3 = SI._collect_factor_and_dimension(units.meter**2)
++    print(f"meter**2: SUCCESS - {result3[1]}")
++    
++    # Addition of same dimensions
++    result4 = SI._collect_factor_and_dimension(units.meter + 2*units.meter)
++    print(f"meter + 2*meter: SUCCESS - {result4[1]}")
++    
++    print("All basic functionality tests passed!")
++    
++except Exception as e:
++    print(f"ERROR in basic functionality: {e}")
+diff --git a/test_comprehensive.py b/test_comprehensive.py
+new file mode 100644
+index 0000000..90120af
+--- /dev/null
++++ b/test_comprehensive.py
+@@ -0,0 +1,41 @@
++from sympy import exp, sin, cos, log, sqrt
++from sympy.physics import units
++from sympy.physics.units.systems.si import SI
++
++print("Testing comprehensive mathematical functions...")
++
++# Test expression that should be dimensionless
++expr = units.second / (units.ohm * units.farad)
++dim = SI._collect_factor_and_dimension(expr)[1]
++print(f"Base expression: {expr}")
++print(f"Is dimensionless: {SI.get_dimension_system().is_dimensionless(dim)}")
++
++# Test various mathematical functions
++test_functions = [exp, sin, cos, log]
++for func in test_functions:
++    try:
++        test_expr = 100 + func(expr)
++        result = SI._collect_factor_and_dimension(test_expr)
++        print(f"{func.__name__}({expr}) + 100: SUCCESS - Result dimension: {result[1]}")
++    except Exception as e:
++        print(f"{func.__name__}({expr}) + 100: ERROR - {e}")
++
++# Test with dimensional expression (should fail)
++dimensional_expr = units.meter
++print(f"\nTesting with dimensional expression: {dimensional_expr}")
++for func in test_functions:
++    try:
++        test_expr = func(dimensional_expr)
++        result = SI._collect_factor_and_dimension(test_expr)
++        print(f"{func.__name__}({dimensional_expr}): UNEXPECTED SUCCESS - {result}")
++    except Exception as e:
++        print(f"{func.__name__}({dimensional_expr}): EXPECTED ERROR - {e}")
++
++# Test sqrt (should work with dimensional arguments)
++print(f"\nTesting sqrt with dimensional argument:")
++try:
++    sqrt_expr = sqrt(units.meter**2)
++    result = SI._collect_factor_and_dimension(sqrt_expr)
++    print(f"sqrt({units.meter**2}): SUCCESS - Result dimension: {result[1]}")
++except Exception as e:
++    print(f"sqrt({units.meter**2}): ERROR - {e}")
+diff --git a/test_edge_cases.py b/test_edge_cases.py
+new file mode 100644
+index 0000000..650d718
+--- /dev/null
++++ b/test_edge_cases.py
+@@ -0,0 +1,34 @@
++from sympy import exp, sin, cos, log, tan, sinh, cosh
++from sympy.physics import units
++from sympy.physics.units.systems.si import SI
++
++print("Testing edge cases...")
++
++# Test with multiple arguments (though most of these functions are single-argument)
++expr = units.second / (units.ohm * units.farad)
++
++# Test nested functions
++try:
++    nested = exp(sin(expr))
++    result = SI._collect_factor_and_dimension(nested)
++    print(f"exp(sin({expr})): SUCCESS - Result dimension: {result[1]}")
++except Exception as e:
++    print(f"exp(sin({expr})): ERROR - {e}")
++
++# Test with complex expressions
++try:
++    complex_expr = exp(expr) * sin(expr) + cos(expr)
++    result = SI._collect_factor_and_dimension(complex_expr)
++    print(f"exp({expr}) * sin({expr}) + cos({expr}): SUCCESS - Result dimension: {result[1]}")
++except Exception as e:
++    print(f"Complex expression: ERROR - {e}")
++
++# Test hyperbolic functions
++try:
++    hyp_expr = sinh(expr) + cosh(expr)
++    result = SI._collect_factor_and_dimension(hyp_expr)
++    print(f"sinh({expr}) + cosh({expr}): SUCCESS - Result dimension: {result[1]}")
++except Exception as e:
++    print(f"Hyperbolic functions: ERROR - {e}")
++
++print("All edge case tests completed!")

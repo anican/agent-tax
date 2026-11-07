@@ -1,0 +1,33 @@
+{
+ "task": "sympy__sympy-24562",
+ "seq": 6,
+ "phase": "solve",
+ "cls": "search/read",
+ "cmd": "sed -n 324,372p sympy/core/tests/test_numbers.py",
+ "orig_rc": 0,
+ "orig_dur_s": 0.011731456,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 0.04241800308227539,
+   "rec_rc": 0,
+   "rec_wall_s": 1.2649528980255127
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 0.04588770866394043,
+   "rec_rc": 0,
+   "rec_wall_s": 1.2532131671905518
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 0.04898524284362793,
+   "rec_rc": 0,
+   "rec_wall_s": 1.2517085075378418
+  }
+ ],
+ "loop_iterations": 30
+}

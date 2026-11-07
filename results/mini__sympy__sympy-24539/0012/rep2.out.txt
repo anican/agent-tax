@@ -1,0 +1,10 @@
+=== Testing PolyElement.as_expr() fix ===
+Original polynomial: 3*x**2*y - x*y*z + 7*z**3 + 1
+Test 1 - With custom symbols u,v,w: 3*u**2*v - u*v*w + 7*w**3 + 1
+Test 2 - With no symbols (default): 3*x**2*y - x*y*z + 7*z**3 + 1
+Test 3 - Are results different? True
+Test 4 - Correctly raised ValueError: not enough symbols, expected 3 got 2
+Test 5 - Symbol verification:
+  Default symbols in result: ['z', 'x', 'y']
+  Custom symbols in result: ['v', 'w', 'u']
+=== All tests completed ===

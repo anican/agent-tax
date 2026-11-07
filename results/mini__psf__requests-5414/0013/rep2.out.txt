@@ -1,0 +1,2 @@
+Testing the issue with http://.example.com using PreparedRequest directly
+Request preparation succeeded unexpectedly

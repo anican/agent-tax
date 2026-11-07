@@ -1,0 +1,2 @@
+1/200 1/200 2/3 4 1/4
+324:def test_Rational_new():

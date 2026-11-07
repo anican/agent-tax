@@ -1,0 +1,32 @@
+{
+ "task": "mini__pytest-dev__pytest-10081",
+ "seq": 22,
+ "phase": "solve",
+ "cls": "test run",
+ "cmd": "python -m pytest testing/test_debugging.py -v --tb=short",
+ "orig_rc": 0,
+ "orig_dur_s": 4.62973568,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 4.224971294403076,
+   "rec_rc": 0,
+   "rec_wall_s": 6.285905122756958
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 4.8974809646606445,
+   "rec_rc": 0,
+   "rec_wall_s": 6.25075364112854
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 4.6374804973602295,
+   "rec_rc": 0,
+   "rec_wall_s": 5.32371973991394
+  }
+ ]
+}

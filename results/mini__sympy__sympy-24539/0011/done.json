@@ -1,0 +1,32 @@
+{
+ "task": "mini__sympy__sympy-24539",
+ "seq": 11,
+ "phase": "solve",
+ "cls": "other",
+ "cmd": "cat <<'EOF' > comprehensive_test.py\nfrom sympy import ring, ZZ, symbols\n\n# Test the fix\nR, x, y, z = ring(\"x,y,z\", ZZ)\nf = 3*x**2*y - x*y*z + 7*z**3 + 1\n\nprint(\"=== Testing PolyElement.as_expr() fix ===\")\nprint(\"Original polynomial:\", f)\n\n# Test 1: Using custom symbols (the main fix)\nU, V, W = symbols(\"u,v,w\")\nresult_with_symbols = f.as_expr(U, V, W)\nprint(\"Test 1 - With custom symbols u,v,w:\", result_with_symbols)\n\n# Test 2: Using no symbols (should use default ring symbols)\nresult_no_symbols = f.as_expr()\nprint(\"Test 2 - With no symbols (default):\", result_no_symbols)\n\n# Test 3: Verify the symbols are actually different\nprint(\"Test 3 - Are results different?\", result_with_symbols != result_no_symbols)\n\n# Test 4: Test error case (wrong number of symbols)\ntry:\n    A, B = symbols(\"a,b\")\n    f.as_expr(A, B)  # Should raise error - only 2 symbols for 3-variable polynomial\n    print(\"Test 4 - ERROR: Should have raised ValueError\")\nexcept ValueError as e:\n    print(\"Test 4 - Correctly raised ValueError:\", str(e))\n\n# Test 5: Verify the symbols are correctly substituted\nprint(\"Test 5 - Symbol verification:\")\nprint(\"  Default symbols in result:\", [str(s) for s in result_no_symbols.free_symbols])\nprint(\"  Custom symbols in result:\", [str(s) for s in result_with_symbols.free_symbols])\n\nprint(\"=== All tests completed ===\")\nEOF",
+ "orig_rc": 0,
+ "orig_dur_s": 0.003947008,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 0.01903986930847168,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1167938709259033
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 0.027335643768310547,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1195623874664307
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 0.021730899810791016,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1186959743499756
+  }
+ ]
+}

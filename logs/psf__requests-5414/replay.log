@@ -1,0 +1,60 @@
+[replay] psf__requests-5414 seq=1 class=git orig=0.92s :: 'git init -q repo && cd repo && git remote add origin https://github.co'
+    rep1: stat rc=0 0.85s | record rc=0 1.33s
+    rep2: stat rc=0 1.21s | record rc=0 2.33s
+    rep3: stat rc=0 0.95s | record rc=0 2.41s
+[replay] psf__requests-5414 seq=2 class=package install orig=5.63s :: '/usr/bin/python3.11 -m venv venv'
+    rep1: stat rc=0 5.89s | record rc=0 7.27s
+    rep2: stat rc=0 5.11s | record rc=0 6.26s
+    rep3: stat rc=0 5.24s | record rc=0 6.39s
+[replay] psf__requests-5414 seq=3 class=package install orig=11.72s :: 'python -m pip install -e . pytest pytest-httpbin "pytest-mock" trustme'
+    rep1: stat rc=0 14.26s | record rc=0 14.39s
+    rep2: stat rc=0 13.22s | record rc=0 14.27s
+    rep3: stat rc=0 12.42s | record rc=0 12.27s
+[replay] psf__requests-5414 seq=4 class=search/read orig=0.01s :: 'grep -n "invalid label\\|_get_idna_encoded_host\\|InvalidURL\\|unicode_is'
+    rep1: stat rc=0 0.04s | record rc=0 1.31s
+    rep2: stat rc=0 0.05s | record rc=0 1.48s
+    rep3: stat rc=0 0.05s | record rc=0 1.30s
+[replay] psf__requests-5414 seq=5 class=search/read orig=0.01s :: 'sed -n 348,412p requests/models.py'
+    rep1: stat rc=0 0.05s | record rc=0 1.58s
+    rep2: stat rc=0 0.05s | record rc=0 1.26s
+    rep3: stat rc=0 0.04s | record rc=0 1.44s
+[replay] psf__requests-5414 seq=6 class=other orig=0.20s :: 'python -c "\nimport requests\ntry:\n    requests.get(\\"http://.example.co'
+    rep1: stat rc=0 0.23s | record rc=0 1.25s
+    rep2: stat rc=0 0.21s | record rc=0 1.32s
+    rep3: stat rc=0 0.23s | record rc=0 1.25s
+[replay] psf__requests-5414 seq=7 class=search/read orig=0.01s :: 'grep -n "invalid label\\|InvalidURL" tests/test_requests.py | head -20'
+    rep1: stat rc=0 0.05s | record rc=0 1.25s
+    rep2: stat rc=0 0.04s | record rc=0 1.29s
+    rep3: stat rc=0 0.05s | record rc=0 1.25s
+[replay] psf__requests-5414 seq=8 class=search/read orig=0.01s :: 'sed -n 76,92p tests/test_requests.py'
+    rep1: stat rc=0 0.04s | record rc=0 1.32s
+    rep2: stat rc=0 0.04s | record rc=0 1.25s
+    rep3: stat rc=0 0.04s | record rc=0 1.25s
+[replay] psf__requests-5414 seq=9 class=test run orig=1.12s :: 'python -m pytest -q tests/test_requests.py -k "invalid_url" 2>&1 | tai'
+    rep1: stat rc=0 0.80s | record rc=0 1.29s
+    rep2: stat rc=0 0.83s | record rc=0 1.27s
+    rep3: stat rc=0 0.86s | record rc=0 1.24s
+[replay] psf__requests-5414 seq=10 class=test run orig=1.71s :: 'timeout 600 python -m pytest -q -x tests/test_requests.py 2>&1 | tail '
+    rep1: stat rc=0 1.85s | record rc=0 2.24s
+    rep2: stat rc=0 1.71s | record rc=0 2.25s
+    rep3: stat rc=0 1.74s | record rc=0 3.24s
+[replay] psf__requests-5414 seq=11 class=test run orig=69.18s :: 'git stash -q && timeout 600 python -m pytest -q tests/test_requests.py'
+    rep1: stat rc=0 69.02s | record rc=0 72.31s
+    rep2: stat rc=0 70.21s | record rc=0 70.41s
+    rep3: stat rc=0 69.87s | record rc=0 70.36s
+[loop] psf__requests-5414 seq=4 :: 'grep -n "invalid label\\|_get_idna_encoded_host\\|InvalidURL\\|unicode_is'
+    loop1: rc=0 1.40s
+    loop2: rc=0 1.26s
+    loop3: rc=0 1.45s
+[loop] psf__requests-5414 seq=5 :: 'sed -n 348,412p requests/models.py'
+    loop1: rc=0 1.31s
+    loop2: rc=0 1.38s
+    loop3: rc=0 1.27s
+[loop] psf__requests-5414 seq=7 :: 'grep -n "invalid label\\|InvalidURL" tests/test_requests.py | head -20'
+    loop1: rc=0 1.29s
+    loop2: rc=0 1.26s
+    loop3: rc=0 1.29s
+[loop] psf__requests-5414 seq=8 :: 'sed -n 76,92p tests/test_requests.py'
+    loop1: rc=0 1.34s
+    loop2: rc=0 1.33s
+    loop3: rc=0 1.25s

@@ -1,0 +1,78 @@
+MICRO_SWE_AGENT_FINAL_OUTPUT
+diff --git a/src/_pytest/logging.py b/src/_pytest/logging.py
+index a4f4214..0f0e53d 100644
+--- a/src/_pytest/logging.py
++++ b/src/_pytest/logging.py
+@@ -440,7 +440,12 @@ class LogCaptureFixture:
+ 
+     def clear(self) -> None:
+         """Reset the list of log records and the captured log text."""
++        old_records = self.handler.records
+         self.handler.reset()
++        # Update stash to point to the new records list after reset for the phase that was using the old records
++        for when, records in self._item.stash[caplog_records_key].items():
++            if records is old_records:
++                self._item.stash[caplog_records_key][when] = self.handler.records
+ 
+     def set_level(self, level: Union[int, str], logger: Optional[str] = None) -> None:
+         """Set the level of a logger for the duration of a test.
+diff --git a/test_comprehensive_caplog.py b/test_comprehensive_caplog.py
+new file mode 100644
+index 0000000..855d706
+--- /dev/null
++++ b/test_comprehensive_caplog.py
+@@ -0,0 +1,54 @@
++import logging
++
++def test_caplog_consistency_after_clear(caplog):
++    """Test that caplog.get_records and caplog.records stay consistent after clear."""
++    # Initially empty
++    assert caplog.get_records("call") == caplog.records == []
++    
++    # Add a log record
++    logging.warning("test message 1")
++    assert len(caplog.get_records("call")) == 1
++    assert len(caplog.records) == 1
++    assert caplog.get_records("call") == caplog.records
++    
++    # Clear and verify both are empty
++    caplog.clear()
++    assert caplog.get_records("call") == caplog.records == []
++    
++    # Add another record after clear
++    logging.error("test message 2")
++    assert len(caplog.get_records("call")) == 1
++    assert len(caplog.records) == 1
++    assert caplog.get_records("call") == caplog.records
++    assert caplog.records[0].getMessage() == "test message 2"
++
++def test_multiple_clears(caplog):
++    """Test multiple clear operations."""
++    logging.info("message 1")
++    assert len(caplog.records) == 1
++    
++    caplog.clear()
++    assert len(caplog.records) == 0
++    assert len(caplog.get_records("call")) == 0
++    
++    logging.info("message 2")
++    assert len(caplog.records) == 1
++    
++    caplog.clear()
++    assert len(caplog.records) == 0
++    assert len(caplog.get_records("call")) == 0
++
++def test_caplog_text_after_clear(caplog):
++    """Test that caplog.text is also cleared properly."""
++    logging.warning("test message")
++    assert "test message" in caplog.text
++    assert len(caplog.records) == 1
++    
++    caplog.clear()
++    assert caplog.text == ""
++    assert len(caplog.records) == 0
++    assert len(caplog.get_records("call")) == 0
++
++if __name__ == "__main__":
++    import pytest
++    pytest.main([__file__, "-v"])

@@ -1,0 +1,71 @@
+717:    def test_alter_field_rename_field(self):
+718-        """
+719-        RenameField should optimize to the other side of AlterField,
+720-        and into itself.
+721-        """
+722-        self.assertOptimizesTo(
+723-            [
+724-                migrations.AlterField("Foo", "name", models.CharField(max_length=255)),
+725-                migrations.RenameField("Foo", "name", "title"),
+726-                migrations.RenameField("Foo", "title", "nom"),
+727-            ],
+728-            [
+729-                migrations.RenameField("Foo", "name", "nom"),
+730-                migrations.AlterField("Foo", "nom", models.CharField(max_length=255)),
+731-            ],
+732-        )
+733-
+734-    def test_swapping_fields_names(self):
+735-        self.assertDoesNotOptimize(
+736-            [
+737-                migrations.CreateModel(
+738-                    "MyModel",
+739-                    [
+--
+783:    def test_add_field_alter_field(self):
+784-        """
+785-        AlterField should optimize into AddField.
+786-        """
+787-        self.assertOptimizesTo(
+788-            [
+789-                migrations.AddField("Foo", "age", models.IntegerField()),
+790-                migrations.AlterField("Foo", "age", models.FloatField(default=2.4)),
+791-            ],
+792-            [
+793-                migrations.AddField(
+794-                    "Foo", name="age", field=models.FloatField(default=2.4)
+795-                ),
+796-            ],
+797-        )
+798-
+799-    def test_add_field_delete_field(self):
+800-        """
+801-        RemoveField should cancel AddField
+802-        """
+803-        self.assertOptimizesTo(
+804-            [
+805-                migrations.AddField("Foo", "age", models.IntegerField()),
+--
+811:    def test_alter_field_delete_field(self):
+812-        """
+813-        RemoveField should absorb AlterField
+814-        """
+815-        self.assertOptimizesTo(
+816-            [
+817-                migrations.AlterField("Foo", "age", models.IntegerField()),
+818-                migrations.RemoveField("Foo", "age"),
+819-            ],
+820-            [
+821-                migrations.RemoveField("Foo", "age"),
+822-            ],
+823-        )
+824-
+825-    def _test_create_alter_foo_field(self, alter):
+826-        """
+827-        CreateModel, AlterFooTogether/AlterOrderWithRespectTo followed by an
+828-        add/alter/rename field should optimize to CreateModel with options.
+829-        """
+830-        option_value = getattr(alter, alter.option_name)
+831-        options = {alter.option_name: option_value}
+832-
+833-        # AddField

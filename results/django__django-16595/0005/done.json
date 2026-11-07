@@ -1,0 +1,33 @@
+{
+ "task": "django__django-16595",
+ "seq": 5,
+ "phase": "solve",
+ "cls": "search/read",
+ "cmd": "grep -n \"def test_alter_field\\|def test_add_field_alter_field\\|def test_alter_field_delete_field\" -A 22 tests/migrations/test_optimizer.py | head -80",
+ "orig_rc": 0,
+ "orig_dur_s": 0.007444224,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 0.04470658302307129,
+   "rec_rc": 0,
+   "rec_wall_s": 1.32765793800354
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 0.04020261764526367,
+   "rec_rc": 0,
+   "rec_wall_s": 1.2602779865264893
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 0.03552436828613281,
+   "rec_rc": 0,
+   "rec_wall_s": 1.3475823402404785
+  }
+ ],
+ "loop_iterations": 30
+}

@@ -1,0 +1,52 @@
+[replay] django__django-16667 seq=1 class=git orig=2.82s :: 'git init -q repo && cd repo && git remote add origin https://github.co'
+    rep1: stat rc=0 2.98s | record rc=0 3.36s
+    rep2: stat rc=0 3.22s | record rc=0 4.28s
+    rep3: stat rc=0 2.63s | record rc=0 3.36s
+[replay] django__django-16667 seq=2 class=package install orig=5.17s :: '/usr/bin/python3.11 -m venv venv'
+    rep1: stat rc=0 4.87s | record rc=0 6.29s
+    rep2: stat rc=0 6.17s | record rc=0 6.39s
+    rep3: stat rc=0 5.46s | record rc=0 7.31s
+[replay] django__django-16667 seq=3 class=package install orig=28.06s :: 'python -m pip install -e . && python -m pip install -r tests/requireme'
+    rep1: stat rc=0 29.89s | record rc=0 32.35s
+    rep2: stat rc=0 27.53s | record rc=0 33.33s
+    rep3: stat rc=0 30.96s | record rc=0 38.42s
+[replay] django__django-16667 seq=4 class=search/read orig=0.01s :: 'grep -n "def value_from_datadict" -A 25 django/forms/widgets.py | sed '
+    rep1: stat rc=0 0.04s | record rc=0 1.29s
+    rep2: stat rc=0 0.04s | record rc=0 1.30s
+    rep3: stat rc=0 0.05s | record rc=0 1.31s
+[replay] django__django-16667 seq=5 class=search/read orig=0.01s :: 'grep -n "def test_value_from_datadict\\|2017-0-23\\|def test_validate\\|i'
+    rep1: stat rc=0 0.05s | record rc=0 1.25s
+    rep2: stat rc=0 0.05s | record rc=0 1.31s
+    rep3: stat rc=0 0.06s | record rc=0 1.29s
+[replay] django__django-16667 seq=6 class=search/read orig=0.01s :: 'sed -n 600,640p tests/forms_tests/widget_tests/test_selectdatewidget.p'
+    rep1: stat rc=0 0.03s | record rc=0 1.27s
+    rep2: stat rc=0 0.05s | record rc=0 1.28s
+    rep3: stat rc=0 0.04s | record rc=0 1.26s
+[replay] django__django-16667 seq=7 class=search/read orig=0.01s :: 'grep -n "^PYPY" django/utils/version.py'
+    rep1: stat rc=1 0.05s | record rc=1 1.26s
+    rep2: stat rc=1 0.04s | record rc=1 1.30s
+    rep3: stat rc=1 0.04s | record rc=1 1.26s
+[replay] django__django-16667 seq=8 class=test run orig=2.13s :: 'cd tests && python runtests.py forms_tests.widget_tests.test_selectdat'
+    rep1: stat rc=0 0.73s | record rc=0 1.25s
+    rep2: stat rc=0 0.81s | record rc=0 2.27s
+    rep3: stat rc=0 1.12s | record rc=0 2.39s
+[replay] django__django-16667 seq=9 class=test run orig=2.58s :: 'python -c "\nimport django\nfrom django.conf import settings\nsettings.co'
+    rep1: stat rc=0 2.41s | record rc=0 3.28s
+    rep2: stat rc=0 2.26s | record rc=0 3.28s
+    rep3: stat rc=0 2.11s | record rc=0 3.24s
+[loop] django__django-16667 seq=4 :: 'grep -n "def value_from_datadict" -A 25 django/forms/widgets.py | sed '
+    loop1: rc=0 1.26s
+    loop2: rc=0 1.26s
+    loop3: rc=0 1.25s
+[loop] django__django-16667 seq=5 :: 'grep -n "def test_value_from_datadict\\|2017-0-23\\|def test_validate\\|i'
+    loop1: rc=0 1.31s
+    loop2: rc=0 1.32s
+    loop3: rc=0 1.27s
+[loop] django__django-16667 seq=6 :: 'sed -n 600,640p tests/forms_tests/widget_tests/test_selectdatewidget.p'
+    loop1: rc=0 1.28s
+    loop2: rc=0 1.30s
+    loop3: rc=0 1.24s
+[loop] django__django-16667 seq=7 :: 'grep -n "^PYPY" django/utils/version.py'
+    loop1: rc=1 1.29s
+    loop2: rc=1 1.30s
+    loop3: rc=1 1.27s

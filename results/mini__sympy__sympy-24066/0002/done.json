@@ -1,0 +1,33 @@
+{
+ "task": "mini__sympy__sympy-24066",
+ "seq": 2,
+ "phase": "solve",
+ "cls": "search/read",
+ "cmd": "find sympy -name \"*.py\" | grep -E \"(units|si)\" | head -20",
+ "orig_rc": 0,
+ "orig_dur_s": 0.005516288,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 0.04912447929382324,
+   "rec_rc": 0,
+   "rec_wall_s": 1.121802806854248
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 0.028731107711791992,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1140766143798828
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 0.02833414077758789,
+   "rec_rc": 0,
+   "rec_wall_s": 1.125892162322998
+  }
+ ],
+ "loop_iterations": 30
+}

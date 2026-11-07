@@ -1,0 +1,33 @@
+{
+ "task": "mini__sympy__sympy-24066",
+ "seq": 9,
+ "phase": "solve",
+ "cls": "search/read",
+ "cmd": "grep -n \"_collect_factor_and_dimension\" sympy/physics/units/unitsystem.py",
+ "orig_rc": 0,
+ "orig_dur_s": 0.004114432,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 0.0330350399017334,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1162104606628418
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 0.025643587112426758,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1152796745300293
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 0.026345014572143555,
+   "rec_rc": 0,
+   "rec_wall_s": 1.117797613143921
+  }
+ ],
+ "loop_iterations": 30
+}

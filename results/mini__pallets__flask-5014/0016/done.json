@@ -1,0 +1,33 @@
+{
+ "task": "mini__pallets__flask-5014",
+ "seq": 16,
+ "phase": "solve",
+ "cls": "search/read",
+ "cmd": "sed -n '190,205p' src/flask/blueprints.py",
+ "orig_rc": 0,
+ "orig_dur_s": 0.003735808,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 0.032843828201293945,
+   "rec_rc": 0,
+   "rec_wall_s": 1.125293493270874
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 0.025153398513793945,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1225011348724365
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 0.026491403579711914,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1234135627746582
+  }
+ ],
+ "loop_iterations": 30
+}

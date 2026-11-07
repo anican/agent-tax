@@ -1,0 +1,14 @@
+Testing Blueprint edge cases...
+
+Running test_whitespace_only_name...
+SUCCESS: Blueprint with whitespace-only name '' '' correctly raised ValueError
+SUCCESS: Blueprint with whitespace-only name ''  '' correctly raised ValueError
+SUCCESS: Blueprint with whitespace-only name ''\t'' correctly raised ValueError
+SUCCESS: Blueprint with whitespace-only name ''\n'' correctly raised ValueError
+SUCCESS: Blueprint with whitespace-only name '' \t \n '' correctly raised ValueError
+
+Running test_none_name...
+SUCCESS: Blueprint with None name correctly raised exception: ValueError Blueprint name cannot be empty.
+
+Results: 2/2 tests passed
+All edge case tests passed!

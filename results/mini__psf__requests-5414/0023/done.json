@@ -1,0 +1,32 @@
+{
+ "task": "mini__psf__requests-5414",
+ "seq": 23,
+ "phase": "solve",
+ "cls": "search/read",
+ "cmd": "sed -i '443c\\        try:\\\n            url = requote_uri(urlunparse([scheme, netloc, path, None, query, fragment]))\\\n        except UnicodeError:\\\n            raise InvalidURL(\"URL has an invalid label.\")' requests/models.py",
+ "orig_rc": 0,
+ "orig_dur_s": 0.010154752,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 0.039397478103637695,
+   "rec_rc": 0,
+   "rec_wall_s": 1.3054373264312744
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 0.06307673454284668,
+   "rec_rc": 0,
+   "rec_wall_s": 1.2647979259490967
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 0.03356146812438965,
+   "rec_rc": 0,
+   "rec_wall_s": 1.331218957901001
+  }
+ ]
+}

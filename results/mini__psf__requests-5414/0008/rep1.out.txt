@@ -1,0 +1,9 @@
+31:    HTTPError, MissingSchema, InvalidURL, ChunkedEncodingError,
+351:    def _get_idna_encoded_host(host):
+357:            raise UnicodeError
+386:            raise InvalidURL(*e.args)
+395:            raise InvalidURL("Invalid URL %r: No host supplied" % url)
+403:                host = self._get_idna_encoded_host(host)
+404:            except UnicodeError:
+405:                raise InvalidURL('URL has an invalid label.')
+407:            raise InvalidURL('URL has an invalid label.')

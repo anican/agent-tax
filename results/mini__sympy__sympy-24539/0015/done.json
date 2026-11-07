@@ -1,0 +1,32 @@
+{
+ "task": "mini__sympy__sympy-24539",
+ "seq": 15,
+ "phase": "solve",
+ "cls": "git",
+ "cmd": "echo MICRO_SWE_AGENT_FINAL_OUTPUT && git add -A && git diff --cached",
+ "orig_rc": 0,
+ "orig_dur_s": 0.024399104,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 0.04205489158630371,
+   "rec_rc": 0,
+   "rec_wall_s": 1.122697114944458
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 0.03148818016052246,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1321742534637451
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 0.03263235092163086,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1191205978393555
+  }
+ ]
+}

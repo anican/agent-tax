@@ -1,0 +1,15 @@
+    result.stdout.fnmatch_lines("* 2 passed in *")
+    assert teardowns == [
+        "test_pdb_teardown_called.MyTestCase.test_1",
+        "test_pdb_teardown_called.MyTestCase.test_2",
+    ]
+
+
+@pytest.mark.parametrize("mark", ["@unittest.skip", "@pytest.mark.skip"])
+def test_pdb_teardown_skipped(
+
+
+def test_async_support(pytester: Pytester) -> None:
+    pytest.importorskip("unittest.async_case")
+
+    pytester.copy_example("unittest/test_unittest_asyncio.py")

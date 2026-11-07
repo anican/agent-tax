@@ -1,0 +1,69 @@
+	Command being timed: "timeout -s KILL 600 bash -c cat <<'EOF' > test_edge_cases.py
+import logging
+import pytest
+
+@pytest.fixture
+def setup_logging(caplog):
+    caplog.set_level("INFO")
+    logging.info("setup_message")
+    yield
+    logging.info("teardown_message")
+
+def test_clear_with_multiple_phases(caplog, setup_logging):
+    """Test that clear works correctly when there are records from multiple phases."""
+    # At this point we should have setup records
+    setup_records = caplog.get_records("setup")
+    assert len(setup_records) == 1
+    assert setup_records[0].getMessage() == "setup_message"
+    
+    # Add a call record
+    logging.info("call_message")
+    call_records = caplog.get_records("call")
+    assert len(call_records) == 1
+    assert call_records[0].getMessage() == "call_message"
+    
+    # Current records should only show call records
+    assert len(caplog.records) == 1
+    assert caplog.records[0].getMessage() == "call_message"
+    
+    # Clear should only affect current phase records
+    caplog.clear()
+    
+    # After clear, call records should be empty but setup records should remain
+    assert len(caplog.get_records("call")) == 0
+    assert len(caplog.records) == 0
+    assert len(caplog.get_records("setup")) == 1  # Setup records should still be there
+    
+    # Add another call record after clear
+    logging.info("call_message_after_clear")
+    assert len(caplog.get_records("call")) == 1
+    assert caplog.get_records("call")[0].getMessage() == "call_message_after_clear"
+    assert len(caplog.records) == 1
+    assert caplog.records[0].getMessage() == "call_message_after_clear"
+
+if __name__ == "__main__":
+    import pytest
+    pytest.main([__file__, "-v"])
+EOF"
+	User time (seconds): 0.00
+	System time (seconds): 0.00
+	Percent of CPU this job got: 100%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.00
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 3392
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 409
+	Voluntary context switches: 5
+	Involuntary context switches: 0
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 8
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

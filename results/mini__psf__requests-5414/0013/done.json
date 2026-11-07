@@ -1,0 +1,32 @@
+{
+ "task": "mini__psf__requests-5414",
+ "seq": 13,
+ "phase": "solve",
+ "cls": "other",
+ "cmd": "python reproduce_issue2.py",
+ "orig_rc": 0,
+ "orig_dur_s": 0.166600448,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 0.16980910301208496,
+   "rec_rc": 0,
+   "rec_wall_s": 1.2585210800170898
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 0.24310088157653809,
+   "rec_rc": 0,
+   "rec_wall_s": 1.255380630493164
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 0.21175503730773926,
+   "rec_rc": 0,
+   "rec_wall_s": 1.300746202468872
+  }
+ ]
+}

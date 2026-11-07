@@ -1,0 +1,33 @@
+{
+ "task": "mini__sympy__sympy-24539",
+ "seq": 2,
+ "phase": "solve",
+ "cls": "search/read",
+ "cmd": "cat sympy/polys/rings.py | grep -A 20 -B 5 \"def as_expr\"",
+ "orig_rc": 0,
+ "orig_dur_s": 0.00411136,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 0.04479193687438965,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1214818954467773
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 0.03154492378234863,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1214535236358643
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 0.027588605880737305,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1321401596069336
+  }
+ ],
+ "loop_iterations": 30
+}

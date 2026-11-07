@@ -1,0 +1,1 @@
+aa55975 Doc: Clear mailbox before deleting the user (#10068)

@@ -1,0 +1,64 @@
+[replay] pallets__flask-5014 seq=1 class=git orig=1.17s :: 'git init -q repo && cd repo && git remote add origin https://github.co'
+    rep1: stat rc=0 0.79s | record rc=0 1.28s
+    rep2: stat rc=0 0.87s | record rc=0 1.40s
+    rep3: stat rc=0 0.82s | record rc=0 1.41s
+[replay] pallets__flask-5014 seq=2 class=package install orig=4.91s :: '/usr/bin/python3.11 -m venv venv'
+    rep1: stat rc=0 6.65s | record rc=0 8.37s
+    rep2: stat rc=0 7.07s | record rc=0 8.29s
+    rep3: stat rc=0 7.51s | record rc=0 9.34s
+[replay] pallets__flask-5014 seq=3 class=package install orig=8.82s :: 'python -m pip install -e . "werkzeug==2.3.7" pytest'
+    rep1: stat rc=0 9.81s | record rc=0 11.30s
+    rep2: stat rc=0 9.57s | record rc=0 10.37s
+    rep3: stat rc=0 8.50s | record rc=0 10.37s
+[replay] pallets__flask-5014 seq=4 class=search/read orig=0.01s :: 'grep -n "dotted\\|def __init__" src/flask/blueprints.py | head; grep -n'
+    rep1: stat rc=0 0.04s | record rc=0 1.34s
+    rep2: stat rc=0 0.04s | record rc=0 1.43s
+    rep3: stat rc=0 0.05s | record rc=0 1.40s
+[replay] pallets__flask-5014 seq=5 class=search/read orig=0.01s :: 'sed -n 172,205p src/flask/blueprints.py; sed -n 250,262p tests/test_bl'
+    rep1: stat rc=0 0.06s | record rc=0 1.26s
+    rep2: stat rc=0 0.05s | record rc=0 1.25s
+    rep3: stat rc=0 0.06s | record rc=0 1.25s
+[replay] pallets__flask-5014 seq=6 class=test run orig=1.51s :: 'python -m pytest -q tests/test_blueprints.py 2>&1 | tail -3'
+    rep1: stat rc=0 0.80s | record rc=0 1.25s
+    rep2: stat rc=0 0.91s | record rc=0 2.24s
+    rep3: stat rc=0 1.03s | record rc=0 1.25s
+[replay] pallets__flask-5014 seq=7 class=test run orig=0.69s :: 'python -m pytest -q -x tests/test_blueprints.py 2>&1 | grep -m3 -B2 -A'
+    rep1: stat rc=1 0.76s | record rc=1 1.41s
+    rep2: stat rc=1 0.84s | record rc=1 2.33s
+    rep3: stat rc=1 0.74s | record rc=1 1.34s
+[replay] pallets__flask-5014 seq=8 class=package install orig=21.00s :: 'python -m pip install -q "pytest<8" && python -m pytest -q tests/test_'
+    rep1: stat rc=0 2.65s | record rc=0 3.32s
+    rep2: stat rc=0 2.35s | record rc=0 3.28s
+    rep3: stat rc=0 2.65s | record rc=0 4.39s
+[replay] pallets__flask-5014 seq=9 class=test run orig=4.02s :: 'python -m pytest -q tests 2>&1 | tail -3'
+    rep1: stat rc=0 2.91s | record rc=0 4.33s
+    rep2: stat rc=0 3.36s | record rc=0 4.25s
+    rep3: stat rc=0 3.07s | record rc=0 4.25s
+[replay] pallets__flask-5014 seq=10 class=test run orig=3.40s :: 'git stash -q && python -m pytest -q tests 2>&1 | tail -1; git stash po'
+    rep1: stat rc=0 3.50s | record rc=0 5.27s
+    rep2: stat rc=0 3.75s | record rc=0 4.24s
+    rep3: stat rc=0 3.59s | record rc=0 5.33s
+[replay] pallets__flask-5014 seq=1 class=git orig=1.17s :: 'git init -q repo && cd repo && git remote add origin https://github.co'
+    rep1: stat rc=0 1.16s | record rc=0 1.25s
+    rep2: stat rc=0 1.16s | record rc=0 1.28s
+    rep3: stat rc=0 0.96s | record rc=0 1.25s
+[replay] pallets__flask-5014 seq=2 class=package install orig=4.91s :: '/usr/bin/python3.11 -m venv venv'
+    rep1: stat rc=0 4.73s | record rc=0 5.31s
+    rep2: stat rc=0 5.33s | record rc=0 6.28s
+    rep3: stat rc=0 4.97s | record rc=0 6.29s
+[replay] pallets__flask-5014 seq=3 class=package install orig=8.82s :: 'python -m pip install -e . "werkzeug==2.3.7" pytest'
+    rep1: stat rc=0 7.93s | record rc=0 8.27s
+    rep2: stat rc=0 6.72s | record rc=0 9.25s
+    rep3: stat rc=0 7.95s | record rc=0 9.24s
+[replay] pallets__flask-5014 seq=6 class=test run orig=1.51s :: 'python -m pytest -q tests/test_blueprints.py 2>&1 | tail -3'
+    rep1: stat rc=0 1.20s | record rc=0 2.42s
+    rep2: stat rc=0 1.01s | record rc=0 2.28s
+    rep3: stat rc=0 1.40s | record rc=0 2.25s
+[replay] pallets__flask-5014 seq=7 class=test run orig=0.69s :: 'python -m pytest -q -x tests/test_blueprints.py 2>&1 | grep -m3 -B2 -A'
+    rep1: stat rc=0 0.63s | record rc=0 1.31s
+    rep2: stat rc=0 0.82s | record rc=0 1.25s
+    rep3: stat rc=0 0.64s | record rc=0 1.39s
+[replay] pallets__flask-5014 seq=8 class=package install orig=21.00s :: 'python -m pip install -q "pytest<8" && python -m pytest -q tests/test_'
+    rep1: stat rc=0 2.31s | record rc=0 3.26s
+    rep2: stat rc=0 2.32s | record rc=0 3.30s
+    rep3: stat rc=0 2.69s | record rc=0 3.34s

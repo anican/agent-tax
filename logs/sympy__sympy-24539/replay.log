@@ -1,0 +1,36 @@
+[replay] sympy__sympy-24539 seq=1 class=git orig=1.94s :: 'git init -q repo && cd repo && git remote add origin https://github.co'
+    rep1: stat rc=0 1.957204818725586 | record rc=0 2.1239402294158936
+    rep2: stat rc=0 1.7655987739562988 | record rc=0 2.1255486011505127
+    rep3: stat rc=0 1.706122636795044 | record rc=0 2.1380038261413574
+[replay] sympy__sympy-24539 seq=2 class=package install orig=2.33s :: '/usr/bin/python3.11 -m venv venv'
+    rep1: stat rc=0 2.367732048034668 | record rc=0 3.1235926151275635
+    rep2: stat rc=0 2.376793384552002 | record rc=0 3.1176271438598633
+    rep3: stat rc=0 2.327901601791382 | record rc=0 3.1185343265533447
+[replay] sympy__sympy-24539 seq=3 class=package install orig=3.55s :: 'python -m pip install -e . mpmath==1.3.0 pytest'
+    rep1: stat rc=0 3.6501100063323975 | record rc=0 5.123619556427002
+    rep2: stat rc=0 3.536797046661377 | record rc=0 4.1320271492004395
+    rep3: stat rc=0 3.7165374755859375 | record rc=0 4.134348630905151
+[replay] sympy__sympy-24539 seq=4 class=search/read orig=0.01s :: 'sed -n 612,630p sympy/polys/rings.py; grep -n "def as_expr" sympy/poly'
+    rep1: stat rc=0 0.029187679290771484 | record rc=0 1.124091386795044
+    rep2: stat rc=0 0.02902817726135254 | record rc=0 1.1227519512176514
+    rep3: stat rc=0 0.028596878051757812 | record rc=0 1.123504877090454
+[replay] sympy__sympy-24539 seq=5 class=search/read orig=0.01s :: 'sed -n 334,342p sympy/polys/fields.py; sed -n 252,272p sympy/polys/tes'
+    rep1: stat rc=0 0.03427839279174805 | record rc=0 1.1224620342254639
+    rep2: stat rc=0 0.028751134872436523 | record rc=0 1.1240651607513428
+    rep3: stat rc=0 0.04777336120605469 | record rc=0 1.124859094619751
+[replay] sympy__sympy-24539 seq=6 class=test run orig=2.11s :: 'python -m pytest -q -p no:cacheprovider sympy/polys/tests/test_rings.p'
+    rep1: stat rc=0 0.8434779644012451 | record rc=0 1.1230878829956055
+    rep2: stat rc=0 0.867865800857544 | record rc=0 1.1235806941986084
+    rep3: stat rc=0 0.814140796661377 | record rc=0 1.1187434196472168
+[replay] sympy__sympy-24539 seq=7 class=other orig=0.26s :: 'python -c "\nfrom sympy import ring, ZZ, symbols\nR, x, y, z = ring(\\"x,'
+    rep1: stat rc=0 0.2937781810760498 | record rc=0 1.1184828281402588
+    rep2: stat rc=0 0.3058147430419922 | record rc=0 1.118605375289917
+    rep3: stat rc=0 0.31333065032958984 | record rc=0 1.127897024154663
+[loop] sympy__sympy-24539 seq=4 :: 'sed -n 612,630p sympy/polys/rings.py; grep -n "def as_expr" sympy/poly'
+    loop1: rc=0 1.15s
+    loop2: rc=0 1.12s
+    loop3: rc=0 1.12s
+[loop] sympy__sympy-24539 seq=5 :: 'sed -n 334,342p sympy/polys/fields.py; sed -n 252,272p sympy/polys/tes'
+    loop1: rc=0 1.13s
+    loop2: rc=0 1.12s
+    loop3: rc=0 1.12s

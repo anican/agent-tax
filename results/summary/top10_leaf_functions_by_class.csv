@@ -1,0 +1,61 @@
+cls,sym,dso,cat,share_pct
+build,[unknown],cc1,core logic,20.85
+build,"file_cache_slot::get_next_line(char**, long*)",cc1,core logic,8.30
+build,[unknown],cc1plus,core logic,6.66
+build,gc_collect_main,python3.11,allocation,3.39
+build,_PyEval_EvalFrameDefault,python3.11,core logic,3.32
+build,PyObject_GenericGetAttr,python3.11,core logic,2.70
+build,_int_malloc,libc.so.6,allocation,1.38
+build,"bitmap_set_bit(bitmap_head*, int)",cc1,core logic,1.19
+build,[unknown],x86_64-linux-gnu-as,core logic,0.77
+build,visit_decref,python3.11,allocation,0.71
+git,[unknown],libz.so.1.3,compression,17.27
+git,[unknown],git,core logic,17.10
+git,_raw_spin_unlock_irqrestore,[kernel.kallsyms],other kernel,3.68
+git,lookup_bh_lru,[kernel.kallsyms],filesystem metadata,2.98
+git,recently_deleted,[kernel.kallsyms],filesystem metadata,2.42
+git,inflate,libz.so.1.3,compression,2.32
+git,adler32_z,libz.so.1.3,compression,2.12
+git,rep_movs_alternative,[kernel.kallsyms],memory movement,1.87
+git,[unknown],libtasn1.so.6.6.3,unclassified,1.84
+git,_int_malloc,libc.so.6,allocation,1.67
+other,_PyEval_EvalFrameDefault,python3.11,interpreter startup/imports,13.17
+other,gc_collect_main,python3.11,allocation,10.77
+other,__sched_yield,libc.so.6,scheduling/context switch,5.39
+other,visit_decref,python3.11,allocation,4.19
+other,PyUnicode_InternInPlace,python3.11,interpreter startup/imports,3.61
+other,__schedule,[kernel.kallsyms],scheduling/context switch,3.39
+other,visit_reachable,python3.11,allocation,2.83
+other,_PyObject_Malloc,python3.11,allocation,2.53
+other,type_new,python3.11,interpreter startup/imports,2.36
+other,PyObject_GenericGetAttr,python3.11,interpreter startup/imports,2.21
+package install,[unknown],cc1,core logic,16.15
+package install,"file_cache_slot::get_next_line(char**, long*)",cc1,core logic,6.10
+package install,[unknown],cc1plus,core logic,5.17
+package install,_PyEval_EvalFrameDefault,python3.11,core logic,4.56
+package install,gc_collect_main,python3.11,allocation,3.70
+package install,PyObject_GenericGetAttr,python3.11,core logic,2.22
+package install,_int_malloc,libc.so.6,allocation,1.28
+package install,clear_page_erms,[kernel.kallsyms],memory movement,1.18
+package install,rep_movs_alternative,[kernel.kallsyms],memory movement,0.98
+package install,visit_decref,python3.11,allocation,0.95
+search/read,intel_check_word.constprop.0,ld-linux-x86-64.so.2,virtualization-related,13.72
+search/read,handle_intel.constprop.0,ld-linux-x86-64.so.2,virtualization-related,4.94
+search/read,update_active.constprop.0,ld-linux-x86-64.so.2,virtualization-related,2.63
+search/read,init_cpu_features.constprop.0,ld-linux-x86-64.so.2,virtualization-related,2.61
+search/read,do_user_addr_fault,[kernel.kallsyms],process lifecycle,2.58
+search/read,next_uptodate_folio,[kernel.kallsyms],process lifecycle,2.56
+search/read,get_common_cache_info.constprop.0,ld-linux-x86-64.so.2,virtualization-related,2.37
+search/read,clear_page_erms,[kernel.kallsyms],memory movement,2.11
+search/read,_raw_spin_unlock_irqrestore,[kernel.kallsyms],process lifecycle,2.07
+search/read,zap_present_ptes.constprop.0,[kernel.kallsyms],process lifecycle,1.96
+test run,_PyEval_EvalFrameDefault,python3.11,core logic,17.35
+test run,"__pyx_f_7sklearn_7metrics_29_pairwise_distances_reduction_21_middle_term_computer__middle_term_sparse_sparse_64(__Pyx_memviewslice, __Pyx_memviewslice, __Pyx_memviewslice, long, long, __Pyx_memviewslice, __Pyx_memviewslice, __Pyx_memviewslice, long, long, double*)",_middle_term_computer.cpython-311-x86_64-linux-gnu.so,core logic,6.79
+test run,[unknown],libgomp.so.1.0.0,scheduling/context switch,4.99
+test run,gc_collect_main,python3.11,allocation,4.04
+test run,_PyEval_EvalFrameDefault,python3.11,interpreter startup/imports,2.66
+test run,__ieee754_pow_fma,libm.so.6,core logic,2.53
+test run,_PyObject_Malloc,python3.11,allocation,2.25
+test run,PyObject_GenericGetAttr,python3.11,core logic,1.95
+test run,__sched_yield,libc.so.6,scheduling/context switch,1.79
+test run,_PyObject_Free,python3.11,allocation,1.53

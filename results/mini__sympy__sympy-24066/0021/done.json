@@ -1,0 +1,32 @@
+{
+ "task": "mini__sympy__sympy-24066",
+ "seq": 21,
+ "phase": "solve",
+ "cls": "search/read",
+ "cmd": "sed -i '210,213c\\\n                        raise ValueError(\\\n                            f\"Dimension of \\\"{expr.args[i]}\\\" is {dim}, \"\\\n                            f\"but it should be Dimension(1)\")' sympy/physics/units/unitsystem.py",
+ "orig_rc": 0,
+ "orig_dur_s": 0.004250624,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 0.029163360595703125,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1171162128448486
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 0.027103662490844727,
+   "rec_rc": 0,
+   "rec_wall_s": 1.118427038192749
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 0.025022268295288086,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1187820434570312
+  }
+ ]
+}

@@ -1,0 +1,33 @@
+{
+ "task": "scikit-learn__scikit-learn-26194",
+ "seq": 6,
+ "phase": "solve",
+ "cls": "search/read",
+ "cmd": "sed -n 1060,1110p sklearn/metrics/_ranking.py",
+ "orig_rc": 0,
+ "orig_dur_s": 0.008699904,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 0.03629326820373535,
+   "rec_rc": 0,
+   "rec_wall_s": 1.261113166809082
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 0.03906702995300293,
+   "rec_rc": 0,
+   "rec_wall_s": 1.2423231601715088
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 0.04945206642150879,
+   "rec_rc": 0,
+   "rec_wall_s": 1.3841207027435303
+  }
+ ],
+ "loop_iterations": 30
+}

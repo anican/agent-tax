@@ -1,0 +1,52 @@
+[replay] pytest-dev__pytest-10051 seq=1 class=test run orig=0.81s :: 'git init -q repo && cd repo && git remote add origin https://github.co'
+    rep1: stat rc=0 0.7728033065795898 | record rc=0 1.1234967708587646
+    rep2: stat rc=0 0.8113646507263184 | record rc=0 2.1285641193389893
+    rep3: stat rc=0 0.8905618190765381 | record rc=0 1.1246473789215088
+[replay] pytest-dev__pytest-10051 seq=2 class=package install orig=2.30s :: '/usr/bin/python3.11 -m venv venv'
+    rep1: stat rc=0 2.648024797439575 | record rc=0 3.1259031295776367
+    rep2: stat rc=0 2.5469553470611572 | record rc=0 3.122042179107666
+    rep3: stat rc=0 2.532543897628784 | record rc=0 3.126011371612549
+[replay] pytest-dev__pytest-10051 seq=3 class=package install orig=6.20s :: 'SETUPTOOLS_SCM_PRETEND_VERSION=7.2.0.dev0 python -m pip install -e ".['
+    rep1: stat rc=0 6.946527719497681 | record rc=0 7.1289167404174805
+    rep2: stat rc=0 6.655962705612183 | record rc=0 7.130253553390503
+    rep3: stat rc=0 6.599819183349609 | record rc=0 7.12929630279541
+[replay] pytest-dev__pytest-10051 seq=4 class=search/read orig=0.01s :: 'grep -n "def reset" -A 4 src/_pytest/logging.py; grep -n "caplog_recor'
+    rep1: stat rc=0 0.05237150192260742 | record rc=0 1.1168925762176514
+    rep2: stat rc=0 0.03043508529663086 | record rc=0 1.1265721321105957
+    rep3: stat rc=0 0.03329753875732422 | record rc=0 1.1231310367584229
+[replay] pytest-dev__pytest-10051 seq=5 class=search/read orig=0.00s :: 'grep -n "def test_clear\\|def test_caplog_captures_for_all_stages" -A 1'
+    rep1: stat rc=0 0.03217744827270508 | record rc=0 1.124077320098877
+    rep2: stat rc=0 0.04858231544494629 | record rc=0 1.123335838317871
+    rep3: stat rc=0 0.0332643985748291 | record rc=0 1.1147592067718506
+[replay] pytest-dev__pytest-10051 seq=6 class=test run orig=1.89s :: 'python -m pytest -q -p no:cacheprovider testing/logging 2>&1 | tail -2'
+    rep1: stat rc=0 1.4964449405670166 | record rc=0 2.1186444759368896
+    rep2: stat rc=0 1.4493026733398438 | record rc=0 2.125361204147339
+    rep3: stat rc=0 1.4381968975067139 | record rc=0 2.117832660675049
+[replay] pytest-dev__pytest-10051 seq=7 class=test run orig=0.25s :: 'python -m pytest -q -p no:cacheprovider testing/logging/test_fixture.p'
+    rep1: stat rc=0 0.2711365222930908 | record rc=0 1.1186342239379883
+    rep2: stat rc=0 0.2797410488128662 | record rc=0 1.1260921955108643
+    rep3: stat rc=0 0.2631349563598633 | record rc=0 1.1242821216583252
+[replay] pytest-dev__pytest-10051 seq=8 class=search/read orig=0.00s :: 'grep -n "    def clear" -A 3 src/_pytest/logging.py; grep -n "caplog_h'
+    rep1: stat rc=0 0.02482914924621582 | record rc=0 1.1179759502410889
+    rep2: stat rc=0 0.04142332077026367 | record rc=0 1.1197526454925537
+    rep3: stat rc=0 0.022864103317260742 | record rc=0 1.1232059001922607
+[replay] pytest-dev__pytest-10051 seq=9 class=test run orig=1.35s :: 'python -m pytest -q -p no:cacheprovider testing/logging 2>&1 | tail -2'
+    rep1: stat rc=0 1.548386573791504 | record rc=0 2.1203691959381104
+    rep2: stat rc=0 1.5281386375427246 | record rc=0 2.1414995193481445
+    rep3: stat rc=0 1.596245527267456 | record rc=0 2.125819444656372
+[replay] pytest-dev__pytest-10051 seq=10 class=test run orig=0.31s :: 'git stash push -q src/_pytest/logging.py && python -m pytest -q -p no:'
+    rep1: stat rc=0 0.32329297065734863 | record rc=0 1.1227529048919678
+    rep2: stat rc=0 0.32959985733032227 | record rc=0 1.1236567497253418
+    rep3: stat rc=0 0.3144032955169678 | record rc=0 1.128235101699829
+[loop] pytest-dev__pytest-10051 seq=4 :: 'grep -n "def reset" -A 4 src/_pytest/logging.py; grep -n "caplog_recor'
+    loop1: rc=0 1.12s
+    loop2: rc=0 1.12s
+    loop3: rc=0 1.12s
+[loop] pytest-dev__pytest-10051 seq=5 :: 'grep -n "def test_clear\\|def test_caplog_captures_for_all_stages" -A 1'
+    loop1: rc=0 1.16s
+    loop2: rc=0 1.12s
+    loop3: rc=0 1.14s
+[loop] pytest-dev__pytest-10051 seq=8 :: 'grep -n "    def clear" -A 3 src/_pytest/logging.py; grep -n "caplog_h'
+    loop1: rc=0 1.12s
+    loop2: rc=0 1.12s
+    loop3: rc=0 1.12s

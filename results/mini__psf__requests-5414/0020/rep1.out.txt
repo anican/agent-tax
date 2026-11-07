@@ -1,0 +1,20 @@
+
+Testing URL: http://.example.com
+  EXCEPTION: LocationParseError: Failed to parse: '.example.com', label empty or too long
+  URL preparation succeeded
+
+Testing URL: http://..example.com
+  EXCEPTION: LocationParseError: Failed to parse: '..example.com', label empty or too long
+  URL preparation succeeded
+
+Testing URL: http://example..com
+  EXCEPTION: LocationParseError: Failed to parse: 'example..com', label empty or too long
+  URL preparation succeeded
+
+Testing URL: http://.com
+  EXCEPTION: LocationParseError: Failed to parse: '.com', label empty or too long
+  URL preparation succeeded
+
+Testing URL: http://.
+  EXCEPTION: LocationParseError: Failed to parse: '.', label empty or too long
+  URL preparation succeeded

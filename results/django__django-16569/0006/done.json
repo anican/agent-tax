@@ -1,0 +1,33 @@
+{
+ "task": "django__django-16569",
+ "seq": 6,
+ "phase": "solve",
+ "cls": "search/read",
+ "cmd": "sed -n 1459,1500p tests/forms_tests/tests/test_formsets.py",
+ "orig_rc": 0,
+ "orig_dur_s": 0.004109312,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 0.025280475616455078,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1248829364776611
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 0.03896927833557129,
+   "rec_rc": 0,
+   "rec_wall_s": 1.119335651397705
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 0.03590536117553711,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1163721084594727
+  }
+ ],
+ "loop_iterations": 30
+}

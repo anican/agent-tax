@@ -1,0 +1,32 @@
+{
+ "task": "sympy__sympy-24066",
+ "seq": 3,
+ "phase": "setup",
+ "cls": "package install",
+ "cmd": "python -m pip install -e . mpmath==1.3.0 pytest",
+ "orig_rc": 0,
+ "orig_dur_s": 7.93516416,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 6.400102615356445,
+   "rec_rc": 0,
+   "rec_wall_s": 7.264291524887085
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 7.485309600830078,
+   "rec_rc": 0,
+   "rec_wall_s": 8.244210481643677
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 7.296860218048096,
+   "rec_rc": 0,
+   "rec_wall_s": 8.324291706085205
+  }
+ ]
+}

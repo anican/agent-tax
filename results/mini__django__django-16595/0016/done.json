@@ -1,0 +1,32 @@
+{
+ "task": "mini__django__django-16595",
+ "seq": 16,
+ "phase": "solve",
+ "cls": "search/read",
+ "cmd": "cat <<'EOF' > test_comprehensive_alter_field.py\n#!/usr/bin/env python3\n\nimport sys\nimport os\n\n# Add Django to the path\nsys.path.insert(0, '.')\n\nimport django\nfrom django.conf import settings\n\n# Configure Django settings\nif not settings.configured:\n    settings.configure(\n        INSTALLED_APPS=[\n            'django.contrib.contenttypes',\n            'django.contrib.auth',\n        ],\n        DATABASES={\n            'default': {\n                'ENGINE': 'django.db.backends.sqlite3',\n                'NAME': ':memory:',\n            }\n        },\n        USE_TZ=True,\n    )\n\ndjango.setup()\n\nfrom django.db import models, migrations\nfrom django.db.migrations.optimizer import MigrationOptimizer\n\ndef test_comprehensive_alter_field():\n    print(\"Testing comprehensive AlterField optimization scenarios...\")\n    \n    optimizer = MigrationOptimizer()\n    \n    # Test 1: Multiple AlterField operations on same field should reduce to last one\n    print(\"\\nTest 1: Multiple AlterField on same field\")\n    operations1 = [\n        migrations.AlterField(\n            model_name=\"book\",\n            name=\"title\",\n            field=models.CharField(max_length=256, null=True),\n        ),\n        migrations.AlterField(\n            model_name=\"book\",\n            name=\"title\",\n            field=models.CharField(max_length=128, null=True),\n        ),\n        migrations.AlterField(\n            model_name=\"book\",\n            name=\"title\",\n            field=models.CharField(max_length=128, null=True, help_text=\"help\"),\n        ),\n    ]\n    \n    result1 = optimizer.optimize(operations1, \"books\")\n    print(f\"Original: {len(operations1)} operations -> Optimized: {len(result1)} operations\")\n    assert len(result1) == 1, f\"Expected 1 operation, got {len(result1)}\"\n    # Should be the last operation\n    assert result1[0].field.help_text == \"help\", \"Should preserve the final field configuration\"\n    print(\"\u2713 PASS\")\n    \n    # Test 2: AlterField on different fields should not be reduced\n    print(\"\\nTest 2: AlterField on different fields\")\n    operations2 = [\n        migrations.AlterField(\n            model_name=\"book\",\n            name=\"title\",\n            field=models.CharField(max_length=256, null=True),\n        ),\n        migrations.AlterField(\n            model_name=\"book\",\n            name=\"author\",  # Different field\n            field=models.CharField(max_length=128, null=True),\n        ),\n    ]\n    \n    result2 = optimizer.optimize(operations2, \"books\")\n    print(f\"Original: {len(operations2)} operations -> Optimized: {len(result2)} operations\")\n    assert len(result2) == 2, f\"Expected 2 operations, got {len(result2)}\"\n    print(\"\u2713 PASS\")\n    \n    # Test 3: AlterField on different models should not be reduced\n    print(\"\\nTest 3: AlterField on different models\")\n    operations3 = [\n        migrations.AlterField(\n            model_name=\"book\",\n            name=\"title\",\n            field=models.CharField(max_length=256, null=True),\n        ),\n        migrations.AlterField(\n            model_name=\"author\",  # Different model\n            name=\"title\",\n            field=models.CharField(max_length=128, null=True),\n        ),\n    ]\n    \n    result3 = optimizer.optimize(operations3, \"books\")\n    print(f\"Original: {len(operations3)} operations -> Optimized: {len(result3)} operations\")\n    assert len(result3) == 2, f\"Expected 2 operations, got {len(result3)}\"\n    print(\"\u2713 PASS\")\n    \n    # Test 4: AlterField followed by RemoveField should reduce to just RemoveField\n    print(\"\\nTest 4: AlterField followed by RemoveField\")\n    operations4 = [\n        migrations.AlterField(\n            model_name=\"book\",\n            name=\"title\",\n            field=models.CharField(max_length=256, null=True),\n        ),\n        migrations.RemoveField(\n            model_name=\"book\",\n            name=\"title\",\n        ),\n    ]\n    \n    result4 = optimizer.optimize(operations4, \"books\")\n    print(f\"Original: {len(operations4)} operations -> Optimized: {len(result4)} operations\")\n    assert len(result4) == 1, f\"Expected 1 operation, got {len(result4)}\"\n    assert isinstance(result4[0], migrations.RemoveField), \"Should be RemoveField\"\n    print(\"\u2713 PASS\")\n    \n    print(\"\\n\u2713 All tests passed!\")\n    return True\n\nif __name__ == \"__main__\":\n    success = test_comprehensive_alter_field()\n    sys.exit(0 if success else 1)\nEOF",
+ "orig_rc": 0,
+ "orig_dur_s": 0.004027392,
+ "reps": [
+  {
+   "rep": 1,
+   "stat_rc": 0,
+   "stat_wall_s": 0.02515387535095215,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1241819858551025
+  },
+  {
+   "rep": 2,
+   "stat_rc": 0,
+   "stat_wall_s": 0.021920442581176758,
+   "rec_rc": 0,
+   "rec_wall_s": 1.1276800632476807
+  },
+  {
+   "rep": 3,
+   "stat_rc": 0,
+   "stat_wall_s": 0.0593724250793457,
+   "rec_rc": 0,
+   "rec_wall_s": 1.163935661315918
+  }
+ ]
+}

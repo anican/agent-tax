@@ -1,0 +1,31 @@
+1244:def test_pdb_teardown_skipped(
+1245-    pytester: Pytester, monkeypatch: MonkeyPatch, mark: str
+1246-) -> None:
+1247-    """With --pdb, setUp and tearDown should not be called for skipped tests."""
+1248-    tracked: List[str] = []
+1249-    monkeypatch.setattr(pytest, "test_pdb_teardown_skipped", tracked, raising=False)
+1250-
+1251-    pytester.makepyfile(
+1252-        """
+1253-        import unittest
+1254-        import pytest
+1255-
+1256-        class MyTestCase(unittest.TestCase):
+1257-
+1258-            def setUp(self):
+1259-                pytest.test_pdb_teardown_skipped.append("setUp:" + self.id())
+1260-
+1261-            def tearDown(self):
+1262-                pytest.test_pdb_teardown_skipped.append("tearDown:" + self.id())
+1263-
+1264-            {mark}("skipped for reasons")
+1265-            def test_1(self):
+1266-                pass
+1267-
+1268-    """.format(
+1269-            mark=mark
+1270-        )
+1271-    )
+1272-    result = pytester.runpytest_inprocess("--pdb")
+1273-    result.stdout.fnmatch_lines("* 1 skipped in *")
+1274-    assert tracked == []

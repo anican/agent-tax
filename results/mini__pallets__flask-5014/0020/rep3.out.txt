@@ -1,0 +1,10 @@
+Testing Blueprint edge cases...
+
+Running test_whitespace_only_name...
+ERROR: Blueprint with whitespace-only name '' '' was created - this should not happen!
+
+Running test_none_name...
+SUCCESS: Blueprint with None name correctly raised exception: ValueError Blueprint name cannot be empty.
+
+Results: 1/2 tests passed
+Some edge case tests failed!

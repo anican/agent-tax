@@ -1,0 +1,6 @@
+Testing basic functionality is not broken...
+meter * second: SUCCESS - Dimension(length*time)
+meter / second: SUCCESS - Dimension(length/time)
+meter**2: SUCCESS - Dimension(length**2)
+meter + 2*meter: SUCCESS - Dimension(length)
+All basic functionality tests passed!

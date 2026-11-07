@@ -1,0 +1,3 @@
+358:class LogCaptureFixture:
+388:    def get_records(self, when: str) -> List[logging.LogRecord]:
+441:    def clear(self) -> None:
